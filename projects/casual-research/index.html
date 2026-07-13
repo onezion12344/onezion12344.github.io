@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casual Research — 知識雜記</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: #000;
+  color: #f5f5f7;
+  line-height: 1.6;
+}
+
+.hero {
+  min-height: 60vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 80px 24px;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(108,92,231,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.hero p { color: #86868b; max-width: 500px; font-size: 1.05rem; }
+
+section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s, transform 0.3s;
+  text-decoration: none;
+  display: block;
+  color: #f5f5f7;
+}
+.card:hover { border-color: #6c5ce7; transform: translateY(-2px); }
+.card .meta { font-size: 0.75rem; color: #6c5ce7; font-weight: 600; letter-spacing: 1px; margin-bottom: 6px; }
+.card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+.card p { font-size: 0.88rem; color: #86868b; }
+
+.section-label {
+  font-size: 0.7rem;
+  color: #555;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 40px 0 16px;
+}
+.section-label:first-of-type { margin-top: 0; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
+footer a { color: #6c5ce7; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 class="reveal">Casual Research</h1>
+  <p class="reveal" style="transition-delay:0.1s">心理學、關係、日常好奇的事——事實核查過的知識隨筆。</p>
+</header>
+
+<section>
+  <div class="reveal">
+    <div class="section-label">⚡ 新上線</div>
+
+    <a href="self-love-vs-approval.html" class="card reveal" style="transition-delay:0.05s">
+      <div class="meta">Self Psychology · 2026-07-13</div>
+      <h3>🧘 自愛 vs 社會肯定</h3>
+      <p>「做自己」和「被喜歡」哪個更重要？六條獨立研究管線的整合答案——SDT、歸屬需求、自我驗證、真實性、權變自尊、社會校準。</p>
+    </a>
+
+    <a href="attachment-and-desire.html" class="card reveal" style="transition-delay:0.1s">
+      <div class="meta">Attachment Psychology · 2026-07-13</div>
+      <h3>🌀 依附、慢熱與慾望的矛盾</h3>
+      <p>為什麼有些人你追他們的時候退、你停的時候回來？恐懼型逃避依附的行為邏輯、「不喜歡你」vs「依附模式」的鑑別診斷框架。</p>
+    </a>
+
+    <a href="conflict-styles.html" class="card reveal" style="transition-delay:0.15s">
+      <div class="meta">Conflict Psychology · 2026-07-13</div>
+      <h3>⚡ 認真討論 vs 壓抑——哪個有利長期關係？</h3>
+      <p>Gottman 40 年研究的答案：三種都能幸福的衝突風格、5:1 正面互動比例、69% 的永續問題——以及為什麼「說開」不是萬能藥。</p>
+    </a>
+  </div>
+
+  <div class="reveal">
+    <div class="section-label">📖 已存檔</div>
+
+    <a href="attraction-and-conflict.html" class="card reveal" style="transition-delay:0s">
+      <div class="meta">Relationship Psychology · 2026-07-13</div>
+      <h3>🧠 喜歡 vs 矛盾感知</h3>
+      <p>喜歡一個人如何從根本上改變你對衝突的感知、判斷和應對？Positive Illusions、Sentiment Override、以及感知可解決性如何成為自我實現預言。</p>
+    </a>
+  </div>
+
+  <p class="reveal" style="margin-top: 40px; color: #555; font-size: 0.85rem; text-align: center;">
+    🌱 每個研究頁面均經過事實核查——<span class="cite">paper-validated</span> 標註的 claim 均有論文支持
+  </p>
+</section>
+
+<footer>
+  <a href="https://github.com/onezion12344/casual-research">GitHub</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.2 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

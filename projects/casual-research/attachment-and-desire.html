@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>依附、慢熱與慾望的矛盾 — 心理學研究分析</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #000;
+  --surface: #0d0d0d;
+  --card: #1a1a1a;
+  --card-border: #2a2a2a;
+  --accent: #6c5ce7;
+  --accent-glow: rgba(108,92,231,0.15);
+  --green: #00c853;
+  --red: #ff5252;
+  --blue: #448aff;
+  --amber: #ffab00;
+  --text: #f5f5f7;
+  --dim: #86868b;
+  --muted: #555;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+}
+.nav-brand { font-size: 0.85rem; font-weight: 600; color: var(--dim); letter-spacing: 0.3px; }
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: var(--dim); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* Hero */
+.hero {
+  min-height: 70vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(108,92,231,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(108,92,231,0.15);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  max-width: 900px;
+}
+.hero p {
+  color: var(--dim);
+  max-width: 600px;
+  font-size: 1.05rem;
+}
+
+/* Content */
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 64px 0 16px;
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 40px 0 12px;
+  color: var(--accent);
+}
+
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 28px 0 8px;
+}
+
+p { margin-bottom: 16px; color: #e8e8ec; }
+
+/* Info box */
+.info-box {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.info-box .label {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.info-box p { font-size: 0.92rem; margin-bottom: 0; }
+
+/* Comparison table (deconstructed into cards) */
+.comparison-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+.comparison-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.comparison-card .header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.comparison-card .icon { font-size: 1.4rem; }
+.comparison-card .title { font-weight: 600; font-size: 0.95rem; }
+.comparison-card .tag {
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.tag-green { background: rgba(0,200,83,0.12); color: var(--green); }
+.tag-amber { background: rgba(255,171,0,0.12); color: var(--amber); }
+.tag-red { background: rgba(255,82,82,0.12); color: var(--red); }
+
+/* Table (key-value lists) */
+.kv-list { margin: 16px 0; }
+.kv-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #1e1e1e;
+}
+.kv-row:last-child { border-bottom: none; }
+.kv-key {
+  width: 120px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--dim);
+  font-weight: 500;
+}
+.kv-val { font-size: 0.9rem; color: #e8e8ec; }
+
+/* Phase boxes */
+.phase-box {
+  background: var(--card);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.phase-box .phase-label { font-size: 0.7rem; color: var(--accent); font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+.phase-box p { font-size: 0.92rem; margin-bottom: 0; }
+
+/* Mechanism diagram */
+.mechanism {
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  margin: 32px 0;
+  text-align: center;
+}
+.mechanism .cycle {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  font-size: 0.75rem;
+  color: var(--dim);
+  margin: 12px 0;
+}
+.mechanism .arrow { color: var(--accent); font-size: 1.2rem; }
+.mechanism .node {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.82rem;
+  max-width: 140px;
+}
+.mechanism .node.active { border-color: var(--accent); background: rgba(108,92,231,0.08); }
+
+/* Citation */
+.cite {
+  display: inline-block;
+  background: rgba(108,92,231,0.08);
+  color: #a29bfe;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* Reference section */
+.references {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--card-border);
+}
+.references h2 { margin-top: 0; }
+.ref-item {
+  font-size: 0.82rem;
+  color: var(--dim);
+  margin-bottom: 10px;
+  padding-left: 20px;
+  text-indent: -20px;
+}
+
+/* Scroll-reveal */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 640px) {
+  .kv-row { flex-direction: column; gap: 4px; }
+  .kv-key { width: 100%; }
+  .mechanism .cycle { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><span>Casual</span> Research</a>
+  <div class="nav-links">
+    <a href="index.html">← 目錄</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag reveal">Attachment Psychology · 2026-07-13</div>
+  <h1 class="reveal" style="transition-delay:0.1s">依附、慢熱與慾望的矛盾</h1>
+  <p class="reveal" style="transition-delay:0.2s">為什麼有些人你追他們的時候他們退，你停的時候他們回來？——恐懼型逃避依附的行為邏輯與鑑別診斷。</p>
+</header>
+
+<article class="content">
+
+<!-- ============ RESEARCH NOTE ============ -->
+<div class="info-box reveal">
+  <div class="label">⚠️ 研究說明</div>
+  <p>本文為對話中的研究問題整理而成。所有引用標註 <span class="cite">paper-validated</span> 的 claim 均有對應論文支持；標註 <span class="cite" style="color:var(--amber);">my adaptation</span> 的推論為根據研究框架的延伸應用，非原始論文直接聲明。</p>
+</div>
+
+<!-- ============================================================ -->
+<!--              PART 1: FEARFUL-AVOIDANT ATTACHMENT               -->
+<!-- ============================================================ -->
+
+<h2 class="reveal">一、恐懼型逃避依附（Fearful-Avoidant Attachment）</h2>
+
+<p class="reveal">你描述的模式——「當你追他們、對他們有性慾時，他們後退；當你停止時，他們喜歡你」——在心理學上有一個精準的名稱：<strong>恐懼型逃避依附（Fearful-Avoidant / Disorganized Attachment）</strong>，由 Bartholomew & Horowitz（1991）在依附理論的四分類模型中正式定義。</p>
+
+<p class="reveal">這不是「奇怪」或「矛盾」——而是一個從內部視角非常一致的心理邏輯，只是從外部看起來像 paradox。</p>
+
+<h3 class="reveal">核心機制</h3>
+
+<div class="mechanism reveal">
+  <div style="font-size:0.9rem; font-weight:600; margin-bottom:16px;">恐懼型逃避依附的驅力平衡</div>
+  <div class="cycle">
+    <div class="node active">渴望親密</div>
+    <span class="arrow">⇄</span>
+    <div class="node active">害怕親密</div>
+  </div>
+  <p style="font-size:0.82rem; color:var(--dim); margin-top:12px;">兩種力量等強，且同時存在——不是交替，是常態。</p>
+</div>
+
+<p class="reveal">當你追他們、對他們有性慾時 → 親密訊號太強 → 他們的害怕系統被觸發 → 後退。</p>
+<p class="reveal">當你停止、不再有性趣時 → 威脅消失 → 渴望親密的那一面又浮出來 → 他們靠近。</p>
+
+<div class="info-box reveal">
+  <div class="label">非安全型慢熱 vs 安全型慢熱</div>
+  <p><strong>安全型慢熱：</strong>「我需要時間建立信任，再慢慢開放。」<br><br>
+  <strong>恐懼逃避型慢熱：</strong>「我每靠近一步，都在同時計算逃離路線。」<br><br>
+  慢熱在表面的行為相似，但<strong>內部動機完全不同</strong>。</p>
+</div>
+
+<h3 class="reveal">發展成因</h3>
+
+<div class="phase-box reveal">
+  <div class="phase-label">童年根源</div>
+  <p><strong>不一致的照顧（inconsistent caregiving）。</strong> 照顧者既是安慰來源也是恐懼來源——有時溫暖接納，有時拒絕或侵入。孩子在這種環境中發展出「靠近＝危險，離開＝孤獨」的雙重困境，無法形成穩定的依附策略（Main & Solomon, 1990）。</p>
+</div>
+
+<div class="phase-box reveal">
+  <div class="phase-label">成人依附的延續</div>
+  <p>這個模式在成人關係中重現。恐懼型個體對親密有<strong>兩層的內在運作模型（internal working models）</strong>：對自己持負面看法（「我不值得被愛」），對他人也持負面看法（「他們終究會拋棄我」）。結果是——他們既渴望被接納，又不信任任何接納（Bartholomew & Horowitz, 1991）。</p>
+</div>
+
+<!-- ============================================================ -->
+<!--              PART 2: DIFFERENTIAL DIAGNOSIS                   -->
+<!-- ============================================================ -->
+
+<h2 class="reveal" style="margin-top:80px;">二、「不喜歡我」vs「恐懼逃避依附」— 鑑別診斷</h2>
+
+<p class="reveal">任何行為解讀都應先排除最簡單的解釋，再談複雜的理論。這是最重要的前提。</p>
+
+<p class="reveal">兩者的行為表面看起來一樣（追→退，鬆→進），但<strong>背後的信號不同</strong>。關鍵區別在於——<strong>當你完全停下來之後，對方做了什麼</strong>。</p>
+
+<h3 class="reveal">行為鑑別框架</h3>
+
+<div class="comparison-grid reveal">
+
+  <div class="comparison-card">
+    <div class="header">
+      <span class="icon">🟢</span>
+      <span class="title">低興趣 / 不喜歡你</span>
+      <span class="tag tag-green">Simple Explanation</span>
+    </div>
+    <div class="kv-list">
+      <div class="kv-row"><span class="kv-key">你追</span><span class="kv-val">被動回應，不主動</span></div>
+      <div class="kv-row"><span class="kv-key">你停</span><span class="kv-val">對話自然死亡，沒有後續</span></div>
+      <div class="kv-row"><span class="kv-key">你消失一段時間</span><span class="kv-val">不聞不問</span></div>
+    </div>
+    <div style="font-size:0.82rem; color:var(--green); font-weight:500;">判別原則：你停止主動之後，對方不再出現。</div>
+  </div>
+
+  <div class="comparison-card">
+    <div class="header">
+      <span class="icon">🟡</span>
+      <span class="title">恐懼逃避依附（矛盾型）</span>
+      <span class="tag tag-amber">Attachment Pattern</span>
+    </div>
+    <div class="kv-list">
+      <div class="kv-row"><span class="kv-key">你追</span><span class="kv-val">後退、消失、冷淡</span></div>
+      <div class="kv-row"><span class="kv-key">你停幾天</span><span class="kv-val">突然發一條什麼、點讚、問你「最近在幹嘛」</span></div>
+      <div class="kv-row"><span class="kv-key">你消失</span><span class="kv-val">一段時間後找藉口重新聯繫</span></div>
+    </div>
+    <div style="font-size:0.82rem; color:var(--amber); font-weight:500;">判別原則：你停下來之後，對方又回來了——但當你回應，他們又退。</div>
+  </div>
+
+</div>
+
+<h3 class="reveal">當事人的內在視角</h3>
+
+<p class="reveal">如果真的是恐懼逃避型，對方<strong>並非不喜歡你</strong>——他們是<strong>同時喜歡你並且害怕你</strong>。</p>
+
+<p class="reveal">這是一種內在衝突的體驗。當你不在時，他們的安全感系統認為你是「安全的」（因為沒有近距離威脅），於是渴望連結的系統浮上來。當你靠近，威脅檢測器又啟動了：害怕被吞沒、害怕被拒絕、害怕自己無法勝任這段親密。</p>
+
+<div class="info-box reveal">
+  <div class="label">⚠️ 實用提醒</div>
+  <p>即使確認是恐懼逃避依附，也不代表你應該繼續追求或「等對方準備好」。依附模式在沒有專業介入的情況下極難自發改變。你的選擇取決於：你的情感能接受這種 pull-push 常態多久？對方是否有自我覺察和改變意願？</p>
+</div>
+
+<h3 class="reveal">複雜案例：恐懼逃避 + 性慾雙重觸發</h3>
+
+<p class="reveal">你提到一個更精細的觀察：「當我對他有性慾的時候，他後退；當我沒有性趣的時候，他反而靠近。」這可能涉及兩層獨立的機制疊加。</p>
+
+<div class="mechanism reveal">
+  <div style="font-size:0.82rem; font-weight:500; margin-bottom:12px;">雙層觸發鏈</div>
+  <div class="cycle" style="flex-direction:column; gap:8px;">
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span class="node active">你產生性慾</span>
+      <span class="arrow">→</span>
+      <span class="node">親密度↑</span>
+      <span class="arrow">→</span>
+      <span class="node active">害怕系統觸發</span>
+      <span class="arrow">→</span>
+      <span class="node active">撤退</span>
+    </div>
+    <div style="color:var(--dim); font-size:0.75rem;">當你的性慾=0 → 威脅歸零 → 渴望系統復甦 → 他們靠近</div>
+  </div>
+</div>
+
+<p class="reveal">第二層可能的機制：對於某些恐懼逃避型的人來說，<strong>被視為「性對象」本身可能觸發羞恥或物化感</strong>，尤其當他們對自己的性價值有不安全感時。這不是普遍情況，但值得觀察（<span class="cite" style="color:var(--amber);">my adaptation</span>）。</p>
+
+<!-- ============================================================ -->
+<!--              PART 3: WHEN THEY FEEL UNSAFE                    -->
+<!-- ============================================================ -->
+
+<h2 class="reveal" style="margin-top:80px;">三、當她知道你喜歡她——也是恐懼來源</h2>
+
+<p class="reveal">你提到一個非常關鍵的觀察：「當她知道你喜歡她的時候，她反而感到不安全。但你不喜歡她的時候，她卻覺得安全。」</p>
+
+<p class="reveal">這再一次完全符合恐懼逃避依附的操作邏輯——而且觸發的不是性慾，而是<strong>被明確喜歡/被選擇的信號</strong>本身。</p>
+
+<div class="mechanism reveal">
+  <div style="font-size:0.82rem; font-weight:500; margin-bottom:12px;">「被喜歡」= 威脅信號</div>
+  <div class="cycle">
+    <div class="node">你喜歡她</div>
+    <span class="arrow">→</span>
+    <div class="node active">她感到不安全</div>
+    <span class="arrow">→</span>
+    <div class="node">退後／冷淡</div>
+  </div>
+  <p style="font-size:0.78rem; color:var(--dim); margin-top:16px;">內在邏輯：被喜歡意味著「這個關係是真的，對方會期待更多」→ 害怕無法滿足期待 → 撤退</p>
+</div>
+
+<p class="reveal">而「你不喜歡她」則意味著關係是安全的——因為沒有期待、沒有遠景、沒有被拋棄的風險。在這種狀態下，他們反而能放鬆地享受你這個人。</p>
+
+<p class="reveal"><strong>這很痛苦，因為你永遠無法贏。</strong> 你的真心靠近是威脅，真心的後退是安全——但後退不是你要的結果。這個困境本身就說明了為什麼恐懼逃避依附被認為是最難建立穩定關係的依附類型（<span class="cite">paper-validated: Bartholomew & Horowitz, 1991; Rholes & Simpson, 2004</span>）。</p>
+
+<h3 class="reveal">不安全感認知 vs 真實吸引力衰退</h3>
+
+<p class="reveal">這裡需要區分兩個路徑（<span class="cite" style="color:var(--amber);">my adaptation: 綜合認知失調與依附理論</span>）：</p>
+
+<div class="comparison-card" style="margin:16px 0;">
+  <div class="header">
+    <span class="icon">🔍</span>
+    <span class="title">兩個可能的機制</span>
+  </div>
+  <div class="kv-list">
+    <div class="kv-row"><span class="kv-key">路徑 A（認知）</span><span class="kv-val">她知道你喜歡她 → 不安全感上升 → 表現出防禦行為 → 你感知到降溫</span></div>
+    <div class="kv-row"><span class="kv-key">路徑 B（真實）</span><span class="kv-val">你真的做了/說了些什麼 → 真實地削弱了她的興趣 → 關係自然降溫</span></div>
+  </div>
+  <div style="font-size:0.82rem; color:var(--dim);">兩者可以同時發生。區分方法是檢查你的具體行為——你有沒有在表達喜歡之後做了讓她不舒服的事？如果沒有，優先考慮路徑 A。</div>
+</div>
+
+<!-- ============================================================ -->
+<!--              REFERENCES                                        -->
+<!-- ============================================================ -->
+
+<section class="references reveal">
+  <h2>References</h2>
+  <p class="ref-item">Bartholomew, K., & Horowitz, L. M. (1991). Attachment styles among young adults: A test of a four-category model. <em>Journal of Personality and Social Psychology</em>, 61(2), 226–244. <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Main, M., & Solomon, J. (1990). Procedures for identifying infants as disorganized/disoriented during the Ainsworth Strange Situation. In M. T. Greenberg, D. Cicchetti, & E. M. Cummings (Eds.), <em>Attachment in the preschool years</em> (pp. 121–160). <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Rholes, W. S., & Simpson, J. A. (2004). Attachment theory: Basic concepts and contemporary questions. In W. S. Rholes & J. A. Simpson (Eds.), <em>Adult attachment: Theory, research, and clinical implications</em> (pp. 3–14). <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Bowlby, J. (1973). <em>Attachment and loss: Vol. 2. Separation: Anxiety and anger</em>. Basic Books. <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Mikulincer, M., & Shaver, P. R. (2007). <em>Attachment in adulthood: Structure, dynamics, and change</em>. Guilford Press. <span class="cite">paper-validated</span></p>
+</section>
+
+</article>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>喜歡 vs 矛盾感知 — 心理學研究分析</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #000;
+  --surface: #0d0d0d;
+  --card: #1a1a1a;
+  --card-border: #2a2a2a;
+  --accent: #6c5ce7;
+  --accent-glow: rgba(108,92,231,0.15);
+  --green: #00c853;
+  --red: #ff5252;
+  --blue: #448aff;
+  --text: #f5f5f7;
+  --dim: #86868b;
+  --muted: #555;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+}
+.nav-brand { font-size: 0.85rem; font-weight: 600; color: var(--dim); letter-spacing: 0.3px; }
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: var(--dim); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+/* Hero */
+.hero {
+  min-height: 70vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(108,92,231,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(108,92,231,0.15);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: var(--dim);
+  max-width: 580px;
+  line-height: 1.6;
+}
+.hero-stats {
+  display: flex; gap: 48px; margin-top: 48px;
+  flex-wrap: wrap; justify-content: center;
+}
+.stat-item { text-align: center; }
+.stat-number { font-size: 2rem; font-weight: 700; color: var(--accent); }
+.stat-label { font-size: 0.8rem; color: var(--dim); margin-top: 4px; }
+
+/* Section */
+section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+.section-tag {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.3;
+  margin-bottom: 28px;
+}
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 32px 0 12px;
+  color: var(--accent);
+}
+p { margin-bottom: 16px; color: #d4d4d6; font-size: 0.95rem; }
+
+/* Cards */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--dim);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.card h4 { font-size: 1rem; margin-bottom: 10px; font-weight: 600; }
+.card p { font-size: 0.9rem; color: #c0c0c5; margin-bottom: 0; }
+
+/* Lists */
+ul, ol { padding-left: 20px; margin-bottom: 16px; }
+li { margin-bottom: 8px; font-size: 0.95rem; color: #d4d4d6; }
+
+/* Blockquote */
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  margin: 20px 0;
+  background: rgba(108,92,231,0.06);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #c8c8cc;
+}
+
+/* Divider */
+hr {
+  border: none;
+  border-top: 1px solid var(--card-border);
+  margin: 48px 0;
+}
+
+/* Sources */
+.source-item {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.85rem;
+  color: #c0c0c5;
+}
+.source-item:last-child { border-bottom: none; }
+.source-doi { color: var(--accent); font-size: 0.78rem; font-family: monospace; }
+
+/* Highlight box */
+.highlight {
+  background: linear-gradient(135deg, rgba(108,92,231,0.1), rgba(108,92,231,0.04));
+  border: 1px solid rgba(108,92,231,0.3);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+}
+.highlight p { margin-bottom: 0; font-size: 0.95rem; }
+
+/* Stat Comparison */
+.stat-compare {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 20px; align-items: center;
+  margin: 30px 0;
+}
+.stat-box {
+  text-align: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+}
+.stat-box.red .stat-big { color: var(--red); }
+.stat-box.green .stat-big { color: var(--green); }
+.stat-box .stat-big { font-size: 2.5rem; font-weight: 800; }
+.stat-box .stat-desc { font-size: 0.8rem; color: var(--dim); margin-top: 4px; }
+.stat-arrow { font-size: 1.5rem; color: var(--dim); }
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 60px 24px;
+  border-top: 1px solid var(--card-border);
+  color: var(--dim);
+  font-size: 0.8rem;
+}
+footer a { color: var(--accent); text-decoration: none; }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.stagger > * { opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.stagger.visible > *:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.stagger.visible > *:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.2s; }
+.stagger.visible > *:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+.stagger.visible > *:nth-child(4) { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+.stagger.visible > *:nth-child(5) { opacity: 1; transform: translateY(0); transition-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .stagger > * { opacity: 1; transform: none; }
+}
+
+@media (max-width: 768px) {
+  section { padding: 60px 20px; }
+  .hero-stats { gap: 24px; }
+  .stat-compare { grid-template-columns: 1fr; }
+  .stat-arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand"><span>✦</span> casual research</div>
+  <div class="nav-links">
+    <a href="#q1">問題一</a>
+    <a href="#q2">問題二</a>
+    <a href="#q3">問題三</a>
+    <a href="#sources">來源</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag reveal">Relationship Psychology · Fact-Checked</div>
+  <h1 class="reveal" style="transition-delay:0.1s">喜歡 vs 矛盾感知</h1>
+  <p class="reveal" style="transition-delay:0.2s">心理學研究告訴我們：喜歡一個人如何從根本上改變你對衝突的感知、判斷和應對——以及這意味著什麼。</p>
+  <div class="hero-stats reveal" style="transition-delay:0.3s">
+    <div class="stat-item">
+      <div class="stat-number">8</div>
+      <div class="stat-label">核心論文</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">69%</div>
+      <div class="stat-label">永續問題比率</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">37,761</div>
+      <div class="stat-label">統合分析樣本</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">40+</div>
+      <div class="stat-label">年縱向研究</div>
+    </div>
+  </div>
+</header>
+
+<section id="q1">
+  <div class="reveal">
+    <div class="section-tag">Question 1</div>
+    <h2>喜歡一個人，會影響對矛盾的感知嗎？</h2>
+    <p class="highlight">核心答案：影響非常大——存在一個雙向因果的自我實現循環。</p>
+
+    <h3>機制 1 → Sentiment Override（情感覆蓋效應）</h3>
+    <p>Weiss（1980）提出，發展自 Gottman 實驗室（Hawkins, Carrère &amp; Gottman, 2002）：</p>
+    <blockquote>當你喜歡一個人時，你對他們行為的解釋會被一個正向濾鏡覆蓋——即使是模糊/負面行為，你也會傾向於善意解讀。反之，當你不喜歡時，即使對方做的是中性/正面的事，你也會讀出惡意。</blockquote>
+
+    <div class="stat-compare reveal">
+      <div class="stat-box green">
+        <div class="stat-big">❤️</div>
+        <div class="stat-desc">喜歡 → Positive Sentiment Override<br>「他沒回訊息→他一定在忙」</div>
+      </div>
+      <div class="stat-arrow">→</div>
+      <div class="stat-box red">
+        <div class="stat-big">💔</div>
+        <div class="stat-desc">不喜歡 → Negative Sentiment Override<br>「他沒回訊息→他不在乎我」</div>
+      </div>
+    </div>
+
+    <h3>機制 2 → Positive Illusions（正向錯覺）</h3>
+    <p>Murray, Holmes &amp; Griffin（1996a, 1996b），兩篇關鍵論文：</p>
+    <div class="card">
+      <div class="card-label">發現一 · 1,113 次引用</div>
+      <p>關係滿意的人，對伴侶的感知是<strong>理想化而非現實的</strong>。他們把伴侶看得比伴侶看自己更好。</p>
+    </div>
+    <div class="card">
+      <div class="card-label">發現二 · 490 次引用</div>
+      <p>初期理想化程度越高 → 1年後滿意度增加更多 + 衝突和懷疑減少更多。<strong>論文標題：「Love is not blind, but prescient」</strong></p>
+    </div>
+
+    <h3>機制 3 → 關係價值 → 衝突行為的解讀偏誤</h3>
+    <p>Venaglia &amp; Lemay（2019），JSPR：</p>
+    <ul>
+      <li>越看重這段關係的人 → 越傾向於<strong>低估</strong>伴侶在衝突中的破壞性行為</li>
+      <li>這種偏誤預測<strong>更好的情緒結果</strong></li>
+      <li>那些「準確地」看到伴侶有多破壞的人 → 情緒結果反而更差</li>
+    </ul>
+
+    <h3>從喜歡到實際關係成功的鏈條</h3>
+    <p>Mizrahi, Lemay, Maniaci &amp; Reis（2022），JSPR：</p>
+    <div class="highlight">
+      <p>激情愛 → 正向偏誤 → 更多親關係行為 → 關係實際結果改善</p>
+    </div>
+
+    <h3>限制條件</h3>
+    <p>Le et al.（2010），37,761人統合分析發現，預測關係解體的最強變量是<strong>承諾（commitment）</strong>，其次才是滿意度、愛、替代選項。</p>
+    <blockquote>喜歡會影響感知和行為——但最終是否能走下去，更多取決於雙方是否決定投入承諾，而不僅僅是感覺好不好。</blockquote>
+  </div>
+</section>
+
+<hr>
+
+<section id="q2">
+  <div class="reveal">
+    <div class="section-tag">Question 2</div>
+    <h2>有不可調和矛盾的情侶多不多？</h2>
+    <p class="highlight">答案：非常多——而且他們可以長久，只要從 Gridlock 轉向 Dialogue。</p>
+
+    <div class="stat-compare reveal">
+      <div class="stat-box green">
+        <div class="stat-big">69%</div>
+        <div class="stat-desc">關係衝突是「永續問題」<br>（perpetual problems）</div>
+      </div>
+      <div class="stat-arrow">→</div>
+      <div class="stat-box red">
+        <div class="stat-big">31%</div>
+        <div class="stat-desc">可解決的問題</div>
+      </div>
+    </div>
+
+    <p>Gottman 40+年縱向研究：69% 的關係衝突根源於兩人之間無法消除的個性、價值觀、需求差異。這意味著：</p>
+    <ul>
+      <li>不是少數情侶有不可調和矛盾——是<strong>幾乎所有情侶都有</strong></li>
+      <li>69% 的衝突永遠不會被「解決」——它們會反覆出現</li>
+      <li>成功的伴侶和失敗的伴侶的區別不是他們有沒有這些問題——<strong>而是他們怎麼管理</strong></li>
+    </ul>
+
+    <h3>關鍵區分：Gridlock vs Dialogue</h3>
+    <div class="card">
+      <div class="card-label">僵局（Gridlock）</div>
+      <p>雙方立場硬化、不願意理解對方背後的夢想 → 每次衝突都變成攻擊或撤退 → 關係痛苦、最終走向解體</p>
+    </div>
+    <div class="card">
+      <div class="card-label">對話（Dialogue）</div>
+      <p>承認問題不會消失 → 但仍然願意聆聽對方背後的價值和渴望 → 找到幽默和接納來面對 → 關係穩定、甚至更親密</p>
+    </div>
+
+    <h3>為什麼有些情侶會走出來，有些不會？</h3>
+    <p>Knee（1998），JPSP, 74(2), 360-370：</p>
+    <div class="stat-compare reveal">
+      <div class="stat-box red">
+        <div class="stat-big">命運信念</div>
+        <div class="stat-desc">遇見衝突 → 「我們不適合」→ 放棄</div>
+      </div>
+      <div class="stat-arrow">vs</div>
+      <div class="stat-box green">
+        <div class="stat-big">成長信念</div>
+        <div class="stat-desc">遇見衝突 → 「需要一起解決」→ 努力維護</div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <p>⚠️ <strong>推論（非文獻原文）</strong>：當對方說「fundamental differences that I don't see how it can be reconciled」，這本身就是一個 Destiny Belief 框架的解讀。更好的回應方向：「我不是要解決這些差異。我是說，即使帶著這些差異，我們也可以找到一起走的方式——Gottman 的 69% 研究是這麼說的。」</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section id="q3">
+  <div class="reveal">
+    <div class="section-tag">Question 3</div>
+    <h2>對矛盾可解決性的感知，多大程度上影響實際解決？</h2>
+    <p class="highlight">核心答案：感知不僅影響實際解決——它決定你會不會去解決。但「無條件相信」是錯的。平衡點在 Mental Contrasting。</p>
+
+    <h3>發現 1 → 感知可解決性 > 衝突頻率，預測關係品質</h3>
+    <p>Johnson &amp; Roloff（2000），<em>Journal of Social and Personal Relationships</em>，17(4)：</p>
+    <p>對同一矛盾反覆爭吵的情侶中，<strong>感知到的可解決性（perceived resolvability）比衝突頻率更能預測關係品質。</strong></p>
+    <p>也就是說：不是「你們吵得多不多」決定關係好壞——是「你們覺得這個問題能不能解決」決定了關係品質。</p>
+    <div class="card">
+      <div class="card-label">自我實現的循環</div>
+      <p>覺得能解決 → 使用正向應對策略（積極溝通、尋求妥協）→ 問題真的被解決或管理。<br><br>
+      覺得不能解決 → 使用負向策略（撤退、攻擊、冷處理）→ 問題僵化並惡化。</p>
+    </div>
+
+    <h3>發現 2 → 但純粹樂觀是不夠的</h3>
+    <p>McNulty &amp; Karney（2004），<em>Journal of Consulting and Clinical Psychology</em>，72(1)：</p>
+    <p>新婚夫妻對矛盾的<strong>樂觀程度（optimism）</strong>和他們的<strong>問題解決行為</strong>，兩者對關係滿意度的影響取決於問題的客觀嚴重程度：</p>
+    <ul>
+      <li><strong>當問題輕微時：</strong>樂觀預測正向結果 ✅</li>
+      <li><strong>當問題嚴重且持續時：</strong>如果伴侶在樂觀的同時沒有採取有效行為，樂觀反而會加速後續滿意度下降 ⚠️</li>
+    </ul>
+    <div class="highlight">
+      <p>⚠️ <strong>純粹相信「我們能解決」是不夠的</strong>——感知可解決性必須轉化為實際的建設行為，否則只是自我安慰。</p>
+    </div>
+
+    <h3>發現 3 → 平衡點：Mental Contrasting（心智對比）</h3>
+    <p>Oettingen（2012, 2014），多年研究：</p>
+    <p>最有效的策略不是「盲目樂觀」也不是「徹底悲觀」——而是 Mental Contrasting：<strong>同時想像理想的未來 + 當下的現實障礙</strong>。</p>
+    <div class="stat-compare reveal" style="grid-template-columns: 1fr 1fr;">
+      <div class="stat-box red">
+        <div class="stat-big">❌</div>
+        <div class="stat-desc"><strong>Indulging</strong><br>只想好的未來，忽略障礙 → 行動力不足</div>
+      </div>
+      <div class="stat-box green">
+        <div class="stat-big">✅</div>
+        <div class="stat-desc"><strong>Mental Contrasting</strong><br>同時想未來 + 現實 → 行動力最強</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:20px;">
+      <div class="card-label">應用在關係矛盾中</div>
+      <p>「我希望我們能共同管理這個差異（理想），而且我知道這需要我改變一些我習慣的反應方式（現實）。」——這樣的話，Mental Contrasting 的框架已經在運作。</p>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section id="sources">
+  <div class="reveal">
+    <div class="section-tag">Sources</div>
+    <h2>全部經 OpenAlex 交叉驗證</h2>
+    <p>以下為本頁面引用的核心文獻，均經學術數據庫驗證。</p>
+    <div style="margin-top: 24px;">
+      <div class="source-item">
+        <strong>Murray et al. (1996a)</strong> — JPSP, 70(1), 79-98
+        <div class="source-doi">DOI: 10.1037/0022-3514.70.1.79</div>
+      </div>
+      <div class="source-item">
+        <strong>Murray et al. (1996b)</strong> — JPSP, 71(6), 1155-1180
+        <div class="source-doi">DOI: 10.1037/0022-3514.71.6.1155</div>
+      </div>
+      <div class="source-item">
+        <strong>Venaglia &amp; Lemay (2019)</strong> — JSPR, 36(11), 3293-3312
+        <div class="source-doi">DOI: 10.1177/0265407518818771</div>
+      </div>
+      <div class="source-item">
+        <strong>Le et al. (2010)</strong> — Personal Relationships, 17(3), 377-400
+        <div class="source-doi">DOI: 10.1111/j.1475-6811.2010.01285.x</div>
+      </div>
+      <div class="source-item">
+        <strong>Mizrahi et al. (2022)</strong> — JSPR
+        <div class="source-doi">DOI: 10.1177/02654075221076002</div>
+      </div>
+      <div class="source-item">
+        <strong>Knee (1998)</strong> — JPSP, 74(2), 360-370
+        <div class="source-doi">DOI: 10.1037/0022-3514.74.2.360</div>
+      </div>
+      <div class="source-item">
+        <strong>Hawkins, Carrère &amp; Gottman (2002)</strong> — Journal of Marriage and Family, 64, 193-201
+      </div>
+      <div class="source-item">
+        <strong>Weiss (1980)</strong> — 原始 Sentiment Override 建構
+      </div>
+      <div class="source-item">
+        <strong>Gottman (1994)</strong> — What Predicts Divorce?
+        <div class="source-doi">gottman.com/about/research/couples/</div>
+      </div>
+      <div class="source-item">
+        <strong>Johnson &amp; Roloff (2000)</strong> — JSPR, 17(4), 439-455
+        <div class="source-doi">DOI: 10.1177/0265407500174001</div>
+      </div>
+      <div class="source-item">
+        <strong>McNulty &amp; Karney (2004)</strong> — JCCP, 72(1), 82-96
+        <div class="source-doi">DOI: 10.1037/0022-006X.72.1.82</div>
+      </div>
+      <div class="source-item">
+        <strong>Oettingen (2012)</strong> — Future thought and behaviour change
+        <div class="source-doi">European Review of Social Psychology, 23(1), 1-63</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🔍 事實核查狀態：全部 8 條核心引用經 OpenAlex API 驗證，Gottman 69% 經官方網站確認。</p>
+  <p>推測成分已標記為 ⚠️ 推論，非文獻原文。</p>
+  <p style="margin-top:16px;"><a href="https://github.com/onezion12344/casual-research">GitHub</a> · <a href="https://www.notion.so/2e6d45f5ce6b80288264f8b854b887f4">Notion 原文</a> · <a href="index.html">← Casual Research 目錄</a></p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .stagger').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+const nav = document.querySelector('.nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 50 ? 'rgba(0,0,0,0.95)' : 'rgba(0,0,0,0.7)';
+});
+
+// Smooth scroll
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').slice(1);
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

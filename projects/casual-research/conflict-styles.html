@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>討論 vs 壓抑 — Gottman 衝突風格研究</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #000;
+  --surface: #0d0d0d;
+  --card: #1a1a1a;
+  --card-border: #2a2a2a;
+  --accent: #6c5ce7;
+  --accent-glow: rgba(108,92,231,0.15);
+  --green: #00c853;
+  --red: #ff5252;
+  --blue: #448aff;
+  --amber: #ffab00;
+  --text: #f5f5f7;
+  --dim: #86868b;
+  --muted: #555;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.7); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+}
+.nav-brand { font-size: 0.85rem; font-weight: 600; color: var(--dim); letter-spacing: 0.3px; }
+.nav-brand span { color: var(--accent); }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { color: var(--dim); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+
+.hero {
+  min-height: 70vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(108,92,231,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  background: rgba(108,92,231,0.15);
+  color: var(--accent);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  max-width: 850px;
+}
+.hero p {
+  color: var(--dim);
+  max-width: 600px;
+  font-size: 1.05rem;
+}
+
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 120px;
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 64px 0 16px;
+  letter-spacing: -0.5px;
+}
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 40px 0 12px;
+  color: var(--accent);
+}
+h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 28px 0 8px;
+}
+p { margin-bottom: 16px; color: #e8e8ec; }
+
+.info-box {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+.info-box .label {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.info-box p { font-size: 0.92rem; margin-bottom: 0; }
+
+/* Style cards for the 3 conflict styles */
+.style-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+.style-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.style-card .style-title { font-weight: 600; font-size: 1rem; margin-bottom: 8px; }
+.style-card .style-desc { font-size: 0.88rem; color: #e8e8ec; margin-bottom: 8px; }
+.style-card .style-result { font-size: 0.82rem; color: var(--green); font-weight: 500; }
+
+/* Comparison grid */
+.comparison-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0;
+}
+.comparison-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 20px 24px;
+}
+.comparison-card .header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.comparison-card .icon { font-size: 1.4rem; }
+.comparison-card .title { font-weight: 600; font-size: 0.95rem; }
+.comparison-card .tag {
+  font-size: 0.7rem;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+.tag-green { background: rgba(0,200,83,0.12); color: var(--green); }
+.tag-amber { background: rgba(255,171,0,0.12); color: var(--amber); }
+.tag-blue { background: rgba(68,138,255,0.12); color: var(--blue); }
+
+.cite {
+  display: inline-block;
+  background: rgba(108,92,231,0.08);
+  color: #a29bfe;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.stat-big {
+  text-align: center;
+  padding: 32px 24px;
+  margin: 32px 0;
+  background: var(--surface);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+}
+.stat-big .number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.stat-big .label { font-size: 0.8rem; color: var(--dim); margin-top: 8px; }
+
+.references {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--card-border);
+}
+.references h2 { margin-top: 0; }
+.ref-item {
+  font-size: 0.82rem;
+  color: var(--dim);
+  margin-bottom: 10px;
+  padding-left: 20px;
+  text-indent: -20px;
+}
+
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><span>Casual</span> Research</a>
+  <div class="nav-links">
+    <a href="index.html">← 目錄</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-tag reveal">Conflict Psychology · 2026-07-13</div>
+  <h1 class="reveal" style="transition-delay:0.1s">認真討論 vs 壓抑——哪個有利長期關係？</h1>
+  <p class="reveal" style="transition-delay:0.2s">Gottman 40 年實證研究的答案，比你想像的更細緻。</p>
+</header>
+
+<article class="content">
+
+<div class="info-box reveal">
+  <div class="label">⚠️ 研究說明</div>
+  <p>本文來源於對話中的一個具體問題：「一段關係中，把矛盾說開讓人不舒服 vs 壓抑忍耐——哪個對長期關係更好？」所有結論基於 John Gottman 及其同事 40+ 年的實驗室研究。標註 <span class="cite">paper-validated</span> 的引用為論文直接支持的 claim。</p>
+</div>
+
+<h2 class="reveal">一、三大「都能幸福」的衝突風格</h2>
+
+<p class="reveal">John Gottman 歷時 40+ 年、追蹤數千對夫妻的實驗室研究，發現一個違反直覺的事實：<strong>三種完全不同的衝突風格，都能產生穩定且滿意的長期關係</strong>（Gottman, 1999）。</p>
+
+<div class="style-grid reveal">
+
+  <div class="style-card">
+    <div class="style-title">🔇 迴避型（Conflict-Avoiding）</div>
+    <div class="style-desc">最小化說服企圖、強調共同點、不直接對抗。不是「壓抑不說」，而是有意識地選擇不讓分歧升級。他們的價值觀是：「我們的共同點遠大於分歧。」</div>
+    <div class="style-result">✅ 穩定且幸福</div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-title">🤝 溫和型（Validating）</div>
+    <div class="style-desc">平靜討論、互相確認感受、溫和表達分歧。會說「我聽到你了，雖然我不完全同意」。典型的「健康溝通」模板。</div>
+    <div class="style-result">✅ 穩定且幸福</div>
+  </div>
+
+  <div class="style-card">
+    <div class="style-title">🔥 激烈型（Volatile）</div>
+    <div class="style-desc">激烈爭論，但伴隨著深度修復與高強度浪漫。他們的哲學是「把話說開，不留隔夜仇」——爭吵激烈，但修復也徹底。</div>
+    <div class="style-result">✅ 穩定且幸福</div>
+  </div>
+
+</div>
+
+<h3 class="reveal">核心條件：不是「選哪一種」，而是兩個底線</h3>
+
+<div class="info-box reveal">
+  <div class="label">Gottman 關鍵發現</div>
+  <p><strong>條件一：雙方風格匹配。</strong> 一個迴避型配一個激烈型——衝突最多。風格一致比風格本身更重要。<br><br>
+  <strong>條件二：正面互動 ≥ 5:1 負面互動。</strong> 這是 Gottman 用生理指標 + 行為編碼反覆驗證的臨界值（Gottman, 1994）。低於這個比例，無論哪種風格，關係都傾向惡化。</p>
+</div>
+
+<div class="stat-big reveal">
+  <div class="number">5 : 1</div>
+  <div class="label">正面互動與負面互動的關鍵比例——低於此值關係趨向惡化</div>
+</div>
+
+<p class="reveal">這直接回答了「把矛盾說開 vs 壓抑」的迷思：<strong>不是說開或壓抑的問題，是比例與修復的問題。</strong> 激烈型說得很開，但他們也大量做修復。迴避型不說開，但他們用大量正面互動稀釋衝突——兩者都可以。</p>
+
+<h2 class="reveal" style="margin-top:80px;">二、69% 的衝突是永續問題</h2>
+
+<p class="reveal">這可能是 Gottman 最被低估的發現。在他的追蹤研究中，<strong>69% 的關係衝突是永續的（perpetual）</strong>——不是解決方案的問題，而是性格差異、價值觀差異、生活方式差異（Gottman, 1999）。</p>
+
+<div class="comparison-grid reveal">
+
+  <div class="comparison-card">
+    <div class="header">
+      <span class="icon">🔵</span>
+      <span class="title">永續問題（Perpetual Problems）</span>
+      <span class="tag tag-blue">69%</span>
+    </div>
+    <div class="style-desc" style="font-size:0.88rem;">這些差異不會被「解決」。成功的情侶不是消除了它們——而是學會了與它們共存。比如：一個愛乾淨一個亂、一個內向一個外向、一個喜歡計畫一個隨性。</div>
+    <div style="font-size:0.82rem; color:var(--blue); font-weight:500; margin-top:8px;">關鍵不是解決，是建設性的對話模式（dialogue）</div>
+  </div>
+
+  <div class="comparison-card">
+    <div class="header">
+      <span class="icon">🟢</span>
+      <span class="title">可解決問題（Solvable Problems）</span>
+      <span class="tag tag-green">31%</span>
+    </div>
+    <div class="style-desc" style="font-size:0.88rem;">具體的、情境性的問題——可以通過行為改變、協商、妥協來解決。比如：誰洗碗、假期去哪裡、某一特定事件造成的誤解。</div>
+    <div style="font-size:0.82rem; color:var(--green); font-weight:500; margin-top:8px;">需要的是具體的問題解決技能</div>
+  </div>
+
+</div>
+
+<p class="reveal">這個發現的深層涵義是：<strong>如果你把 69% 的問題當作「待解決」來處理，你永遠會感到挫敗</strong>——因為它們本來就不是來被解決的。它們是來被管理的。</p>
+
+<div class="info-box reveal">
+  <div class="label">實用啟示</div>
+  <p>當你和伴侶在同一個矛盾上反覆爭論時，先問自己：「這個問題屬於 69%，還是 31%？」<br><br>
+  如果屬於 69%，目標從「解決問題」轉向「建立對話模式」——讓雙方都能安全地表達、被聽見、被接納。<br><br>
+  <span class="cite">Gottman, 1999; Hawkins, Carrère & Gottman, 2002</span></p>
+</div>
+
+<h2 class="reveal" style="margin-top:80px;">三、Sentiment Override（情感覆蓋效應）</h2>
+
+<p class="reveal">Weiss（1980）提出，Gottman 實驗室後續驗證的概念（Hawkins, Carrère & Gottman, 2002）：</p>
+
+<p class="reveal"><strong>當你喜歡一個人時，你對他們行為的解釋會被一個正向濾鏡覆蓋</strong>——即使是模糊甚至負面的行為，你也會傾向於善意解讀。反之，當你不喜歡時，即使對方做的是中性或正面的事，你也會讀出惡意。</p>
+
+<div class="comparison-grid reveal">
+
+  <div class="comparison-card" style="border-left:3px solid var(--green);">
+    <div class="header"><span class="icon">🟢</span><span class="title">Positive Sentiment Override</span></div>
+    <div class="kv-list">
+      <div class="kv-row"><span class="kv-key">他沒回訊息</span><span class="kv-val">「他一定在忙」</span></div>
+      <div class="kv-row"><span class="kv-key">她語氣冷淡</span><span class="kv-val">「她今天可能累了」</span></div>
+      <div class="kv-row"><span class="kv-key">我們觀點不同</span><span class="kv-val">「互補讓我們更完整」</span></div>
+    </div>
+  </div>
+
+  <div class="comparison-card" style="border-left:3px solid var(--red);">
+    <div class="header"><span class="icon">🔴</span><span class="title">Negative Sentiment Override</span></div>
+    <div class="kv-list">
+      <div class="kv-row"><span class="kv-key">他沒回訊息</span><span class="kv-val">「他不在乎我」</span></div>
+      <div class="kv-row"><span class="kv-key">她語氣冷淡</span><span class="kv-val">「她對我有意見」</span></div>
+      <div class="kv-row"><span class="kv-key">我們觀點不同</span><span class="kv-val">「我們根本不適合」</span></div>
+    </div>
+  </div>
+
+</div>
+
+<p class="reveal">這不是微調——是根本性地改變你對同一件事的感知。這也解釋了為什麼嘗試「把話說開」有時反而破壞關係：如果 Sentiment Override 是負向的，說開會被解讀為攻擊，而不是溝通。修復比說開更根本。</p>
+
+<h2 class="reveal" style="margin-top:80px;">四、綜合答案</h2>
+
+<div class="info-box reveal">
+  <div class="label">回到原始問題</div>
+  <p><strong>「認真討論 vs 壓抑，哪個更好？」</strong><br><br>
+  ✅ 正確答案是：<strong>取決於你的關係風格和雙方是否匹配。</strong><br><br>
+  ❌ 常見迷思：把話說開 = 健康，壓抑 = 不健康。<br><br>
+  實際上：三種風格都可以健康。關鍵因素依次是：<br>
+  ① 雙方風格是否匹配<br>
+  ② 正面/負面比例是否 ≥ 5:1<br>
+  ③ 對 69% 永續問題是否有建設性對話模式（而非試圖消滅它們）<br>
+  ④ 是否有可靠的修復機制（repair attempts）</p>
+</div>
+
+<section class="references reveal">
+  <h2>References</h2>
+  <p class="ref-item">Gottman, J. M. (1994). <em>What predicts divorce? The relationship between marital processes and marital outcomes</em>. Lawrence Erlbaum. <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Gottman, J. M. (1999). <em>The marriage clinic: A scientifically based marital therapy</em>. W. W. Norton. <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Hawkins, M. W., Carrère, S., & Gottman, J. M. (2002). Marital sentiment override: Does it influence couples' perceptions? <em>Journal of Marriage and Family</em>, 64(1), 193–201. <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Weiss, R. L. (1980). Strategic behavioral marital therapy: Toward a model for assessment and intervention. In J. P. Vincent (Ed.), <em>Advances in family intervention, assessment and theory</em> (Vol. 1, pp. 229–271). JAI Press. <span class="cite">paper-validated</span></p>
+  <p class="ref-item">Gottman, J. M., & Levenson, R. W. (1992). Marital processes predictive of later dissolution: Behavior, physiology, and health. <em>Journal of Personality and Social Psychology</em>, 63(2), 221–233. <span class="cite">paper-validated</span></p>
+</section>
+
+</article>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

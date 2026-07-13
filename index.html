@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneZion</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: #000;
+  color: #f5f5f7;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+}
+.hero { padding: 80px 24px; position: relative; }
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(108,92,231,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+.sub { color: #555; font-size: 0.9rem; margin-bottom: 32px; }
+
+.card {
+  display: inline-block;
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 20px 28px;
+  text-decoration: none;
+  color: #f5f5f7;
+  transition: border-color 0.3s, transform 0.3s;
+  margin: 8px;
+}
+.card:hover { border-color: #6c5ce7; transform: translateY(-2px); }
+.card h3 { font-size: 1rem; font-weight: 600; }
+.card p { font-size: 0.8rem; color: #86868b; margin-top: 4px; }
+.card .tag { font-size: 0.65rem; color: #6c5ce7; letter-spacing: 1px; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Casual Research</h1>
+  <p class="sub">心理學、關係、日常好奇的事——事實核查過的知識隨筆。</p>
+  <a href="projects/casual-research/" class="card">
+    <div class="tag">📂 All Projects →</div>
+    <h3>瀏覽研究目錄</h3>
+    <p>4 篇心理學研究｜已上線</p>
+  </a>
+</div>
+</body>
+</html>
