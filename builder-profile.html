@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Harry Huang / OneZion — Builder Profile · AdventureX 2026</title>
+<title>Harry OneZion — Builder Profile · AdventureX 2026</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 
@@ -22,6 +22,8 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
     font-family: 'Space Grotesk', 'Noto Sans SC', -apple-system, sans-serif;
     background: var(--bg);
@@ -29,6 +31,30 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
+  ::selection { background: rgba(139,92,246,0.3); color: #fff; }
+
+  /* ── Language switching ── */
+  body[lang="en"] .zh { display: none !important; }
+  body[lang="zh"] .en { display: none !important; }
+
+  .lang-toggle {
+    position: fixed; top: 10px; right: 14px; z-index: 200;
+    display: flex; align-items: center;
+    background: rgba(20, 20, 40, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 20px; padding: 2px;
+    cursor: pointer;
+  }
+  .lang-toggle .opt {
+    padding: 3px 10px; border-radius: 16px;
+    font-size: 11px; font-weight: 500;
+    color: var(--muted); transition: all 0.2s;
+    user-select: none;
+  }
+  .lang-toggle .opt.active { background: var(--accent); color: #fff; }
+  .lang-toggle .opt:not(.active):hover { color: var(--white); }
 
   /* ── Animated starfield background ── */
   .stars {
@@ -81,73 +107,75 @@
   }
 
   /* ── X Pulsar Logo ── */
-  .pulsar-x {
-    display: flex; justify-content: center; padding: 20px 0 0;
-  }
-  .pulsar-x svg { width: 100px; height: auto; }
+  .pulsar-x { display: flex; justify-content: center; padding: 16px 0 0; }
+  .pulsar-x svg { width: 96px; height: auto; }
 
-  /* ── Hero Banner with decorative image ── */
+  /* ── Hero Banner ── */
   .hero-banner {
-    position: relative; width: 100%; height: 160px;
+    position: relative; width: 100%; height: 150px;
     border-radius: 16px; overflow: hidden;
-    margin: 16px 0 0;
+    margin: 14px 0 0;
     border: 1px solid var(--border);
   }
   .hero-banner .banner-img {
     width: 100%; height: 100%; object-fit: cover;
     opacity: 0.35; filter: saturate(0.4) brightness(0.6);
+    transition: opacity 0.6s, filter 0.6s;
   }
+  .hero-banner:hover .banner-img { opacity: 0.5; filter: saturate(0.7) brightness(0.7); }
   .hero-banner .banner-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(180deg, rgba(8,8,15,0.3) 0%, rgba(8,8,15,0.7) 100%);
+    pointer-events: none;
   }
   .hero-banner .banner-label {
-    position: absolute; bottom: 14px; left: 16px;
+    position: absolute; bottom: 12px; left: 16px;
     font-size: 10px; color: var(--muted); letter-spacing: 0.2em;
     text-transform: uppercase; opacity: 0.6;
   }
 
   /* ── Hero ── */
-  .hero {
-    text-align: center; padding: 20px 0 32px;
-  }
+  .hero { text-align: center; padding: 22px 0 20px; }
   .hero .avatar {
-    width: 80px; height: 80px; border-radius: 50%;
+    width: 84px; height: 84px; border-radius: 50%;
     border: 2px solid rgba(139, 92, 246, 0.3);
-    margin: 0 auto 16px;
+    margin: 0 auto 14px;
     background: url('https://github.com/onezion12344.png') center/cover;
     box-shadow: var(--glow);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .hero .avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
   }
   .hero h1 {
-    font-size: 24px; font-weight: 700; letter-spacing: -0.02em;
+    font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
     background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
-  .hero .tagline {
+  .hero .subtitle {
     font-size: 13px; color: var(--muted); font-weight: 400;
-    margin-bottom: 6px; line-height: 1.6;
+    margin-bottom: 4px; line-height: 1.7;
   }
   .hero .identity {
     font-size: 12px; color: var(--accent3); font-weight: 500;
-    margin-bottom: 6px;
-  }
-  .hero .motto {
-    font-size: 10px; color: var(--muted); opacity: 0.6;
-    margin-bottom: 14px; letter-spacing: 0.08em;
+    margin-bottom: 12px;
   }
 
   /* ── Tags ── */
   .tags {
     display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
-    padding: 8px 0;
+    padding: 4px 0 14px;
   }
   .tag {
     padding: 4px 10px; border-radius: 12px;
     background: rgba(139, 92, 246, 0.08);
     border: 1px solid rgba(139, 92, 246, 0.15);
     font-size: 10px; color: var(--accent2);
+    transition: transform 0.2s, border-color 0.2s;
   }
+  .tag:hover { transform: translateY(-1px); border-color: rgba(139,92,246,0.4); }
   .tag.pink {
     background: rgba(244, 114, 182, 0.08);
     border-color: rgba(244, 114, 182, 0.15);
@@ -159,10 +187,105 @@
     color: var(--accent2);
   }
 
+  /* ── Stats row (count-up) ── */
+  .stats {
+    display: flex; justify-content: center; gap: 8px;
+    margin-bottom: 18px;
+  }
+  .stat {
+    flex: 1; max-width: 130px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 8px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .stat:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-2px); }
+  .stat .num {
+    display: block; font-size: 22px; font-weight: 700;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  }
+  .stat .stat-label {
+    display: block; font-size: 9px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 2px;
+  }
+
+  /* ── Connect icon row (hero) ── */
+  .connect-row {
+    display: flex; justify-content: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .connect-row a {
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    color: var(--muted); text-decoration: none;
+    transition: color 0.25s;
+  }
+  .connect-row a .ico {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--card); border: 1px solid var(--border);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  }
+  .connect-row a:hover { color: var(--white); }
+  .connect-row a:hover .ico {
+    transform: translateY(-3px);
+    border-color: rgba(139,92,246,0.5);
+    box-shadow: 0 4px 20px rgba(139,92,246,0.2);
+  }
+  .connect-row a svg { width: 18px; height: 18px; }
+  .connect-row a .lbl { font-size: 9px; letter-spacing: 0.03em; }
+
+  /* ── Event badge ── */
+  .event-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 20px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    font-size: 11px; color: var(--accent2);
+    letter-spacing: 0.05em;
+  }
+  .event-badge .blip {
+    display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: #7dd3fc; animation: pulse 2s infinite;
+  }
+
+  /* ── Sticky mini-nav ── */
+  .mini-nav {
+    position: sticky; top: 8px; z-index: 100;
+    /* leave room for the fixed lang toggle when stuck */
+    width: calc(100% - 88px);
+    background: rgba(15, 15, 26, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin: 8px 0 24px;
+    padding: 6px;
+    display: flex; gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  @media (min-width: 620px) {
+    .mini-nav { width: 100%; } /* toggle sits far right on desktop, no overlap */
+  }
+  .mini-nav::-webkit-scrollbar { display: none; }
+  .mini-nav a {
+    flex: 1; text-align: center;
+    padding: 7px 6px; border-radius: 10px;
+    font-size: 11px; color: var(--muted);
+    text-decoration: none; white-space: nowrap;
+    transition: color 0.25s, background 0.25s;
+  }
+  .mini-nav a:hover { color: var(--white); }
+  .mini-nav a.active {
+    color: var(--white);
+    background: rgba(139, 92, 246, 0.18);
+  }
+
   /* ── Signal divider ── */
   .signal-divider {
     display: flex; align-items: center; gap: 12px;
-    padding: 0 0 24px;
+    padding: 0 0 20px;
   }
   .signal-divider .line {
     flex: 1; height: 1px;
@@ -174,7 +297,7 @@
   }
 
   /* ── Section ── */
-  .section { margin-bottom: 24px; }
+  .section { margin-bottom: 32px; scroll-margin-top: 64px; }
   .section h2 {
     font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
     color: var(--muted); text-transform: uppercase;
@@ -185,23 +308,24 @@
     background: rgba(139, 92, 246, 0.15);
   }
 
-  /* ── Thinking Stack (centerpiece) ── */
-  .thinking-stack {
-    display: flex; flex-direction: column; gap: 10px;
+  /* ── Scroll reveal ── */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Thinking Stack ── */
+  .thinking-stack { display: flex; flex-direction: column; gap: 10px; }
   .think-card {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 16px 18px;
+    border-radius: 14px; padding: 15px 17px;
     position: relative; overflow: hidden;
     transition: border-color 0.3s, transform 0.3s;
   }
-  .think-card:hover {
-    border-color: rgba(139,92,246,0.3);
-    transform: translateX(4px);
-  }
+  .think-card:hover { border-color: rgba(139,92,246,0.3); transform: translateX(4px); }
   .think-card::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 3px;
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
   }
   .think-card.t1::before { background: linear-gradient(180deg, #8b5cf6, #7dd3fc); }
   .think-card.t2::before { background: linear-gradient(180deg, #7dd3fc, #a78bfa); }
@@ -209,19 +333,16 @@
   .think-card.t4::before { background: linear-gradient(180deg, #8b5cf6, #f472b6); }
   .think-card.t5::before { background: linear-gradient(180deg, #7dd3fc, #f472b6); }
   .think-card .think-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
   }
-  .think-card .think-icon {
-    font-size: 20px; line-height: 1;
-  }
+  .think-card .think-icon { font-size: 20px; line-height: 1; }
   .think-card .think-name {
     font-size: 13px; font-weight: 600;
     background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
   .think-card .think-desc {
-    font-size: 11px; color: var(--muted); line-height: 1.6;
+    font-size: 11px; color: var(--muted); line-height: 1.65;
     padding-left: 30px;
   }
   .think-card .think-tags {
@@ -233,159 +354,205 @@
     background: rgba(139, 92, 246, 0.06);
     color: var(--accent2); border: 1px solid rgba(139, 92, 246, 0.1);
   }
+  .think-card .think-quote {
+    margin: 8px 0 0 30px; padding: 7px 11px;
+    border-left: 2px solid rgba(244, 114, 182, 0.4);
+    background: rgba(244, 114, 182, 0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 11px; font-style: italic;
+    color: var(--white); opacity: 0.85; line-height: 1.65;
+  }
 
-  /* ── Philosophy Card ── */
-  .phil-card {
+  /* ── Pull quote & section quote (authentic words) ── */
+  .pull-quote {
+    text-align: center; padding: 18px 16px 2px;
+  }
+  .pull-quote .pq-mark {
+    display: block; font-size: 30px; line-height: 0.6;
+    color: rgba(139, 92, 246, 0.35);
+    font-family: Georgia, serif;
+  }
+  .pull-quote .pq-text {
+    font-size: 16px; font-weight: 600; letter-spacing: 0.01em;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.5;
+  }
+  .pull-quote .pq-attr {
+    margin-top: 6px; font-size: 10px; color: var(--muted);
+    letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7;
+  }
+  .section-quote {
+    margin: -2px 0 12px; padding: 8px 12px;
+    border-left: 2px solid rgba(244, 114, 182, 0.4);
+    background: rgba(244, 114, 182, 0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 11px; font-style: italic;
+    color: var(--white); opacity: 0.85; line-height: 1.7;
+  }
+
+  /* ── Edge formula (Thinking Stack intro) ── */
+  .edge-formula {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 6px; margin-bottom: 12px;
+  }
+  .edge-formula .ef {
+    padding: 4px 10px; border-radius: 10px;
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 20px;
-    box-shadow: var(--glow);
-    position: relative; overflow: hidden;
+    font-size: 10px; color: var(--accent2); letter-spacing: 0.03em;
+    transition: border-color 0.25s;
   }
-  .phil-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent);
+  .edge-formula .ef:hover { border-color: rgba(139,92,246,0.4); }
+  .edge-formula .plus { font-size: 11px; color: var(--muted); opacity: 0.6; }
+
+  /* ── Project tabs ── */
+  .tab-bar {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
   }
-  .phil-card .quote {
-    font-size: 13px; color: var(--white); line-height: 1.8;
-    margin-bottom: 12px; font-weight: 400;
-    position: relative; z-index: 1;
+  .tab-btn {
+    padding: 7px 12px; border-radius: 12px;
+    background: var(--card); border: 1px solid var(--border);
+    font-family: inherit; font-size: 11px; color: var(--muted);
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-flex; align-items: center; gap: 5px;
   }
-  .phil-card .quote-marker {
-    font-size: 28px; color: rgba(139,92,246,0.3);
-    line-height: 0; display: block; margin-bottom: 8px;
+  .tab-btn:hover { color: var(--white); border-color: rgba(139,92,246,0.3); }
+  .tab-btn.active {
+    color: var(--white);
+    background: rgba(139, 92, 246, 0.15);
+    border-color: rgba(139, 92, 246, 0.4);
   }
-  .phil-card .meta {
-    font-size: 10px; color: var(--accent2); letter-spacing: 0.1em;
-    text-transform: uppercase;
+  .tab-btn .cnt {
+    font-size: 9px; padding: 1px 5px; border-radius: 6px;
+    background: rgba(139, 92, 246, 0.15); color: var(--accent2);
   }
-  .phil-principles {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-    margin-top: 14px;
-  }
-  .phil-principle {
-    background: rgba(139, 92, 246, 0.05);
-    border: 1px solid rgba(139, 92, 246, 0.08);
-    border-radius: 8px; padding: 10px;
-    font-size: 10px; line-height: 1.5;
-    color: var(--muted);
-  }
-  .phil-principle strong {
-    display: block; color: var(--accent2);
-    font-size: 10px; margin-bottom: 2px;
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: panel-in 0.4s ease both; }
+  @keyframes panel-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── Project Cards ── */
+  /* ── Project cards ── */
   .project {
+    display: block;
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 14px; padding: 16px; margin-bottom: 10px;
+    border-radius: 14px; padding: 15px 16px; margin-bottom: 10px;
+    text-decoration: none; color: var(--white);
     transition: border-color 0.3s, transform 0.3s;
   }
   .project:hover { border-color: rgba(139,92,246,0.3); transform: translateX(4px); }
   .project .row {
     display: flex; justify-content: space-between; align-items: flex-start;
-    margin-bottom: 6px;
+    gap: 8px; margin-bottom: 6px;
   }
-  .project .name { font-size: 14px; font-weight: 600; }
-  .project .stack { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .project .name { font-size: 13px; font-weight: 600; line-height: 1.4; }
+  .project .name .arrow { color: var(--accent2); font-size: 11px; }
+  .project .stack {
+    font-size: 9px; color: var(--muted); text-transform: uppercase;
+    letter-spacing: 0.05em; white-space: nowrap; padding-top: 3px;
+  }
   .project .desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
 
-  .project.more { opacity: 0.75; }
-  .project.more:hover { opacity: 1; }
+  /* ── Track record ── */
+  .track-card {
+    display: flex; gap: 12px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 15px 16px; margin-bottom: 10px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .track-card:hover { border-color: rgba(244,114,182,0.3); transform: translateX(4px); }
+  .track-card .t-icon { font-size: 20px; line-height: 1.3; flex-shrink: 0; }
+  .track-card .t-title { font-size: 13px; font-weight: 600; line-height: 1.4; }
+  .track-card .t-role {
+    font-size: 10px; color: var(--accent3); font-weight: 500;
+    letter-spacing: 0.05em; margin: 2px 0 5px;
+  }
+  .track-card .t-desc { font-size: 11px; color: var(--muted); line-height: 1.6; }
 
-  /* ── Skills grid ── */
-  .skills {
+  /* ── Build stack chips ── */
+  .stack-group { margin-bottom: 12px; }
+  .stack-group .sg-label {
+    font-size: 10px; color: var(--accent2); font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 5px 11px; border-radius: 10px;
+    background: var(--card); border: 1px solid var(--border);
+    font-size: 11px; color: var(--white);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .chip:hover { border-color: rgba(125,211,252,0.4); transform: translateY(-1px); }
+
+  /* ── Connect section ── */
+  .connect-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
   }
-  .skill {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 12px;
-  }
-  .skill .label { font-size: 10px; color: var(--muted); margin-bottom: 2px; }
-  .skill .value { font-size: 12px; font-weight: 500; }
-
-  /* ── Tools / Stack section ── */
-  .tool-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-  }
-  .tool-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 12px;
+  .connect-card {
     display: flex; align-items: center; gap: 10px;
-    transition: border-color 0.3s;
-  }
-  .tool-card:hover { border-color: rgba(139,92,246,0.25); }
-  .tool-card .icon {
-    width: 28px; height: 28px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; flex-shrink: 0;
-  }
-  .tool-card .icon.purple { background: rgba(139,92,246,0.12); }
-  .tool-card .icon.blue { background: rgba(125,211,252,0.12); }
-  .tool-card .icon.pink { background: rgba(244,114,182,0.12); }
-  .tool-card .info .tname { font-size: 12px; font-weight: 500; }
-  .tool-card .info .tdesc { font-size: 10px; color: var(--muted); }
-
-  /* ── Connect Card ── */
-  .connect-list {
-    display: flex; flex-direction: column; gap: 8px;
-  }
-  .connect-item {
     background: var(--card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 14px 16px;
-    display: flex; align-items: center; gap: 12px;
-    transition: border-color 0.3s;
+    border-radius: 12px; padding: 13px 14px;
+    text-decoration: none; color: var(--white);
+    transition: border-color 0.3s, transform 0.3s;
+    min-width: 0;
   }
-  .connect-item:hover { border-color: rgba(139,92,246,0.3); }
-  .connect-item .cicon {
-    font-size: 18px; width: 24px; text-align: center; flex-shrink: 0;
+  .connect-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+  .connect-card svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--accent2); }
+  .connect-card .c-info { min-width: 0; }
+  .connect-card .c-label { font-size: 10px; color: var(--muted); }
+  .connect-card .c-value {
+    font-size: 11px; font-weight: 500;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .connect-item .clabel { font-size: 11px; color: var(--muted); }
-  .connect-item .cvalue { font-size: 13px; font-weight: 500; color: var(--white); }
-  .connect-item .cvalue a {
-    color: var(--accent2); text-decoration: none;
-    transition: color 0.3s;
-  }
-  .connect-item .cvalue a:hover { color: var(--white); }
 
   /* ── Footer ── */
   .footer {
-    text-align: center; padding: 32px 0;
+    text-align: center; padding: 28px 0 36px;
     font-size: 12px; color: var(--muted);
   }
   .footer .big-text {
     font-size: 16px; font-weight: 700; letter-spacing: 0.05em;
     background: linear-gradient(135deg, #c4b5fd, #f472b6);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+  }
+  .footer .motto {
+    font-size: 10px; color: var(--muted); opacity: 0.6;
+    letter-spacing: 0.08em; margin-top: 10px;
   }
   .footer .ax-credit {
     font-size: 10px; color: rgba(148,163,184,0.4);
-    margin-top: 16px;
-  }
-
-  /* ── Event badge ── */
-  .event-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 14px; border-radius: 20px;
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    font-size: 11px; color: var(--accent2);
-    letter-spacing: 0.05em;
+    margin-top: 14px; line-height: 1.7;
   }
 
   @media (max-width: 380px) {
-    .hero h1 { font-size: 22px; }
-    .skills { grid-template-columns: 1fr 1fr; gap: 6px; }
-    .tool-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
-    .phil-principles { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 23px; }
+    .connect-row { gap: 8px; }
+    .connect-grid { grid-template-columns: 1fr; }
+    .stats { gap: 6px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .tab-panel.active { animation: none; }
   }
 </style>
 </head>
-<body>
+<body lang="zh">
 
 <div class="stars"></div>
 <div class="pulsar-rings">
   <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+</div>
+
+<!-- Language toggle -->
+<div class="lang-toggle" onclick="toggleLang()" role="button" aria-label="Toggle language">
+  <span class="opt" data-lang="en">EN</span>
+  <span class="opt active" data-lang="zh">中</span>
 </div>
 
 <div class="page">
@@ -393,7 +560,8 @@
   <!-- AdventureX brand header -->
   <div class="ax-header">
     <div class="dot"></div>
-    BUILDER PROFILE · ADVENTUREX 2026
+    <span class="en">BUILDER PROFILE · ADVENTUREX 2026</span>
+    <span class="zh">BUILDER PROFILE · ADVENTUREX 2026 · 杭州</span>
   </div>
 
   <!-- Pulsar X Logo -->
@@ -432,7 +600,7 @@
     </svg>
   </div>
 
-  <!-- Hero Banner with decorative image -->
+  <!-- Hero Banner -->
   <div class="hero-banner">
     <img class="banner-img"
          src="assets/builder-hero.png"
@@ -445,15 +613,14 @@
   <!-- Hero -->
   <div class="hero">
     <div class="avatar"></div>
-    <h1>Harry Huang / OneZion</h1>
-    <p class="tagline">
-      HKU Philosophy · AI Agent Architect · Philosopher-Builder
+    <h1>Harry OneZion</h1>
+    <p class="subtitle">
+      <span class="en">Huang Ziyang · HKU BEng AI &amp; Data Science × BA AI and Humanities</span>
+      <span class="zh">黄子洋 · 港大 AI 与数据科学 × AI 与人文双学位</span>
     </p>
     <p class="identity">
-      我相信技术与人文的交汇处，才能诞生真正有意义的作品
-    </p>
-    <p class="motto">
-      ⛰ Aim High · 🌊 Embrace All · 🚢 Set Sail · 🗼 Be a Lighthouse · ⭕ Wholeness
+      <span class="en">Building at the intersection of technology × humanities</span>
+      <span class="zh">我相信技术与人文的交汇处，才能诞生真正有意义的作品</span>
     </p>
     <div class="tags">
       <span class="tag pink">Meta-Cognition</span>
@@ -462,81 +629,182 @@
       <span class="tag">Agent Architecture</span>
       <span class="tag pink">First Principles</span>
       <span class="tag blue">Rapid Prototyping</span>
-      <span class="tag">Research-Driven</span>
-      <span class="tag pink">Abstraction</span>
     </div>
-    <div style="margin-top:14px;">
-      <span class="event-badge">
-        <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#7dd3fc;animation:pulse 2s infinite;"></span>
-        10 shipped projects · 49 public repos · 2–4人 · 赛道不限
-      </span>
+
+    <!-- Count-up stats -->
+    <div class="stats">
+      <div class="stat">
+        <span class="num" data-count="12">0</span>
+        <span class="stat-label"><span class="en">Shipped Projects</span><span class="zh">已交付项目</span></span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="49">0</span>
+        <span class="stat-label"><span class="en">Public Repos</span><span class="zh">公开仓库</span></span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="30" data-suffix="+">0</span>
+        <span class="stat-label"><span class="en">Agent Skills</span><span class="zh">Agent 技能</span></span>
+      </div>
     </div>
+
+    <!-- Connect icon row -->
+    <div class="connect-row">
+      <a href="https://github.com/onezion12344" target="_blank" rel="noopener" title="GitHub">
+        <span class="ico">
+          <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        </span>
+        <span class="lbl">GitHub</span>
+      </a>
+      <a href="https://onezion12344.github.io" target="_blank" rel="noopener" title="GitHub Pages">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg>
+        </span>
+        <span class="lbl"><span class="en">Site</span><span class="zh">主页</span></span>
+      </a>
+      <a href="https://www.linkedin.com/in/harry-onezion" target="_blank" rel="noopener" title="LinkedIn">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        </span>
+        <span class="lbl">LinkedIn</span>
+      </a>
+      <a href="#REDNOTE_URL#" target="_blank" rel="noopener" title="RedNote 小红书" style="display:none">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="4" stroke="currentColor" stroke-width="1.6"/><text x="12" y="15.6" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" font-weight="700" fill="currentColor">红</text></svg>
+        </span>
+        <span class="lbl"><span class="en">RedNote</span><span class="zh">小红书</span></span>
+      </a>
+      <a href="mailto:onezion12344@gmail.com" title="Email">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </span>
+        <span class="lbl"><span class="en">Email</span><span class="zh">邮箱</span></span>
+      </a>
+    </div>
+
+    <span class="event-badge">
+      <span class="blip"></span>
+      <span class="en">Open to team · 2–4 builders · any track</span>
+      <span class="zh">组队中 · 2–4 人 · 赛道不限</span>
+    </span>
   </div>
+
+  <!-- Sticky mini-nav -->
+  <nav class="mini-nav" id="miniNav">
+    <a href="#thinking"><span class="en">Thinking</span><span class="zh">思维</span></a>
+    <a href="#projects"><span class="en">Projects</span><span class="zh">项目</span></a>
+    <a href="#track"><span class="en">Wins</span><span class="zh">战绩</span></a>
+    <a href="#stack"><span class="en">Stack</span><span class="zh">技能</span></a>
+    <a href="#connect"><span class="en">Connect</span><span class="zh">联系</span></a>
+  </nav>
 
   <!-- Signal divider -->
-  <div class="signal-divider">
+  <div class="signal-divider reveal">
     <div class="line"></div>
-    <span>How I Think</span>
+    <span class="en">HOW I THINK</span><span class="zh">我如何思考</span>
     <div class="line"></div>
   </div>
 
-  <!-- Thinking Stack — the centerpiece -->
-  <div class="section">
+  <!-- Thinking Stack -->
+  <div class="section" id="thinking">
     <h2>🧠 Thinking Stack</h2>
+
+    <!-- Authentic pull-quote -->
+    <div class="pull-quote reveal">
+      <span class="pq-mark">&ldquo;</span>
+      <div class="pq-text">CS is important, but coding is not.</div>
+      <div class="pq-attr">— Harry OneZion</div>
+    </div>
+
+    <!-- His own edge formula -->
+    <div class="edge-formula reveal">
+      <span class="ef"><span class="en">Shipped products</span><span class="zh">已有的产品</span></span>
+      <span class="plus">+</span>
+      <span class="ef"><span class="en">Dev methodology</span><span class="zh">开发方法论</span></span>
+      <span class="plus">+</span>
+      <span class="ef"><span class="en">Philosophy · Meta-cognition · Abstraction</span><span class="zh">哲学 · 元认知 · 抽象化</span></span>
+    </div>
+
     <div class="thinking-stack">
 
-      <div class="think-card t1">
+      <div class="think-card t1 reveal">
         <div class="think-header">
           <span class="think-icon">🪞</span>
           <span class="think-name">Meta-Cognition / 元认知</span>
         </div>
-        <p class="think-desc">I think about thinking. Philosophy training means I'm wired to step back and ask: what assumptions am I making? Is this the right frame? What's the higher-order pattern?</p>
+        <p class="think-desc">
+          <span class="en">Thinking about thinking — question the frame before solving inside it. What assumptions am I making? Is this even the right problem?</span>
+          <span class="zh">思考「思考」本身——先质疑框架，再在框架内解题。我在做什么假设？这真的是对的问题吗？</span>
+        </p>
         <div class="think-tags">
-          <span>二阶思维</span><span>认知框架</span><span>Epistemology</span><span>Self-Audit</span>
+          <span>二阶思维</span><span>Epistemology</span><span>Self-Audit</span>
         </div>
       </div>
 
-      <div class="think-card t2">
+      <div class="think-card t2 reveal">
         <div class="think-header">
           <span class="think-icon">🌌</span>
           <span class="think-name">Abstraction / 抽象思维</span>
         </div>
-        <p class="think-desc">I map concrete problems to abstract structures. An agent pipeline is a function composition. A fact-check system is an adversarial verification graph. I find the universal pattern, then specialize.</p>
+        <p class="think-desc">
+          <span class="en">Map concrete problems to abstract structures. An agent pipeline is function composition; fact-checking is an adversarial verification graph. Find the universal pattern, then specialize.</span>
+          <span class="zh">把具体问题映射为抽象结构。Agent 管线是函数组合，事实核查是对抗验证图。先找通用模式，再特化落地。</span>
+        </p>
         <div class="think-tags">
-          <span>Pattern Recognition</span><span>Category Theory</span><span>System Design</span><span>Ontology</span>
+          <span>Pattern Recognition</span><span>System Design</span><span>Ontology</span>
         </div>
       </div>
 
-      <div class="think-card t3">
+      <div class="think-card t3 reveal">
         <div class="think-header">
           <span class="think-icon">🔬</span>
-          <span class="think-name">Research & Scientific Thinking</span>
+          <span class="think-name">Research Thinking / 科研思维</span>
         </div>
-        <p class="think-desc">Hypothesis-driven, evidence-first. I built a 5-phase fact-check pipeline (SIFT/IFCN/CoVe/FIRE/FABLE). I benchmark Chinese LLMs systematically. Claims without sources are noise.</p>
+        <p class="think-desc">
+          <span class="en">Hypothesis-driven, evidence-first. Built a 5-phase fact-check pipeline (SIFT / IFCN / CoVe / FIRE / FABLE); benchmark LLMs systematically. Claims without sources are noise.</span>
+          <span class="zh">假设驱动、证据优先。自建五阶段事实核查管线 (SIFT / IFCN / CoVe / FIRE / FABLE)，系统性评测大模型。没有来源的断言只是噪音。</span>
+        </p>
+        <p class="think-quote">
+          <span class="en">"The core isn't building — it's researching your way to a good solution, then applying it."</span>
+          <span class="zh">「核心不在于构建，是调研到一个好的方案，然后把这个方案应用上去。」</span>
+        </p>
         <div class="think-tags">
-          <span>Fact-Check</span><span>Benchmarking</span><span>Cross-Verification</span><span>Evidence-Based</span>
+          <span>Fact-Check</span><span>Benchmarking</span><span>Evidence-Based</span>
         </div>
       </div>
 
-      <div class="think-card t4">
+      <div class="think-card t4 reveal">
         <div class="think-header">
           <span class="think-icon">⚙️</span>
-          <span class="think-name">Computational Thinking</span>
+          <span class="think-name">Computational Thinking / 计算思维</span>
         </div>
-        <p class="think-desc">Subagent architectures, pipeline decomposition, verification loops. I design systems that compose: small, verifiable units that chain into emergent capability. Modular by default.</p>
+        <p class="think-desc">
+          <span class="en">Decompose, compose, verify. Small verifiable units chained into emergent capability — subagent architectures, pipelines, verification loops.</span>
+          <span class="zh">分解、组合、验证。小而可验证的单元链接成涌现能力——子代理架构、流水线、验证循环。</span>
+        </p>
+        <p class="think-quote">
+          <span class="en">"If it can be made reusable, make it reusable — write it as a Skill, a Pipeline, a benchmark."</span>
+          <span class="zh">「能做成可复用的东西，就尽量做成可复用的东西——写成 Skills、写成 Pipeline、写成 benchmark。」</span>
+        </p>
         <div class="think-tags">
-          <span>Pipeline Design</span><span>Decomposition</span><span>Parallelism</span><span>Verification Loops</span>
+          <span>Decomposition</span><span>Parallelism</span><span>Verification Loops</span>
         </div>
       </div>
 
-      <div class="think-card t5">
+      <div class="think-card t5 reveal">
         <div class="think-header">
           <span class="think-icon">⚡</span>
           <span class="think-name">Vibe Coding / 直觉构建</span>
         </div>
-        <p class="think-desc">I ship fast by working with AI, not against it. Karpathy's 4 rules guide my flow. Agent-native workflows, skill distillation, prompt engineering as a first-class skill. Speed without sacrificing taste.</p>
+        <p class="think-desc">
+          <span class="en">Ship fast by working with AI, not against it. Karpathy's 4 rules running in production; subagent → quality gate → verified merge. No completion claim without fresh verification evidence.</span>
+          <span class="zh">与 AI 协作而非对抗。Karpathy 四规则真实在产；子代理 → 质量门 → 验证后合并。没有新鲜的验证证据，就不宣称完成。</span>
+        </p>
+        <p class="think-quote">
+          <span class="en">"A sub-agent testing loop running all night costs a few dozen RMB in tokens — and saves me hours."</span>
+          <span class="zh">「sub-agent driven testing loop 循环一晚上顶多三四十块钱，但省了我几个小时。」</span>
+        </p>
         <div class="think-tags">
-          <span>Karpathy 4 Rules</span><span>Agent-Native</span><span>Skill Distillation</span><span>Rapid Iteration</span>
+          <span><span class="en">Think Before Coding</span><span class="zh">先想再写</span></span><span><span class="en">Simplicity First</span><span class="zh">简单优先</span></span><span><span class="en">Surgical Changes</span><span class="zh">外科手术式修改</span></span><span><span class="en">Define Success → Verify</span><span class="zh">先定义成功再验证</span></span>
         </div>
       </div>
 
@@ -544,304 +812,452 @@
   </div>
 
   <!-- Signal divider -->
-  <div class="signal-divider">
+  <div class="signal-divider reveal">
     <div class="line"></div>
-    <span>Builder Philosophy</span>
-    <div class="line"></div>
-  </div>
-
-  <!-- Builder Philosophy -->
-  <div class="section">
-    <h2>💭 What I Believe</h2>
-    <div class="phil-card">
-      <span class="quote-marker">&ldquo;</span>
-      <p class="quote">
-        玩 Agent 已经取代了原来对前沿数码产品的兴奋。Agent 是生产力，有实实在在的复利效应。<br><br>
-        如虎添翼、长手长脚。我有个脑袋，我就能做事情。以后的 Agent 可能是一个、几个甚至几十个。
-      </p>
-      <p class="quote" style="color:var(--muted); font-size:12px;">
-        It's like a country of geniuses in a data center... A board of geniuses in my pocket, in my backpack. This is crazy.
-      </p>
-      <div class="meta">— Harry Huang · AIPC Reflections</div>
-      <div class="phil-principles">
-        <div class="phil-principle">
-          <strong>Technology x Humanities</strong>
-          技术能力是手段，人文关怀是目的。两者交汇才有意义。
-        </div>
-        <div class="phil-principle">
-          <strong>First Principles</strong>
-          不只问"怎么实现"，更问"为什么做"。从底层逻辑推导方案。
-        </div>
-        <div class="phil-principle">
-          <strong>Agent as Leverage</strong>
-          Subagent 并行、验证循环、自动合并。Agent 让个人能力产生复利。
-        </div>
-        <div class="phil-principle">
-          <strong>Ship What Matters</strong>
-          真实产品 > Demo。5 天从 0 到 1，任何赛道。
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Signal divider -->
-  <div class="signal-divider">
-    <div class="line"></div>
-    <span>向未知发出信号</span>
+    <span class="en">SIGNALS INTO THE UNKNOWN</span><span class="zh">向未知发出信号</span>
     <div class="line"></div>
   </div>
 
-  <!-- Featured Projects -->
-  <div class="section">
-    <h2>🛠️ Featured Projects</h2>
+  <!-- Projects (tabbed) -->
+  <div class="section" id="projects">
+    <h2>🛠️ <span class="en">Projects</span><span class="zh">项目</span></h2>
 
-    <div class="project">
-      <div class="row">
-        <span class="name">Polygram — AI Telegram Bridge</span>
-        <span class="stack">Subagent Orchestration</span>
-      </div>
-      <p class="desc">Claude Code 的 Telegram 操作面板。多子代理编排、验证循环、自动合并。Karpathy 4 规则驱动，管道化 subagent 调度。核心价值：把 Agent 编排抽象成可复用的控制面板。</p>
+    <div class="tab-bar reveal">
+      <button class="tab-btn active" data-tab="agents">
+        <span class="en">Agent Systems</span><span class="zh">Agent 系统</span><span class="cnt">4</span>
+      </button>
+      <button class="tab-btn" data-tab="edu">
+        <span class="en">AI × Education</span><span class="zh">AI × 教育</span><span class="cnt">3</span>
+      </button>
+      <button class="tab-btn" data-tab="research">
+        <span class="en">Research &amp; Tools</span><span class="zh">研究与工具</span><span class="cnt">3</span>
+      </button>
+      <button class="tab-btn" data-tab="oss">
+        <span class="en">Open Source</span><span class="zh">开源</span><span class="cnt">2</span>
+      </button>
     </div>
 
-    <div class="project">
-      <div class="row">
-        <span class="name">WeWrites.ai — DSE Platform</span>
-        <span class="stack">Co-founder & CTO</span>
+    <!-- Agent Systems -->
+    <div class="tab-panel active" data-panel="agents">
+      <a class="project" href="https://github.com/onezion12344/polygram-fork" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">Polygram <span class="arrow">↗</span></span>
+          <span class="stack">Subagent Orchestration</span>
+        </div>
+        <p class="desc">
+          <span class="en">Claude Code × Telegram control panel. Multi-subagent orchestration, verification loops, auto-merge — agent orchestration abstracted into a reusable dashboard.</span>
+          <span class="zh">Claude Code 的 Telegram 操作面板。多子代理编排、验证循环、自动合并——把 Agent 编排抽象成可复用的控制面板。</span>
+        </p>
+      </a>
+      <div class="project">
+        <div class="row">
+          <span class="name">Hermes Agent</span>
+          <span class="stack">Mobile Agent · Android</span>
+        </div>
+        <p class="desc">
+          <span class="en">OPPO voice assistant replacement. DeepSeek API + tool calling + system-level integration — LLM capability pushed down to the phone in your hand.</span>
+          <span class="zh">OPPO 手机语音助手替代。DeepSeek API + Tool Calling + 系统级集成，把 LLM 能力下沉到移动端，让 AI 真正「在手边」。</span>
+        </p>
       </div>
-      <p class="desc">AI 驱动的 DSE 课程平台。Next.js 全栈、Vercel 部署、自动化内容管线。从教育需求出发做技术方案，而非反过来。GEO AI + 多角色受众设计。</p>
+      <a class="project" href="https://github.com/onezion12344/AgentDropOne" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">AgentDropOne <span class="arrow">↗</span></span>
+          <span class="stack">Workspace Migration</span>
+        </div>
+        <p class="desc">
+          <span class="en">One zip, one command — full AI agent workspace migration. Skills, MCP configs, memory — packed and portable.</span>
+          <span class="zh">一个压缩包、一条指令，完成完整 AI Agent 工作区迁移。技能、MCP 配置、记忆——打包带走。</span>
+        </p>
+      </a>
+      <div class="project">
+        <div class="row">
+          <span class="name">WorkBuddy</span>
+          <span class="stack">Agent Ecosystem</span>
+        </div>
+        <p class="desc">
+          <span class="en">Personal AI agent ecosystem: 30+ custom skills (deep research, browser automation, screen memory), local vector search (ChromaDB), MCP servers, cross-platform chat analysis.</span>
+          <span class="zh">个人 AI Agent 生态：30+ 自研技能（深度研究、浏览器自动化、屏幕记忆）、ChromaDB 本地向量检索、MCP 服务器、跨平台聊天分析管线。</span>
+        </p>
+      </div>
     </div>
 
-    <div class="project">
-      <div class="row">
-        <span class="name">DSE Paper 3 Generator</span>
-        <span class="stack">Pipeline Automation</span>
+    <!-- AI × Education -->
+    <div class="tab-panel" data-panel="edu">
+      <a class="project" href="https://wewrites.onezion.top" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">WeWrites.ai <span class="arrow">↗</span></span>
+          <span class="stack">Co-founder &amp; CTO</span>
+        </div>
+        <p class="desc">
+          <span class="en">AI-driven DSE curriculum platform. Next.js full-stack + Vercel + automated content pipeline — tech shaped by education needs, not the other way around.</span>
+          <span class="zh">AI 驱动的 DSE 课程平台。Next.js 全栈 + Vercel + 自动化内容管线——从教育需求出发做技术方案，而非反过来。</span>
+        </p>
+      </a>
+      <a class="project" href="https://dsep3.onezion.top" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name"><span class="en">DSE Paper 3 Generator</span><span class="zh">DSE 听力试卷生成器</span> <span class="arrow">↗</span></span>
+          <span class="stack">Pipeline · AI · TTS</span>
+        </div>
+        <p class="desc">
+          <span class="en">End-to-end DSE listening exam generation: AI question design + TTS audio + answer sheets. Hours of manual work compressed to minutes.</span>
+          <span class="zh">端到端自动生成完整 DSE 听力试卷：出题 + TTS 音频合成 + 答题卡，全流水线化。人工数小时的工序压缩到分钟级。</span>
+        </p>
+      </a>
+      <div class="project">
+        <div class="row">
+          <span class="name"><span class="en">DSE Speaking EdTech SaaS</span><span class="zh">DSE 口语 EdTech SaaS</span></span>
+          <span class="stack">ElevenLabs ConvAI</span>
+        </div>
+        <p class="desc">
+          <span class="en">3-mode English speaking practice platform built on ElevenLabs ConvAI Agent, targeting HK schools — with a free tier for SEN and low-income students.</span>
+          <span class="zh">基于 ElevenLabs ConvAI Agent 的三模式英语口语练习平台，面向香港学校——为 SEN 与低收入学生提供免费档。</span>
+        </p>
       </div>
-      <p class="desc">端到端自动生成完整 DSE 听力试卷。把出题、TTS 音频合成、答题卡生成抽象成流水线。人工数小时的工序，压缩到分钟级。</p>
     </div>
 
-    <div class="project">
-      <div class="row">
-        <span class="name">Hermes Agent</span>
-        <span class="stack">Mobile Agent · Android</span>
+    <!-- Research & Tools -->
+    <div class="tab-panel" data-panel="research">
+      <div class="project">
+        <div class="row">
+          <span class="name"><span class="en">Chinese LLM Evaluation</span><span class="zh">国产大模型评测</span></span>
+          <span class="stack">Research · Benchmark</span>
+        </div>
+        <p class="desc">
+          <span class="en">Systematic benchmark of domestic Chinese LLMs on tool calling and daily tasks — DeepSeek / GLM / Qwen head-to-head. Independent research, no vendor marketing.</span>
+          <span class="zh">国内大模型系统性评测：工具调用与日常任务，DeepSeek / GLM / 通义千问横向对比。独立研究，不依赖厂商宣传。</span>
+        </p>
       </div>
-      <p class="desc">OPPO 手机语音助手替代。DeepSeek API + Tool Calling + 系统级集成。把 LLM 能力下沉到移动端，让 AI 真正"在手边"。</p>
+      <a class="project" href="https://github.com/onezion12344/double-check-agent" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">double-check-agent <span class="arrow">↗</span></span>
+          <span class="stack">Fact-Check Pipeline</span>
+        </div>
+        <p class="desc">
+          <span class="en">Hybrid fact-checking framework — 5-phase pipeline (SIFT / IFCN / CoVe / FIRE / FABLE), adversarial verification + parallel subagents. Every AI claim traceable and verifiable.</span>
+          <span class="zh">混合事实核查框架——五阶段管线 (SIFT / IFCN / CoVe / FIRE / FABLE)，对抗验证 + 子代理并行。让 AI 的声明可溯源可验证。</span>
+        </p>
+      </a>
+      <a class="project" href="https://github.com/onezion12344/casual-research" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">casual-research <span class="arrow">↗</span></span>
+          <span class="stack">Research Collection</span>
+        </div>
+        <p class="desc">
+          <span class="en">Fact-checked research pages — psychology, relationships, cognitive science. Scientific rigor brought into everyday life.</span>
+          <span class="zh">研究页面合集——心理学、亲密关系、认知科学。全部经过事实核查，引用可溯源。把科研思维带入日常生活。</span>
+        </p>
+      </a>
     </div>
 
-    <div class="project">
-      <div class="row">
-        <span class="name">Chinese LLM Evaluation</span>
-        <span class="stack">Research · Benchmark</span>
-      </div>
-      <p class="desc">国内大模型系统性评测。设计评估框架，覆盖工具调用与日常任务。包含 DeepSeek / GLM / 通义千问横向对比。独立研究，不依赖厂商宣传。</p>
-    </div>
-
-    <div class="project">
-      <div class="row">
-        <span class="name">KOReader OneDrive Sync</span>
-        <span class="stack">Lua · OAuth2 · Graph API</span>
-      </div>
-      <p class="desc">KOReader 生态首个 OneDrive 插件。OAuth2 设备码认证 + MS Graph API + 双向同步。从零理解协议、交付可用产品。</p>
+    <!-- Open Source -->
+    <div class="tab-panel" data-panel="oss">
+      <a class="project" href="https://github.com/onezion12344/koreader-onedrive-plugin" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">KOReader OneDrive Sync <span class="arrow">↗</span></span>
+          <span class="stack">Lua · OAuth2 · Graph API</span>
+        </div>
+        <p class="desc">
+          <span class="en">First OneDrive plugin in the KOReader ecosystem. OAuth2 device-code auth + MS Graph API + bidirectional sync — protocol understood from zero, product shipped.</span>
+          <span class="zh">KOReader 生态首个 OneDrive 插件。OAuth2 设备码认证 + MS Graph API + 双向同步。从零理解协议、交付可用产品。</span>
+        </p>
+      </a>
+      <a class="project" href="https://github.com/onezion12344/let-go-journey" target="_blank" rel="noopener">
+        <div class="row">
+          <span class="name">let-go-journey <span class="arrow">↗</span></span>
+          <span class="stack">CBT Interactive Game</span>
+        </div>
+        <p class="desc">
+          <span class="en">CBT-based healing game — 30 days out of heartbreak, bilingual. Psychological intervention abstracted into a daily interactive flow.</span>
+          <span class="zh">基于认知行为疗法的疗愈游戏——30 天走出心碎，中英双语。把心理干预抽象为每日交互流程。</span>
+        </p>
+      </a>
     </div>
   </div>
 
-  <!-- More Projects -->
-  <div class="section">
-    <h2>📦 More Projects</h2>
+  <!-- Track Record -->
+  <div class="section" id="track">
+    <h2>🏆 <span class="en">Track Record</span><span class="zh">战绩</span></h2>
 
-    <div class="project more">
-      <div class="row">
-        <span class="name">AgentDropOne</span>
-        <span class="stack">Python · Workspace Migration</span>
+    <p class="section-quote reveal">
+      <span class="en">"Ship the full cycle, fast — walk the whole product journey, validate the business model, even the launch."</span>
+      <span class="zh">「快速交付全产——走完整个产品流程，验证商业模式甚至宣发。」</span>
+    </p>
+
+    <div class="track-card reveal">
+      <div class="t-icon">🏆</div>
+      <div>
+        <div class="t-title">Hack4SDGs GenAI Inter-University Hackathon 2025</div>
+        <div class="t-role"><span class="en">TEAM LEAD</span><span class="zh">队长 · TEAM LEAD</span></div>
+        <p class="t-desc">
+          <span class="en">"Echoes of Thought" — AI interactive visual novel with GenAI as a dynamic Game Master. Analyzes YouTube watch history to surface cognitive biases and echo chambers through personalized stories.</span>
+          <span class="zh">《Echoes of Thought》——以生成式 AI 为动态 Game Master 的互动视觉小说。分析 YouTube 观看历史，用个性化故事让用户看见自己的认知偏差与信息茧房。</span>
+        </p>
       </div>
-      <p class="desc">一个 zip，一条指令，完成完整 AI agent workspace 迁移。把 agent 环境抽象为可移植单元。</p>
     </div>
 
-    <div class="project more">
-      <div class="row">
-        <span class="name">double-check-agent</span>
-        <span class="stack">Fact-Check Pipeline</span>
-      </div>
-      <p class="desc">混合事实核查框架 — 5 阶段管线 (SIFT/IFCN/CoVe/FIRE/FABLE)，对抗验证 + 子代理并行。让 AI 的声明可溯源可验证。</p>
-    </div>
-
-    <div class="project more">
-      <div class="row">
-        <span class="name">let-go-journey</span>
-        <span class="stack">CBT Interactive Game</span>
-      </div>
-      <p class="desc">基于认知行为疗法的疗愈游戏 — 30 天走出心碎。中英双语。把心理干预抽象为每日交互流程。</p>
-    </div>
-
-    <div class="project more">
-      <div class="row">
-        <span class="name">casual-research</span>
-        <span class="stack">Research Collection</span>
-      </div>
-      <p class="desc">研究页面合集 — 心理学、亲密关系、认知科学。全部经过事实核查，引用可溯源。把科研思维带入日常生活。</p>
-    </div>
-  </div>
-
-  <!-- Signal divider -->
-  <div class="signal-divider">
-    <div class="line"></div>
-    <span>Practical Skills</span>
-    <div class="line"></div>
-  </div>
-
-  <!-- Skills Matrix -->
-  <div class="section">
-    <h2>🔧 What I Can Build With</h2>
-    <div class="skills">
-      <div class="skill">
-        <div class="label">AI Agent 架构</div>
-        <div class="value">Claude API · 多代理 · Tool Calling · MCP 开发</div>
-      </div>
-      <div class="skill">
-        <div class="label">Agent 编排与工程化</div>
-        <div class="value">Subagent · 验证循环 · Skill 蒸馏 · Harness</div>
-      </div>
-      <div class="skill">
-        <div class="label">Web 全栈</div>
-        <div class="value">Next.js · React · Tailwind · Node.js · Vercel</div>
-      </div>
-      <div class="skill">
-        <div class="label">Mobile & 系统</div>
-        <div class="value">Android · ADB · Termux · System Integration</div>
-      </div>
-      <div class="skill">
-        <div class="label">研究 & 评估</div>
-        <div class="value">Fact-Check · Benchmark · Data Curation · 论文</div>
-      </div>
-      <div class="skill">
-        <div class="label">API 集成</div>
-        <div class="value">Notion · Graph API · WeChat · OneDrive · OAuth2</div>
-      </div>
-      <div class="skill">
-        <div class="label">多模型编排</div>
-        <div class="value">DeepSeek · GLM · Claude · OpenRouter</div>
-      </div>
-      <div class="skill">
-        <div class="label">自动化 & 脚本</div>
-        <div class="value">Shell · Cron · Python · Bun · CI/CD 管线</div>
+    <div class="track-card reveal">
+      <div class="t-icon">🚀</div>
+      <div>
+        <div class="t-title">WeWrites.ai</div>
+        <div class="t-role"><span class="en">CO-FOUNDER &amp; CTO</span><span class="zh">联合创始人 &amp; CTO</span></div>
+        <p class="t-desc">
+          <span class="en">Rebuilding DSE education with AI — full-stack platform, automated content production, live product with real users.</span>
+          <span class="zh">用 AI 重塑 DSE 教育——全栈平台、自动化内容生产线，真实上线、真实用户。</span>
+        </p>
       </div>
     </div>
-  </div>
 
-  <!-- Tools I Build With -->
-  <div class="section">
-    <h2>⚒️ Tools I Wield</h2>
-    <div class="tool-grid">
-      <div class="tool-card">
-        <div class="icon purple">🧠</div>
-        <div class="info">
-          <div class="tname">Claude Code + API</div>
-          <div class="tdesc">Agent 核心 · MCP · Skills</div>
-        </div>
+    <div class="track-card reveal">
+      <div class="t-icon">🎓</div>
+      <div>
+        <div class="t-title"><span class="en">HKU Double Degree</span><span class="zh">港大双学位</span></div>
+        <div class="t-role"><span class="en">BENG + BA</span><span class="zh">工学 + 文学双学士</span></div>
+        <p class="t-desc">
+          <span class="en">BEng in AI &amp; Data Science + BA in AI and Humanities (Philosophy as advanced elective) — engineering rigor and humanistic depth in one curriculum.</span>
+          <span class="zh">AI 与数据科学工学士 + AI 与人文文学士（哲学高阶选修）——工程的严谨与人文的深度，在同一张课表里。</span>
+        </p>
       </div>
-      <div class="tool-card">
-        <div class="icon blue">🐋</div>
-        <div class="info">
-          <div class="tname">DeepSeek</div>
-          <div class="tdesc">国产模型 · 性价比之王</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon pink">🦅</div>
-        <div class="info">
-          <div class="tname">Next.js / Vercel</div>
-          <div class="tdesc">Full-stack · 一键部署</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon purple">🔷</div>
-        <div class="info">
-          <div class="tname">TypeScript + Bun</div>
-          <div class="tdesc">CLI · Server · Runtime</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon blue">🐍</div>
-        <div class="info">
-          <div class="tname">Python</div>
-          <div class="tdesc">Pipeline · Script · Agent</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon pink">📱</div>
-        <div class="info">
-          <div class="tname">Android</div>
-          <div class="tdesc">Kotlin · Termux · ADB</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon purple">🔌</div>
-        <div class="info">
-          <div class="tname">MCP Protocol</div>
-          <div class="tdesc">Server dev · Integration</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon blue">🐚</div>
-        <div class="info">
-          <div class="tname">Shell + Cron</div>
-          <div class="tdesc">Automation · DevOps</div>
-        </div>
+    </div>
+
+    <div class="track-card reveal">
+      <div class="t-icon">⚡</div>
+      <div>
+        <div class="t-title">AdventureX 2026</div>
+        <div class="t-role"><span class="en">BUILDER · 7/22–26 HANGZHOU</span><span class="zh">参赛者 · 7/22–26 杭州</span></div>
+        <p class="t-desc">
+          <span class="en">5 days, 0 to 1, any track. Looking for a team of 2–4 who ship real products and care about taste.</span>
+          <span class="zh">5 天从 0 到 1，赛道不限。寻找 2–4 人团队：交付过真实产品，在意产品品味。</span>
+        </p>
       </div>
     </div>
   </div>
 
-  <!-- Signal divider -->
-  <div class="signal-divider">
-    <div class="line"></div>
-    <span>Let's Connect</span>
-    <div class="line"></div>
+  <!-- Build Stack -->
+  <div class="section" id="stack">
+    <h2>🔧 <span class="en">Build Stack</span><span class="zh">技能栈</span></h2>
+
+    <div class="stack-group reveal">
+      <div class="sg-label"><span class="en">Languages</span><span class="zh">语言</span></div>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">JavaScript / Node.js</span>
+        <span class="chip">Shell</span>
+      </div>
+    </div>
+
+    <div class="stack-group reveal">
+      <div class="sg-label">AI · LLM</div>
+      <div class="chips">
+        <span class="chip">LLM Engineering</span>
+        <span class="chip">MCP</span>
+        <span class="chip">RAG</span>
+        <span class="chip"><span class="en">Local LLM Deployment</span><span class="zh">本地大模型部署</span></span>
+        <span class="chip">Multi-Agent</span>
+      </div>
+    </div>
+
+    <div class="stack-group reveal">
+      <div class="sg-label"><span class="en">Automation</span><span class="zh">自动化</span></div>
+      <div class="chips">
+        <span class="chip">Playwright</span>
+        <span class="chip"><span class="en">Browser Automation</span><span class="zh">浏览器自动化</span></span>
+        <span class="chip">Open Browser Use</span>
+        <span class="chip">Open Computer Use</span>
+      </div>
+    </div>
+
+    <div class="stack-group reveal">
+      <div class="sg-label"><span class="en">Data</span><span class="zh">数据</span></div>
+      <div class="chips">
+        <span class="chip">SQLite</span>
+        <span class="chip">ChromaDB</span>
+        <span class="chip">FTS5</span>
+      </div>
+    </div>
+
+    <div class="stack-group reveal">
+      <div class="sg-label"><span class="en">Platforms</span><span class="zh">平台</span></div>
+      <div class="chips">
+        <span class="chip">OpenRouter</span>
+        <span class="chip">Fly.io</span>
+        <span class="chip">Modal</span>
+        <span class="chip">ElevenLabs ConvAI</span>
+        <span class="chip">Vercel</span>
+      </div>
+    </div>
   </div>
 
   <!-- Connect -->
-  <div class="section">
-    <h2>📡 Connect</h2>
-    <div class="connect-list">
-      <div class="connect-item">
-        <div class="cicon">🐙</div>
-        <div>
-          <div class="clabel">GitHub</div>
-          <div class="cvalue"><a href="https://github.com/onezion12344" target="_blank">github.com/onezion12344 ↗</a></div>
+  <div class="section" id="connect">
+    <h2>📡 <span class="en">Connect</span><span class="zh">联系</span></h2>
+    <div class="connect-grid">
+      <a class="connect-card reveal" href="https://github.com/onezion12344" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <div class="c-info">
+          <div class="c-label">GitHub</div>
+          <div class="c-value">onezion12344</div>
+        </div>
+      </a>
+      <a class="connect-card reveal" href="https://onezion12344.github.io" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.5-3.5-9s1-6.5 3.5-9z"/></svg>
+        <div class="c-info">
+          <div class="c-label"><span class="en">Homepage</span><span class="zh">个人主页</span></div>
+          <div class="c-value">onezion12344.github.io</div>
+        </div>
+      </a>
+      <a class="connect-card reveal" href="https://www.linkedin.com/in/harry-onezion" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        <div class="c-info">
+          <div class="c-label">LinkedIn</div>
+          <div class="c-value">harry-onezion</div>
+        </div>
+      </a>
+      <a class="connect-card reveal" href="#REDNOTE_URL#" target="_blank" rel="noopener" style="display:none">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="15" rx="4" stroke="currentColor" stroke-width="1.6"/><text x="12" y="15.6" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" font-weight="700" fill="currentColor">红</text></svg>
+        <div class="c-info">
+          <div class="c-label"><span class="en">RedNote</span><span class="zh">小红书</span></div>
+          <div class="c-value">Harry OneZion</div>
+        </div>
+      </a>
+      <a class="connect-card reveal" href="mailto:onezion12344@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <div class="c-info">
+          <div class="c-label"><span class="en">Email</span><span class="zh">邮箱</span></div>
+          <div class="c-value">onezion12344@gmail.com</div>
+        </div>
+      </a>
+      <div class="connect-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <div class="c-info">
+          <div class="c-label"><span class="en">WeChat</span><span class="zh">微信</span></div>
+          <div class="c-value">onezion12344</div>
         </div>
       </div>
-      <div class="connect-item">
-        <div class="cicon">✉️</div>
-        <div>
-          <div class="clabel">Email</div>
-          <div class="cvalue">onezion12344@gmail.com</div>
-        </div>
-      </div>
-      <div class="connect-item">
-        <div class="cicon">💬</div>
-        <div>
-          <div class="clabel">WeChat</div>
-          <div class="cvalue" style="color:var(--muted);">onezion12344</div>
-        </div>
-      </div>
-    </div>
-    <div style="margin-top:12px;width:100px;height:100px;margin-left:auto;margin-right:auto;background:rgba(255,255,255,0.03);border-radius:12px;border:1px dashed rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;">
-      <span style="font-size:10px;color:rgba(148,163,184,0.3);">WeChat QR</span>
     </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
     <div class="big-text">为创造，再一次信仰之跃</div>
-    <div style="margin-top:8px;font-size:11px;color:var(--muted);line-height:1.6;">
-      Philosopher-Builder · 技术与人文的交汇<br>
-      寻找 2–4 人团队 · 赛道不限
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+      <span class="en">One more leap of faith, for creation<br>Philosopher-Builder · Technology × Humanities</span>
+      <span class="zh">Philosopher-Builder · 技术与人文的交汇<br>寻找 2–4 人团队 · 赛道不限</span>
     </div>
+    <div class="motto">⛰ Aim High · 🌊 Embrace All · 🚢 Set Sail · 🗼 Be a Lighthouse · ⭕ Wholeness</div>
     <div class="ax-credit">
-      AdventureX 2026 · 7/22–26 · 杭州 · 未来科技城<br>
+      AdventureX 2026 · 7/22–26 · <span class="en">Hangzhou · Future Sci-Tech City</span><span class="zh">杭州 · 未来科技城</span><br>
       #AdventureX #BuilderProfile #信仰之跃
     </div>
   </div>
 
 </div>
+
+<script>
+// ── Language toggle (same mechanism as onezion12344.github.io) ──
+function setLang(lang) {
+  document.body.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-toggle .opt').forEach(function (el) {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  try { localStorage.setItem('preferredLang', lang); } catch (e) {}
+}
+function toggleLang() {
+  setLang(document.body.getAttribute('lang') === 'en' ? 'zh' : 'en');
+}
+(function () {
+  // URL override (?lang=en|zh) then saved preference
+  var params = new URLSearchParams(location.search);
+  var urlLang = params.get('lang');
+  if (urlLang === 'en' || urlLang === 'zh') { setLang(urlLang); return; }
+  try {
+    var saved = localStorage.getItem('preferredLang');
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+  } catch (e) {}
+})();
+
+// ── Scroll reveal ──
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+// ── Count-up stats ──
+(function () {
+  function countUp(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1200;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+      el.textContent = Math.round(eased * target) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var nums = document.querySelectorAll('.stat .num');
+  if (!('IntersectionObserver' in window)) {
+    nums.forEach(function (el) { el.textContent = el.dataset.count + (el.dataset.suffix || ''); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  nums.forEach(function (el) { io.observe(el); });
+})();
+
+// ── Project tabs ──
+(function () {
+  var btns = document.querySelectorAll('.tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      panels.forEach(function (p) {
+        p.classList.toggle('active', p.dataset.panel === btn.dataset.tab);
+      });
+    });
+  });
+})();
+
+// ── Sticky nav active highlight ──
+(function () {
+  var links = document.querySelectorAll('.mini-nav a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = document.querySelectorAll('#thinking, #projects, #track, #stack, #connect');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var link = map[entry.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+})();
+</script>
 
 </body>
 </html>
