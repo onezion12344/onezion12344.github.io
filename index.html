@@ -55,6 +55,34 @@ body {
 /* ── Layout ── */
 .page { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 24px; }
 
+/* ── Language Toggle ── */
+.lang-toggle {
+  position: fixed; top: 16px; right: 16px; z-index: 100;
+  display: flex; align-items: center; gap: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px;
+  cursor: pointer;
+}
+.lang-toggle .opt {
+  padding: 4px 10px;
+  border-radius: 18px;
+  font-size: 11px; font-weight: 500;
+  color: var(--muted);
+  transition: all 0.2s;
+  user-select: none;
+}
+.lang-toggle .opt.active {
+  background: var(--accent);
+  color: #fff;
+}
+.lang-toggle .opt:not(.active):hover {
+  color: var(--white);
+}
+[lang="en"] .zh { display: none !important; }
+[lang="zh"] .en { display: none !important; }
+
 /* ── AX Header ── */
 .ax-header {
   display: flex; align-items: center; gap: 10px;
@@ -104,11 +132,6 @@ body {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
 }
-.hero .alias {
-  font-size: 13px; color: var(--muted);
-  margin-bottom: 4px;
-}
-.hero .alias span { color: var(--gold); }
 .hero .tagline {
   font-size: 14px; color: var(--muted);
   margin-bottom: 20px; line-height: 1.6;
@@ -325,6 +348,7 @@ body {
 @media (max-width: 480px) {
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .page { padding: 0 16px; }
+  .lang-toggle { top: 8px; right: 8px; }
 }
 
 /* ── Timeline dots ── */
@@ -364,17 +388,24 @@ body {
 }
 </style>
 </head>
-<body>
+<body lang="en">
 
 <div class="stars"></div>
 <canvas id="particles"></canvas>
+
+<!-- Language Toggle -->
+<div class="lang-toggle" onclick="toggleLang()">
+  <span class="opt active" data-lang="en">EN</span>
+  <span class="opt" data-lang="zh">中文</span>
+</div>
 
 <div class="page">
 
   <!-- AX Header -->
   <div class="ax-header">
     <span class="dot"></span>
-    ADVENTURE X 2026 · HANGZHOU · 7.22–26
+    <span class="en">ADVENTURE X 2026 · HANGZHOU · 7.22–26</span>
+    <span class="zh">ADVENTURE X 2026 · 杭州 · 7月22–26日</span>
   </div>
 
   <!-- Hero -->
@@ -386,39 +417,42 @@ body {
       <img src="assets/hero-profile.png" alt="Harry OneZion">
     </div>
     <div class="event-badge">
-      <span class="emoji">🔥</span> BUILDER · OPEN TO TEAM
+      <span class="emoji">🔥</span>
+      <span class="en">BUILDER · OPEN TO TEAM</span>
+      <span class="zh">组队中 · 创意构建者</span>
     </div>
     <h1>Harry OneZion</h1>
-    <p class="tagline">HKU Philosophy · AI Agent Builder</p>
+    <p class="tagline">
+      <span class="en">HKU Philosophy · AI Agent Builder</span>
+      <span class="zh">港大哲学 · AI Agent 构建者</span>
+    </p>
 
     <div class="tags">
-      <span>AI Agent Architecture</span>
-      <span>Full-Stack Web</span>
-      <span>Android Integration</span>
-      <span class="gold">Philosophy × Tech</span>
-      <span class="pink">Product Design</span>
-      <span>Fact-Checking</span>
+      <span><span class="en">AI Agent Architecture</span><span class="zh">AI Agent 架构</span></span>
+      <span><span class="en">Full-Stack Web</span><span class="zh">全栈开发</span></span>
+      <span><span class="en">Android Integration</span><span class="zh">安卓集成</span></span>
+      <span class="gold"><span class="en">Philosophy × Tech</span><span class="zh">哲学 × 技术</span></span>
+      <span class="pink"><span class="en">Product Design</span><span class="zh">产品设计</span></span>
+      <span><span class="en">Fact-Checking</span><span class="zh">事实核查</span></span>
     </div>
     <div class="links">
       <a href="https://github.com/onezion12344"><span class="icon">⌨</span> GitHub</a>
-      <a href="mailto:onezion12344@gmail.com"><span class="icon">✉</span> onezion12344@gmail.com</a>
-      <a href="/projects"><span class="icon">🌐</span> Projects</a>
+      <a href="mailto:onezion12344@gmail.com"><span class="icon">✉</span> <span class="en">Email</span><span class="zh">邮箱</span></a>
+      <a href="/projects"><span class="icon">🌐</span> <span class="en">Projects</span><span class="zh">项目</span></a>
     </div>
   </div>
 
   <!-- About -->
   <div class="section">
-    <div class="section-title"><span class="emoji">🧬</span> About</div>
+    <div class="section-title"><span class="emoji">🧬</span> <span class="en">About</span><span class="zh">关于</span></div>
     <div class="bio-card">
       <p>
-        HKU Philosophy student and AI agent builder. I believe the intersection of <span class="highlight">technology × humanities</span> creates products that truly matter.
+        <span class="en">HKU Philosophy student and AI agent builder. I believe the intersection of <span class="highlight">technology × humanities</span> creates products that truly matter.</span>
+        <span class="zh">港大哲学在读，AI Agent 构建者。我相信 <span class="highlight">技术与人文</span> 的交汇处，才能诞生真正有意义的作品。</span>
       </p>
       <p style="margin-top:12px">
-        Co-founder & CTO of <span class="highlight">WeWrites.ai</span> — rebuilding DSE education with AI.
-        Independently shipped <span class="highlight">Polygram</span> (AI Telegram bridge),
-        <span class="highlight">DSE Listening Generator</span>, <span class="highlight">KOReader OneDrive Plugin</span>, and more.
-        Passionate about multi-agent orchestration, automation pipelines, and interaction design
-        that puts people first.
+        <span class="en">Co-founder & CTO of <span class="highlight">WeWrites.ai</span> — rebuilding DSE education with AI. Independently shipped <span class="highlight">Polygram</span> (AI Telegram bridge), <span class="highlight">DSE Listening Generator</span>, <span class="highlight">KOReader OneDrive Plugin</span>, and more. Passionate about multi-agent orchestration, automation pipelines, and interaction design that puts people first.</span>
+        <span class="zh"><span class="highlight">WeWrites.ai</span> 联合创始人 & CTO — 用 AI 重塑 DSE 教育。独立发布了 <span class="highlight">Polygram</span>（AI Telegram 桥接）、<span class="highlight">DSE 听力生成器</span>、<span class="highlight">KOReader OneDrive 插件</span> 等作品。热衷于多智能体编排、自动化管线、以及以人为本的交互设计。</span>
       </p>
       <p style="margin-top:12px; color: rgba(148,163,184,0.5); font-size: 12px;">
         ⛰ Aim High · 🌊 Embrace All · 🚢 Set Sail · 🗼 Be a Lighthouse · ⭕ Wholeness
@@ -428,60 +462,73 @@ body {
 
   <!-- Skills -->
   <div class="section">
-    <div class="section-title"><span class="emoji">⚡</span> Skills</div>
+    <div class="section-title"><span class="emoji">⚡</span> <span class="en">Skills</span><span class="zh">技能</span></div>
     <div class="skills-grid">
       <div class="skill-item">
         <div class="skill-icon">🧠</div>
-        <div class="skill-label">AI Agent Architecture</div>
-        <div class="skill-value">Claude API · Multi-Agent · Tool Calling</div>
+        <div class="skill-label"><span class="en">AI Agent Architecture</span><span class="zh">AI Agent 架构</span></div>
+        <div class="skill-value"><span class="en">Claude API · Multi-Agent · Tool Calling</span><span class="zh">Claude API · 多智能体 · 工具调用</span></div>
       </div>
       <div class="skill-item">
         <div class="skill-icon">🌐</div>
-        <div class="skill-label">Full-Stack</div>
-        <div class="skill-value">Next.js · React · Node.js · Tailwind</div>
+        <div class="skill-label"><span class="en">Full-Stack</span><span class="zh">全栈开发</span></div>
+        <div class="skill-value"><span class="en">Next.js · React · Node.js · Tailwind</span><span class="zh">Next.js · React · Node.js · Tailwind</span></div>
       </div>
       <div class="skill-item">
         <div class="skill-icon">📱</div>
-        <div class="skill-label">Android</div>
-        <div class="skill-value">System Integration · Termux · Kotlin</div>
+        <div class="skill-label"><span class="en">Android</span><span class="zh">安卓</span></div>
+        <div class="skill-value"><span class="en">System Integration · Termux · Kotlin</span><span class="zh">系统集成 · Termux · Kotlin</span></div>
       </div>
       <div class="skill-item">
         <div class="skill-icon">🔍</div>
-        <div class="skill-label">Research & Methodology</div>
-        <div class="skill-value">Fact-Checking · Data Audit · Benchmarking</div>
+        <div class="skill-label"><span class="en">Research & Methodology</span><span class="zh">研究方法</span></div>
+        <div class="skill-value"><span class="en">Fact-Checking · Data Audit · Benchmarking</span><span class="zh">事实核查 · 数据审计 · 基准测试</span></div>
       </div>
       <div class="skill-item">
         <div class="skill-icon">🎨</div>
-        <div class="skill-label">Humanities & Design</div>
-        <div class="skill-value">Ethics · Design Philosophy · Empathy</div>
+        <div class="skill-label"><span class="en">Humanities & Design</span><span class="zh">人文与设计</span></div>
+        <div class="skill-value"><span class="en">Ethics · Design Philosophy · Empathy</span><span class="zh">伦理 · 设计哲学 · 共情</span></div>
       </div>
       <div class="skill-item">
         <div class="skill-icon">⚙️</div>
-        <div class="skill-label">Infrastructure</div>
-        <div class="skill-value">Shell · Cron · OAuth2 · SQLite</div>
+        <div class="skill-label"><span class="en">Infrastructure</span><span class="zh">基础设施</span></div>
+        <div class="skill-value"><span class="en">Shell · Cron · OAuth2 · SQLite</span><span class="zh">Shell · Cron · OAuth2 · SQLite</span></div>
       </div>
     </div>
   </div>
 
   <!-- Team Preferences -->
   <div class="section">
-    <div class="section-title"><span class="emoji">🔮</span> Teammates I'm Looking For</div>
+    <div class="section-title"><span class="emoji">🔮</span> <span class="en">Teammates I'm Looking For</span><span class="zh">我找这样的队友</span></div>
     <div class="bio-card" style="border-color: rgba(139,92,246,0.2);">
       <p style="font-size: 13px;">
-        Ideal team size: 2–3. Looking for <strong style="color:var(--white);">Full-Stack</strong> + <strong style="color:var(--white);">Backend/Database</strong> + <strong style="color:var(--white);">PM/Non-Tech</strong> (I bridge the gap).
+        <span class="en">Ideal team size: 2–3. Looking for <strong style="color:var(--white);">Full-Stack</strong> + <strong style="color:var(--white);">Backend/Database</strong> + <strong style="color:var(--white);">PM/Non-Tech</strong> (I bridge the gap).</span>
+        <span class="zh">理想团队 2–3 人。寻找 <strong style="color:var(--white);">全栈</strong> + <strong style="color:var(--white);">后端/数据库</strong> + <strong style="color:var(--white);">PM/非技术</strong>（我来填补空隙）。</span>
       </p>
       <ul style="list-style: none; margin-top: 12px;">
-        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">✓ Shipped real products with live demos or GitHub repos</li>
-        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">✓ Care about product taste — design and UX matter</li>
-        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">✓ Think beyond "how" — ask "why"</li>
-        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">✓ 5 days from 0 to 1 · any domain</li>
+        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">
+          <span class="en">✓ Shipped real products with live demos or GitHub repos</span>
+          <span class="zh">✓ 发布过真实产品，有在线 Demo 或 GitHub 仓库</span>
+        </li>
+        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">
+          <span class="en">✓ Care about product taste — design and UX matter</span>
+          <span class="zh">✓ 在意产品品味 — 设计和用户体验很重要</span>
+        </li>
+        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">
+          <span class="en">✓ Think beyond "how" — ask "why"</span>
+          <span class="zh">✓ 不只问"怎么做"——更要问"为什么"</span>
+        </li>
+        <li style="font-size: 12px; color: var(--muted); padding: 4px 0;">
+          <span class="en">✓ 5 days from 0 to 1 · any domain</span>
+          <span class="zh">✓ 5 天从 0 到 1 · 不限方向</span>
+        </li>
       </ul>
     </div>
   </div>
 
   <!-- Projects -->
   <div class="section">
-    <div class="section-title"><span class="emoji">🛠</span> Shipped Projects</div>
+    <div class="section-title"><span class="emoji">🛠</span> <span class="en">Shipped Projects</span><span class="zh">已发布项目</span></div>
 
     <a href="https://github.com/onezion12344/polygram-fork" class="project-card">
       <div class="project-top">
@@ -492,9 +539,8 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        Claude Code × Telegram — multi-agent orchestration, Karpathy 4-rule engine,
-        verification loops, research pipelines, auto-merge. Turns your AI Agent into
-        a Telegram CTO dashboard.
+        <span class="en">Claude Code × Telegram — multi-agent orchestration, Karpathy 4-rule engine, verification loops, research pipelines, auto-merge. Turns your AI Agent into a Telegram CTO dashboard.</span>
+        <span class="zh">Claude Code × Telegram — 多智能体编排、Karpathy 四规则引擎、验证循环、研究管线、自动合并。把 AI Agent 变成你的 Telegram CTO 控制台。</span>
       </p>
     </a>
 
@@ -507,22 +553,22 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        Co-founder & CTO. AI-driven DSE curriculum platform. Next.js full-stack + Vercel +
-        automated content production pipeline.
+        <span class="en">Co-founder & CTO. AI-driven DSE curriculum platform. Next.js full-stack + Vercel + automated content production pipeline.</span>
+        <span class="zh">联合创始人 & CTO。AI 驱动的 DSE 课程平台。Next.js 全栈 + Vercel + 自动化内容生产线。</span>
       </p>
     </a>
 
     <a href="https://dsep3.onezion.top" class="project-card">
       <div class="project-top">
-        <span class="project-name">DSE Listening Exam Generator</span>
+        <span class="project-name"><span class="en">DSE Listening Exam Generator</span><span class="zh">DSE 听力考试生成器</span></span>
         <div class="project-meta">
           <span class="stars">★</span>
           <span class="lang">AI · TTS</span>
         </div>
       </div>
       <p class="project-desc">
-        Fully automated DSE Paper 3 listening exam generator. AI question design + TTS audio +
-        answer sheet — all auto-generated. Compresses hours of prep into minutes.
+        <span class="en">Fully automated DSE Paper 3 listening exam generator. AI question design + TTS audio + answer sheet — all auto-generated. Compresses hours of prep into minutes.</span>
+        <span class="zh">全自动 DSE Paper 3 听力考试生成器。AI 出题 + TTS 音频 + 答题纸 — 全自动完成。数小时的准备压缩到几分钟。</span>
       </p>
     </a>
 
@@ -535,8 +581,8 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        AI Agent fact-checking framework. Fuses SIFT / IFCN / CoVe / FIRE / FABLE
-        methodologies. Every LLM claim becomes traceable and verifiable.
+        <span class="en">AI Agent fact-checking framework. Fuses SIFT / IFCN / CoVe / FIRE / FABLE methodologies. Every LLM claim becomes traceable and verifiable.</span>
+        <span class="zh">AI Agent 事实核查框架。融合 SIFT / IFCN / CoVe / FIRE / FABLE 方法论。让每个 LLM 输出的断言都可追溯、可验证。</span>
       </p>
     </a>
 
@@ -549,8 +595,8 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        One zip, one command — full AI Agent workspace migration. Skills, MCP configs,
-        memory files, credentials — packed and portable.
+        <span class="en">One zip, one command — full AI Agent workspace migration. Skills, MCP configs, memory files, credentials — packed and portable.</span>
+        <span class="zh">一个压缩包、一条命令 — 完整 AI Agent 工作区迁移。技能、MCP 配置、记忆文件、凭证 — 打包带走。</span>
       </p>
     </a>
 
@@ -563,8 +609,8 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        First OneDrive plugin in the KOReader ecosystem. OAuth2 device-code auth +
-        MS Graph API + bidirectional sync engine.
+        <span class="en">First OneDrive plugin in the KOReader ecosystem. OAuth2 device-code auth + MS Graph API + bidirectional sync engine.</span>
+        <span class="zh">KOReader 生态首个 OneDrive 插件。OAuth2 设备码认证 + MS Graph API + 双向同步引擎。</span>
       </p>
     </a>
 
@@ -577,7 +623,8 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        Psychology, relationships, everyday curiosities — fact-checked knowledge essays.
+        <span class="en">Psychology, relationships, everyday curiosities — fact-checked knowledge essays.</span>
+        <span class="zh">心理学、人际关系、日常好奇心 — 经事实核查的知识随笔。</span>
       </p>
     </a>
 
@@ -590,7 +637,8 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        CBT-based breakup healing interactive game. 30 days, 10 minutes a day.
+        <span class="en">CBT-based breakup healing interactive game. 30 days, 10 minutes a day.</span>
+        <span class="zh">基于 CBT 的分手疗愈互动游戏。每天 10 分钟，30 天走出阴霾。</span>
       </p>
     </a>
 
@@ -603,26 +651,27 @@ body {
         </div>
       </div>
       <p class="project-desc">
-        macOS Menu Bar App — one-click LLM API routing, OpenRouter traffic management.
+        <span class="en">macOS Menu Bar App — one-click LLM API routing, OpenRouter traffic management.</span>
+        <span class="zh">macOS 菜单栏应用 — 一键 LLM API 路由、OpenRouter 流量管理。</span>
       </p>
     </a>
   </div>
 
   <!-- Timeline -->
   <div class="section">
-    <div class="section-title"><span class="emoji">📅</span> AdventureX Journey</div>
+    <div class="section-title"><span class="emoji">📅</span> <span class="en">AdventureX Journey</span><span class="zh">AdventureX 旅程</span></div>
     <div style="padding-left: 4px;">
       <div class="timeline-item">
         <div class="t-date">7.22</div>
-        <div class="t-content"><strong>Day 1</strong> — Check-in · Opening · Team Formation</div>
+        <div class="t-content"><strong><span class="en">Day 1</span><span class="zh">第一天</span></strong> — <span class="en">Check-in · Opening · Team Formation</span><span class="zh">签到 · 开幕 · 组队</span></div>
       </div>
       <div class="timeline-item">
         <div class="t-date">7.23</div>
-        <div class="t-content"><strong>Day 2–4</strong> — 24h Hacking · Workshops · Hardware Lab</div>
+        <div class="t-content"><strong><span class="en">Day 2–4</span><span class="zh">第二至四天</span></strong> — <span class="en">24h Hacking · Workshops · Hardware Lab</span><span class="zh">24小时黑客松 · 工作坊 · 硬件实验室</span></div>
       </div>
       <div class="timeline-item">
         <div class="t-date">7.26</div>
-        <div class="t-content"><strong>Day 5</strong> — 07:00 Project Submission · Expo · Awards</div>
+        <div class="t-content"><strong><span class="en">Day 5</span><span class="zh">第五天</span></strong> — <span class="en">07:00 Project Submission · Expo · Awards</span><span class="zh">07:00 项目提交 · 展览 · 颁奖</span></div>
       </div>
     </div>
   </div>
@@ -638,22 +687,46 @@ body {
 
   <!-- Contact -->
   <div class="contact">
-    <p>Want to build something at AdventureX? 🧙‍♂️</p>
+    <p><span class="en">Want to build something at AdventureX? 🧙‍♂️</span><span class="zh">想在 AdventureX 一起搞事情？🧙‍♂️</span></p>
     <div class="contact-links">
-      <a href="https://github.com/onezion12344" class="contact-btn github">⌨ GitHub →</a>
-      <a href="mailto:onezion12344@gmail.com" class="contact-btn email">✉ Email →</a>
+      <a href="https://github.com/onezion12344" class="contact-btn github">⌨ <span class="en">GitHub →</span><span class="zh">GitHub →</span></a>
+      <a href="mailto:onezion12344@gmail.com" class="contact-btn email">✉ <span class="en">Email →</span><span class="zh">邮箱 →</span></a>
     </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
     Harry OneZion · AdventureX 2026<br>
-    Take the leap, build what matters
+    <span class="en">Take the leap, build what matters</span>
+    <span class="zh">跃入未知，创造价值</span>
   </div>
 
 </div>
 
 <script>
+// Language toggle
+function toggleLang() {
+  const body = document.body;
+  const currentLang = body.getAttribute('lang');
+  const newLang = currentLang === 'en' ? 'zh' : 'en';
+  body.setAttribute('lang', newLang);
+  localStorage.setItem('preferredLang', newLang);
+  document.querySelectorAll('.lang-toggle .opt').forEach(el => {
+    el.classList.toggle('active', el.dataset.lang === newLang);
+  });
+}
+
+// Restore saved language preference
+(function() {
+  const saved = localStorage.getItem('preferredLang');
+  if (saved && (saved === 'en' || saved === 'zh')) {
+    document.body.setAttribute('lang', saved);
+    document.querySelectorAll('.lang-toggle .opt').forEach(el => {
+      el.classList.toggle('active', el.dataset.lang === saved);
+    });
+  }
+})();
+
 // Particle system
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
