@@ -408,34 +408,124 @@
   .edge-formula .ef:hover { border-color: rgba(139,92,246,0.4); }
   .edge-formula .plus { font-size: 11px; color: var(--muted); opacity: 0.6; }
 
-  /* ── Project tabs ── */
-  .tab-bar {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
+  /* ── Claude Code section ── */
+  .cc-banner {
+    display: flex; align-items: stretch; justify-content: center; gap: 14px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(125,211,252,0.06));
+    border: 1px solid rgba(139,92,246,0.25);
+    border-radius: 14px; padding: 14px 12px; margin-bottom: 12px;
   }
-  .tab-btn {
-    padding: 7px 12px; border-radius: 12px;
+  .cc-banner .cc-stat { flex: 1; max-width: 170px; text-align: center; }
+  .cc-banner .cc-num {
+    display: block; font-size: 24px; font-weight: 700; line-height: 1.2;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .cc-banner .cc-cap {
+    display: block; font-size: 9px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 3px; line-height: 1.5;
+  }
+  .cc-banner .cc-sep {
+    width: 1px; align-self: stretch;
+    background: linear-gradient(180deg, transparent, rgba(139,92,246,0.35), transparent);
+  }
+  .skill-card {
     background: var(--card); border: 1px solid var(--border);
-    font-family: inherit; font-size: 11px; color: var(--muted);
-    cursor: pointer;
-    transition: all 0.25s;
-    display: inline-flex; align-items: center; gap: 5px;
+    border-radius: 14px; padding: 15px 17px; margin-bottom: 10px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
   }
-  .tab-btn:hover { color: var(--white); border-color: rgba(139,92,246,0.3); }
-  .tab-btn.active {
-    color: var(--white);
-    background: rgba(139, 92, 246, 0.15);
-    border-color: rgba(139, 92, 246, 0.4);
+  .skill-card:hover { border-color: rgba(125,211,252,0.35); transform: translateX(4px); }
+  .skill-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
   }
-  .tab-btn .cnt {
-    font-size: 9px; padding: 1px 5px; border-radius: 6px;
-    background: rgba(139, 92, 246, 0.15); color: var(--accent2);
+  .skill-card.s1::before { background: linear-gradient(180deg, #8b5cf6, #7dd3fc); }
+  .skill-card.s2::before { background: linear-gradient(180deg, #7dd3fc, #a78bfa); }
+  .skill-card.s3::before { background: linear-gradient(180deg, #f472b6, #8b5cf6); }
+  .skill-card.s4::before { background: linear-gradient(180deg, #8b5cf6, #f472b6); }
+  .skill-card.s5::before { background: linear-gradient(180deg, #7dd3fc, #f472b6); }
+  .skill-card .skill-header {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 7px;
   }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: panel-in 0.4s ease both; }
-  @keyframes panel-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  .skill-card .skill-chip {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 8px;
+    background: rgba(125, 211, 252, 0.08);
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    color: var(--accent2); word-break: break-all;
   }
+  .skill-card .skill-ver {
+    font-size: 9px; color: var(--accent3); letter-spacing: 0.05em;
+    padding: 2px 6px; border-radius: 6px;
+    background: rgba(244, 114, 182, 0.08);
+    border: 1px solid rgba(244, 114, 182, 0.15);
+  }
+  .skill-card .skill-link {
+    font-size: 9px; color: var(--muted); text-decoration: none;
+    letter-spacing: 0.03em; transition: color 0.25s;
+  }
+  .skill-card .skill-link:hover { color: var(--accent2); }
+  .skill-card .skill-desc { font-size: 11px; color: var(--muted); line-height: 1.65; }
+  .skill-card .skill-quote {
+    margin: 8px 0 0; padding: 7px 11px;
+    border-left: 2px solid rgba(244, 114, 182, 0.4);
+    background: rgba(244, 114, 182, 0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 11px; font-style: italic;
+    color: var(--white); opacity: 0.85; line-height: 1.65;
+  }
+  .skill-card .skill-reuse {
+    display: flex; gap: 6px; align-items: baseline; margin-top: 8px;
+    font-size: 10px; color: var(--white); line-height: 1.5;
+  }
+  .skill-card .skill-reuse .ru-label {
+    flex-shrink: 0; font-size: 9px; font-weight: 600; color: var(--accent3);
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .cc-more-label {
+    font-size: 10px; color: var(--accent2); font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin: 14px 0 6px;
+  }
+  .cc-cloud .chip {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 10px; color: var(--accent2);
+  }
+  .cc-cloud .chip.more {
+    color: var(--accent3);
+    border-color: rgba(244, 114, 182, 0.25);
+    background: rgba(244, 114, 182, 0.06);
+    font-family: inherit;
+  }
+  .cc-infra {
+    margin-top: 12px; padding: 9px 12px;
+    border-left: 2px solid rgba(125, 211, 252, 0.4);
+    background: rgba(125, 211, 252, 0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 11px; color: var(--muted); line-height: 1.7;
+  }
+  .cc-infra strong { color: var(--accent2); font-weight: 600; }
+
+  /* ── Project timeline ── */
+  .timeline { position: relative; padding-left: 22px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 5px; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(139,92,246,0.5), rgba(125,211,252,0.3), rgba(244,114,182,0.2));
+  }
+  .tl-item { position: relative; margin-bottom: 16px; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -21px; top: 4px;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+  }
+  .tl-item .tl-date {
+    font-size: 10px; color: var(--accent2); font-weight: 600;
+    letter-spacing: 0.12em; margin-bottom: 6px;
+  }
+  .tl-item .project { margin-bottom: 0; }
 
   /* ── Project cards ── */
   .project {
@@ -541,7 +631,6 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .reveal { opacity: 1; transform: none; transition: none; }
-    .tab-panel.active { animation: none; }
   }
 </style>
 </head>
@@ -637,7 +726,7 @@
     <!-- Count-up stats -->
     <div class="stats">
       <div class="stat">
-        <span class="num" data-count="10">0</span>
+        <span class="num" data-count="12">0</span>
         <span class="stat-label"><span class="en">Shipped Projects</span><span class="zh">已交付项目</span></span>
       </div>
       <div class="stat">
@@ -645,8 +734,8 @@
         <span class="stat-label"><span class="en">Public Repos</span><span class="zh">公开仓库</span></span>
       </div>
       <div class="stat">
-        <span class="num" data-count="30" data-suffix="+">0</span>
-        <span class="stat-label"><span class="en">Agent Skills</span><span class="zh">Agent 技能</span></span>
+        <span class="num" data-count="100" data-suffix="+">0</span>
+        <span class="stat-label"><span class="en">Self-built Skills</span><span class="zh">自研技能</span></span>
       </div>
     </div>
 
@@ -694,6 +783,7 @@
   <!-- Sticky mini-nav -->
   <nav class="mini-nav" id="miniNav">
     <a href="#thinking"><span class="en">Thinking</span><span class="zh">思维</span></a>
+    <a href="#claudecode">Claude Code</a>
     <a href="#projects"><span class="en">Projects</span><span class="zh">项目</span></a>
     <a href="#track"><span class="en">Wins</span><span class="zh">战绩</span></a>
     <a href="#stack"><span class="en">Stack</span><span class="zh">技能</span></a>
@@ -818,6 +908,145 @@
   <!-- Signal divider -->
   <div class="signal-divider reveal">
     <div class="line"></div>
+    <span class="en">MY OPERATING SYSTEM</span><span class="zh">我的操作系统</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Claude Code -->
+  <div class="section" id="claudecode">
+    <h2>🧩 Claude Code</h2>
+
+    <!-- Authentic pull-quote -->
+    <div class="pull-quote reveal">
+      <span class="pq-mark">&ldquo;</span>
+      <div class="pq-text"><span class="en">I am Claude Code now.</span><span class="zh">我现在是 Claude Code 了</span></div>
+      <div class="pq-sub">
+        <span class="en">Self-built skills, workflows and infrastructure — designed to be reusable</span>
+        <span class="zh">自研技能、工作流程与基础设施——都做成了可复用的</span>
+      </div>
+      <div class="pq-attr">— Harry OneZion</div>
+    </div>
+
+    <!-- Skill count banner -->
+    <div class="cc-banner reveal">
+      <div class="cc-stat">
+        <span class="cc-num">250</span>
+        <span class="cc-cap"><span class="en">skills installed</span><span class="zh">已装载技能</span></span>
+      </div>
+      <div class="cc-sep"></div>
+      <div class="cc-stat">
+        <span class="cc-num">100+</span>
+        <span class="cc-cap"><span class="en">self-developed (onezion-*)</span><span class="zh">自研 (onezion-*)</span></span>
+      </div>
+    </div>
+
+    <div class="skill-card s1 reveal">
+      <div class="skill-header">
+        <span class="skill-chip">double-check-agent</span>
+        <span class="skill-ver">v2.4</span>
+        <a class="skill-link" href="https://github.com/onezion12344/double-check-agent" target="_blank" rel="noopener"><span class="en">open source ↗</span><span class="zh">已开源 ↗</span></a>
+      </div>
+      <p class="skill-desc">
+        <span class="en">Unified Fact / Logic / Theory &amp; Tool-Use verification. Two-round architecture: Round 1 can be any generation method; Round 2 is always the same verification pipeline. Bounded Rationality — enforcement via hooks, not model internalization.</span>
+        <span class="zh">统一的事实 / 逻辑 / 理论与工具使用核查。双轮架构：第一轮可以是任何生成方式，第二轮永远走同一条验证管线。有限理性范式——靠 hooks 外部强制，而非指望模型自觉。</span>
+      </p>
+      <p class="skill-quote">
+        <span class="en">"Round 1 optimizes fluency, Round 2 optimizes accuracy — separating them removes the trade-off."</span>
+        <span class="zh">「第一轮优化流畅度，第二轮优化准确率——把两者分开，就消除了取舍。」</span>
+      </p>
+      <div class="skill-reuse">
+        <span class="ru-label"><span class="en">Reusable for</span><span class="zh">可复用于</span></span>
+        <span><span class="en">any agent that needs fact-checked output</span><span class="zh">任何需要可信输出的 Agent</span></span>
+      </div>
+    </div>
+
+    <div class="skill-card s2 reveal">
+      <div class="skill-header">
+        <span class="skill-chip">onezion-engineering-end2end-pipeline</span>
+      </div>
+      <p class="skill-desc">
+        <span class="en">General engineering methodology: research → double-check research → plan → fact-check plan → auto-execute (SDD) → deliver → notify owner. Language-agnostic, domain-agnostic. Skip non-owner decisions — surface only what the owner must decide.</span>
+        <span class="zh">通用工程方法论：调研 → 复核调研 → 计划 → 核查计划 → 自动执行 (SDD) → 交付 → 通知 owner。语言无关、领域无关。跳过非 owner 决策，只上报 owner 必须拍板的事。</span>
+      </p>
+      <div class="skill-reuse">
+        <span class="ru-label"><span class="en">Reusable for</span><span class="zh">可复用于</span></span>
+        <span><span class="en">any project, any stack</span><span class="zh">任何项目、任何技术栈</span></span>
+      </div>
+    </div>
+
+    <div class="skill-card s3 reveal">
+      <div class="skill-header">
+        <span class="skill-chip">onezion-dse-agent-dev-deploy</span>
+      </div>
+      <p class="skill-desc">
+        <span class="en">Unified platform base for ALL DSE products: E2B managed sandbox (Firecracker microVM per-user isolation, ~150ms cold start), OpenCode serve as unified agent backend, Next.js conversational frontend, shared credits wallet (SQLite, product-scoped), launchd + Cloudflare tunnel + Telegram push. ONE agent entry + ONE auth + ONE wallet across products.</span>
+        <span class="zh">所有 DSE 产品的统一平台基座：E2B 托管沙箱（Firecracker microVM 按用户隔离，~150ms 冷启动）、OpenCode serve 统一 Agent 后端、Next.js 对话式前端、共享积分钱包（SQLite，按产品记账）、launchd + Cloudflare tunnel + Telegram 推送。全部产品共享同一 Agent 入口、同一认证、同一钱包。</span>
+      </p>
+      <div class="skill-reuse">
+        <span class="ru-label"><span class="en">Reusable for</span><span class="zh">可复用于</span></span>
+        <span><span class="en">the multi-product agent platform pattern</span><span class="zh">多产品 Agent 平台模式</span></span>
+      </div>
+    </div>
+
+    <div class="skill-card s4 reveal">
+      <div class="skill-header">
+        <span class="skill-chip">onezion-research</span>
+      </div>
+      <p class="skill-desc">
+        <span class="en">Tiered research at 3 rigor levels: Quick (vibe research) / Deep (discovery-first, 2+ independent sources, 2+ search backends, hygiene checklist) / Academic (literature → paper → citations → slides).</span>
+        <span class="zh">三档严谨度的分级调研：Quick（快速探路）/ Deep（先探索再分解，2+ 独立信源、2+ 搜索后端、事后卫生清单）/ Academic（文献 → 论文 → 引用 → 幻灯片）。</span>
+      </p>
+      <div class="skill-reuse">
+        <span class="ru-label"><span class="en">Reusable for</span><span class="zh">可复用于</span></span>
+        <span><span class="en">any factual or decision-making work</span><span class="zh">任何事实性、决策性工作</span></span>
+      </div>
+    </div>
+
+    <div class="skill-card s5 reveal">
+      <div class="skill-header">
+        <span class="skill-chip">subagent-driven-test-feedback-loop-onezion</span>
+        <span class="skill-ver">v2.0</span>
+      </div>
+      <p class="skill-desc">
+        <span class="en">Tester subagent team tests any product (Web / CLI / desktop / API) from a real user's perspective → structured issues → Fixer subagent team repairs → retest. Loop until no P0/P1. Project-agnostic.</span>
+        <span class="zh">Tester 子代理团队从真实用户视角测试任何产品（Web / CLI / 桌面 / API）→ 产出结构化 issue → Fixer 子代理团队修复 → 复测。循环直到没有 P0/P1。项目无关。</span>
+      </p>
+      <div class="skill-reuse">
+        <span class="ru-label"><span class="en">Reusable for</span><span class="zh">可复用于</span></span>
+        <span><span class="en">continuous QA for anything</span><span class="zh">任何产品的持续质检</span></span>
+      </div>
+    </div>
+
+    <!-- More self-built skills -->
+    <div class="reveal">
+      <div class="cc-more-label"><span class="en">…and more self-built</span><span class="zh">…更多自研</span></div>
+      <div class="chips cc-cloud">
+        <span class="chip">onezion-notion</span>
+        <span class="chip">onezion-chatlog</span>
+        <span class="chip">onezion-designer</span>
+        <span class="chip">onezion-website-design-build</span>
+        <span class="chip">onezion-luma-image</span>
+        <span class="chip">onezion-transcription</span>
+        <span class="chip">onezion-google-calendar</span>
+        <span class="chip">onezion-macos-keychain</span>
+        <span class="chip">OneZion-SocialMedia-Orchestrator</span>
+        <span class="chip">onezion-deep-research-agent</span>
+        <span class="chip">onezion-AKM-agent-knowledge-management</span>
+        <span class="chip">OneZion-Migrate</span>
+        <span class="chip more"><span class="en">+80 more self-built</span><span class="zh">+80 more 自研</span></span>
+      </div>
+    </div>
+
+    <!-- Infrastructure note -->
+    <p class="cc-infra reveal">
+      <span class="en"><strong>Underneath:</strong> a skill registry with semver + dependency lock (skill-lint), Keychain-backed secrets, hooks-based enforcement — infrastructure that travels across agents (proven by the AgentDropOne migration).</span>
+      <span class="zh"><strong>底座：</strong>semver + 依赖锁的技能注册表 (skill-lint)、Keychain 密钥管理、基于 hooks 的强制执行——能跟着 Agent 一起迁移的基础设施（AgentDropOne 已验证）。</span>
+    </p>
+  </div>
+
+  <!-- Signal divider -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
     <span class="en">SIGNALS INTO THE UNKNOWN</span><span class="zh">向未知发出信号</span>
     <div class="line"></div>
   </div>
@@ -826,135 +1055,176 @@
   <div class="section" id="projects">
     <h2>🛠️ <span class="en">Projects</span><span class="zh">项目</span></h2>
 
-    <div class="tab-bar reveal">
-      <button class="tab-btn active" data-tab="agents">
-        <span class="en">Agent Systems</span><span class="zh">Agent 系统</span><span class="cnt">2</span>
-      </button>
-      <button class="tab-btn" data-tab="edu">
-        <span class="en">AI × Education</span><span class="zh">AI × 教育</span><span class="cnt">3</span>
-      </button>
-      <button class="tab-btn" data-tab="research">
-        <span class="en">Research &amp; Tools</span><span class="zh">研究与工具</span><span class="cnt">3</span>
-      </button>
-      <button class="tab-btn" data-tab="oss">
-        <span class="en">Open Source</span><span class="zh">开源</span><span class="cnt">2</span>
-      </button>
-    </div>
+    <div class="timeline">
 
-    <!-- Agent Systems -->
-    <div class="tab-panel active" data-panel="agents">
-      <a class="project" href="https://github.com/onezion12344/polygram-fork" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">Polygram <span class="arrow">↗</span></span>
-          <span class="stack">Subagent Orchestration</span>
-        </div>
-        <p class="desc">
-          <span class="en">Claude Code × Telegram control panel. Multi-subagent orchestration, verification loops, auto-merge — agent orchestration abstracted into a reusable dashboard.</span>
-          <span class="zh">Claude Code 的 Telegram 操作面板。多子代理编排、验证循环、自动合并——把 Agent 编排抽象成可复用的控制面板。</span>
-        </p>
-      </a>
-      <a class="project" href="https://github.com/onezion12344/AgentDropOne" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">AgentDropOne <span class="arrow">↗</span></span>
-          <span class="stack">Workspace Migration</span>
-        </div>
-        <p class="desc">
-          <span class="en">One zip, one command — full AI agent workspace migration. Skills, MCP configs, memory — packed and portable.</span>
-          <span class="zh">一个压缩包、一条指令，完成完整 AI Agent 工作区迁移。技能、MCP 配置、记忆——打包带走。</span>
-        </p>
-      </a>
-    </div>
-
-    <!-- AI × Education -->
-    <div class="tab-panel" data-panel="edu">
-      <a class="project" href="https://wewrites.onezion.top" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">WeWrites.ai <span class="arrow">↗</span></span>
-          <span class="stack">Co-founder &amp; CTO</span>
-        </div>
-        <p class="desc">
-          <span class="en">AI-driven DSE curriculum platform. Next.js full-stack + Vercel + automated content pipeline — tech shaped by education needs, not the other way around.</span>
-          <span class="zh">AI 驱动的 DSE 课程平台。Next.js 全栈 + Vercel + 自动化内容管线——从教育需求出发做技术方案，而非反过来。</span>
-        </p>
-      </a>
-      <a class="project" href="https://dsep3.onezion.top" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name"><span class="en">DSE Paper 3 Generator</span><span class="zh">DSE 听力试卷生成器</span> <span class="arrow">↗</span></span>
-          <span class="stack">Pipeline · AI · TTS</span>
-        </div>
-        <p class="desc">
-          <span class="en">End-to-end DSE listening exam generation: AI question design + TTS audio + answer sheets. Hours of manual work compressed to minutes.</span>
-          <span class="zh">端到端自动生成完整 DSE 听力试卷：出题 + TTS 音频合成 + 答题卡，全流水线化。人工数小时的工序压缩到分钟级。</span>
-        </p>
-      </a>
-      <div class="project">
-        <div class="row">
-          <span class="name"><span class="en">DSE Speaking EdTech SaaS</span><span class="zh">DSE 口语 EdTech SaaS</span></span>
-          <span class="stack">ElevenLabs ConvAI</span>
-        </div>
-        <p class="desc">
-          <span class="en">3-mode English speaking practice platform built on ElevenLabs ConvAI Agent, targeting HK schools — with a free tier for SEN and low-income students.</span>
-          <span class="zh">基于 ElevenLabs ConvAI Agent 的三模式英语口语练习平台，面向香港学校——为 SEN 与低收入学生提供免费档。</span>
-        </p>
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-07</div>
+        <a class="project" href="https://github.com/onezion12344/casual-research" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">casual-research <span class="arrow">↗</span></span>
+            <span class="stack">Research Collection</span>
+          </div>
+          <p class="desc">
+            <span class="en">Fact-checked research pages — psychology, relationships, cognitive science. Scientific rigor brought into everyday life.</span>
+            <span class="zh">研究页面合集——心理学、亲密关系、认知科学。全部经过事实核查，引用可溯源。把科研思维带入日常生活。</span>
+          </p>
+        </a>
       </div>
-    </div>
 
-    <!-- Research & Tools -->
-    <div class="tab-panel" data-panel="research">
-      <div class="project">
-        <div class="row">
-          <span class="name"><span class="en">Chinese LLM Evaluation</span><span class="zh">国产大模型评测</span></span>
-          <span class="stack">Research · Benchmark</span>
-        </div>
-        <p class="desc">
-          <span class="en">Systematic benchmark of domestic Chinese LLMs on tool calling and daily tasks — DeepSeek / GLM / Qwen head-to-head. Independent research, no vendor marketing.</span>
-          <span class="zh">国内大模型系统性评测：工具调用与日常任务，DeepSeek / GLM / 通义千问横向对比。独立研究，不依赖厂商宣传。</span>
-        </p>
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-07</div>
+        <a class="project" href="https://github.com/onezion12344/polygram-fork" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">Polygram <span class="arrow">↗</span></span>
+            <span class="stack">Subagent Orchestration</span>
+          </div>
+          <p class="desc">
+            <span class="en">Claude Code × Telegram control panel. Multi-subagent orchestration, verification loops, auto-merge — agent orchestration abstracted into a reusable dashboard.</span>
+            <span class="zh">Claude Code 的 Telegram 操作面板。多子代理编排、验证循环、自动合并——把 Agent 编排抽象成可复用的控制面板。</span>
+          </p>
+        </a>
       </div>
-      <a class="project" href="https://github.com/onezion12344/double-check-agent" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">double-check-agent <span class="arrow">↗</span></span>
-          <span class="stack">Fact-Check Pipeline</span>
-        </div>
-        <p class="desc">
-          <span class="en">Hybrid fact-checking framework — 5-phase pipeline (SIFT / IFCN / CoVe / FIRE / FABLE), adversarial verification + parallel subagents. Every AI claim traceable and verifiable.</span>
-          <span class="zh">混合事实核查框架——五阶段管线 (SIFT / IFCN / CoVe / FIRE / FABLE)，对抗验证 + 子代理并行。让 AI 的声明可溯源可验证。</span>
-        </p>
-      </a>
-      <a class="project" href="https://github.com/onezion12344/casual-research" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">casual-research <span class="arrow">↗</span></span>
-          <span class="stack">Research Collection</span>
-        </div>
-        <p class="desc">
-          <span class="en">Fact-checked research pages — psychology, relationships, cognitive science. Scientific rigor brought into everyday life.</span>
-          <span class="zh">研究页面合集——心理学、亲密关系、认知科学。全部经过事实核查，引用可溯源。把科研思维带入日常生活。</span>
-        </p>
-      </a>
-    </div>
 
-    <!-- Open Source -->
-    <div class="tab-panel" data-panel="oss">
-      <a class="project" href="https://github.com/onezion12344/koreader-onedrive-plugin" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">KOReader OneDrive Sync <span class="arrow">↗</span></span>
-          <span class="stack">Lua · OAuth2 · Graph API</span>
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-07</div>
+        <a class="project" href="https://github.com/onezion12344/koreader-onedrive-plugin" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">KOReader OneDrive Sync <span class="arrow">↗</span></span>
+            <span class="stack">Lua · OAuth2 · Graph API</span>
+          </div>
+          <p class="desc">
+            <span class="en">First OneDrive plugin in the KOReader ecosystem. OAuth2 device-code auth + MS Graph API + bidirectional sync — protocol understood from zero, product shipped.</span>
+            <span class="zh">KOReader 生态首个 OneDrive 插件。OAuth2 设备码认证 + MS Graph API + 双向同步。从零理解协议、交付可用产品。</span>
+          </p>
+        </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-07</div>
+        <a class="project" href="https://github.com/onezion12344/let-go-journey" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">let-go-journey <span class="arrow">↗</span></span>
+            <span class="stack">CBT Interactive Game</span>
+          </div>
+          <p class="desc">
+            <span class="en">CBT-based healing game — 30 days out of heartbreak, bilingual. Psychological intervention abstracted into a daily interactive flow.</span>
+            <span class="zh">基于认知行为疗法的疗愈游戏——30 天走出心碎，中英双语。把心理干预抽象为每日交互流程。</span>
+          </p>
+        </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-06 →</div>
+        <a class="project" href="https://wewrites.onezion.top" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">WeWrites.ai <span class="arrow">↗</span></span>
+            <span class="stack">Co-founder &amp; CTO</span>
+          </div>
+          <p class="desc">
+            <span class="en">AI-driven DSE curriculum platform. Next.js full-stack + Vercel + automated content pipeline — tech shaped by education needs, not the other way around.</span>
+            <span class="zh">AI 驱动的 DSE 课程平台。Next.js 全栈 + Vercel + 自动化内容管线——从教育需求出发做技术方案，而非反过来。</span>
+          </p>
+        </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-06</div>
+        <a class="project" href="https://github.com/onezion12344/double-check-agent" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">double-check-agent <span class="arrow">↗</span></span>
+            <span class="stack">Fact-Check Pipeline</span>
+          </div>
+          <p class="desc">
+            <span class="en">Hybrid fact-checking framework — 5-phase pipeline (SIFT / IFCN / CoVe / FIRE / FABLE), adversarial verification + parallel subagents. Every AI claim traceable and verifiable.</span>
+            <span class="zh">混合事实核查框架——五阶段管线 (SIFT / IFCN / CoVe / FIRE / FABLE)，对抗验证 + 子代理并行。让 AI 的声明可溯源可验证。</span>
+          </p>
+        </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-06</div>
+        <div class="project">
+          <div class="row">
+            <span class="name">Hermes Agent</span>
+            <span class="stack">Mobile Agent · Android</span>
+          </div>
+          <p class="desc">
+            <span class="en">OPPO voice assistant replacement — a real agent living on the phone. DeepSeek API + tool calling + system-level integration: the assistant button summons an agent, not a chatbot.</span>
+            <span class="zh">替换 OPPO 语音助手——真正住在手机里的 Agent。DeepSeek API + 工具调用 + 系统级集成：按下助手键唤起的是 Agent，不是聊天机器人。</span>
+          </p>
         </div>
-        <p class="desc">
-          <span class="en">First OneDrive plugin in the KOReader ecosystem. OAuth2 device-code auth + MS Graph API + bidirectional sync — protocol understood from zero, product shipped.</span>
-          <span class="zh">KOReader 生态首个 OneDrive 插件。OAuth2 设备码认证 + MS Graph API + 双向同步。从零理解协议、交付可用产品。</span>
-        </p>
-      </a>
-      <a class="project" href="https://github.com/onezion12344/let-go-journey" target="_blank" rel="noopener">
-        <div class="row">
-          <span class="name">let-go-journey <span class="arrow">↗</span></span>
-          <span class="stack">CBT Interactive Game</span>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-05</div>
+        <a class="project" href="https://github.com/onezion12344/AgentDropOne" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name">AgentDropOne <span class="arrow">↗</span></span>
+            <span class="stack">Workspace Migration</span>
+          </div>
+          <p class="desc">
+            <span class="en">One zip, one command — full AI agent workspace migration. Skills, MCP configs, memory — packed and portable.</span>
+            <span class="zh">一个压缩包、一条指令，完成完整 AI Agent 工作区迁移。技能、MCP 配置、记忆——打包带走。</span>
+          </p>
+        </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-05</div>
+        <div class="project">
+          <div class="row">
+            <span class="name"><span class="en">Chinese LLM Evaluation</span><span class="zh">国产大模型评测</span></span>
+            <span class="stack">Research · Benchmark</span>
+          </div>
+          <p class="desc">
+            <span class="en">Systematic benchmark of domestic Chinese LLMs on tool calling and daily tasks — DeepSeek / GLM / Qwen head-to-head. Independent research, no vendor marketing.</span>
+            <span class="zh">国内大模型系统性评测：工具调用与日常任务，DeepSeek / GLM / 通义千问横向对比。独立研究，不依赖厂商宣传。</span>
+          </p>
         </div>
-        <p class="desc">
-          <span class="en">CBT-based healing game — 30 days out of heartbreak, bilingual. Psychological intervention abstracted into a daily interactive flow.</span>
-          <span class="zh">基于认知行为疗法的疗愈游戏——30 天走出心碎，中英双语。把心理干预抽象为每日交互流程。</span>
-        </p>
-      </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-04</div>
+        <a class="project" href="https://dsep3.onezion.top" target="_blank" rel="noopener">
+          <div class="row">
+            <span class="name"><span class="en">DSE Paper 3 Generator</span><span class="zh">DSE 听力试卷生成器</span> <span class="arrow">↗</span></span>
+            <span class="stack">Pipeline · AI · TTS</span>
+          </div>
+          <p class="desc">
+            <span class="en">End-to-end DSE listening exam generation: AI question design + TTS audio + answer sheets. Hours of manual work compressed to minutes.</span>
+            <span class="zh">端到端自动生成完整 DSE 听力试卷：出题 + TTS 音频合成 + 答题卡，全流水线化。人工数小时的工序压缩到分钟级。</span>
+          </p>
+        </a>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2026-04</div>
+        <div class="project">
+          <div class="row">
+            <span class="name">WorkBuddy</span>
+            <span class="stack">Agent Ecosystem</span>
+          </div>
+          <p class="desc">
+            <span class="en">Personal agent ecosystem: 30+ custom skills, ChromaDB local vector search, MCP servers, cross-platform chat analysis — the era that seeded today's skill library.</span>
+            <span class="zh">个人 Agent 生态：30+ 自研技能、ChromaDB 本地向量检索、MCP 服务器、跨平台聊天分析——今天技能库的起点。</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-date">2025</div>
+        <div class="project">
+          <div class="row">
+            <span class="name"><span class="en">DSE Speaking EdTech SaaS</span><span class="zh">DSE 口语 EdTech SaaS</span></span>
+            <span class="stack">ElevenLabs ConvAI</span>
+          </div>
+          <p class="desc">
+            <span class="en">3-mode English speaking practice platform built on ElevenLabs ConvAI Agent, targeting HK schools — with a free tier for SEN and low-income students.</span>
+            <span class="zh">基于 ElevenLabs ConvAI Agent 的三模式英语口语练习平台，面向香港学校——为 SEN 与低收入学生提供免费档。</span>
+          </p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -1209,26 +1479,12 @@ function toggleLang() {
   nums.forEach(function (el) { io.observe(el); });
 })();
 
-// ── Project tabs ──
-(function () {
-  var btns = document.querySelectorAll('.tab-btn');
-  var panels = document.querySelectorAll('.tab-panel');
-  btns.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      btns.forEach(function (b) { b.classList.toggle('active', b === btn); });
-      panels.forEach(function (p) {
-        p.classList.toggle('active', p.dataset.panel === btn.dataset.tab);
-      });
-    });
-  });
-})();
-
 // ── Sticky nav active highlight ──
 (function () {
   var links = document.querySelectorAll('.mini-nav a');
   var map = {};
   links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
-  var sections = document.querySelectorAll('#thinking, #projects, #track, #stack, #connect');
+  var sections = document.querySelectorAll('#thinking, #claudecode, #projects, #track, #stack, #connect');
   if (!('IntersectionObserver' in window)) return;
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
