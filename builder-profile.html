@@ -130,7 +130,11 @@
   }
   .hero .identity {
     font-size: 12px; color: var(--accent3); font-weight: 500;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
+  }
+  .hero .motto {
+    font-size: 10px; color: var(--muted); opacity: 0.6;
+    margin-bottom: 14px; letter-spacing: 0.08em;
   }
 
   /* ── Tags ── */
@@ -179,6 +183,55 @@
   .section h2::after {
     content: ''; flex: 1; height: 1px;
     background: rgba(139, 92, 246, 0.15);
+  }
+
+  /* ── Thinking Stack (centerpiece) ── */
+  .thinking-stack {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .think-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px 18px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .think-card:hover {
+    border-color: rgba(139,92,246,0.3);
+    transform: translateX(4px);
+  }
+  .think-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .think-card.t1::before { background: linear-gradient(180deg, #8b5cf6, #7dd3fc); }
+  .think-card.t2::before { background: linear-gradient(180deg, #7dd3fc, #a78bfa); }
+  .think-card.t3::before { background: linear-gradient(180deg, #f472b6, #8b5cf6); }
+  .think-card.t4::before { background: linear-gradient(180deg, #8b5cf6, #f472b6); }
+  .think-card.t5::before { background: linear-gradient(180deg, #7dd3fc, #f472b6); }
+  .think-card .think-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 6px;
+  }
+  .think-card .think-icon {
+    font-size: 20px; line-height: 1;
+  }
+  .think-card .think-name {
+    font-size: 13px; font-weight: 600;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .think-card .think-desc {
+    font-size: 11px; color: var(--muted); line-height: 1.6;
+    padding-left: 30px;
+  }
+  .think-card .think-tags {
+    display: flex; flex-wrap: wrap; gap: 4px;
+    padding-left: 30px; margin-top: 6px;
+  }
+  .think-card .think-tags span {
+    font-size: 9px; padding: 2px 7px; border-radius: 8px;
+    background: rgba(139, 92, 246, 0.06);
+    color: var(--accent2); border: 1px solid rgba(139, 92, 246, 0.1);
   }
 
   /* ── Philosophy Card ── */
@@ -394,26 +447,99 @@
     <div class="avatar"></div>
     <h1>Harry Huang / OneZion</h1>
     <p class="tagline">
-      HKU · AI Agent Architect · Full-Stack Developer · Philosophy-Minded Builder
+      HKU Philosophy · AI Agent Architect · Philosopher-Builder
     </p>
     <p class="identity">
-      AI Agent 核心 + 全栈与后端的桥梁
+      我相信技术与人文的交汇处，才能诞生真正有意义的作品
+    </p>
+    <p class="motto">
+      ⛰ Aim High · 🌊 Embrace All · 🚢 Set Sail · 🗼 Be a Lighthouse · ⭕ Wholeness
     </p>
     <div class="tags">
-      <span class="tag pink">AI Agent 架构</span>
-      <span class="tag">Full-Stack</span>
-      <span class="tag blue">Mobile</span>
-      <span class="tag">Subagent 编排</span>
-      <span class="tag pink">Tool Calling</span>
-      <span class="tag blue">MCP 开发</span>
-      <span class="tag">Product Design</span>
-      <span class="tag pink">开源贡献</span>
+      <span class="tag pink">Meta-Cognition</span>
+      <span class="tag">Vibe Coding</span>
+      <span class="tag blue">Systems Thinking</span>
+      <span class="tag">Agent Architecture</span>
+      <span class="tag pink">First Principles</span>
+      <span class="tag blue">Rapid Prototyping</span>
+      <span class="tag">Research-Driven</span>
+      <span class="tag pink">Abstraction</span>
     </div>
     <div style="margin-top:14px;">
       <span class="event-badge">
         <span style="display:inline-block;width:5px;height:5px;border-radius:50%;background:#7dd3fc;animation:pulse 2s infinite;"></span>
-        6+ shipped projects · 49 public repos · 2–4人 · 赛道不限
+        10 shipped projects · 49 public repos · 2–4人 · 赛道不限
       </span>
+    </div>
+  </div>
+
+  <!-- Signal divider -->
+  <div class="signal-divider">
+    <div class="line"></div>
+    <span>How I Think</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Thinking Stack — the centerpiece -->
+  <div class="section">
+    <h2>🧠 Thinking Stack</h2>
+    <div class="thinking-stack">
+
+      <div class="think-card t1">
+        <div class="think-header">
+          <span class="think-icon">🪞</span>
+          <span class="think-name">Meta-Cognition / 元认知</span>
+        </div>
+        <p class="think-desc">I think about thinking. Philosophy training means I'm wired to step back and ask: what assumptions am I making? Is this the right frame? What's the higher-order pattern?</p>
+        <div class="think-tags">
+          <span>二阶思维</span><span>认知框架</span><span>Epistemology</span><span>Self-Audit</span>
+        </div>
+      </div>
+
+      <div class="think-card t2">
+        <div class="think-header">
+          <span class="think-icon">🌌</span>
+          <span class="think-name">Abstraction / 抽象思维</span>
+        </div>
+        <p class="think-desc">I map concrete problems to abstract structures. An agent pipeline is a function composition. A fact-check system is an adversarial verification graph. I find the universal pattern, then specialize.</p>
+        <div class="think-tags">
+          <span>Pattern Recognition</span><span>Category Theory</span><span>System Design</span><span>Ontology</span>
+        </div>
+      </div>
+
+      <div class="think-card t3">
+        <div class="think-header">
+          <span class="think-icon">🔬</span>
+          <span class="think-name">Research & Scientific Thinking</span>
+        </div>
+        <p class="think-desc">Hypothesis-driven, evidence-first. I built a 5-phase fact-check pipeline (SIFT/IFCN/CoVe/FIRE/FABLE). I benchmark Chinese LLMs systematically. Claims without sources are noise.</p>
+        <div class="think-tags">
+          <span>Fact-Check</span><span>Benchmarking</span><span>Cross-Verification</span><span>Evidence-Based</span>
+        </div>
+      </div>
+
+      <div class="think-card t4">
+        <div class="think-header">
+          <span class="think-icon">⚙️</span>
+          <span class="think-name">Computational Thinking</span>
+        </div>
+        <p class="think-desc">Subagent architectures, pipeline decomposition, verification loops. I design systems that compose: small, verifiable units that chain into emergent capability. Modular by default.</p>
+        <div class="think-tags">
+          <span>Pipeline Design</span><span>Decomposition</span><span>Parallelism</span><span>Verification Loops</span>
+        </div>
+      </div>
+
+      <div class="think-card t5">
+        <div class="think-header">
+          <span class="think-icon">⚡</span>
+          <span class="think-name">Vibe Coding / 直觉构建</span>
+        </div>
+        <p class="think-desc">I ship fast by working with AI, not against it. Karpathy's 4 rules guide my flow. Agent-native workflows, skill distillation, prompt engineering as a first-class skill. Speed without sacrificing taste.</p>
+        <div class="think-tags">
+          <span>Karpathy 4 Rules</span><span>Agent-Native</span><span>Skill Distillation</span><span>Rapid Iteration</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -426,7 +552,7 @@
 
   <!-- Builder Philosophy -->
   <div class="section">
-    <h2>🧠 Builder Philosophy</h2>
+    <h2>💭 What I Believe</h2>
     <div class="phil-card">
       <span class="quote-marker">&ldquo;</span>
       <p class="quote">
@@ -439,20 +565,20 @@
       <div class="meta">— Harry Huang · AIPC Reflections</div>
       <div class="phil-principles">
         <div class="phil-principle">
-          <strong>Subagent Architecture</strong>
-          并行工作流 · 验证循环 · 自动合并
+          <strong>Technology x Humanities</strong>
+          技术能力是手段，人文关怀是目的。两者交汇才有意义。
         </div>
         <div class="phil-principle">
-          <strong>Agent-Native Workflows</strong>
-          Claude Code · MCP · Skill 蒸馏
+          <strong>First Principles</strong>
+          不只问"怎么实现"，更问"为什么做"。从底层逻辑推导方案。
         </div>
         <div class="phil-principle">
-          <strong>Human-First Values</strong>
-          心理 · 关系 · 身体 · 整体幸福感
+          <strong>Agent as Leverage</strong>
+          Subagent 并行、验证循环、自动合并。Agent 让个人能力产生复利。
         </div>
         <div class="phil-principle">
-          <strong>Build & Ship</strong>
-          6+ 项目 · benchmark-first · SDD
+          <strong>Ship What Matters</strong>
+          真实产品 > Demo。5 天从 0 到 1，任何赛道。
         </div>
       </div>
     </div>
@@ -472,9 +598,9 @@
     <div class="project">
       <div class="row">
         <span class="name">Polygram — AI Telegram Bridge</span>
-        <span class="stack">Node.js · Claude API</span>
+        <span class="stack">Subagent Orchestration</span>
       </div>
-      <p class="desc">Claude Code Telegram 操作面板。多子代理编排、验证循环、自动合并。Karpathy 4 规则驱动。TG Router 管道化 subagent 调度。</p>
+      <p class="desc">Claude Code 的 Telegram 操作面板。多子代理编排、验证循环、自动合并。Karpathy 4 规则驱动，管道化 subagent 调度。核心价值：把 Agent 编排抽象成可复用的控制面板。</p>
     </div>
 
     <div class="project">
@@ -482,23 +608,23 @@
         <span class="name">WeWrites.ai — DSE Platform</span>
         <span class="stack">Co-founder & CTO</span>
       </div>
-      <p class="desc">AI 驱动的 DSE 课程平台。Next.js 全栈、Vercel 部署、自动化内容管线。GEO AI 内容生成 + 多角色受众。</p>
+      <p class="desc">AI 驱动的 DSE 课程平台。Next.js 全栈、Vercel 部署、自动化内容管线。从教育需求出发做技术方案，而非反过来。GEO AI + 多角色受众设计。</p>
     </div>
 
     <div class="project">
       <div class="row">
         <span class="name">DSE Paper 3 Generator</span>
-        <span class="stack">AI + TTS Pipeline</span>
+        <span class="stack">Pipeline Automation</span>
       </div>
-      <p class="desc">自动生成完整 DSE 听力试卷。AI 出题 + TTS 音频合成 + 答题卡生成，端到端全自动管线。</p>
+      <p class="desc">端到端自动生成完整 DSE 听力试卷。把出题、TTS 音频合成、答题卡生成抽象成流水线。人工数小时的工序，压缩到分钟级。</p>
     </div>
 
     <div class="project">
       <div class="row">
         <span class="name">Hermes Agent</span>
-        <span class="stack">Android · DeepSeek API</span>
+        <span class="stack">Mobile Agent · Android</span>
       </div>
-      <p class="desc">OPPO 手机语音助手替代方案。DeepSeek API + Tool Calling + 系统级深度集成，本地优先架构。</p>
+      <p class="desc">OPPO 手机语音助手替代。DeepSeek API + Tool Calling + 系统级集成。把 LLM 能力下沉到移动端，让 AI 真正"在手边"。</p>
     </div>
 
     <div class="project">
@@ -506,7 +632,7 @@
         <span class="name">Chinese LLM Evaluation</span>
         <span class="stack">Research · Benchmark</span>
       </div>
-      <p class="desc">国内大模型系统性评测。工具调用与日常任务 benchmark，含 DeepSeek / GLM / 通义千问等横向对比分析。</p>
+      <p class="desc">国内大模型系统性评测。设计评估框架，覆盖工具调用与日常任务。包含 DeepSeek / GLM / 通义千问横向对比。独立研究，不依赖厂商宣传。</p>
     </div>
 
     <div class="project">
@@ -514,7 +640,7 @@
         <span class="name">KOReader OneDrive Sync</span>
         <span class="stack">Lua · OAuth2 · Graph API</span>
       </div>
-      <p class="desc">OAuth2 设备码认证 + MS Graph API + 双向文件同步。KOReader 生态首个 OneDrive 插件。</p>
+      <p class="desc">KOReader 生态首个 OneDrive 插件。OAuth2 设备码认证 + MS Graph API + 双向同步。从零理解协议、交付可用产品。</p>
     </div>
   </div>
 
@@ -525,154 +651,140 @@
     <div class="project more">
       <div class="row">
         <span class="name">AgentDropOne</span>
-        <span class="stack">Python · ⭐2</span>
+        <span class="stack">Python · Workspace Migration</span>
       </div>
-      <p class="desc">一个 zip、一条指令，完成完整 AI agent workspace 迁移。跨设备无缝衔接工作环境。</p>
+      <p class="desc">一个 zip，一条指令，完成完整 AI agent workspace 迁移。把 agent 环境抽象为可移植单元。</p>
     </div>
 
     <div class="project more">
       <div class="row">
         <span class="name">double-check-agent</span>
-        <span class="stack">HTML · Fact-Check Pipeline</span>
+        <span class="stack">Fact-Check Pipeline</span>
       </div>
-      <p class="desc">混合事实核查框架 — 5 阶段管线 (SIFT / IFCN / CoVe / FIRE / FABLE)，对抗验证 + 子代理并行。</p>
+      <p class="desc">混合事实核查框架 — 5 阶段管线 (SIFT/IFCN/CoVe/FIRE/FABLE)，对抗验证 + 子代理并行。让 AI 的声明可溯源可验证。</p>
     </div>
 
     <div class="project more">
       <div class="row">
         <span class="name">let-go-journey</span>
-        <span class="stack">HTML · CBT Game</span>
+        <span class="stack">CBT Interactive Game</span>
       </div>
-      <p class="desc">基于 CBT 的互动式疗愈游戏 — 30 天走出心碎。中英双语，认知行为疗法驱动。</p>
+      <p class="desc">基于认知行为疗法的疗愈游戏 — 30 天走出心碎。中英双语。把心理干预抽象为每日交互流程。</p>
     </div>
 
     <div class="project more">
       <div class="row">
         <span class="name">casual-research</span>
-        <span class="stack">HTML · Research Collection</span>
+        <span class="stack">Research Collection</span>
       </div>
-      <p class="desc">轻量研究页面合集 — 心理学、亲密关系、认知科学。全部经过事实核查，引用可溯源。</p>
+      <p class="desc">研究页面合集 — 心理学、亲密关系、认知科学。全部经过事实核查，引用可溯源。把科研思维带入日常生活。</p>
     </div>
   </div>
 
   <!-- Signal divider -->
   <div class="signal-divider">
     <div class="line"></div>
-    <span>Skills & Tools</span>
+    <span>Practical Skills</span>
     <div class="line"></div>
   </div>
 
   <!-- Skills Matrix -->
   <div class="section">
-    <h2>⚡ Skills Matrix</h2>
+    <h2>🔧 What I Can Build With</h2>
     <div class="skills">
       <div class="skill">
         <div class="label">AI Agent 架构</div>
-        <div class="value">Claude API · 多代理 · Tool Calling · MCP</div>
+        <div class="value">Claude API · 多代理 · Tool Calling · MCP 开发</div>
       </div>
       <div class="skill">
-        <div class="label">Agent 编排</div>
-        <div class="value">Subagent · 验证循环 · Skill 蒸馏</div>
+        <div class="label">Agent 编排与工程化</div>
+        <div class="value">Subagent · 验证循环 · Skill 蒸馏 · Harness</div>
       </div>
       <div class="skill">
-        <div class="label">全栈 Web</div>
-        <div class="value">Next.js · React · Tailwind · Node.js</div>
+        <div class="label">Web 全栈</div>
+        <div class="value">Next.js · React · Tailwind · Node.js · Vercel</div>
       </div>
       <div class="skill">
-        <div class="label">Mobile</div>
-        <div class="value">Android · System Integration · ADB</div>
+        <div class="label">Mobile & 系统</div>
+        <div class="value">Android · ADB · Termux · System Integration</div>
       </div>
       <div class="skill">
-        <div class="label">研究 & 方法论</div>
-        <div class="value">Fact-check · Data Curation · Benchmark</div>
-      </div>
-      <div class="skill">
-        <div class="label">人文</div>
-        <div class="value">伦理学 · 设计哲学 · 用户共情</div>
-      </div>
-      <div class="skill">
-        <div class="label">基础设施</div>
-        <div class="value">SQLite · OAuth2 · Shell · Cron</div>
+        <div class="label">研究 & 评估</div>
+        <div class="value">Fact-Check · Benchmark · Data Curation · 论文</div>
       </div>
       <div class="skill">
         <div class="label">API 集成</div>
-        <div class="value">Notion · Graph API · WeChat · OneDrive</div>
+        <div class="value">Notion · Graph API · WeChat · OneDrive · OAuth2</div>
+      </div>
+      <div class="skill">
+        <div class="label">多模型编排</div>
+        <div class="value">DeepSeek · GLM · Claude · OpenRouter</div>
+      </div>
+      <div class="skill">
+        <div class="label">自动化 & 脚本</div>
+        <div class="value">Shell · Cron · Python · Bun · CI/CD 管线</div>
       </div>
     </div>
   </div>
 
-  <!-- What I Build With -->
+  <!-- Tools I Build With -->
   <div class="section">
-    <h2>🔧 What I Build With</h2>
+    <h2>⚒️ Tools I Wield</h2>
     <div class="tool-grid">
       <div class="tool-card">
         <div class="icon purple">🧠</div>
         <div class="info">
-          <div class="tname">Claude / Anthropic</div>
-          <div class="tdesc">Agent 核心 · Claude Code · API</div>
+          <div class="tname">Claude Code + API</div>
+          <div class="tdesc">Agent 核心 · MCP · Skills</div>
         </div>
       </div>
       <div class="tool-card">
         <div class="icon blue">🐋</div>
         <div class="info">
           <div class="tname">DeepSeek</div>
-          <div class="tdesc">国产模型 · Hermes · 评估</div>
+          <div class="tdesc">国产模型 · 性价比之王</div>
         </div>
       </div>
       <div class="tool-card">
         <div class="icon pink">🦅</div>
         <div class="info">
-          <div class="tname">Next.js + Vercel</div>
-          <div class="tdesc">全栈部署 · WeWrites</div>
+          <div class="tname">Next.js / Vercel</div>
+          <div class="tdesc">Full-stack · 一键部署</div>
         </div>
       </div>
       <div class="tool-card">
-        <div class="icon purple">📱</div>
+        <div class="icon purple">🔷</div>
         <div class="info">
-          <div class="tname">Android</div>
-          <div class="tdesc">System Integration · ADB</div>
+          <div class="tname">TypeScript + Bun</div>
+          <div class="tdesc">CLI · Server · Runtime</div>
         </div>
       </div>
       <div class="tool-card">
-        <div class="icon blue">🔷</div>
-        <div class="info">
-          <div class="tname">TypeScript</div>
-          <div class="tdesc">Node.js · Bun · CLI</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon pink">🐍</div>
+        <div class="icon blue">🐍</div>
         <div class="info">
           <div class="tname">Python</div>
-          <div class="tdesc">AgentDropOne · 脚本</div>
+          <div class="tdesc">Pipeline · Script · Agent</div>
+        </div>
+      </div>
+      <div class="tool-card">
+        <div class="icon pink">📱</div>
+        <div class="info">
+          <div class="tname">Android</div>
+          <div class="tdesc">Kotlin · Termux · ADB</div>
         </div>
       </div>
       <div class="tool-card">
         <div class="icon purple">🔌</div>
         <div class="info">
           <div class="tname">MCP Protocol</div>
-          <div class="tdesc">Server 开发 · 集成</div>
+          <div class="tdesc">Server dev · Integration</div>
         </div>
       </div>
       <div class="tool-card">
-        <div class="icon blue">🔄</div>
+        <div class="icon blue">🐚</div>
         <div class="info">
-          <div class="tname">OAuth2 / Graph API</div>
-          <div class="tdesc">KOReader · OneDrive · Notion</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon pink">💬</div>
-        <div class="info">
-          <div class="tname">WeChat Automation</div>
-          <div class="tdesc">Chatlog · MCP · 自动化</div>
-        </div>
-      </div>
-      <div class="tool-card">
-        <div class="icon purple">🐚</div>
-        <div class="info">
-          <div class="tname">Shell · Cron</div>
-          <div class="tdesc">自动化管线 · 部署</div>
+          <div class="tname">Shell + Cron</div>
+          <div class="tdesc">Automation · DevOps</div>
         </div>
       </div>
     </div>
@@ -707,7 +819,7 @@
         <div class="cicon">💬</div>
         <div>
           <div class="clabel">WeChat</div>
-          <div class="cvalue" style="color:var(--muted);">OneZion12344</div>
+          <div class="cvalue" style="color:var(--muted);">onezion12344</div>
         </div>
       </div>
     </div>
@@ -720,7 +832,7 @@
   <div class="footer">
     <div class="big-text">为创造，再一次信仰之跃</div>
     <div style="margin-top:8px;font-size:11px;color:var(--muted);line-height:1.6;">
-      AI Agent 核心 · 全栈与后端的桥梁<br>
+      Philosopher-Builder · 技术与人文的交汇<br>
       寻找 2–4 人团队 · 赛道不限
     </div>
     <div class="ax-credit">
