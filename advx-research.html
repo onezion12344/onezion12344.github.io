@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AdventureX 2026 — Research Dossier · 全景调研</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --bg: #08080f;
+    --surface: #0f0f1a;
+    --card: #141428;
+    --border: #1e1e3a;
+    --accent: #8b5cf6;
+    --accent2: #7dd3fc;
+    --accent3: #f472b6;
+    --warn: #fbbf24;
+    --danger: #f87171;
+    --ok: #34d399;
+    --muted: #94a3b8;
+    --white: #f1f5f9;
+    --glow: 0 0 40px rgba(139, 92, 246, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Space Grotesk', 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg); color: var(--white);
+    min-height: 100vh; overflow-x: hidden;
+  }
+  ::selection { background: rgba(139,92,246,0.3); color: #fff; }
+
+  /* ── Language switching ── */
+  body[lang="en"] .zh { display: none !important; }
+  body[lang="zh"] .en { display: none !important; }
+  .lang-toggle {
+    position: fixed; top: 10px; right: 14px; z-index: 200;
+    display: flex; align-items: center;
+    background: rgba(20, 20, 40, 0.85);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--border); border-radius: 20px; padding: 2px;
+    cursor: pointer;
+  }
+  .lang-toggle .opt {
+    padding: 3px 10px; border-radius: 16px; font-size: 11px; font-weight: 500;
+    color: var(--muted); transition: all 0.2s; user-select: none;
+  }
+  .lang-toggle .opt.active { background: var(--accent); color: #fff; }
+  .lang-toggle .opt:not(.active):hover { color: var(--white); }
+
+  /* ── Background ── */
+  .stars {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(125,211,252,0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 20% 60%, rgba(244,114,182,0.04) 0%, transparent 40%);
+  }
+
+  .page { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── Header / hero ── */
+  .ax-header {
+    display: flex; align-items: center; gap: 10px; padding: 24px 0 8px;
+    font-size: 11px; letter-spacing: 0.25em; color: var(--muted); text-transform: uppercase;
+  }
+  .ax-header .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 1; transform: scale(1.5); } }
+
+  .hero { text-align: center; padding: 26px 0 18px; }
+  .hero h1 {
+    font-size: 27px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.3;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+  .status-badge {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 16px; border-radius: 20px;
+    background: rgba(52, 211, 153, 0.1); border: 1px solid rgba(52, 211, 153, 0.3);
+    font-size: 12px; font-weight: 600; color: var(--ok); letter-spacing: 0.08em;
+  }
+  .status-badge .blip { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); animation: pulse 2s infinite; }
+
+  .stats { display: flex; justify-content: center; gap: 8px; margin: 18px 0 6px; }
+  .stat {
+    flex: 1; max-width: 140px; background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 6px; transition: border-color 0.3s, transform 0.3s;
+  }
+  .stat:hover { border-color: rgba(139,92,246,0.3); transform: translateY(-2px); }
+  .stat .num {
+    display: block; font-size: 21px; font-weight: 700; line-height: 1.2;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat .stat-label { display: block; font-size: 9px; color: var(--muted); letter-spacing: 0.05em; margin-top: 2px; }
+
+  /* ── Sticky mini-nav ── */
+  .mini-nav {
+    position: sticky; top: 8px; z-index: 100;
+    width: calc(100% - 88px);
+    background: rgba(15, 15, 26, 0.88);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border); border-radius: 14px;
+    margin: 10px 0 24px; padding: 6px;
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  }
+  @media (min-width: 780px) { .mini-nav { width: 100%; } }
+  .mini-nav::-webkit-scrollbar { display: none; }
+  .mini-nav a {
+    flex: 1; text-align: center; padding: 7px 8px; border-radius: 10px;
+    font-size: 11px; color: var(--muted); text-decoration: none; white-space: nowrap;
+    transition: color 0.25s, background 0.25s;
+  }
+  .mini-nav a:hover { color: var(--white); }
+  .mini-nav a.active { color: var(--white); background: rgba(139, 92, 246, 0.18); }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 34px; scroll-margin-top: 64px; }
+  .section h2 {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .section h2::after { content: ''; flex: 1; height: 1px; background: rgba(139, 92, 246, 0.15); }
+  .signal-divider { display: flex; align-items: center; gap: 12px; padding: 0 0 20px; }
+  .signal-divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.3), transparent); }
+  .signal-divider span { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; white-space: nowrap; }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── Cards & data ── */
+  .dcard {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 15px 17px; margin-bottom: 10px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .dcard:hover { border-color: rgba(139,92,246,0.3); transform: translateX(3px); }
+  .dcard::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, #8b5cf6, #7dd3fc); }
+  .dcard.pink::before { background: linear-gradient(180deg, #f472b6, #8b5cf6); }
+  .dcard.blue::before { background: linear-gradient(180deg, #7dd3fc, #a78bfa); }
+  .dcard.red::before { background: linear-gradient(180deg, #f87171, #f472b6); }
+  .dcard.green::before { background: linear-gradient(180deg, #34d399, #7dd3fc); }
+  .dcard .d-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .dcard .d-body { font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .dcard .d-body strong { color: var(--white); font-weight: 600; }
+  .dcard .d-body a { color: var(--accent2); text-decoration: none; }
+
+  .kv { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .kv td { padding: 6px 8px; border-bottom: 1px solid rgba(30,30,58,0.6); vertical-align: top; line-height: 1.6; }
+  .kv tr:last-child td { border-bottom: none; }
+  .kv td:first-child { color: var(--accent2); white-space: nowrap; width: 34%; }
+  .kv td:last-child { color: var(--muted); }
+  .kv strong { color: var(--white); }
+
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 8px;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.05em; vertical-align: middle;
+  }
+  .badge.ok { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3); color: var(--ok); }
+  .badge.warn { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3); color: var(--warn); }
+  .badge.no { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); color: var(--danger); }
+  .badge.info { background: rgba(125,211,252,0.1); border: 1px solid rgba(125,211,252,0.3); color: var(--accent2); }
+
+  ul.clean { list-style: none; }
+  ul.clean li { font-size: 11px; color: var(--muted); line-height: 1.7; padding: 3px 0 3px 20px; position: relative; }
+  ul.clean li::before { content: '▸'; position: absolute; left: 4px; color: var(--accent); }
+  ul.clean li.check::before { content: '☑'; color: var(--ok); }
+  ul.clean strong { color: var(--white); font-weight: 600; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 480px) { .grid2 { grid-template-columns: 1fr; } }
+
+  .tool {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 13px; transition: border-color 0.3s, transform 0.3s;
+  }
+  .tool:hover { border-color: rgba(125,211,252,0.35); transform: translateY(-2px); }
+  .tool .t-name { font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 4px; }
+  .tool .t-note { font-size: 10px; color: var(--muted); line-height: 1.6; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 5px 11px; border-radius: 10px; background: var(--card);
+    border: 1px solid var(--border); font-size: 11px; color: var(--white);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .chip:hover { border-color: rgba(125,211,252,0.4); transform: translateY(-1px); }
+  .chip.hl { color: var(--accent2); border-color: rgba(125,211,252,0.3); }
+
+  /* ── Idea cards ── */
+  .idea-card { margin-bottom: 10px; }
+  .idea-card .medal { font-size: 17px; }
+  .idea-card .i-name {
+    font-size: 14px; font-weight: 700;
+    background: linear-gradient(135deg, #c4b5fd, #7dd3fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .idea-card .i-meta { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .idea-card .i-meta span {
+    font-size: 9px; padding: 2px 7px; border-radius: 8px;
+    background: rgba(139, 92, 246, 0.06); color: var(--accent2);
+    border: 1px solid rgba(139, 92, 246, 0.1);
+  }
+
+  /* ── Candidates ── */
+  .cand {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 11px 13px; margin-bottom: 8px; transition: border-color 0.3s, transform 0.3s;
+  }
+  .cand:hover { border-color: rgba(139,92,246,0.35); transform: translateX(3px); }
+  .cand .score {
+    flex-shrink: 0; min-width: 44px; text-align: center;
+    padding: 4px 6px; border-radius: 9px; font-size: 12px; font-weight: 700;
+    background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.25); color: #c4b5fd;
+  }
+  .cand .score.hot { background: rgba(244,114,182,0.12); border-color: rgba(244,114,182,0.3); color: var(--accent3); }
+  .cand .c-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .cand .c-name .cat { font-size: 9px; color: var(--accent3); font-weight: 500; letter-spacing: 0.06em; margin-left: 6px; }
+  .cand .c-desc { font-size: 10.5px; color: var(--muted); line-height: 1.6; }
+
+  /* ── Links ── */
+  .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  @media (max-width: 480px) { .links-grid { grid-template-columns: 1fr; } }
+  .link-card {
+    display: block; background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 14px; text-decoration: none; color: var(--white);
+    transition: border-color 0.3s, transform 0.3s; min-width: 0;
+  }
+  .link-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+  .link-card .l-name { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+  .link-card .l-name .arrow { color: var(--accent2); font-size: 11px; }
+  .link-card .l-url { font-size: 9.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .note-strip {
+    margin: 10px 0; padding: 9px 12px;
+    border-left: 2px solid rgba(125, 211, 252, 0.4);
+    background: rgba(125, 211, 252, 0.04); border-radius: 0 8px 8px 0;
+    font-size: 11px; color: var(--muted); line-height: 1.7;
+  }
+  .note-strip strong { color: var(--accent2); font-weight: 600; }
+  .note-strip.warn { border-left-color: rgba(251,191,36,0.5); background: rgba(251,191,36,0.04); }
+  .note-strip.warn strong { color: var(--warn); }
+
+  .footer { text-align: center; padding: 28px 0 36px; font-size: 12px; color: var(--muted); }
+  .footer .big-text {
+    font-size: 16px; font-weight: 700; letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #c4b5fd, #f472b6);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .footer .ax-credit { font-size: 10px; color: rgba(148,163,184,0.4); margin-top: 12px; line-height: 1.7; }
+
+  @media (max-width: 380px) { .hero h1 { font-size: 22px; } .stats { gap: 6px; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body lang="zh">
+
+<div class="stars"></div>
+
+<div class="lang-toggle" onclick="toggleLang()" role="button" aria-label="Toggle language">
+  <span class="opt" data-lang="en">EN</span>
+  <span class="opt active" data-lang="zh">中</span>
+</div>
+
+<div class="page">
+
+  <div class="ax-header">
+    <div class="dot"></div>
+    <span class="en">RESEARCH DOSSIER · ADVENTUREX 2026</span>
+    <span class="zh">全景调研 · ADVENTUREX 2026 · 杭州</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1><span class="en">AdventureX 2026<br>Research Dossier</span><span class="zh">AdventureX 2026<br>全景调研报告</span></h1>
+    <p class="subtitle">
+      <span class="en">Everything Harry needs before Hangzhou — admission, logistics, tools, ideas, teammates, risks.</span>
+      <span class="zh">出发杭州前的一切情报——录取、行前、工具、点子、队友、风险。</span>
+    </p>
+    <span class="status-badge"><span class="blip"></span><span class="en">STATUS: ADMITTED ✓ CREATOR SEAT</span><span class="zh">状态：已录取 ✓ 创造者席位</span></span>
+    <div class="stats">
+      <div class="stat"><span class="num" data-count="800">0</span><span class="stat-label"><span class="en">Hackers</span><span class="zh">创造者</span></span></div>
+      <div class="stat"><span class="num">¥1M</span><span class="stat-label"><span class="en">Prize Pool</span><span class="zh">总奖池</span></span></div>
+      <div class="stat"><span class="num" data-count="5">0</span><span class="stat-label"><span class="en">Days 7/22–26</span><span class="zh">天 7/22–26</span></span></div>
+      <div class="stat"><span class="num" data-count="223">0</span><span class="stat-label"><span class="en">2025 Projects</span><span class="zh">2025 项目数</span></span></div>
+    </div>
+  </div>
+
+  <!-- Sticky mini-nav -->
+  <nav class="mini-nav" id="miniNav">
+    <a href="#overview"><span class="en">Event</span><span class="zh">活动</span></a>
+    <a href="#admission"><span class="en">Admission</span><span class="zh">录取</span></a>
+    <a href="#checklist"><span class="en">Checklist</span><span class="zh">行前</span></a>
+    <a href="#tools"><span class="en">Tools</span><span class="zh">工具</span></a>
+    <a href="#sponsors"><span class="en">Sponsors</span><span class="zh">赞助</span></a>
+    <a href="#ideas"><span class="en">Ideas</span><span class="zh">点子</span></a>
+    <a href="#team"><span class="en">Team</span><span class="zh">队友</span></a>
+    <a href="#risks"><span class="en">Risks</span><span class="zh">风险</span></a>
+    <a href="#links"><span class="en">Links</span><span class="zh">链接</span></a>
+  </nav>
+
+  <!-- 1. Event Overview -->
+  <div class="section" id="overview">
+    <h2>🗺️ <span class="en">Event Overview</span><span class="zh">活动概览</span></h2>
+    <div class="dcard reveal">
+      <table class="kv">
+        <tr><td><span class="en">Dates</span><span class="zh">日期</span></td><td><strong>2026.07.22 – 07.26</strong> · <span class="en">check-in on 7/22, full attendance required</span><span class="zh">7/22 现场报到，需全程参与</span></td></tr>
+        <tr><td><span class="en">Venue</span><span class="zh">场地</span></td><td><span class="en"><strong>Hangzhou Future Sci-Tech City</strong> — Academic Exchange Center + Hupan Research Center twin venues (182m apart), No.9 Lixian Rd, Yuhang. Metro Line 5 Liangmu Rd, ~1.2km walk</span><span class="zh"><strong>杭州未来科技城</strong> — 学术交流中心 + 湖畔创研中心双场地（相距 182m），余杭区礼贤路9号。地铁 5 号线良睦路站步行约 1.2km</span></td></tr>
+        <tr><td><span class="en">Scale</span><span class="zh">规模</span></td><td><span class="en"><strong>800 creators</strong> ("contemporary hippies with coding, design or other superpowers"), Feishu team-up group already 609+ members</span><span class="zh">招募 <strong>800 名</strong>「有编程、设计或其他能力的当代嬉皮士」，组队飞书群已 609+ 人</span></td></tr>
+        <tr><td><span class="en">Prizes</span><span class="zh">奖金</span></td><td><span class="en"><strong>¥1,000,000 total prize pool</strong> across theme + sponsor tracks</span><span class="zh">主题赛道 + 赞助商赛道合计 <strong>¥100 万总奖池</strong></span></td></tr>
+        <tr><td><span class="en">2025 baseline</span><span class="zh">2025 基线</span></td><td><span class="en">223 projects · 119 awards · 6 themes · 37 tracks — winners stacked 5–8 sponsor tracks per build</span><span class="zh">223 个项目 · 119 个奖项 · 6 大主题 · 37 条赛道——大赢家单项目叠 5–8 条赞助赛道</span></td></tr>
+        <tr><td><span class="en">Slogan</span><span class="zh">口号</span></td><td>「为创造，再一次信仰之跃」<span class="en"> — One more leap of faith, for creation</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2. Admission Status -->
+  <div class="section" id="admission">
+    <h2>🎟️ <span class="en">Admission Status</span><span class="zh">录取状态</span></h2>
+    <div class="dcard green reveal">
+      <div class="d-title"><span class="badge ok">ADMITTED</span><span class="en">All 5 review stages passed</span><span class="zh">5 阶段审核全部通过</span></div>
+      <p class="d-body">
+        <span class="en">Submitted → Initial Review → Deliberation → Decision Ready → <strong>Result Released 🎉</strong>. Official letter: "our entire team was moved by the experiences, reflections, and desire to create that you showed."</span>
+        <span class="zh">Submitted → Initial Review → Deliberation → Decision Ready → <strong>Result Released 🎉</strong>。录取信原文：「我们整个团队都被你展现的经历、思考与创造渴望打动。」</span>
+      </p>
+    </div>
+    <div class="dcard reveal">
+      <table class="kv">
+        <tr><td><span class="en">Travel funding</span><span class="zh">差旅补贴</span></td><td><strong>0 CNY</strong> <span class="badge no"><span class="en">NONE</span><span class="zh">无</span></span></td></tr>
+        <tr><td><span class="en">Accommodation</span><span class="zh">住宿</span></td><td><span class="badge ok"><span class="en">PROVIDED</span><span class="zh">提供</span></span> <span class="en">partner hotels rotation + venue sleeping bags/tents</span><span class="zh">合作酒店轮换预约 + 会场睡袋/帐篷</span></td></tr>
+        <tr><td><span class="en">Meals</span><span class="zh">餐食</span></td><td><span class="badge ok"><span class="en">PROVIDED</span><span class="zh">提供</span></span></td></tr>
+        <tr><td><span class="en">Insurance</span><span class="zh">保险</span></td><td><span class="badge ok"><span class="en">PROVIDED</span><span class="zh">提供</span></span> <span class="en">bought centrally by organizers</span><span class="zh">组委会统一购买</span></td></tr>
+      </table>
+    </div>
+    <div class="note-strip warn reveal">
+      <strong><span class="en">Action items:</span><span class="zh">待办：</span></strong>
+      <span class="en">① Confirm seat within 7 days → sign documents → join contestant community. ② Schedule page stays "Access Denied" until seat is confirmed. ③ Any subsidy paid post-event requires: 7/22 on-site check-in, student proof (if 26+), a runnable project at the end, and full rule compliance.</span>
+      <span class="zh">① 7 天内确认席位 → 签署文件 → 加入选手社区。② Schedule 页面在确认席位前仍 Access Denied。③ 赛后补贴发放条件：7/22 现场签到、26 岁以上出示学生证明、结束时提交可运行项目、全程遵守规则。</span>
+    </div>
+  </div>
+
+  <!-- 3. Pre-departure Checklist -->
+  <div class="section" id="checklist">
+    <h2>🧳 <span class="en">Pre-departure Checklist</span><span class="zh">行前清单</span></h2>
+    <div class="dcard blue reveal">
+      <div class="d-title">🪪 <span class="en">Documents</span><span class="zh">证件</span></div>
+      <ul class="clean">
+        <li><span class="en"><strong>Mainland ID card</strong> (mainland hackers) / passport or valid travel doc (others)</span><span class="zh">大陆选手带<strong>身份证</strong>；其他地区选手带护照或有效旅行证件</span></li>
+        <li><span class="en"><strong>Student ID / enrollment proof / admission letter</strong> — staff may verify at check-in for accommodation & subsidy eligibility</span><span class="zh"><strong>学生证 / 在读证明 / 录取通知书</strong>——报到或入住时工作人员可能核验</span></li>
+        <li><span class="en">HK↔Macau tip: mainland travel permit (physical card) — do the ¥15 Macau endorsement at a Hangzhou smart kiosk during the event for the return trip</span><span class="zh">港澳提示：带实体卡式通行证——活动期间抽 5 分钟在杭州智能签注机办 ¥15 澳门一次签注，返程顺游用</span></li>
+      </ul>
+    </div>
+    <div class="dcard blue reveal">
+      <div class="d-title">🎒 <span class="en">Packing (travel light)</span><span class="zh">行李（轻装出行）</span></div>
+      <ul class="clean">
+        <li><span class="en">💻 Laptop, chargers, plug adapter, cables</span><span class="zh">💻 电脑、充电器、转换插头、常用数据线</span></li>
+        <li><span class="en">👕 Clothes fit for long building sessions + rest</span><span class="zh">👕 适合长时间创作和休息的衣物</span></li>
+        <li><span class="en">🛠️ Any hardware / tools / materials you want to hack with</span><span class="zh">🛠️ 任何想用于 hacking 的硬件、工具或材料</span></li>
+        <li><span class="en">💊 Personal meds + mosquito repellent</span><span class="zh">💊 个人常用药品、驱蚊用品</span></li>
+        <li><span class="en">☂️ Umbrella / raincoat — Hangzhou summer = storms & typhoons</span><span class="zh">☂️ 雨伞或雨衣——杭州夏季多暴雨/台风过境</span></li>
+      </ul>
+    </div>
+    <div class="dcard reveal">
+      <div class="d-title">✈️ <span class="en">Verified trip plan (researched 7/19)</span><span class="zh">已验证行程方案（7/19 调研）</span></div>
+      <table class="kv">
+        <tr><td><span class="en">Outbound 7/21</span><span class="zh">去程 7/21</span></td><td><span class="en">⭐ HX112 HKG→HGH 07:55–10:55 ¥731 · budget: HSR + GJ8860 ≈¥650 · overnight sleeper G900 ¥810–1,040</span><span class="zh">⭐ 香港航空 HX112 07:55→10:55 ¥731 · 省钱：高铁+GJ8860 ≈¥650 · 过夜动卧 G900 ¥810–1,040</span></td></tr>
+        <tr><td><span class="en">Hotel 7/21</span><span class="zh">7/21 酒店</span></td><td><span class="en">Vienna Intl (Future Sci-Tech City) ¥284–338, or Orange (Hangzhou Normal Univ) ¥367 walkable — book fast, 800 hackers incoming</span><span class="zh">维也纳国际未来科技城店 ¥284–338，或桔子杭师大店 ¥367 可步行——尽快锁单，800 人涌入房源紧张</span></td></tr>
+        <tr><td><span class="en">Airport→venue</span><span class="zh">机场→会场</span></td><td><span class="en">Metro L19→L5 to Liangmu Rd, ¥10, ~60min</span><span class="zh">地铁 19 号线→5 号线良睦路，¥10，约 60 分钟</span></td></tr>
+        <tr><td><span class="en">Return</span><span class="zh">返程</span></td><td><span class="en">7/27 HGH→ZUH ¥420–500 → Macau day trip 7/28 → back to HK by night (class 7/29 10:00)</span><span class="zh">7/27 杭州→珠海 ¥420–500 → 7/28 澳门一日游 → 当晚回港（7/29 10:00 上课）</span></td></tr>
+      </table>
+    </div>
+    <div class="note-strip reveal">
+      <strong><span class="en">Comms:</span><span class="zh">通知：</span></strong>
+      <span class="en">all critical notices (check-in, housing, schedule changes, emergencies) go through the <strong>Feishu contestant group</strong> first — keep notifications on.</span>
+      <span class="zh">所有重要通知（报到、住宿、日程调整、紧急情况）优先通过<strong>飞书选手群</strong>发布——保持消息畅通。</span>
+    </div>
+  </div>
+
+  <!-- 4. Free Tools & Hardware -->
+  <div class="section" id="tools">
+    <h2>🧰 <span class="en">Free Tools &amp; Hardware</span><span class="zh">免费工具与硬件</span></h2>
+    <div class="grid2 reveal">
+      <div class="tool"><div class="t-name">AWS <span class="badge ok">2025 ✓</span></div><div class="t-note"><span class="en">Principal sponsor — cloud credits & deployment; had a dedicated cloud-deploy track in 2025</span><span class="zh">首席赞助商——云资源与部署；2025 有专属云部署赛道</span></div></div>
+      <div class="tool"><div class="t-name">Qoder <span class="badge warn">TBC</span></div><div class="t-note"><span class="en">AI coding agent runtime — per organizer channels; unlimited tokens = overnight autonomous builds</span><span class="zh">AI 编程 Agent——组织方渠道消息；无限 token = 超长自主构建</span></div></div>
+      <div class="tool"><div class="t-name">Dify <span class="badge ok">2025 ✓</span></div><div class="t-note"><span class="en">Agent orchestration; ran a full sponsor track in 2025 (WanderPaw won #1)</span><span class="zh">Agent 编排；2025 有完整赞助赛道（WanderPaw 夺冠）</span></div></div>
+      <div class="tool"><div class="t-name">StepFun 阶跃星辰 <span class="badge warn">TBC</span></div><div class="t-note"><span class="en">Multimodal models (ASR / vision / embeddings) — per organizer channels</span><span class="zh">多模态模型（语音/视觉/向量）——组织方渠道消息</span></div></div>
+      <div class="tool"><div class="t-name">Vision Pro <span class="badge ok">2025 ✓</span></div><div class="t-note"><span class="en">Spatial computing loaners — 2025 winners Afterlife & Whispr built on it</span><span class="zh">空间计算设备可借用——2025 Afterlife、Whispr 均基于它获奖</span></div></div>
+      <div class="tool"><div class="t-name"><span class="en">3D Printers</span><span class="zh">3D 打印机</span> <span class="badge ok">2025 ✓</span></div><div class="t-note"><span class="en">On-site farm — "0123 Instant Inspiration Print" won a theme #1 with them</span><span class="zh">现场打印农场——「0123灵感即刻打印」借此拿下主题第一</span></div></div>
+      <div class="tool"><div class="t-name"><span class="en">Robot Arms</span><span class="zh">机械臂</span> <span class="badge ok">2025 ✓</span></div><div class="t-note"><span class="en">Free to use; 3 separate arm tracks existed in 2025 — embodiment demos over-perform</span><span class="zh">免费使用；2025 有 3 条机械臂赛道——具身 demo 表现超预期</span></div></div>
+      <div class="tool"><div class="t-name"><span class="en">100+ Dev Chips</span><span class="zh">100+ 开发芯片</span> <span class="badge info">HW</span></div><div class="t-note"><span class="en">Boards & chips pool for hardware hacking — pair with the soft-hard combo winning pattern</span><span class="zh">硬件芯片/开发板资源池——配合「软硬结合」获奖模式使用</span></div></div>
+    </div>
+    <div class="note-strip reveal">
+      <strong><span class="en">Play:</span><span class="zh">打法：</span></strong>
+      <span class="en">design for tool-track eligibility from hour zero — every free tool used is a potential extra prize on the same codebase.</span>
+      <span class="zh">从第 0 小时就按「工具赛道资格」设计——每用一个免费工具，同一套代码就多一个潜在奖项。</span>
+    </div>
+  </div>
+
+<!-- 5. Sponsors -->
+  <div class="section" id="sponsors">
+    <h2>🤝 <span class="en">Sponsors</span><span class="zh">赞助商</span></h2>
+    <div class="dcard reveal">
+      <table class="kv">
+        <tr><td><span class="en">Principal</span><span class="zh">首席赞助</span></td><td><strong>AWS</strong> <span class="en">— cloud infrastructure & credits</span><span class="zh">— 云基础设施与算力资源</span></td></tr>
+        <tr><td><span class="en">Exclusive ×8</span><span class="zh">独家伙伴 ×8</span></td><td><span class="en">8 exclusive partners; 6 categories published: <strong>blockchain tech · AI-native app · AI coding · education · financial services · content platform</strong> (+2 TBA)</span><span class="zh">8 家独家合作伙伴；已公布 6 类：<strong>区块链技术 · AI 原生应用 · AI 编程 · 教育 · 金融服务 · 内容平台</strong>（+2 待公布）</span></td></tr>
+        <tr><td><span class="en">Featured</span><span class="zh">重点伙伴</span></td><td><strong>35+</strong> <span class="en">featured partners</span><span class="zh">家重点合作伙伴</span></td></tr>
+        <tr><td><span class="en">Community</span><span class="zh">社区伙伴</span></td><td><strong>140+</strong> <span class="en">community partners</span><span class="zh">家社区合作伙伴</span></td></tr>
+      </table>
+    </div>
+    <div class="note-strip warn reveal">
+      <strong><span class="en">Know the game:</span><span class="zh">看清规则：</span></strong>
+      <span class="en">the 2026 privacy policy discloses sponsors hold 4 roles at once — co-host, exclusive judges, sole prize provider, exclusive incubator. Translation: sponsor tracks decide the money. 2025's WanderPaw & MyWear each cashed 6 prizes from ONE build by stacking tracks.</span>
+      <span class="zh">2026 隐私政策披露：赞助商身兼四职——联合主办、独家评委、唯一奖金提供方、独家孵化器。翻译过来：奖金由赞助赛道决定。2025 年 WanderPaw 和 MyWear 都用一套代码叠赛道各拿 6 个奖。</span>
+    </div>
+  </div>
+
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">WHAT TO BUILD · WHO TO BUILD WITH</span><span class="zh">做什么 · 和谁做</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- 6. Project Ideas -->
+  <div class="section" id="ideas">
+    <h2>💡 <span class="en">Project Ideas</span><span class="zh">项目点子</span></h2>
+
+    <div class="dcard idea-card reveal">
+      <div class="d-title"><span class="medal">🥇</span><span class="i-name">SkillMart</span><span class="en">— the Agent Skill Economy</span><span class="zh">— Agent 技能经济市场</span></div>
+      <p class="d-body">
+        <span class="en">Agents autonomously buy, sell, rate and compose <strong>skills</strong>, seeded with Harry's real 250+ Claude Code skills. Bounties → skill bids → judge-agent verification → optional on-chain settlement. <strong>Why it wins:</strong> direct heir to PolyAgentMarket (BNB #1, 3 awards in 2025) with a moat nobody can copy in 72h — a genuine 250-skill inventory.</span>
+        <span class="zh">让 Agent 自主买卖、评分、组合<strong>技能</strong>，用 Harry 真实的 250+ Claude Code skills 冷启动。发悬赏 → 技能竞标 → 裁判 Agent 验证 → 可选链上结算。<strong>为什么能赢：</strong>PolyAgentMarket（2025 BNB 第一 + 3 奖）的直系继承者，且 250 个真实技能的库存是 72 小时内无人能复制的护城河。</span>
+      </p>
+      <div class="i-meta"><span><span class="en">Stacks: blockchain + AI-native + AI-coding + Dify + AWS</span><span class="zh">叠赛道：区块链 + AI原生 + AI编程 + Dify + AWS</span></span><span><span class="en">Team: +fullstack +backend/chain</span><span class="zh">队友：+全栈 +后端/链</span></span></div>
+    </div>
+
+    <div class="dcard idea-card reveal">
+      <div class="d-title"><span class="medal">🥈</span><span class="i-name">GhostTeam</span><span class="en">— the 72h Autonomous Startup</span><span class="zh">— 72 小时自主创业公司</span></div>
+      <p class="d-body">
+        <span class="en">Harry's Engineering→Marketing→Publishing pipelines as a visible multi-agent company: it live-builds a micro-product, writes its own posts, deploys the landing page, and keeps a public timestamped <strong>decision ledger</strong> on a booth screen. <strong>Why it wins:</strong> the Ralphthon@ICML 2026 winning formula ($10k: agents wrote a whole paper in 3h) — "the run itself is the artifact." Un-fakeable demo.</span>
+        <span class="zh">把 Harry 的工程→营销→发布三管道做成看得见的多智能体公司：现场自主构建一个微产品、自己写宣发、自己部署落地页，并在大屏上公开带时间戳的<strong>决策账本</strong>。<strong>为什么能赢：</strong>Ralphthon@ICML 2026 冠军公式（$10k：Agent 三小时写完整篇论文）——「运行过程本身就是作品」，demo 无法造假。</span>
+      </p>
+      <div class="i-meta"><span><span class="en">Stacks: AI-coding + AI-native + Dify + AWS + content</span><span class="zh">叠赛道：AI编程 + AI原生 + Dify + AWS + 内容</span></span><span><span class="en">Team: +fullstack +humanities/design</span><span class="zh">队友：+全栈 +人文/设计</span></span></div>
+    </div>
+
+    <div class="dcard idea-card reveal">
+      <div class="d-title"><span class="medal">🥉</span><span class="i-name">MindGate</span><span class="en">— EEG-Gated Agent Orchestration</span><span class="zh">— 脑电门控的 Agent 编排</span></div>
+      <p class="d-body">
+        <span class="en">Your brain state becomes the permission system for your agent fleet: deep focus → agents hold notifications and keep building; fatigue → summarize-and-suggest mode; sleep → night shift + morning brief. <strong>Why it wins:</strong> team up with the ZJU EEG team (hardware + algorithm ready, they asked for exactly a product/agent person). Soft-hard combo + attention-sovereignty narrative + 2025 had a dedicated BCI track (33 projects).</span>
+        <span class="zh">脑状态成为 Agent 舰队的权限系统：深度专注 → 拦截通知持续自主构建；疲劳 → 切换为总结建议模式；睡眠 → 夜班运行 + 晨报。<strong>为什么能赢：</strong>与浙大 EEG 团队组队（软硬件已就绪，他们正缺产品/Agent 人）。软硬结合 + 注意力主权叙事 + 2025 有专属脑机接口赛道（33 个项目）。</span>
+      </p>
+      <div class="i-meta"><span><span class="en">Team: ZJU EEG team + Harry</span><span class="zh">队友：浙大 EEG 团队 + Harry</span></span><span><span class="en">Tools: arms/e-ink output + StepFun + AWS</span><span class="zh">工具：机械臂/墨水屏 + StepFun + AWS</span></span></div>
+    </div>
+
+    <div class="dcard reveal">
+      <div class="d-title"><span class="en">+5 more on the bench</span><span class="zh">+5 个备选</span></div>
+      <ul class="clean">
+        <li><span class="en"><strong>BadgeLink</strong> — NFC e-ink badge whose agent broadcasts "what I'm building / what I need"; tap two badges → agents negotiate a match. With 用户083920 (1,500 ppl/day field-tested hardware)</span><span class="zh"><strong>BadgeLink</strong> — NFC 墨水屏胸牌，Agent 持续播报「我在做什么/我缺什么」；两牌相碰 → 双方 Agent 自动撮合。与用户083920 合作（硬件实测日流量 1500 人）</span></li>
+        <li><span class="en"><strong>ProofOfBuilder</strong> — agent swarm audits GitHub profiles into evidence-cited builder credentials, anchored on-chain; Harry's evaluate.sh is an 80% head start</span><span class="zh"><strong>ProofOfBuilder</strong> — Agent 集群审计 GitHub，生成带证据引用的 Builder 信用凭证并上链；Harry 的 evaluate.sh 已完成 80%</span></li>
+        <li><span class="en"><strong>ExamForge</strong> — 3 agent personas (examiner/grader/coach) run voice-first speaking exams + infinite practice generation; with Venus (promptspeak.space, live users)</span><span class="zh"><strong>ExamForge</strong> — 考官/评分官/教练三个 Agent 人格跑语音口语考试 + 无限生成练习；与 Venus 合作（promptspeak.space 有真实用户）</span></li>
+        <li><span class="en"><strong>HandsFree</strong> — wrap venue robot arms as MCP servers: any agent calls physical actions like an API; "Claude Code for the physical world"</span><span class="zh"><strong>HandsFree</strong> — 把会场机械臂封装成 MCP server：任何 Agent 像调 API 一样调用物理动作，「物理世界的 Claude Code」</span></li>
+        <li><span class="en"><strong>EchoPress</strong> — a newsroom of agents turns your build log into XHS posts, bilibili edits, landing pages — launched by using it on itself at the event</span><span class="zh"><strong>EchoPress</strong> — Agent 新闻编辑部把你的构建日志变成小红书帖、B 站剪辑、落地页——在现场用它宣传它自己</span></li>
+      </ul>
+    </div>
+    <div class="note-strip reveal">
+      <strong><span class="en">Strategy:</span><span class="zh">策略：</span></strong>
+      <span class="en">one build → stack 5+ tracks · reserve 20% of the 72h for a physical/theatrical demo moment · nobody in the Feishu group is building agent infrastructure — that empty lane is Harry's home turf.</span>
+      <span class="zh">一套代码 → 叠 5+ 条赛道 · 留 20% 时间做实体/戏剧化 demo 时刻 · 飞书群里没人做 Agent 基础设施——这条空赛道正是 Harry 的主场。</span>
+    </div>
+  </div>
+
+  <!-- 7. Teammate Candidates -->
+  <div class="section" id="team">
+    <h2>🧑‍🚀 <span class="en">Teammate Candidates</span><span class="zh">队友候选</span></h2>
+    <p class="d-body reveal" style="font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:10px;">
+      <span class="en"><strong style="color:var(--white)">58 profiles scanned</strong> from the Feishu group「AdventureX 26 的创造者们组队」(609 members) + GitHub/gallery cross-check, scored on 6 weighted dimensions (evaluate.sh). Target team: 3 people — fullstack + backend/data + Harry as agent architect & bridge.</span>
+      <span class="zh">已扫描飞书群「AdventureX 26 的创造者们组队」（609 人）<strong style="color:var(--white)">58 份画像</strong>，并经 GitHub/Gallery 交叉核验，按 6 维加权评分（evaluate.sh）。目标团队 3 人：全栈 + 后端/数据 + Harry 任 Agent 架构与 bridge。</span>
+    </p>
+
+    <div class="cand reveal"><div class="score hot">4.8</div><div><div class="c-name">LucianLi (lysrain21)<span class="cat"><span class="en">VERIFIED CHAMPION</span><span class="zh">实证冠军</span></span></div><div class="c-desc"><span class="en">3× hackathon champion (ETH Huangshan, AdvX track, Aptos). Voice Wallet for the visually impaired, TruePass distributed KYC — accessibility + privacy + market-research-driven. Best overall fit.</span><span class="zh">3 次黑客松冠军（ETH 黄山、AdvX 赛道、Aptos）。视障语音钱包 Voice Wallet、分布式 KYC TruePass——无障碍 + 隐私 + 市场调研驱动。综合适配度最高。</span></div></div></div>
+    <div class="cand reveal"><div class="score hot">4.35</div><div><div class="c-name">Jerry Lee (hedgeho9X)<span class="cat"><span class="en">VERIFIED CHAMPION</span><span class="zh">实证冠军</span></span></div><div class="c-desc"><span class="en">AdvX 2025 1st place + Watcha Gold. Context-ID: Go + LangGraph + gRPC memory middleware with PostgreSQL RLS. Serious backend engineering — dream fit for SkillMart / ProofOfBuilder.</span><span class="zh">AdvX 2025 第一名 + Watcha 金奖。Context-ID：Go + LangGraph + gRPC 记忆中间件（PostgreSQL RLS）。硬核后端——SkillMart / ProofOfBuilder 的理想人选。</span></div></div></div>
+    <div class="cand reveal"><div class="score hot">🔥</div><div><div class="c-name"><span class="en">ZJU EEG Team</span><span class="zh">浙大 EEG 团队</span><span class="cat"><span class="en">HARDWARE / BCI</span><span class="zh">硬件 / 脑机</span></span></div><div class="c-desc"><span class="en">EEG hardware + algorithm already built; recruiting product design + embedded — they need exactly what Harry offers. Top teaming target (→ MindGate).</span><span class="zh">脑电硬件 + 算法已就绪，正招产品设计 + 嵌入式——缺的正是 Harry 提供的。头号组队目标（→ MindGate）。</span></div></div></div>
+    <div class="cand reveal"><div class="score hot">🔥</div><div><div class="c-name">用户083920<span class="cat"><span class="en">HARDWARE + OPS</span><span class="zh">硬件 + 运营</span></span></div><div class="c-desc"><span class="en">NFC e-ink check-in device field-tested at 1,500 ppl/day + runs 4 confession-wall communities with 80k+ users — hardware & distribution in one person (→ BadgeLink).</span><span class="zh">NFC 墨水屏打卡器实测日流量 1500 人 + 运营 4 个表白墙共 80k+ 用户——硬件与分发渠道合一（→ BadgeLink）。</span></div></div></div>
+    <div class="cand reveal"><div class="score">✅</div><div><div class="c-name">Venus (16yo)<span class="cat">EDTECH</span></div><div class="c-desc"><span class="en">promptspeak.space (IELTS speaking, 26 live users) + easyecon AP drills — natural ally for the confirmed education partner track (→ ExamForge).</span><span class="zh">promptspeak.space（雅思口语，26 名真实用户）+ easyecon AP 刷题——教育独家赛道的天然盟友（→ ExamForge）。</span></div></div></div>
+    <div class="cand reveal"><div class="score">✅</div><div><div class="c-name">Kevin lyf<span class="cat"><span class="en">BACKEND / INDUSTRIAL</span><span class="zh">后端 / 工业</span></span></div><div class="c-desc"><span class="en">Aircraft engine monitoring Python system in real production use — solid data/backend profile for ideas 1/5/7.</span><span class="zh">飞机发动机性能监控 Python 系统已实际投用——扎实的数据/后端画像，适配点子 1/5/7。</span></div></div></div>
+    <div class="cand reveal"><div class="score">✅</div><div><div class="c-name">tfboy<span class="cat"><span class="en">SOCIAL / CONTENT</span><span class="zh">社交 / 内容</span></span></div><div class="c-desc"><span class="en">Campus dating site with 200+ GitHub stars + automated video editing — feeds the EchoPress / GhostTeam marketing pipeline.</span><span class="zh">校园恋爱匹配网站 GitHub 200+ stars + 自动化剪辑——可直接喂给 EchoPress / GhostTeam 的营销管线。</span></div></div></div>
+    <div class="cand reveal"><div class="score">3.7</div><div><div class="c-name">a42z-Judge (HS1CMU)<span class="cat">AI AGENT</span></div><div class="c-desc"><span class="en">AdvX 2025 AI Agent track runner-up; 92 commits in 48h, live demo, philosophical manifesto. Also rated: pal-up 3.45 · Exception 3.05 · ShitBro 2.85 · PoliPlay 2.85.</span><span class="zh">AdvX 2025 AI Agent 赛道亚军；48h 92 commits，有 live demo 与哲学宣言。其余评分：pal-up 3.45 · 异常 Exception 3.05 · ShitBro 2.85 · PoliPlay 2.85。</span></div></div></div>
+    <div class="cand reveal"><div class="score" style="background:rgba(251,191,36,0.1);border-color:rgba(251,191,36,0.3);color:var(--warn)">⚠️</div><div><div class="c-name">李蒙 <span class="en">(Xiaomi wearable PM)</span><span class="zh">（小米穿戴 PM）</span><span class="cat"><span class="en">CAUTION</span><span class="zh">谨慎</span></span></div><div class="c-desc"><span class="en">Fashion/outfit agent pitch = a rerun of MyWear, 2025's biggest winner (6 awards) — judges saw it last year. Join only with a hard differentiator like real agentic checkout.</span><span class="zh">时尚穿搭 Agent = 2025 最大赢家 MyWear（6 个奖）的复刻——评委去年见过。除非加上真 Agent 下单等硬差异化，否则回避。</span></div></div></div>
+  </div>
+
+  <!-- 8. Controversy Notes -->
+  <div class="section" id="risks">
+    <h2>⚠️ <span class="en">Controversy Notes</span><span class="zh">争议档案</span></h2>
+    <div class="dcard red reveal">
+      <div class="d-title"><span class="en">Dreamer Database — data sold to sponsors</span><span class="zh">Dreamer Database — 数据出售给赞助商</span></div>
+      <p class="d-body">
+        <span class="en">Ex-organizer "Max" exposed (2025-07) that applicant/visitor data was compiled into a "Dreamer Database" and sponsor access sold for <strong>~¥90k</strong>, with 4 alleged PIPL violations (no valid separate consent, illegal cross-border transfer, over-collection incl. rejected applicants). Official response attacked the whistleblower instead of the problem.</span>
+        <span class="zh">前组织成员 Max（2025-07）揭露：参赛者/访客数据被汇编为「梦想家数据库」，向赞助商出售访问权约 <strong>9 万元</strong>；涉 4 项 PIPL 违规（无有效单独同意、非法跨境传输、过度收集含落选者数据）。官方回应选择攻击揭露者而非解决问题。</span>
+      </p>
+    </div>
+    <div class="dcard red reveal">
+      <div class="d-title"><span class="en">Hong Kong entity — PIPL sidestep attempt</span><span class="zh">香港主体 — 规避 PIPL 的尝试</span></div>
+      <p class="d-body">
+        <span class="en">AdventureX Education Technology Ltd registered in HK 2025-11-14 (#79171672); the 2026 policy claims HK PDPO only + exclusive HK jurisdiction. Legal analysis (SmallWOD): PIPL still applies — the event runs in Hangzhou and serves mainland residents (PIPL Art. 3); choice-of-law clauses can't exclude public law.</span>
+        <span class="zh">逃逸計畫教育科技有限公司 2025-11-14 在港注册（编号 79171672）；2026 政策声称仅适用香港 PDPO + 香港专属管辖。法律分析（SmallWOD）：PIPL 依然适用——活动在杭州举办、服务大陆居民（PIPL 第 3 条）；合同选法条款无法排除公法。</span>
+      </p>
+    </div>
+    <div class="dcard red reveal">
+      <div class="d-title"><span class="en">SmallWOD lawsuit — AdvX sued its critic and lost</span><span class="zh">SmallWOD 诉讼 — 起诉批评者并败诉</span></div>
+      <p class="d-body">
+        <span class="en">AdventureX sued the author of the privacy-compliance critique for defamation. The court ruled for the defendant: critical analysis of privacy practices is protected speech — a notable precedent for tech criticism in China.</span>
+        <span class="zh">AdventureX 以名誉权侵权起诉隐私合规批判文章作者「虾仁芝麻卷」。法院判被告胜诉：对隐私实践的批判性分析属受保护言论——中国科技批评的重要先例。</span>
+      </p>
+    </div>
+    <div class="dcard red reveal">
+      <div class="d-title"><span class="en">Review opacity</span><span class="zh">评审不透明</span></div>
+      <p class="d-body">
+        <span class="en">XHS posts with #AdventureX get priority review (marketing funnel disguised as community); sponsors are simultaneously co-host / exclusive judges / sole prize provider / incubator; zero public rubric, no appeals; resubmitting sends you to the back of the queue.</span>
+        <span class="zh">发布带 #AdventureX 的小红书笔记可获优先审核（伪装成社区互动的营销漏斗）；赞助商同时是联合主办/独家评委/唯一奖金方/孵化器；无公开评分标准、无申诉机制；重新提交会被排到队尾。</span>
+      </p>
+    </div>
+    <div class="note-strip warn reveal">
+      <strong><span class="en">Operating rules on-site:</span><span class="zh">现场行动守则：</span></strong>
+      <span class="en">assume everything in your application is visible to sponsors · share only what you'd share publicly · raise issues 1-on-1 with staff, never in the big group (a 2025 participant was publicly doxxed by the founder over a subsidy question) · keep your own copies of all submissions.</span>
+      <span class="zh">默认申请表里的一切对赞助商可见 · 只提交可公开的信息 · 有问题私下找工作人员，不在大群发言（2025 有选手因咨询补贴被创始人在群内公开人肉）· 所有提交物自留备份。</span>
+    </div>
+  </div>
+
+  <!-- 9. Useful Links -->
+  <div class="section" id="links">
+    <h2>🔗 <span class="en">Useful Links</span><span class="zh">常用链接</span></h2>
+    <div class="links-grid reveal">
+      <a class="link-card" href="https://united.adventure-x.org/todos?event=advx26" target="_blank" rel="noopener"><div class="l-name">United Portal <span class="arrow">↗</span></div><div class="l-url">united.adventure-x.org — <span class="en">to-dos, contracts, seat confirmation</span><span class="zh">待办、合同、席位确认</span></div></a>
+      <a class="link-card" href="https://adventure-x.org" target="_blank" rel="noopener"><div class="l-name"><span class="en">Official Site</span><span class="zh">官网</span> <span class="arrow">↗</span></div><div class="l-url">adventure-x.org — <span class="en">partners & announcements</span><span class="zh">合作伙伴与公告</span></div></a>
+      <a class="link-card" href="https://faq.adventure-x.org" target="_blank" rel="noopener"><div class="l-name">FAQ <span class="arrow">↗</span></div><div class="l-url">faq.adventure-x.org — <span class="en">application & event rules</span><span class="zh">申请与活动规则</span></div></a>
+      <a class="link-card" href="https://gallery.adventure-x.org" target="_blank" rel="noopener"><div class="l-name">Gallery <span class="arrow">↗</span></div><div class="l-url">gallery.adventure-x.org — <span class="en">223 past projects & winners</span><span class="zh">223 个往届项目与获奖名单</span></div></a>
+      <a class="link-card" href="https://adventurex.feishu.cn/docx/TGqqdIWlooUtW5x26VfcoSl2nth" target="_blank" rel="noopener"><div class="l-name"><span class="en">Pre-departure Guide</span><span class="zh">行前注意事项</span> <span class="arrow">↗</span></div><div class="l-url">adventurex.feishu.cn — <span class="en">official Feishu doc</span><span class="zh">官方飞书文档</span></div></a>
+      <a class="link-card" href="https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=5b0ie5b4-a2fb-4f83-8d3c-194d484b4843" target="_blank" rel="noopener"><div class="l-name"><span class="en">Feishu Group</span><span class="zh">飞书选手群</span> <span class="arrow">↗</span></div><div class="l-url">applink.feishu.cn — <span class="en">primary notice channel</span><span class="zh">主要通知渠道</span></div></a>
+      <a class="link-card" href="https://github.com/AdventureX-RGE/Playbook" target="_blank" rel="noopener"><div class="l-name"><span class="en">Ultimate Guide / Playbook</span><span class="zh">终极指南 / Playbook</span> <span class="arrow">↗</span></div><div class="l-url">github.com/AdventureX-RGE — <span class="en">open hackathon playbook</span><span class="zh">开源办赛手册</span></div></a>
+      <a class="link-card" href="https://passport.adventure-x.org/privacy" target="_blank" rel="noopener"><div class="l-name"><span class="en">Privacy Policy</span><span class="zh">隐私政策</span> <span class="arrow">↗</span></div><div class="l-url">passport.adventure-x.org — <span class="en">read before consenting</span><span class="zh">同意前先读</span></div></a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="big-text">为创造，再一次信仰之跃</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;">
+      <span class="en">Research dossier compiled 2026-07-19 · Harry OneZion</span>
+      <span class="zh">调研档案汇编于 2026-07-19 · Harry OneZion</span>
+    </div>
+    <div class="ax-credit">
+      AdventureX 2026 · 7/22–26 · <span class="en">Hangzhou · Future Sci-Tech City</span><span class="zh">杭州 · 未来科技城</span><br>
+      <span class="en">Sources: United Portal · Feishu docs · gallery data (223 projects) · controversy investigation · trip research (CoVe-verified)</span>
+      <span class="zh">来源：United Portal · 飞书文档 · Gallery 数据（223 项目）· 争议调查 · 行程调研（CoVe 换源核验）</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── Language toggle ──
+function setLang(lang) {
+  document.body.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-toggle .opt').forEach(function (el) {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  try { localStorage.setItem('preferredLang', lang); } catch (e) {}
+}
+function toggleLang() {
+  setLang(document.body.getAttribute('lang') === 'en' ? 'zh' : 'en');
+}
+(function () {
+  var params = new URLSearchParams(location.search);
+  var urlLang = params.get('lang');
+  if (urlLang === 'en' || urlLang === 'zh') { setLang(urlLang); return; }
+  try {
+    var saved = localStorage.getItem('preferredLang');
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+  } catch (e) {}
+})();
+
+// ── Scroll reveal ──
+(function () {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+// ── Count-up stats ──
+(function () {
+  function countUp(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var duration = 1200, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var nums = document.querySelectorAll('.stat .num[data-count]');
+  if (!('IntersectionObserver' in window)) {
+    nums.forEach(function (el) { el.textContent = el.dataset.count; });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) { countUp(entry.target); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.5 });
+  nums.forEach(function (el) { io.observe(el); });
+})();
+
+// ── Sticky nav active highlight ──
+(function () {
+  var links = document.querySelectorAll('.mini-nav a');
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = document.querySelectorAll('#overview, #admission, #checklist, #tools, #sponsors, #ideas, #team, #risks, #links');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        var link = map[entry.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+})();
+</script>
+
+</body>
+</html>
