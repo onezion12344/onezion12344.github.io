@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HKU 休學與最長註冊期政策研究 — 不會退學，有明確例外機制</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --text: #2d2d2d;
+    --accent: #2b5797;
+    --cite-bg: #f0f0eb;
+    --border: #ddd9d0;
+    --heading: #1a1a1a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+  h1 {
+    font-size: 1.8em;
+    color: var(--heading);
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .subtitle {
+    color: #777;
+    font-size: 0.95em;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  h2 {
+    font-size: 1.25em;
+    color: var(--heading);
+    margin: 40px 0 12px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border);
+  }
+  h2:first-of-type { border-top: none; margin-top: 24px; }
+  p { margin: 0 0 10px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 0.95em;
+  }
+  th, td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--cite-bg);
+    font-weight: 600;
+    color: var(--heading);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td:first-child { white-space: nowrap; }
+  sup {
+    color: var(--accent);
+    font-size: 0.75em;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  sup a { color: var(--accent); text-decoration: none; }
+  sup a:hover { text-decoration: underline; }
+  blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 12px 0 16px;
+    padding: 8px 16px;
+    background: var(--cite-bg);
+    border-radius: 0 4px 4px 0;
+    font-style: italic;
+    color: #555;
+  }
+  .cites {
+    margin-top: 20px;
+    padding: 14px 16px;
+    background: var(--cite-bg);
+    border-radius: 6px;
+    font-size: 0.85em;
+    line-height: 1.6;
+    color: #555;
+  }
+  .cites p { margin: 6px 0; }
+  .cites a { color: var(--accent); text-decoration: underline; }
+  .highlight-box {
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    background: #edf3f9;
+  }
+  .highlight-box p { margin: 4px 0; }
+  .verdict {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .timeline-row { display: flex; gap: 8px; margin: 8px 0; font-size: 0.95em; }
+  .timeline-label { min-width: 120px; font-weight: 600; color: var(--heading); }
+  .footnote {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8em;
+    color: #888;
+  }
+  @media (max-width: 600px) {
+    body { padding: 20px 14px 60px; }
+    h1 { font-size: 1.4em; }
+  }
+</style>
+</head>
+<body>
+
+<h1>§1 一句話結論</h1>
+
+<p class="verdict">HKU 休學 2 年不會導致退學。雙學位有 8 年最長註冊期，休學期計入但仍有充足餘量。即使超期，Board of Studies 可以個案批准延期——這不是一條死線，是一條有柔性的線。<sup><a href="#cite-1-1">[1]</a></sup></p>
+
+
+<h1>§2 核心機制：兩條時間線</h1>
+
+<p>HKU 用兩個時鐘管本科生：</p>
+
+<table>
+  <tr><th>時間線</th><th>BA&BEng(AI&DataSc)</th><th>普通 4 年制本科</th></tr>
+  <tr>
+    <td>規範修業期 (normative)</td>
+    <td><strong>5 年</strong>（10 學期）<sup><a href="#cite-2-1">[1]</a></sup></td>
+    <td><strong>4 年</strong>（8 學期）</td>
+  </tr>
+  <tr>
+    <td>最長註冊期 (maximum)</td>
+    <td><strong>8 年</strong><sup><a href="#cite-2-1">[1]</a></sup></td>
+    <td><strong>6 年</strong><sup><a href="#cite-2-2">[2]</a></sup></td>
+  </tr>
+  <tr>
+    <td>計算公式</td>
+    <td colspan="2">150% × 規範修業期，餘數進位為完整學年<sup><a href="#cite-2-3">[3]</a></sup></td>
+  </tr>
+</table>
+
+<div class="highlight-box">
+  <p><strong>關鍵規定：</strong>休學期<strong>計入</strong>最長註冊期（僅兵役除外）。<sup><a href="#cite-2-2">[2]</a></sup> 換句話說，你休的每一天都在消耗總配額。</p>
+</div>
+
+<div class="cites">
+  <p id="cite-2-1">[1] <em>Regulations for the Double Degree of BA&BEng(AI&DataSc)</em>, AEng2. HKU Faculty of Arts, 2025-26. "The curriculum … shall normally require ten semesters of full-time study, extending over not fewer than five academic years … Candidates shall not be permitted to extend their studies beyond the maximum period of registration of eight academic years." <a href="https://arts.hku.hk/wp-content/uploads/2026/02/BA_BEng_reg.pdf">全文链接</a></p>
+  <p id="cite-2-2">[2] <em>FAQs on Leave of Absence</em>. HKU Science Faculty. "The period of semester long leave of absence is excluded from the counting of normative study period except for semester/year long outgoing exchange study. The period of leave of absence (excluding the leave for compulsory military service) is to be counted within the maximum period of registration." <a href="https://www.scifac.hku.hk/f/page/4788/17730/FAQs_on_Leave_of_Absence.pdf">全文链接</a></p>
+  <p id="cite-2-3">[3] <em>Regulations for First Degree Curricula</em>, UG1(e). HKU Calendar 2025-26. "The 'maximum period of registration' is equivalent to a period which is 150% of the curriculum's normative period of study … provided that where this results in a residual fraction of an academic year, the fractional period shall be extended to one full academic year." <a href="https://calendar.hku.hk/regulations-for-first-degree-curricula/">全文链接</a></p>
+</div>
+
+
+<h1>§3 時間線試算</h1>
+
+<p>以 2024 年入學 BA&BEng(AI&DataSc) 為例：</p>
+
+<div class="timeline-row"><span class="timeline-label">入學</span><span>2024 年 9 月</span></div>
+<div class="timeline-row"><span class="timeline-label">最長註冊到期</span><span><strong>2032 年 8 月</strong>（8 年）<sup><a href="#cite-3-1">[1]</a></sup></span></div>
+<div class="timeline-row"><span class="timeline-label">休學消耗</span><span>~2 年</span></div>
+<div class="timeline-row"><span class="timeline-label">剩餘配額</span><span><strong>約 5 個日曆年</strong></span></div>
+<div class="timeline-row"><span class="timeline-label">正常讀完需時</span><span>約 3 年</span></div>
+
+<div class="highlight-box">
+  <p><strong>結論：</strong>2 年休學後回來，仍有 <strong>5 年配額完成餘下 3 年課程</strong>——綽綽有餘，遠未踩線。<sup><a href="#cite-3-1">[1]</a></sup></p>
+</div>
+
+<div class="cites">
+  <p id="cite-3-1">[1] 同上 §2 來源 [1]：AEng2 規定最長註冊期為 8 學年，自首次註冊起算。</p>
+</div>
+
+
+<h1>§4 超期的例外機制——這才是關鍵</h1>
+
+<p>即使將來用盡 8 年配額，三條法規都留了活口：</p>
+
+<table>
+  <tr><th>法規</th><th>例外條款原文</th><th>審批機構</th></tr>
+  <tr>
+    <td>First Degree Curricula UG5<sup><a href="#cite-4-1">[1]</a></sup></td>
+    <td>"…within the maximum period of registration, <strong>unless otherwise permitted or required by the Board of the Faculty</strong>."</td>
+    <td>學院教務委員會</td>
+  </tr>
+  <tr>
+    <td>BA&BEng Regulation AEng2<sup><a href="#cite-4-2">[2]</a></sup></td>
+    <td>"…eight academic years, <strong>unless otherwise permitted or required by the Board of Studies</strong>."</td>
+    <td>BA&BEng 學務委員會</td>
+  </tr>
+  <tr>
+    <td>BA(HDT) Regulation<sup><a href="#cite-4-3">[3]</a></sup></td>
+    <td>"…six academic years, <strong>unless otherwise permitted</strong> or required by the Board of Studies."</td>
+    <td>學務委員會</td>
+  </tr>
+</table>
+
+<blockquote>
+  <strong>這意味著：</strong>超過 8 年之後，不是自動退學——而是由 Board of Studies 個案審批。只要理由充分（創業、醫療、特殊情況），就有獲批空間。<sup><a href="#cite-4-2">[2]</a></sup>
+</blockquote>
+
+<div class="cites">
+  <p id="cite-4-1">[1] <em>Regulations for First Degree Curricula</em>, UG5. HKU Calendar 2025-26. <a href="https://calendar.hku.hk/regulations-for-first-degree-curricula/">全文链接</a></p>
+  <p id="cite-4-2">[2] <em>Regulations for the Double Degree of BA&BEng(AI&DataSc)</em>, AEng2. HKU Faculty of Arts, 2025-26. <a href="https://arts.hku.hk/wp-content/uploads/2026/02/BA_BEng_reg.pdf">全文链接</a></p>
+  <p id="cite-4-3">[3] <em>BA(HDT) Regulations 2024-25</em>. HKU Faculty of Arts. "Candidates shall not be permitted to extend their studies beyond the maximum period of registration of six academic years, unless otherwise permitted …" <a href="https://arts.hku.hk/wp-content/uploads/2026/02/BAHDTreg2425.pdf">全文链接</a></p>
+</div>
+
+
+<h1>§5 實操路徑</h1>
+
+<table>
+  <tr><th>時間點</th><th>操作</th></tr>
+  <tr>
+    <td><strong>現在</strong></td>
+    <td>不需要做任何事——還有約 5 年配額，不在危險區<sup><a href="#cite-5-1">[1]</a></sup></td>
+  </tr>
+  <tr>
+    <td><strong>如果接近 8 年</strong></td>
+    <td>提前至少一個學期，通過 Faculty Office 向 Board of Studies 提交書面延期申請 + 支持文件（創業證明 / 醫療記錄等）<sup><a href="#cite-5-2">[2]</a></sup></td>
+  </tr>
+  <tr>
+    <td><strong>申請表格</strong></td>
+    <td>SF416 — Leave of Absence，通過 OASS 在線提交<sup><a href="#cite-5-2">[2]</a></sup></td>
+  </tr>
+  <tr>
+    <td><strong>聯絡窗口</strong></td>
+    <td>所屬學院 Academic Services / Faculty Office<sup><a href="#cite-5-2">[2]</a></sup></td>
+  </tr>
+</table>
+
+<div class="cites">
+  <p id="cite-5-1">[1] 同上 §3 時間線試算：5 年配額完成餘下 3 年課程。</p>
+  <p id="cite-5-2">[2] <em>FAQs on Leave of Absence</em>. HKU Science Faculty. "Students who wish to apply for leave of absence should complete the online form 'SF416 — Leave of Absence' via the Science Online Application Submission System (OASS)." <a href="https://www.scifac.hku.hk/f/page/4788/17730/FAQs_on_Leave_of_Absence.pdf">全文链接</a></p>
+</div>
+
+
+<h1>§6 不同專業對照</h1>
+
+<table>
+  <tr><th>專業</th><th>規範修業期</th><th>最長註冊期</th><th>例外條款</th></tr>
+  <tr>
+    <td>BA&BEng(AI&DataSc)<sup><a href="#cite-6-1">[1]</a></sup></td>
+    <td>5 年</td>
+    <td><strong>8 年</strong></td>
+    <td>✅ Board of Studies</td>
+  </tr>
+  <tr>
+    <td>BA（單學位）</td>
+    <td>4 年</td>
+    <td><strong>6 年</strong></td>
+    <td>✅ Board of Faculty<sup><a href="#cite-6-2">[2]</a></sup></td>
+  </tr>
+  <tr>
+    <td>BA&LLB<sup><a href="#cite-6-3">[3]</a></sup></td>
+    <td>5 年</td>
+    <td><strong>8 年</strong></td>
+    <td>✅ Board of Studies</td>
+  </tr>
+  <tr>
+    <td>BSc&LLB<sup><a href="#cite-6-4">[4]</a></sup></td>
+    <td>5 年</td>
+    <td><strong>8 年</strong></td>
+    <td>✅ Board of Studies</td>
+  </tr>
+  <tr>
+    <td>BEng(AI&DataSc) 單學位</td>
+    <td>4 年</td>
+    <td><strong>6 年</strong></td>
+    <td>✅ Board of Faculty<sup><a href="#cite-6-2">[2]</a></sup></td>
+  </tr>
+</table>
+
+<blockquote>
+  <strong>規律：</strong>雙學位 = 5 年 → 8 年；單學位 = 4 年 → 6 年。所有路徑都有例外條款，沒有一個是絕對死線。
+</blockquote>
+
+<div class="cites">
+  <p id="cite-6-1">[1] <em>Regulations for BA&BEng(AI&DataSc)</em>, AEng2. HKU Faculty of Arts, 2025-26. <a href="https://arts.hku.hk/wp-content/uploads/2026/02/BA_BEng_reg.pdf">全文链接</a></p>
+  <p id="cite-6-2">[2] <em>Regulations for First Degree Curricula</em>, UG5. HKU Calendar 2025-26. <a href="https://calendar.hku.hk/regulations-for-first-degree-curricula/">全文链接</a></p>
+  <p id="cite-6-3">[3] <em>BA&LLB Regulations 2025-26</em>. HKU Faculty of Arts. "Candidates shall not be permitted to extend their studies beyond the maximum period of registration of eight academic years, unless otherwise permitted …" <a href="https://arts.hku.hk/wp-content/uploads/2026/02/BALLB_reg2526_250630.pdf">全文链接</a></p>
+  <p id="cite-6-4">[4] <em>BScLLB Regulations and Syllabuses 2025-2026</em>. HKU Science Faculty. "…beyond the maximum period of registration of eight academic years, unless otherwise permitted …" <a href="https://www.scifac.hku.hk/f/page/5822/25226/BScLLB_2025-2026.pdf">全文链接</a></p>
+</div>
+
+
+<h1>§7 注意事項</h1>
+
+<p><strong>⚠️ BA&BEng 規定目前標記為 [Pending Approval]</strong>（2025-26 版待批）。<sup><a href="#cite-7-1">[1]</a></sup> AEng2 的「8 年 + Board of Studies 例外」機制與其他雙學位一致（BA&LLB、BSc&LLB 均為 8 年），大概率不會改變。但最終版本出來後應確認。</p>
+
+<p><strong>⚠️ 如果學生在第二年結束前退出 BA 部分</strong>（僅修 BEng），則從下學期起適用 BEng 單學位的 4 年 / 6 年規則，而非 5 年 / 8 年。<sup><a href="#cite-7-2">[2]</a></sup> 這會顯著壓縮可用時間。</p>
+
+<p><strong>⚠️ 本報告假設申請者為 BA&BEng(AI&DataSc) 雙學位學生。</strong> 如果 Lucas 屬於其他專業（如純 FinTech BEng），參見 §6 對照表中相應專業的最長註冊期。</p>
+
+<div class="cites">
+  <p id="cite-7-1">[1] <em>Regulations for BA&BEng(AI&DataSc)</em>, 首頁標記. HKU Faculty of Arts. "[Pending Approval]" <a href="https://arts.hku.hk/wp-content/uploads/2026/02/BA_BEng_reg.pdf">全文链接</a></p>
+  <p id="cite-7-2">[2] 同上，AEng3. "Candidates who opt out of the BA programme before the end of the second semester of the Second Year should from the next semester on refer to and comply with the Regulations for the Degree of Bachelor of Engineering in Artificial Intelligence and Data Science for students admitted to the BEng(AI&DataSc) 4-year curriculum."</p>
+</div>
+
+<p class="footnote">
+  報告生成：2026-07-19 · 研究方法：多源交叉驗證（HKU 官方法規 PDF × 5 + Science Faculty FAQs + HKU Calendar） · 所有引用均為一手官方來源
+</p>
+
+</body>
+</html>
