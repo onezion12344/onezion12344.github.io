@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Coding Vibe — Always-on multi-agent coding companion. 24/7 Claude Code agent orchestra via your earphones.">
+<title>Coding Vibe — Always-on Coding Companion</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  :root {
+    --bg: #0d1b2a;
+    --surface: #111d33;
+    --card: #162236;
+    --border: #1e3050;
+    --accent: #e07a5f;
+    --accent2: #d4a843;
+    --accent3: #3a8a8a;
+    --muted: #8a9ab0;
+    --white: #f0e6d8;
+    --glow: 0 0 40px rgba(224, 122, 95, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Space Grotesk', 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  ::selection { background: rgba(224,122,95,0.3); color: #fff; }
+
+  /* Language */
+  body[lang="en"] .zh { display: none !important; }
+  body[lang="zh"] .en { display: none !important; }
+  .lang-toggle {
+    position: fixed; top: 10px; right: 14px; z-index: 200;
+    display: flex; align-items: center;
+    background: rgba(17,29,51,0.88);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border); border-radius: 20px; padding: 2px;
+    cursor: pointer;
+  }
+  .lang-toggle .opt {
+    padding: 3px 10px; border-radius: 16px;
+    font-size: 11px; font-weight: 500;
+    color: var(--muted); transition: all 0.2s; user-select: none;
+  }
+  .lang-toggle .opt.active { background: var(--accent); color: #fff; }
+  .lang-toggle .opt:not(.active):hover { color: var(--white); }
+
+  /* Starfield */
+  .stars {
+    position: fixed; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(224,122,95,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 20% 60%, rgba(58,138,138,0.04) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Pulsar rings */
+  .pulsar-rings {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 300px; height: 300px; pointer-events: none; z-index: 0; opacity: 0.03;
+  }
+  .pulsar-rings .ring {
+    position: absolute; inset: 0;
+    border: 1px solid var(--accent); border-radius: 50%;
+    animation: ring-expand 4s ease-out infinite;
+  }
+  .pulsar-rings .ring:nth-child(2) { animation-delay: 1.3s; }
+  .pulsar-rings .ring:nth-child(3) { animation-delay: 2.6s; }
+  @keyframes ring-expand {
+    0% { transform: scale(0.3); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+
+  /* Container */
+  .page { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  .site-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 24px 0 8px;
+    font-size: 11px; letter-spacing: 0.25em;
+    color: var(--muted); text-transform: uppercase;
+  }
+  .site-header .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  /* Hero */
+  .hero { text-align: center; padding: 22px 0 20px; }
+  .hero .product-icon {
+    font-size: 48px; line-height: 1; margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #f0c87a, #e07a5f);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .hero .tagline {
+    font-size: 14px; color: var(--muted); font-weight: 400;
+    margin-bottom: 4px; line-height: 1.7;
+  }
+  .hero .motto {
+    font-size: 12px; color: var(--accent3); font-weight: 500;
+    margin-bottom: 14px; font-style: italic;
+  }
+
+  /* Tags */
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; padding: 4px 0 14px;
+  }
+  .tag {
+    padding: 4px 10px; border-radius: 12px;
+    background: rgba(224,122,95,0.08);
+    border: 1px solid rgba(224,122,95,0.15);
+    font-size: 10px; color: var(--accent2);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .tag:hover { transform: translateY(-1px); border-color: rgba(224,122,95,0.4); }
+  .tag.pink {
+    background: rgba(58,138,138,0.08);
+    border-color: rgba(58,138,138,0.15);
+    color: var(--accent3);
+  }
+  .tag.blue {
+    background: rgba(212,168,67,0.08);
+    border-color: rgba(212,168,67,0.15);
+    color: var(--accent2);
+  }
+
+  /* Signal divider */
+  .signal-divider {
+    display: flex; align-items: center; gap: 12px; padding: 0 0 20px;
+  }
+  .signal-divider .line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(224,122,95,0.3), transparent);
+  }
+  .signal-divider span {
+    font-size: 10px; color: var(--muted); letter-spacing: 0.2em; white-space: nowrap;
+  }
+
+  /* Section */
+  .section { margin-bottom: 32px; scroll-margin-top: 64px; }
+  .section h2 {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.1em;
+    color: var(--muted); text-transform: uppercase;
+    margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .section h2::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(224,122,95,0.15);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Pull quote */
+  .pull-quote { text-align: center; padding: 18px 16px 2px; }
+  .pull-quote .pq-mark {
+    display: block; font-size: 30px; line-height: 0.6;
+    color: rgba(224,122,95,0.35); font-family: Georgia,serif;
+  }
+  .pull-quote .pq-text {
+    font-size: 16px; font-weight: 600;
+    background: linear-gradient(135deg, #f0c87a, #e07a5f);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.5;
+  }
+  .pull-quote .pq-sub {
+    margin-top: 4px; font-size: 11px; color: var(--muted);
+  }
+
+  /* Section quote */
+  .section-quote {
+    margin: -2px 0 12px; padding: 8px 12px;
+    border-left: 2px solid rgba(58,138,138,0.4);
+    background: rgba(58,138,138,0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 11px; font-style: italic;
+    color: var(--white); opacity: 0.85; line-height: 1.7;
+  }
+
+  /* Architecture cards */
+  .arch-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 15px 17px; margin-bottom: 10px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .arch-card:hover { border-color: rgba(224,122,95,0.3); transform: translateX(4px); }
+  .arch-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  }
+  .arch-card.l1::before { background: linear-gradient(180deg, #e07a5f, #d4a843); }
+  .arch-card.l2::before { background: linear-gradient(180deg, #d4a843, #e07a5f); }
+  .arch-card.l3::before { background: linear-gradient(180deg, #3a8a8a, #e07a5f); }
+  .arch-card .arch-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 6px;
+  }
+  .arch-card .arch-icon { font-size: 20px; line-height: 1; }
+  .arch-card .arch-name {
+    font-size: 13px; font-weight: 600;
+    background: linear-gradient(135deg, #f0c87a, #e07a5f);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .arch-card .arch-desc {
+    font-size: 11px; color: var(--muted); line-height: 1.65; padding-left: 30px;
+  }
+  .arch-card .arch-items {
+    padding-left: 30px; margin-top: 6px;
+  }
+  .arch-card .arch-items li {
+    font-size: 11px; color: var(--muted); line-height: 1.65; list-style: none;
+    padding: 2px 0; padding-left: 14px; position: relative;
+  }
+  .arch-card .arch-items li::before {
+    content: '·'; position: absolute; left: 0; color: var(--accent2);
+  }
+
+  /* Agent role chips */
+  .agent-roles {
+    display: flex; flex-wrap: wrap; gap: 6px; padding-left: 30px; margin-top: 8px;
+  }
+  .agent-role {
+    padding: 4px 10px; border-radius: 10px;
+    background: var(--card); border: 1px solid var(--border);
+    font-size: 10px; color: var(--white);
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .agent-role:hover {
+    border-color: rgba(224,122,95,0.4); transform: translateY(-1px);
+  }
+  .agent-role .ar-name { color: var(--accent2); font-weight: 600; }
+  .agent-role .ar-desc { color: var(--muted); margin-left: 2px; }
+
+  /* Decision gate */
+  .gate-card {
+    background: linear-gradient(135deg, rgba(224,122,95,0.12), rgba(212,168,67,0.06));
+    border: 1px solid rgba(224,122,95,0.25);
+    border-radius: 14px; padding: 16px; margin: 12px 0;
+  }
+  .gate-card .gate-header {
+    font-size: 13px; font-weight: 600; color: var(--accent2); margin-bottom: 8px;
+  }
+  .gate-card .gate-item {
+    font-size: 11px; color: var(--muted); line-height: 1.65;
+    padding: 4px 0; padding-left: 16px; position: relative;
+  }
+  .gate-card .gate-item::before {
+    content: '✓'; position: absolute; left: 0; color: var(--accent3); font-size: 10px;
+  }
+  .gate-card .gate-example {
+    margin-top: 10px; padding: 8px 12px;
+    border-left: 2px solid rgba(58,138,138,0.4);
+    background: rgba(58,138,138,0.04);
+    border-radius: 0 8px 8px 0;
+    font-size: 11px; font-style: italic;
+    color: var(--white); opacity: 0.85; line-height: 1.65;
+  }
+
+  /* Workflow steps */
+  .wf-step {
+    display: flex; gap: 12px; margin-bottom: 12px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 13px 15px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .wf-step:hover { border-color: rgba(224,122,95,0.3); transform: translateX(4px); }
+  .wf-step .wf-num {
+    flex-shrink: 0;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(224,122,95,0.2), rgba(212,168,67,0.1));
+    border: 1px solid rgba(224,122,95,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    color: var(--accent2);
+  }
+  .wf-step .wf-text { font-size: 11px; color: var(--muted); line-height: 1.65; flex: 1; }
+  .wf-step .wf-text strong { color: var(--accent2); font-weight: 600; }
+
+  /* Diff cards */
+  .diff-list { display: flex; flex-direction: column; gap: 10px; }
+  .diff-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 15px 17px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .diff-card:hover { border-color: rgba(58,138,138,0.35); transform: translateX(4px); }
+  .diff-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, #e07a5f, #3a8a8a);
+  }
+  .diff-card .d-title {
+    font-size: 12px; font-weight: 600; color: var(--accent2); margin-bottom: 4px;
+  }
+  .diff-card .d-desc {
+    font-size: 11px; color: var(--muted); line-height: 1.65;
+  }
+
+  /* Hardware stickers */
+  .hw-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;
+  }
+  .hw-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 14px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .hw-card:hover { border-color: rgba(224,122,95,0.35); transform: translateY(-2px); }
+  .hw-card .hw-icon { font-size: 22px; margin-bottom: 4px; }
+  .hw-card .hw-name { font-size: 11px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .hw-card .hw-count { font-size: 9px; color: var(--accent2); }
+  .hw-card .hw-note { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+  .hw-notice {
+    font-size: 10px; color: var(--muted); margin-top: 8px;
+    padding: 8px 12px;
+    border-left: 2px solid rgba(212,168,67,0.4);
+    background: rgba(212,168,67,0.04);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center; padding: 28px 0 36px;
+    font-size: 12px; color: var(--muted);
+  }
+  .footer .big-text {
+    font-size: 16px; font-weight: 700; letter-spacing: 0.05em;
+    background: linear-gradient(135deg, #f0c87a, #e07a5f);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 6px;
+  }
+  .footer .motto {
+    font-size: 10px; color: var(--muted); opacity: 0.6;
+    letter-spacing: 0.08em; margin-top: 10px;
+  }
+  .footer .ax-credit {
+    font-size: 10px; color: rgba(138,154,176,0.4); margin-top: 14px; line-height: 1.7;
+  }
+
+  /* Stats */
+  .stats {
+    display: flex; justify-content: center; gap: 8px; margin: 16px 0;
+  }
+  .stat {
+    flex: 1; max-width: 130px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 8px; text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .stat:hover { border-color: rgba(224,122,95,0.3); transform: translateY(-2px); }
+  .stat .num {
+    display: block; font-size: 22px; font-weight: 700;
+    background: linear-gradient(135deg, #f0c87a, #e07a5f);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+  }
+  .stat .lbl {
+    display: block; font-size: 9px; color: var(--muted);
+    letter-spacing: 0.05em; margin-top: 2px;
+  }
+
+  /* Sticky nav */
+  .mini-nav {
+    position: sticky; top: 8px; z-index: 100;
+    width: calc(100% - 88px);
+    background: rgba(17,29,51,0.88);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border); border-radius: 14px;
+    margin: 8px 0 24px; padding: 6px;
+    display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none;
+  }
+  @media (min-width: 620px) { .mini-nav { width: 100%; } }
+  .mini-nav::-webkit-scrollbar { display: none; }
+  .mini-nav a {
+    flex: 1; text-align: center;
+    padding: 7px 6px; border-radius: 10px;
+    font-size: 11px; color: var(--muted);
+    text-decoration: none; white-space: nowrap;
+    transition: color 0.25s, background 0.25s;
+  }
+  .mini-nav a:hover { color: var(--white); }
+  .mini-nav a.active { color: var(--white); background: rgba(224,122,95,0.18); }
+
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 23px; }
+    .hw-grid { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body lang="zh">
+
+<div class="stars"></div>
+<div class="pulsar-rings">
+  <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+</div>
+
+<div class="lang-toggle" onclick="toggleLang()" role="button" aria-label="Toggle language">
+  <span class="opt" data-lang="en">EN</span>
+  <span class="opt active" data-lang="zh">中</span>
+</div>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="site-header">
+    <div class="dot"></div>
+    <span class="en">ALWAYS-ON CODING COMPANION · ADVENTUREX 2026</span>
+    <span class="zh">ALWAYS-ON CODING COMPANION · ADVENTUREX 2026 · 杭州</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="product-icon">🎧</div>
+    <h1>Coding Vibe</h1>
+    <p class="tagline">
+      <span class="en">Yesterday we brought Vibe into Coding.<br>Today we merge Coding into Vibe.</span>
+      <span class="zh">昨天，我们把 Vibe 带入 Coding。<br>今天，我们把 Coding 融入 Vibe。</span>
+    </p>
+    <p class="motto">
+      <span class="en">Always-on multi-agent orchestra via your earphones</span>
+      <span class="zh">一副耳机，一支永远在线的 Agent 军团</span>
+    </p>
+
+    <div class="tags">
+      <span class="tag">Always-On</span>
+      <span class="tag pink">Multi-Agent</span>
+      <span class="tag blue">Voice-First</span>
+      <span class="tag">Claude Code</span>
+      <span class="tag pink">CEO Pattern</span>
+      <span class="tag blue">Hardware-Native</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="num" data-count="24">0</span>
+        <span class="lbl"><span class="en">Hours a Day</span><span class="zh">小时/天</span></span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="6">0</span>
+        <span class="lbl"><span class="en">Agent Roles</span><span class="zh">Agent 角色</span></span>
+      </div>
+      <div class="stat">
+        <span class="num" data-count="1">0</span>
+        <span class="lbl"><span class="en">You (CEO)</span><span class="zh">你（CEO）</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky nav -->
+  <nav class="mini-nav" id="miniNav">
+    <a href="#architecture"><span class="en">Architecture</span><span class="zh">架构</span></a>
+    <a href="#ceo"><span class="en">CEO Pattern</span><span class="zh">决策模式</span></a>
+    <a href="#workflow"><span class="en">Workflow</span><span class="zh">工作流</span></a>
+    <a href="#different"><span class="en">Why</span><span class="zh">差异</span></a>
+    <a href="#hardware"><span class="en">Hardware</span><span class="zh">硬件</span></a>
+  </nav>
+
+  <!-- Signal -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">HOW IT WORKS</span><span class="zh">工作原理</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Architecture -->
+  <div class="section" id="architecture">
+    <h2>🏗️ <span class="en">Architecture</span><span class="zh">架构</span></h2>
+
+    <div class="pull-quote reveal">
+      <span class="pq-mark">&ldquo;</span>
+      <div class="pq-text">
+        <span class="en">A 24/7 factory of Claude Code agents working on your projects. You're the CEO — the system only comes to you for key decisions.</span>
+        <span class="zh">一支 24/7 运行的 Claude Code Agent 军团。你是 CEO——系统只在关键决策时找你。</span>
+      </div>
+    </div>
+
+    <div class="arch-card l1 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">🎧</span>
+        <span class="arch-name">
+          <span class="en">Layer 1: Smart Hardware</span>
+          <span class="zh">第一层：智能硬件</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en">Your physical interface — always on your person, always connected.</span>
+        <span class="zh">你的人机交互层——始终佩戴，永远在线。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en">Earphones: Always-on audio I/O — captures your voice, plays back agent updates</span><span class="zh">耳机：常驻音频通道——捕捉你的语音，播放 Agent 状态</span></li>
+        <li><span class="en">Smart Ring: Tap to capture ideas, gesture to approve/reject</span><span class="zh">智能戒指：点按捕捉灵感，手势确认决策</span></li>
+        <li><span class="en">XR Glasses (optional): Visual feedback — agent status, diffs, diagrams in view</span><span class="zh">XR 眼镜（可选）：可视化反馈——Agent 状态、diff、架构图</span></li>
+      </ul>
+    </div>
+
+    <div class="arch-card l2 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">🧠</span>
+        <span class="arch-name">
+          <span class="en">Layer 2: Orchestrator (Always-Running Daemon)</span>
+          <span class="zh">第二层：编排器（常驻守护进程）</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en">The brain. A persistent process with three core components:</span>
+        <span class="zh">大脑。一个永不停止的进程，包含三个核心组件：</span>
+      </p>
+      <ul class="arch-items">
+        <li>
+          <span class="en"><strong style="color:var(--accent2)">Watcher Agent</strong> — listens to hardware stream, filters signal from noise</span>
+          <span class="zh"><strong style="color:var(--accent2)">监听 Agent</strong>——感知硬件输入，过滤噪音，识别意图</span>
+        </li>
+        <li>
+          <span class="en"><strong style="color:var(--accent2)">Router Agent</strong> — decides: dispatch to agent pool? spawn new agent? escalate to user?</span>
+          <span class="zh"><strong style="color:var(--accent2)">路由 Agent</strong>——决策：分派到 Agent 池？创建新 Agent？还是上报给你？</span>
+        </li>
+        <li>
+          <span class="en"><strong style="color:var(--accent2)">Decision Gate</strong> — ONLY interrupts you for high-stakes decisions. Everything else: autonomous.</span>
+          <span class="zh"><strong style="color:var(--accent2)">决策门</strong>——仅在高风险决策时打断你。其余全部自主执行。</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="arch-card l3 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">⚙️</span>
+        <span class="arch-name">
+          <span class="en">Layer 3: Claude Code Agent Pool</span>
+          <span class="zh">第三层：Claude Code Agent 池</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en">Specialized agents running in parallel git worktrees. Spawned and killed by the orchestrator as needed.</span>
+        <span class="zh">多个专业 Agent 并行运行在独立 git worktree 中。由编排器按需创建和回收。</span>
+      </p>
+      <div class="agent-roles">
+        <div class="agent-role"><span class="ar-name">Architect</span><span class="ar-desc"><span class="en">System design</span><span class="zh">系统设计</span></span></div>
+        <div class="agent-role"><span class="ar-name">Coder</span><span class="ar-desc"><span class="en">×N parallel</span><span class="zh">×N 并行</span></span></div>
+        <div class="agent-role"><span class="ar-name">Reviewer</span><span class="ar-desc"><span class="en">Quality gate</span><span class="zh">质量门</span></span></div>
+        <div class="agent-role"><span class="ar-name">Deploy</span><span class="ar-desc"><span class="en">CI/CD</span><span class="zh">部署</span></span></div>
+        <div class="agent-role"><span class="ar-name">Marketing</span><span class="ar-desc"><span class="en">Changelog+posts</span><span class="zh">宣发</span></span></div>
+        <div class="agent-role"><span class="ar-name">QA</span><span class="ar-desc"><span class="en">Test+fix loop</span><span class="zh">测试修复</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signal -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">HOW YOU RUN IT</span><span class="zh">你如何掌控</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- CEO Pattern -->
+  <div class="section" id="ceo">
+    <h2>👔 <span class="en">The CEO Pattern</span><span class="zh">CEO 模式</span></h2>
+
+    <p class="section-quote reveal">
+      <span class="en">You don't micromanage your agents. You operate like a CEO — the system works autonomously and only escalates when it truly needs you.</span>
+      <span class="zh">你不是在微操 Agent。你像 CEO 一样运作——系统自主工作，只在真正需要你时才找你。</span>
+    </p>
+
+    <div class="gate-card reveal">
+      <div class="gate-header">
+        <span class="en">System escalates ONLY when:</span>
+        <span class="zh">系统仅在以下情况上报：</span>
+      </div>
+      <div class="gate-item">
+        <span class="en">A decision has significant consequences (architecture, pricing, UX direction)</span>
+        <span class="zh">决策具有重大影响（架构选择、定价策略、UX 方向）</span>
+      </div>
+      <div class="gate-item">
+        <span class="en">Two agents disagree and cannot resolve through debate</span>
+        <span class="zh">两个 Agent 产生分歧，无法通过辩论解决</span>
+      </div>
+      <div class="gate-item">
+        <span class="en">An agent encounters something it cannot handle</span>
+        <span class="zh">Agent 遇到无法处理的新问题</span>
+      </div>
+      <div class="gate-item">
+        <span class="en">You proactively jump in — tap the ring, speak a command</span>
+        <span class="zh">你主动介入——敲一下戒指、说一句指令</span>
+      </div>
+      <div class="gate-example">
+        <span class="en">"Architect proposes Supabase Auth. Reviewer suggests Clerk — better DX but $25/mo. Which one?" — You say "Clerk" and keep walking.</span>
+        <span class="zh">「Architect 建议用 Supabase Auth。Reviewer 推荐 Clerk——DX 更好但 $25/月。你选哪个？」——你说「Clerk」，继续散步。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signal -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">EXAMPLE RUN</span><span class="zh">实战演示</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Workflow -->
+  <div class="section" id="workflow">
+    <h2>🔄 <span class="en">Full Workflow</span><span class="zh">完整工作流</span></h2>
+
+    <p class="pull-quote reveal">
+      <span class="pq-mark">&ldquo;</span>
+      <div class="pq-text">
+        <span class="en">"Build a DSE math practice app with AI-generated questions"</span>
+        <span class="zh">「做一个 DSE 数学练习 app，AI 自动出题」</span>
+      </div>
+      <div class="pq-sub">
+        <span class="en">— You, through your earphones, while at the gym</span>
+        <span class="zh">——你，戴着耳机，在健身房</span>
+      </div>
+    </p>
+
+    <div class="wf-step reveal">
+      <div class="wf-num">1</div>
+      <div class="wf-text">
+        <strong><span class="en">Capture</span><span class="zh">捕获</span></strong>
+        <span class="en">Watcher detects your command → Router spawns Architect Agent</span>
+        <span class="zh">监听 Agent 捕捉到你的指令 → 路由 Agent 创建 Architect Agent</span>
+      </div>
+    </div>
+    <div class="wf-step reveal">
+      <div class="wf-num">2</div>
+      <div class="wf-text">
+        <strong><span class="en">Design & Decide</span><span class="zh">设计 & 决策</span></strong>
+        <span class="en">Architect designs the system → Decision Gate asks: "Next.js + Supabase. OK?" → You tap ring to approve</span>
+        <span class="zh">Architect 设计系统 → 决策门询问：「Next.js + Supabase。可以吗？」→ 你敲戒指确认</span>
+      </div>
+    </div>
+    <div class="wf-step reveal">
+      <div class="wf-num">3</div>
+      <div class="wf-text">
+        <strong><span class="en">Parallel Build</span><span class="zh">并行构建</span></strong>
+        <span class="en">Router spawns 2 Coder Agents + 1 QA Agent → work in parallel git worktrees</span>
+        <span class="zh">路由 Agent 创建 2 个 Coder + 1 个 QA → 在独立 git worktree 中并行工作</span>
+      </div>
+    </div>
+    <div class="wf-step reveal">
+      <div class="wf-num">4</div>
+      <div class="wf-text">
+        <strong><span class="en">Review & Deploy</span><span class="zh">审查 & 部署</span></strong>
+        <span class="en">Reviewer approves PRs → Deploy Agent deploys to Vercel → health check passes</span>
+        <span class="zh">Reviewer 审批 PR → Deploy Agent 部署到 Vercel → 健康检查通过</span>
+      </div>
+    </div>
+    <div class="wf-step reveal">
+      <div class="wf-num">5</div>
+      <div class="wf-text">
+        <strong><span class="en">Market & Notify</span><span class="zh">宣发 & 通知</span></strong>
+        <span class="en">Marketing Agent detects deploy → writes changelog → posts to 小红书 → generates landing page → Stripe checkout ready</span>
+        <span class="zh">Marketing Agent 检测到部署 → 写 changelog → 发小红书 → 生成落地页 → Stripe 支付就绪</span>
+      </div>
+    </div>
+    <div class="wf-step reveal">
+      <div class="wf-num">6</div>
+      <div class="wf-text">
+        <strong><span class="en">You Get Notified</span><span class="zh">你收到通知</span></strong>
+        <span class="en">Voice in your earphones: "DSE Math Practice is live. Stripe ready. Want me to add sharing?" → You say "Yes" and keep working out.</span>
+        <span class="zh">耳机里传来声音：「DSE Math Practice 已上线，支付就绪。要加上分享功能吗？」→ 你说「加」，继续健身。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signal -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">WHAT MAKES IT DIFFERENT</span><span class="zh">为什么不同</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Why Different -->
+  <div class="section" id="different">
+    <h2>⚡ <span class="en">Why Different</span><span class="zh">核心差异</span></h2>
+
+    <div class="diff-list">
+      <div class="diff-card reveal">
+        <div class="d-title">1. <span class="en">Always-Running, Not a Chat Window</span><span class="zh">永远在线，不是聊天窗</span></div>
+        <div class="d-desc">
+          <span class="en">A daemon that runs 24/7, like a real team. Current tools are chat windows you open and close.</span>
+          <span class="zh">一个 24/7 运行的守护进程，像一个真正的团队。现有工具都是你打开再关闭的聊天窗。</span>
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="d-title">2. <span class="en">Multi-Agent, Not One LLM</span><span class="zh">多 Agent 协作，不是单模型</span></div>
+        <div class="d-desc">
+          <span class="en">Specialized agents with bounded contexts, debating and reviewing each other. Not one model trying to do everything.</span>
+          <span class="zh">专业 Agent 各司其职，互相辩论和审查。不是一个模型试图做所有事。</span>
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="d-title">3. <span class="en">Decision Gate, Not Command Interface</span><span class="zh">决策门，不是指令接口</span></div>
+        <div class="d-desc">
+          <span class="en">You don't tell it what to do step by step. It tells you what decisions it needs. You're the CEO, not the operator.</span>
+          <span class="zh">你不用一步步告诉它做什么。它告诉你需要做什么决策。你是 CEO，不是操作员。</span>
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="d-title">4. <span class="en">Hardware-Native, Not a Web App</span><span class="zh">硬件原生，不是 web app</span></div>
+        <div class="d-desc">
+          <span class="en">Designed for earphones + ring + glasses. You interact while walking, at the gym, in bed.</span>
+          <span class="zh">为耳机+戒指+眼镜而设计。你走路、健身、躺床上时都能交互。</span>
+        </div>
+      </div>
+      <div class="diff-card reveal">
+        <div class="d-title">5. <span class="en">Full Pipeline, Not Just Coding</span><span class="zh">全流程，不只是写代码</span></div>
+        <div class="d-desc">
+          <span class="en">Code → Review → Deploy → Market — all autonomous. Not a coding tool. A company factory.</span>
+          <span class="zh">编码→审查→部署→宣发——全部自主执行。不是编程工具。是公司工厂。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signal -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">ADVENTUREX HARDWARE LAB</span><span class="zh">ADVENTUREX 硬件实验室</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Hardware -->
+  <div class="section" id="hardware">
+    <h2>🔬 <span class="en">Hardware We Use</span><span class="zh">我们用的硬件</span></h2>
+
+    <p class="section-quote reveal">
+      <span class="en">All available at AdventureX hardware lab (端点 G). Opens July 23 1:00 AM. Shared borrowing — cannot leave the venue.</span>
+      <span class="zh">全部可在 AdventureX 硬件实验室（端点 G）免费借用。7 月 23 日凌晨 1 点开放。共享借用——不能带出场馆。</span>
+    </p>
+
+    <div class="hw-grid">
+      <div class="hw-card reveal">
+        <div class="hw-icon">💍</div>
+        <div class="hw-name">Zilo Whisper Ring</div>
+        <div class="hw-count"><span class="en">200 units</span><span class="zh">200 枚</span></div>
+        <div class="hw-note">IMU · <span class="en">Dual Mic</span><span class="zh">双麦</span> · SDK · <span class="en">Tap input</span><span class="zh">点按交互</span></div>
+      </div>
+      <div class="hw-card reveal">
+        <div class="hw-icon">👓</div>
+        <div class="hw-name">Rokid Glasses</div>
+        <div class="hw-count"><span class="en">20 units</span><span class="zh">20 副</span></div>
+        <div class="hw-note">AR · <span class="en">Status display</span><span class="zh">状态显示</span> · <span class="en">Diff preview</span><span class="zh">Diff 预览</span></div>
+      </div>
+      <div class="hw-card reveal">
+        <div class="hw-icon">🕶️</div>
+        <div class="hw-name">Even Realities</div>
+        <div class="hw-count"><span class="en">Smart glasses</span><span class="zh">智能眼镜</span></div>
+        <div class="hw-note">XR · <span class="en">Architecture diagrams</span><span class="zh">架构图</span></div>
+      </div>
+      <div class="hw-card reveal">
+        <div class="hw-icon">🤖</div>
+        <div class="hw-name">Go2 Air + A1Z</div>
+        <div class="hw-count"><span class="en">25+10 units</span><span class="zh">25+10 台</span></div>
+        <div class="hw-note"><span class="en">Robot dog</span><span class="zh">机器狗</span> · <span class="en">Arm</span><span class="zh">机械臂</span> (v2 <span class="en">embodied</span><span class="zh">具身</span>)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="big-text">
+      <span class="en">Yesterday we brought Vibe into Coding.<br>Today we merge Coding into Vibe.</span>
+      <span class="zh">昨天，我们把 Vibe 带入 Coding。<br>今天，我们把 Coding 融入 Vibe。</span>
+    </div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6;margin-top:8px;">
+      <span class="en">Coding Vibe · Always-on multi-agent coding companion<br>AdventureX 2026 · Hangzhou</span>
+      <span class="zh">Coding Vibe · 永远在线的多 Agent 编码伴侣<br>AdventureX 2026 · 杭州</span>
+    </div>
+    <div class="motto">⛰ Aim High · 🌊 Embrace All · 🚢 Set Sail · 🗼 Be a Lighthouse · ⭕ Wholeness</div>
+    <div class="ax-credit">
+      AdventureX 2026 · 7/22–26 · <span class="en">Hangzhou · Future Sci-Tech City</span><span class="zh">杭州 · 未来科技城</span><br>
+      <span class="en">Proudly built with Claude Code Agent Orchestra</span>
+      <span class="zh">由 Claude Code Agent 军团自豪构建</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setLang(lang) {
+  document.body.setAttribute('lang', lang);
+  document.querySelectorAll('.lang-toggle .opt').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  try { localStorage.setItem('preferredLangCV', lang); } catch(e) {}
+}
+function toggleLang() {
+  setLang(document.body.getAttribute('lang') === 'en' ? 'zh' : 'en');
+}
+(function() {
+  var params = new URLSearchParams(location.search);
+  var urlLang = params.get('lang');
+  if (urlLang === 'en' || urlLang === 'zh') { setLang(urlLang); return; }
+  try {
+    var saved = localStorage.getItem('preferredLangCV');
+    if (saved === 'en' || saved === 'zh') setLang(saved);
+  } catch(e) {}
+})();
+
+// Scroll reveal
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(function(el) { io.observe(el); });
+})();
+
+// Count-up stats
+(function() {
+  function countUp(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || '';
+    var duration = 1200; var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target) + (p === 1 ? suffix : '');
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var nums = document.querySelectorAll('.stat .num');
+  if (!('IntersectionObserver' in window)) {
+    nums.forEach(function(el) { el.textContent = el.dataset.count + (el.dataset.suffix || ''); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { countUp(entry.target); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.5 });
+  nums.forEach(function(el) { io.observe(el); });
+})();
+
+// Sticky nav highlight
+(function() {
+  var links = document.querySelectorAll('.mini-nav a');
+  var map = {};
+  links.forEach(function(a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = document.querySelectorAll('#architecture, #ceo, #workflow, #different, #hardware');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        links.forEach(function(a) { a.classList.remove('active'); });
+        var link = map[entry.target.id];
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px' });
+  sections.forEach(function(s) { io.observe(s); });
+})();
+</script>
+</body>
+</html>
