@@ -908,43 +908,152 @@
       <span class="zh">全部可在 AdventureX 硬件实验室（端点 G）免费借用。7 月 23 日凌晨 1 点开放。共享借用——不能带出场馆。</span>
     </p>
 
-    <div class="hw-grid">
-      <div class="hw-card reveal">
-        <div class="hw-icon">💍</div>
-        <div class="hw-name">WIZPR Ring</div>
-        <div class="hw-count"><span class="en">200 units</span><span class="zh">200 枚</span></div>
-        <div class="hw-note"><span class="en">Whisper</span><span class="zh">悄声输入</span> · <span class="en">Btn capture</span><span class="zh">按键捕捉</span> · SDK</div>
+    <!-- Integration chain overview -->
+    <div class="gate-card reveal" style="margin-bottom: 20px;">
+      <div class="gate-header">
+        <span class="en">Integration Chain: How Everything Connects</span>
+        <span class="zh">集成链路：所有硬件如何串联</span>
       </div>
-      <div class="hw-card reveal">
-        <div class="hw-icon">👓</div>
-        <div class="hw-name">Even Realities G2</div>
-        <div class="hw-count"><span class="en">Terminal Mode</span><span class="zh">终端模式</span></div>
-        <div class="hw-note"><span class="en">576x288 HUD</span><span class="zh">576x288 HUD</span> · R1 · npm SDK</div>
+      <div class="gate-item">
+        <span class="en"><strong>🎧 Earphones → 🍊 OrangePi BT Relay</strong> — User speaks into earphones → Bluetooth A2DP audio stream → OrangePi 3B receives via BlueZ A2DP sink → on-device NPU runs sherpa-onnx ASR → transcribed text forwarded over LAN to MacBook</span>
+        <span class="zh"><strong>🎧 耳机 → 🍊 OrangePi 蓝牙中继</strong>——用户对耳机说话 → 蓝牙 A2DP 音频流 → OrangePi 3B 通过 BlueZ A2DP sink 接收 → 板载 NPU 运行 sherpa-onnx ASR → 转录文本通过局域网转发到 MacBook</span>
       </div>
-      <div class="hw-card reveal">
-        <div class="hw-icon">🖥️</div>
-        <div class="hw-name">Rokid Max 2+Station 2</div>
-        <div class="hw-count"><span class="en">20 bundles</span><span class="zh">20 套</span></div>
-        <div class="hw-note"><span class="en">1080p/eye</span><span class="zh">双目1080p</span> · <span class="en">3 screens</span><span class="zh">三屏</span> · Android</div>
+      <div class="gate-item">
+        <span class="en"><strong>💍 WIZPR Ring → 🍊 OrangePi Voice Endpoint</strong> — Whisper into ring → button-triggered audio capture → Bluetooth BLE to OrangePi → same NPU ASR pipeline → private mode transcription</span>
+        <span class="zh"><strong>💍 WIZPR 戒指 → 🍊 OrangePi 语音端点</strong>——对戒指悄声说话 → 按键触发录音 → 蓝牙 BLE 传至 OrangePi → 同一 NPU ASR 管线 → 私密模式转录</span>
       </div>
-      <div class="hw-card reveal">
-        <div class="hw-icon">🍊</div>
-        <div class="hw-name">OrangePi 3B</div>
-        <div class="hw-count"><span class="en">80 units</span><span class="zh">80 片</span></div>
-        <div class="hw-note">NPU ASR · <span class="en">Wake word</span><span class="zh">唤醒词</span> · BT5 · 1.6W</div>
+      <div class="gate-item">
+        <span class="en"><strong>👓 Even Realities G2 → 🍊 OrangePi Compute</strong> — Agent status/notifications formatted as HTML → rendered via npm @evenrealities/g2-sdk → pushed to G2 Terminal Mode over BLE → R1 ring tap sends confirm/scroll events back</span>
+        <span class="zh"><strong>👓 Even Realities G2 → 🍊 OrangePi 计算节点</strong>——Agent 状态/通知格式化为 HTML → 通过 npm @evenrealities/g2-sdk 渲染 → 经 BLE 推送到 G2 Terminal Mode → R1 戒指点击返回确认/滚动事件</span>
       </div>
-      <div class="hw-card reveal">
-        <div class="hw-icon">🐕</div>
-        <div class="hw-name">Go2 Air + A1Z</div>
-        <div class="hw-count"><span class="en">25+10</span></div>
-        <div class="hw-note"><span class="en">LiDAR+5 cam</span><span class="zh">雷达5摄</span> · <span class="en">6-DOF arm</span><span class="zh">六轴臂</span> (v2)</div>
+      <div class="gate-item">
+        <span class="en"><strong>🖥️ Rokid Max 2 → Station 2 → MacBook</strong> — Station 2 runs Android APK displaying 3 virtual monitors via USB-C DP → MacBook extends desktop → Claude Code terminal + VS Code + agent dashboard = 3-screen spatial coding rig</span>
+        <span class="zh"><strong>🖥️ Rokid Max 2 → Station 2 → MacBook</strong>——Station 2 运行 Android APK，通过 USB-C DP 显示 3 个虚拟显示器 → MacBook 扩展桌面 → Claude Code 终端 + VS Code + Agent 面板 = 三屏空间编程</span>
       </div>
-      <div class="hw-card reveal">
-        <div class="hw-icon">📡</div>
-        <div class="hw-name">Insta360 + ASUS</div>
-        <div class="hw-count"><span class="en">Cameras + NUC</span><span class="zh">相机+NUC</span></div>
-        <div class="hw-note"><span class="en">8K 360 + 1334 AI TOPS</span><span class="zh">8K全景+1334 AI TOPS</span></div>
+      <div class="gate-item">
+        <span class="en"><strong>🐕 Go2 Air → 🍊 Orchestrator Hub → Cloud</strong> — Go2 camera/LiDAR feeds → ROS 2 node on OrangePi → processed by Agent's visual context module → cloud LLM for scene understanding (v2 embodied agent)</span>
+        <span class="zh"><strong>🐕 Go2 Air → 🍊 编排中枢 → 云端</strong>——Go2 相机/LiDAR 数据流 → OrangePi 上 ROS 2 节点 → Agent 视觉上下文模块处理 → 云端 LLM 场景理解（v2 具身 Agent）</span>
       </div>
+    </div>
+
+    <!-- Detailed hardware cards -->
+    <div class="arch-card l1 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">💍</span>
+        <span class="arch-name">
+          <span class="en">WIZPR Ring (200 units)</span>
+          <span class="zh">WIZPR 智能戒指（200 枚）</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Design choice:</strong> Not a general-purpose IMU gesture ring — it's a dedicated whisper microphone you wear on your finger. Single button, proximity-activated voice capture. We chose it because it solves the PRIVATE INPUT problem: you can whisper commands in public without anyone hearing, and without pulling out your phone.</span>
+        <span class="zh"><strong>设计选择：</strong>不是通用 IMU 手势戒指——是戴在手指上的专用悄声麦克风。单按键，接近激活语音捕捉。选择它是因为它解决了私密输入问题：你可以当众悄声说指令，没人听到，也不用掏出手机。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>Use:</strong> Hold near mouth → press button → whisper command ("approve the Supabase PR") → BLE sends audio to OrangePi → ASR → text → Router Agent dispatches</span><span class="zh"><strong>用法：</strong>靠近嘴边 → 按下按钮 → 悄声指令（「批准 Supabase PR」）→ BLE 发送音频到 OrangePi → ASR → 文本 → Router Agent 分派</span></li>
+        <li><span class="en"><strong>Voice confirm:</strong> System asks a decision question via earphones → you whisper "yes"/"no" into ring → Decision Gate resolves. This replaces the gesture-based confirm we originally wanted (the ring has no gesture API).</span><span class="zh"><strong>语音确认：</strong>系统通过耳机提问 → 你对着戒指悄声说「是」/「否」→ Decision Gate 决策。这替代了最初想要的手势确认（戒指无手势 API）。</span></li>
+        <li><span class="en"><strong>Idea capture:</strong> Walking → tap button → speak idea → buffered → ASR → routed to project context. No phone needed.</span><span class="zh"><strong>灵感捕捉：</strong>走路 → 点按按钮 → 说想法 → 缓冲 → ASR → 路由到项目上下文。不需要手机。</span></li>
+        <li><span class="en"><strong>Limitation:</strong> No haptic feedback, no raw IMU stream, no sleep recording (needs proximity). SDK provided at hardware lab.</span><span class="zh"><strong>限制：</strong>无触觉反馈，无原始 IMU 数据流，无法睡眠录音（需要靠近嘴边）。SDK 在硬件实验室提供。</span></li>
+      </ul>
+    </div>
+
+    <div class="arch-card l2 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">👓</span>
+        <span class="arch-name">
+          <span class="en">Even Realities G2 + R1 Ring</span>
+          <span class="zh">Even Realities G2 + R1 戒指</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Design choice:</strong> The only smart glasses with a purpose-built Terminal Mode for agent interaction. Monochrome green waveguide (576x288), 38g, 2-day battery, no camera = privacy-safe. We chose it over full-color AR glasses because it's the right form factor for an always-on HUD — lightweight enough to wear all day, focused enough to not distract.</span>
+        <span class="zh"><strong>设计选择：</strong>唯一一款有专为 Agent 交互设计的 Terminal Mode 的智能眼镜。单色绿色波导（576x288），38g，2 天续航，无摄像头 = 隐私安全。选择它而不是全彩 AR 眼镜，因为它是 always-on HUD 的正确形态——轻到可以全天佩戴，专注到不会分散注意力。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>Use:</strong> Code on MacBook → OrangePi monitors Claude Code output → formats into Terminal Mode HTML → pushes to G2 via npm SDK over BLE. You glance up and see: "Architect Agent: PR #14 ready for review. 2 files changed. [R1 tap to approve]"</span><span class="zh"><strong>用法：</strong>MacBook 写代码 → OrangePi 监控 Claude Code 输出 → 格式化为 Terminal Mode HTML → 通过 npm SDK 经 BLE 推送到 G2。你抬头看到：「Architect Agent: PR #14 待审查。2 个文件变更。[R1 点按批准]」</span></li>
+        <li><span class="en"><strong>R1 Ring:</strong> Touchpad ring with swipe and tap. Swipe = scroll through agent notifications. Tap = confirm/approve. Pairs with G2 glasses via Bluetooth. This IS our gesture-based approve/reject mechanism.</span><span class="zh"><strong>R1 戒指：</strong>触控板戒指，支持滑动和点按。滑动 = 滚动 Agent 通知。点按 = 确认/批准。通过蓝牙与 G2 眼镜配对。这就是我们需要的手势确认机制。</span></li>
+        <li><span class="en"><strong>Integration:</strong> npm install @evenrealities/g2-sdk → build Terminal Mode app in HTML/CSS/JS → deploy to glasses. Has existing Claude Code integration (termlink.cc).</span><span class="zh"><strong>集成：</strong>npm install @evenrealities/g2-sdk → 用 HTML/CSS/JS 构建 Terminal Mode 应用 → 部署到眼镜。已有 Claude Code 集成（termlink.cc）。</span></li>
+      </ul>
+    </div>
+
+    <div class="arch-card l3 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">🖥️</span>
+        <span class="arch-name">
+          <span class="en">Rokid Max 2 + Station 2 (20 bundles)</span>
+          <span class="zh">Rokid Max 2 + Station 2（20 套）</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Design choice:</strong> Full-color spatial coding when you need to SEE code. 3 virtual monitors in space: left = Claude Code terminal, center = VS Code, right = agent dashboard + deployment logs. Station 2 is the Android compute puck that drives the glasses — we sideload a custom APK that renders the Coding Vibe spatial workspace.</span>
+        <span class="zh"><strong>设计选择：</strong>需要看到代码时的全彩空间编程方案。3 个虚拟显示器悬浮在空间中：左 = Claude Code 终端，中 = VS Code，右 = Agent 面板 + 部署日志。Station 2 是驱动眼镜的 Android 计算棒——我们侧载自定义 APK 渲染 Coding Vibe 空间工作区。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>Use:</strong> Station 2 connects to MacBook via USB-C DisplayPort Alt Mode → MacBook sees 3 extended displays → arrange: left (Claude Code), center (VS Code), right (browser with agent dashboard + deploy preview). Unlike G2's notification HUD, this is a full coding workstation in glasses.</span><span class="zh"><strong>用法：</strong>Station 2 通过 USB-C DP Alt Mode 连接 MacBook → MacBook 看到 3 个扩展显示器 → 布局：左（Claude Code），中（VS Code），右（浏览器显示 Agent 面板 + 部署预览）。不同于 G2 的通知 HUD，这是眼镜里的完整编程工作站。</span></li>
+        <li><span class="en"><strong>Custom APK:</strong> Build Android TV app → sideload to Station 2 → app runs WebView connecting to local Coding Vibe dashboard on MacBook → real-time agent status, build progress, deploy logs.</span><span class="zh"><strong>自定义 APK：</strong>构建 Android TV 应用 → 侧载到 Station 2 → 应用运行 WebView 连接到 MacBook 上的本地 Coding Vibe 面板 → 实时 Agent 状态、构建进度、部署日志。</span></li>
+        <li><span class="en"><strong>Trade-off vs G2:</strong> Rokid = full coding (1080p, color, 3 screens, 3-5h battery, 75g). G2 = always-on HUD (monochrome, 1 line, 2-day battery, 38g). Use both: G2 for status, Rokid for deep work.</span><span class="zh"><strong>与 G2 的取舍：</strong>Rokid = 完整编程（1080p，彩色，三屏，3-5h 续航，75g）。G2 = always-on HUD（单色，单行，2 天续航，38g）。两者互补：G2 看状态，Rokid 做深度工作。</span></li>
+      </ul>
+    </div>
+
+    <div class="arch-card l1 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">🍊</span>
+        <span class="arch-name">
+          <span class="en">OrangePi 3B Edge Fleet (80 units)</span>
+          <span class="zh">OrangePi 3B 边缘计算集群（80 片）</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Design choice:</strong> The backbone. 80 units running Armbian headless, organized into a MQTT mesh network. Each board = one edge node with NPU-accelerated ASR. We chose OrangePi 3B over Raspberry Pi because: (1) built-in NPU for real-time voice AI, (2) 1.6W idle power = always-on feasible, (3) M.2 NVMe for local storage, (4) 80 units available for free at the hardware lab.</span>
+        <span class="zh"><strong>设计选择：</strong>主干网络。80 片运行 Armbian 无头模式，通过 MQTT mesh 组网。每片 = 一个带 NPU 加速 ASR 的边缘节点。选择 OrangePi 3B 而非树莓派的原因：（1）内置 NPU 做实时语音 AI，（2）1.6W 待机 = 永远在线可行，（3）M.2 NVMe 本地存储，（4）硬件实验室免费提供 80 片。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>Fleet roles (4 tiers):</strong></span><span class="zh"><strong>集群角色（4 层）：</strong></span></li>
+        <li><span class="en"><strong>40x Voice Endpoints:</strong> USB mic + 3.5mm speaker. sherpa-onnx Zipformer RKNN (streaming ASR, bilingual ZH/EN). Porcupine wake word ("Hey Vibe"). Always listening. Audio → text → forward to Orchestrator Hub.</span><span class="zh"><strong>40x 语音端点：</strong>USB 麦克风 + 3.5mm 扬声器。sherpa-onnx Zipformer RKNN（流式 ASR，中英双语）。Porcupine 唤醒词（「Hey Vibe」）。始终监听。音频 → 文本 → 转发到 Orchestrator Hub。</span></li>
+        <li><span class="en"><strong>15x BT Audio Relays:</strong> BlueZ A2DP sink mode. Pair with user's BT earbuds → receive audio → VAD → ASR on NPU → forward text. TTS audio (Piper/Matcha) sent back to earbuds. Bridge between earphone world and agent world.</span><span class="zh"><strong>15x 蓝牙音频中继：</strong>BlueZ A2DP sink 模式。与用户蓝牙耳机配对 → 接收音频 → VAD → NPU ASR → 转发文本。TTS 音频（Piper/Matcha）回传耳机。连接耳机世界与 Agent 世界。</span></li>
+        <li><span class="en"><strong>20x Compute Nodes:</strong> 8GB RAM, llama.cpp running Qwen2.5-1.5B 4-bit quantized. Lightweight routing decisions at edge (no cloud latency). Heavy reasoning still goes to cloud Claude/StepFun.</span><span class="zh"><strong>20x 计算节点：</strong>8GB 内存，llama.cpp 运行 Qwen2.5-1.5B 4-bit 量化。在边缘做轻量路由决策（无云端延迟）。重推理仍走云端 Claude/StepFun。</span></li>
+        <li><span class="en"><strong>5x Orchestrator Hubs:</strong> 8GB + NVMe SSD. MQTT broker + gRPC mesh. Persistent audio logging, agent context DB (ChromaDB), model cache. Heart of the fleet.</span><span class="zh"><strong>5x Orchestrator 中枢：</strong>8GB + NVMe SSD。MQTT broker + gRPC mesh。持久化音频日志，Agent 上下文数据库（ChromaDB），模型缓存。集群心脏。</span></li>
+        <li><span class="en"><strong>How to plug in:</strong> Flash Armbian to SD card → boot → install sherpa-onnx + Porcupine + BlueZ → join MQTT mesh → MacBook discovers nodes → Coding Vibe Orchestrator assigns roles. Each board USB-C powered. Ethernet backhaul to venue network.</span><span class="zh"><strong>如何接入：</strong>烧录 Armbian 到 SD 卡 → 启动 → 安装 sherpa-onnx + Porcupine + BlueZ → 加入 MQTT mesh → MacBook 发现节点 → Coding Vibe Orchestrator 分配角色。每片 USB-C 供电。以太网回程连场馆网络。</span></li>
+      </ul>
+    </div>
+
+    <div class="arch-card l2 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">🐕</span>
+        <span class="arch-name">
+          <span class="en">Unitree Go2 Air + 星海图 A1Z Arm (v2 Embodied)</span>
+          <span class="zh">宇树 Go2 Air 机器狗 + 星海图 A1Z 机械臂（v2 具身）</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Design choice (v2):</strong> Giving Coding Vibe's agent a physical body. Go2 = mobility (follow you, patrol, inspect). A1Z = manipulation (type on keyboard, plug cables, fetch tools, hand you things). This is the long-term vision: your agent doesn't just live in a terminal — it walks beside you.</span>
+        <span class="zh"><strong>设计选择（v2）：</strong>给 Coding Vibe 的 Agent 一个身体。Go2 = 移动能力（跟随你，巡逻，检查）。A1Z = 操作能力（敲键盘，插线，取工具，递东西）。这是长期愿景：你的 Agent 不只是活在终端里——它走在你身边。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>Go2 Use (v2):</strong> ROS 2 node → Agent sends navigation goals → robot follows you through venue. 5 cameras + LiDAR → Agent sees your physical environment → "You left your water bottle at the desk." Voice module on Go2 → Agent speaks to you directly.</span><span class="zh"><strong>Go2 用法（v2）：</strong>ROS 2 节点 → Agent 发送导航目标 → 机器人跟着你在场馆里走。5 摄像头 + LiDAR → Agent 看到你的物理环境 → 「你的水杯落在桌上了。」Go2 的语音模块 → Agent 直接对你说话。</span></li>
+        <li><span class="en"><strong>A1Z Use (v2):</strong> 6-DOF arm + 2-finger gripper → Python SDK → Agent commands: "fetch the OrangePi from shelf 3." Opens drawers, plugs USB cables, types on keyboards. Extends Agent's physical reach.</span><span class="zh"><strong>A1Z 用法（v2）：</strong>6 轴机械臂 + 2 指夹爪 → Python SDK → Agent 指令：「从 3 号架拿 OrangePi。」开抽屉、插 USB 线、敲键盘。扩展 Agent 的物理触达。</span></li>
+        <li><span class="en"><strong>Now (Day 2):</strong> Borrow 1 Go2 + 1 A1Z from hardware lab. ROS 2 setup. Establish basic agent → robot communication. Demo: Agent voice-commands robot to bring you a drink. v2 full integration post-hackathon.</span><span class="zh"><strong>现在（Day 2）：</strong>从硬件实验室借 1 台 Go2 + 1 台 A1Z。搭建 ROS 2。建立基础 Agent ↔ 机器人通信。Demo：Agent 语音指令机器人给你拿饮料。v2 全集成赛后做。</span></li>
+      </ul>
+    </div>
+
+    <div class="arch-card l3 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">📡</span>
+        <span class="arch-name">
+          <span class="en">Insta360 + ASUS NUC + D-Robotics RDK X5</span>
+          <span class="zh">Insta360 + 华硕 NUC + 地瓜 RDK X5</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Design choice:</strong> Supporting hardware for content creation and heavy compute. Insta360 for immersive demo videos. ASUS NUC for GPU inference (1334 AI TOPS). RDK X5 for computer vision tasks.</span>
+        <span class="zh"><strong>设计选择：</strong>内容创作和重计算的支撑硬件。Insta360 做沉浸式 demo 视频。华硕 NUC 做 GPU 推理（1334 AI TOPS）。RDK X5 做计算机视觉任务。</span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>Insta360:</strong> 8K 360-degree camera. Record dev process in immersive format → Coding Vibe's Marketing Agent auto-edits highlight reels for each track submission.</span><span class="zh"><strong>Insta360：</strong>8K 全景相机。沉浸式录制开发过程 → Coding Vibe 的 Marketing Agent 自动剪辑每条赛道的高光时刻。</span></li>
+        <li><span class="en"><strong>ASUS NUC:</strong> 1334 AI TOPS. Offload heavy LLM inference from MacBook. Run larger models locally during demo for lower latency.</span><span class="zh"><strong>华硕 NUC：</strong>1334 AI TOPS。从 MacBook 卸载重 LLM 推理。Demo 时本地跑大模型降延迟。</span></li>
+        <li><span class="en"><strong>RDK X5:</strong> 10 TOPS BPU + Cortex-A55. Visual agent context (recognize people, objects, screens). Complement OrangePi fleet for CV tasks.</span><span class="zh"><strong>RDK X5：</strong>10 TOPS BPU + Cortex-A55。视觉 Agent 上下文（识别人、物体、屏幕）。补充 OrangePi 集群的 CV 能力。</span></li>
+        <li><span class="en"><strong>How to plug in:</strong> Insta360 → USB-C to MacBook → recorded footage → Marketing Agent processes. ASUS NUC → Ethernet to venue network → run Ollama/vLLM → MacBook queries via REST API. RDK X5 → Ethernet → ROS 2 node for vision pipeline.</span><span class="zh"><strong>如何接入：</strong>Insta360 → USB-C 到 MacBook → 录制素材 → Marketing Agent 处理。华硕 NUC → 以太网接场馆网络 → 跑 Ollama/vLLM → MacBook 通过 REST API 查询。RDK X5 → 以太网 → ROS 2 节点做视觉管线。</span></li>
+      </ul>
     </div>
   </div>
 
