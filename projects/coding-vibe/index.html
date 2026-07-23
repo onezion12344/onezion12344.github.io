@@ -404,6 +404,127 @@
   .mini-nav a:hover { color: var(--white); }
   .mini-nav a.active { color: var(--white); background: rgba(224,122,95,0.18); }
 
+  /* ── Back to top ── */
+  .btt {
+    position: fixed; bottom: 20px; right: 20px; z-index: 200;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--card); border: 1px solid var(--border);
+    color: var(--accent2); font-size: 18px; cursor: pointer;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.35s, transform 0.35s, border-color 0.3s;
+    pointer-events: none; display: flex; align-items: center; justify-content: center;
+  }
+  .btt.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .btt:hover { border-color: rgba(224,122,95,0.5); }
+
+  /* ── Team section ── */
+  .team-grid { display: flex; flex-direction: column; gap: 10px; }
+  .team-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 16px;
+    display: flex; gap: 14px; align-items: center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .team-card:hover { border-color: rgba(224,122,95,0.3); transform: translateX(4px); }
+  .team-card .t-avatar {
+    width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+    background-size: cover; background-position: center;
+    border: 2px solid rgba(224,122,95,0.3);
+  }
+  .team-card .t-info { flex: 1; min-width: 0; }
+  .team-card .t-name { font-size: 14px; font-weight: 600; color: var(--white); }
+  .team-card .t-role { font-size: 11px; color: var(--accent2); margin: 2px 0 4px; }
+  .team-card .t-desc { font-size: 10px; color: var(--muted); line-height: 1.5; }
+  .team-card .t-status {
+    padding: 3px 10px; border-radius: 10px;
+    font-size: 9px; font-weight: 600;
+    background: rgba(58,138,138,0.15);
+    border: 1px solid rgba(58,138,138,0.3);
+    color: var(--accent3); white-space: nowrap;
+  }
+  .team-card.open {
+    border-style: dashed; border-color: rgba(212,168,67,0.35);
+    background: rgba(212,168,67,0.04);
+  }
+  .team-card.open .t-status {
+    background: rgba(212,168,67,0.15);
+    border-color: rgba(212,168,67,0.3);
+    color: var(--accent2);
+  }
+
+  /* ── Progress tracker ── */
+  .progress-bar-wrap {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .progress-bar-wrap .pb-label {
+    display: flex; justify-content: space-between;
+    font-size: 11px; color: var(--muted); margin-bottom: 8px;
+  }
+  .progress-bar-wrap .pb-label span:last-child { color: var(--accent2); font-weight: 600; }
+  .pb-track {
+    height: 6px; border-radius: 3px;
+    background: rgba(224,122,95,0.1);
+    overflow: hidden;
+  }
+  .pb-fill {
+    height: 100%; border-radius: 3px;
+    background: linear-gradient(90deg, #e07a5f, #d4a843);
+    transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+  }
+
+  .checklist { display: flex; flex-direction: column; gap: 6px; }
+  .checklist .cl-item {
+    font-size: 11px; color: var(--muted); padding: 6px 0 6px 20px;
+    position: relative; line-height: 1.5;
+  }
+  .checklist .cl-item::before {
+    position: absolute; left: 0; font-size: 12px;
+  }
+  .checklist .cl-done::before { content: '✅'; }
+  .checklist .cl-doing::before { content: '🔄'; color: var(--accent2); }
+  .checklist .cl-todo::before { content: '⬜'; opacity: 0.4; }
+
+  /* ── CTA card ── */
+  .cta-card {
+    background: linear-gradient(135deg, rgba(224,122,95,0.15), rgba(212,168,67,0.08));
+    border: 1px solid rgba(224,122,95,0.3);
+    border-radius: 16px; padding: 24px 20px; text-align: center;
+    margin: 20px 0 8px;
+  }
+  .cta-card .cta-title {
+    font-size: 16px; font-weight: 700; margin-bottom: 8px;
+    background: linear-gradient(135deg, #f0c87a, #e07a5f);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .cta-card .cta-desc {
+    font-size: 11px; color: var(--muted); line-height: 1.6; margin-bottom: 14px;
+  }
+  .cta-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 20px; border-radius: 20px;
+    background: linear-gradient(135deg, #e07a5f, #d4a843);
+    color: #fff; font-size: 12px; font-weight: 600;
+    text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(224,122,95,0.3);
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(224,122,95,0.45); }
+
+  /* ── Day 2 badge ── */
+  .day-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 12px;
+    background: rgba(58,138,138,0.12);
+    border: 1px solid rgba(58,138,138,0.25);
+    font-size: 10px; color: var(--accent3);
+    margin-bottom: 12px;
+  }
+  .day-badge .db-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent3);
+    animation: pulse 2s infinite;
+  }
+
   @media (max-width: 380px) {
     .hero h1 { font-size: 23px; }
     .hw-grid { grid-template-columns: 1fr; }
@@ -425,6 +546,9 @@
   <span class="opt" data-lang="en">EN</span>
   <span class="opt active" data-lang="zh">中</span>
 </div>
+
+<!-- Back to top -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <div class="page">
 
@@ -749,146 +873,153 @@
 
   <!-- Tracks & Rules -->
   <div class="section" id="tracks">
-    <h2>🎯 <span class="en">Tracks &amp; Prize Rules</span><span class="zh">赛道与奖项规则</span></h2>
+    <h2>🎯 <span class="en">Tracks &amp; Themes</span><span class="zh">赛道与主题</span></h2>
 
-    <div class="gate-card reveal">
+    <!-- 5 Themes -->
+    <div class="gate-card reveal" style="margin-bottom:16px;">
       <div class="gate-header">
-        <span class="en">Prize Cap: 1 Theme + 6 Tracks</span>
-        <span class="zh">奖项上限：1 个主题奖 + 6 个赛道奖</span>
+        <span class="en">🎨 5 Themes (choose 1)</span>
+        <span class="zh">🎨 5 大主题（选 1）</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>General (Best Overall)</strong> — the grand prize. 1 entry per team.</span>
-        <span class="zh"><strong>General（全场最佳）</strong>——主题大奖。每队 1 个参赛名额。</span>
+        <span class="en"><strong>8bit</strong> — Retro gaming, pixel aesthetics, minimal rules, nostalgia</span>
+        <span class="zh"><strong>8bit（元境）</strong>——复古游戏、像素美学、极简规则、怀旧情怀</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>15 sponsor tracks</strong> — submit to all. Win up to 6. No limit on submissions.</span>
-        <span class="zh"><strong>15 个赞助商赛道</strong>——全部提交。最多可获 6 个赛道奖。提交数量不限。</span>
+        <span class="en"><strong>PAWN</strong> — Grassroots power, strategy, sacrifice, underdog comeback</span>
+        <span class="zh"><strong>PAWN（弈棋）</strong>——基层力量、战略部署、牺牲与逆袭（小卒过河）</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>Deadline:</strong> Submission opens Jul 25 12:00 noon, closes Jul 26 1:00 AM</span>
-        <span class="zh"><strong>截止时间：</strong>7 月 25 日中午 12:00 开放提交，7 月 26 日凌晨 1:00 关闭</span>
+        <span class="en"><strong>.xyz</strong> — Web3, infinite possibilities, digital identity, random combination</span>
+        <span class="zh"><strong>.xyz（未知域）</strong>——Web3、无限可能、数字身份、随机组合与概率</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>Total prize pool:</strong> ¥1,000,000+</span>
+        <span class="en"><strong>Kaleidoscope</strong> — Multi-perspective, refraction, fusion &amp; reorganization</span>
+        <span class="zh"><strong>Kaleidoscope（万花筒）</strong>——多维视角、折射、融合与重组</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Reverse</strong> — Overturn rules, reverse thinking, UNO Reverse card energy</span>
+        <span class="zh"><strong>Reverse（反转）</strong>——逆转局势、反向思维、规则颠覆（UNO Reverse！）</span>
+      </div>
+      <p style="font-size:10px;color:var(--muted);margin-top:8px;padding-left:0;">
+        <span class="en">Theme prize per theme: 🥇¥5,000 / 🥈¥3,000 / 🥉¥2,000. Top team presents at closing ceremony.</span>
+        <span class="zh">每个主题奖项：🥇¥5,000 / 🥈¥3,000 / 🥉¥2,000。冠军在闭幕式展示。</span>
+      </p>
+    </div>
+
+    <!-- Prize rules -->
+    <div class="gate-card reveal" style="margin-bottom:16px;">
+      <div class="gate-header">
+        <span class="en">📋 Prize Rules</span>
+        <span class="zh">📋 奖项规则</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Cap: 1 Theme + 6 Sponsor Tracks</strong> max per team</span>
+        <span class="zh"><strong>上限：1 个主题奖 + 6 个赛道奖</strong></span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>24 sponsor tracks</strong> — submit to as many as you want. Win up to 6.</span>
+        <span class="zh"><strong>24 条赞助赛道</strong>——全部可提交。最多获 6 个赛道奖。</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Deadline:</strong> Submission opens Jul 25 12:00, closes Jul 26 1:00 AM</span>
+        <span class="zh"><strong>截止：</strong>7/25 12:00 开放提交，7/26 1:00 AM 关闭</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Total prize pool:</strong> ¥1,000,000+ across all tracks</span>
         <span class="zh"><strong>总奖金池：</strong>¥1,000,000+</span>
       </div>
     </div>
 
+    <!-- Top 6 priority tracks for Coding Vibe -->
     <div class="section mt-20">
-      <h2>📋 <span class="en">Track Strategy: Submit All 15</span><span class="zh">赛道策略：15 个全部提交</span></h2>
+      <h2>⭐ <span class="en">Top 6: Best Fit for Coding Vibe</span><span class="zh">6 大最适合 Coding Vibe 的赛道</span></h2>
     </div>
 
     <div class="diff-list">
       <div class="diff-card reveal">
-        <div class="d-title">1. <span class="en">General (Best Overall)</span><span class="zh">General（全场最佳）</span></div>
+        <div class="d-title">🥇 <span class="en">1. 耳边的好AI — AI Agent 耳机 Skill 创新挑战赛 (viaim)</span><span class="zh">1. 耳边的好AI — AI Agent 耳机 Skill（viaim）</span></div>
         <div class="d-desc">
-          <span class="en">Coding Vibe is a complete product — always-on voice coding companion that spans hardware, AI, content, and tools. Natural fit for Best Overall.</span>
-          <span class="zh">Coding Vibe 是完整产品——横跨硬件、AI、内容、工具的 always-on 编码伴侣。全场最佳天然候选。</span>
+          <span class="en"><strong>THE killer track.</strong> Coding Vibe is literally an AI Agent earphone skill. Always-on agent via earphones = the exact product this track is looking for. viaim 讯飞 AI 耳机 Pro3 as prize. 🎧</span>
+          <span class="zh"><strong>天命赛道。</strong>Coding Vibe 就是 AI Agent 耳机 Skill。Always-on agent 通过耳机交互 = 这赛道要找的东西。送 viaim 讯飞 AI 耳机 Pro3（¥1,549/个）。🎧</span>
         </div>
       </div>
       <div class="diff-card reveal">
-        <div class="d-title">2. <span class="en">OpenAgents Dev Tools</span><span class="zh">OpenAgents 开发工具赛道</span></div>
+        <div class="d-title">🥈 <span class="en">2. 清闲 Desktop Daemon — 桌面常驻精灵</span><span class="zh">2. 清闲 Desktop Daemon——桌面常驻精灵</span></div>
         <div class="d-desc">
-          <span class="en">Coding Vibe IS a developer tool. The orchestrator, agent pool, and voice-to-Claude-Code bridge are all dev tooling. OpenAgents API can power the agents.</span>
-          <span class="zh">Coding Vibe 本身就是开发工具。Orchestrator、Agent 池、voice-to-Claude-Code 桥接。用 OpenAgents API 驱动 Agent。</span>
+          <span class="en"><strong>Free OrangePi to keep.</strong> Coding Vibe IS a 24/7 desktop daemon. The orchestrator lives on OrangePi, always running, always listening. Exact fit. ¥30,000 pool.</span>
+          <span class="zh"><strong>送 OrangePi 归你所有。</strong>Coding Vibe 就是 24/7 桌面守护进程。Orchestrator 跑在 OrangePi 上，永远在线。完美契合。¥30,000 奖池。</span>
         </div>
       </div>
       <div class="diff-card reveal">
-        <div class="d-title">3. <span class="en">Dify Local &amp; Global Dev Tools</span><span class="zh">Dify Local &amp; Global 开发工具赛道</span></div>
+        <div class="d-title">🥉 <span class="en">3. Dimensional — Give Agents a Body (Go2 + A1Z)</span><span class="zh">3. Dimensional——给 Agent 一副身体（Go2 + A1Z）</span></div>
         <div class="d-desc">
-          <span class="en">Dify as the visual workflow layer for the Coding Vibe agent pipeline. Dify Pro plan provided to all participants.</span>
-          <span class="zh">Dify 作为 Coding Vibe Agent 管线的可视化工作流层。Dify Pro 已提供给所有参赛者。</span>
+          <span class="en"><strong>25 Go2 + 10 A1Z arms.</strong> Coding Vibe v2: your coding agent walks beside you on a robot dog. DimOS makes robot programming as easy as writing a Python function. ¥30,000 pool.</span>
+          <span class="zh"><strong>25 条 Go2 + 10 台 A1Z 机械臂。</strong>Coding Vibe v2：你的 coding agent 走在机器狗上陪着你。DimOS 让机器人编程像写 Python 函数一样简单。¥30,000 奖池。</span>
         </div>
       </div>
       <div class="diff-card reveal">
-        <div class="d-title">4. <span class="en">Qoder AI Programming</span><span class="zh">Qoder AI 编程赛道</span></div>
+        <div class="d-title">4. <span class="en">阶跃星辰 — 前端自进化工厂 (StepFun)</span><span class="zh">4. 阶跃星辰——前端自进化工厂</span></div>
         <div class="d-desc">
-          <span class="en">Coding Vibe is the ultimate AI programming tool — voice-controlled, multi-agent, always-on. Qoder Pro membership provided.</span>
-          <span class="zh">Coding Vibe 是终极 AI 编程工具——语音控制、多 Agent、永远在线。Qoder PRO 会员已提供。</span>
+          <span class="en"><strong>Step-3.5-Flash + Step-Audio R1.1.</strong> Coding Vibe's agent pool auto-builds frontend. StepFun's full-duplex voice model powers the always-on voice interface. 一等奖 ¥15,000 + ¥6,666 Step Plan Flash max.</span>
+          <span class="zh"><strong>Step-3.5-Flash + Step-Audio R1.1。</strong>Coding Vibe 的 Agent 池自动构建前端。阶跃星辰全双工语音模型驱动 always-on 语音接口。一等奖 ¥15,000 + ¥6,666 Step Plan Flash max。</span>
         </div>
       </div>
       <div class="diff-card reveal">
-        <div class="d-title">5. <span class="en">StepFun Foundation Model</span><span class="zh">阶跃星辰 基座大模型赛道</span></div>
+        <div class="d-title">5. <span class="en">Qoder · 一个人 = 一支工程团队 (Alibaba)</span><span class="zh">5. Qoder · 一个人 = 一支工程团队（阿里）</span></div>
         <div class="d-desc">
-          <span class="en">StepFun's full-duplex voice model is THE engine for Coding Vibe's always-on voice interface. Step-Audio R1.1 (#1 Big Bench Audio).</span>
-          <span class="zh">阶跃星辰的全双工语音模型是 Coding Vibe always-on 语音接口的核心引擎。Step-Audio R1.1 (Big Bench Audio #1)。</span>
+          <span class="en"><strong>Multi-agent coding platform.</strong> Coding Vibe extends Qoder's "one person = one team" vision to voice + always-on. Qoder PRO免费 + 不限量模型调用。一等奖 ¥20,000.</span>
+          <span class="zh"><strong>多智能体编程平台。</strong>Coding Vibe 将 Qoder「一人=一团队」延伸为 voice + always-on。Qoder PRO 免费 + 不限量模型调用。一等奖 ¥20,000。</span>
         </div>
       </div>
       <div class="diff-card reveal">
-        <div class="d-title">6. <span class="en">灵光 AI-Native App</span><span class="zh">灵光 AI 原生应用赛道</span></div>
+        <div class="d-title">6. <span class="en">灵光 · 「见自己」— AI-Native App (Ant Group)</span><span class="zh">6. 灵光 · 「见自己」— AI 原生应用（蚂蚁）</span></div>
         <div class="d-desc">
-          <span class="en">One-click deploy Coding Vibe via 灵光闪. AI-native app built entirely through AI-native tooling. Ant Group sponsorship.</span>
-          <span class="zh">通过灵光闪一键部署 Coding Vibe。完全通过 AI 原生工具构建的 AI 原生应用。蚂蚁集团赞助。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">7. <span class="en">小红书 AI Content Creation</span><span class="zh">小红书 AI 内容创作赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Coding Vibe's Marketing Agent auto-generates 小红书 posts from git commits. Livestream the dev process. "Not AI-generated — human-AI co-creation."</span>
-          <span class="zh">Coding Vibe 的 Marketing Agent 从 git commit 自动生成小红书帖子。直播开发过程。「不是 AI generated——human AI cocreation。」</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">8. <span class="en">Weibo Commercial Market AI</span><span class="zh">微博商业市场 AI 赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Marketing Agent auto-publishes to Weibo. Coding Vibe as a commercial content generation engine for brands.</span>
-          <span class="zh">Marketing Agent 自动发布微博。Coding Vibe 作为品牌商业内容生成引擎。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">9. <span class="en">Even Realities Ultimate Desktop</span><span class="zh">Even Realities 终极桌面赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Even Realities G2 Terminal Mode IS the Coding Vibe HUD. R1 ring for tap-to-approve. npm SDK directly integrated. The killer demo.</span>
-          <span class="zh">Even Realities G2 Terminal Mode 就是 Coding Vibe 的 HUD。R1 戒指点按确认。npm SDK 直接集成。杀手级演示。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">10. <span class="en">Rokid Spatial Computing OS</span><span class="zh">Rokid 空间计算 OS 赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Rokid Max 2 + Station 2 for spatial coding — 3 virtual monitors. Code, review diffs, and monitor agent status in 3D space.</span>
-          <span class="zh">Rokid Max 2 + Station 2 空间编程——3 个虚拟显示器。在 3D 空间里写代码、看 diff、监控 Agent 状态。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">11. <span class="en">清闲 Real-World Tool</span><span class="zh">清闲——Real-World Tool 赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Coding Vibe builds real products — not demos. From voice command to deployed SaaS with Stripe. OrangePi 3B edge fleet makes it real.</span>
-          <span class="zh">Coding Vibe 构建真实产品——不是 demo。从语音指令到部署的 SaaS + Stripe 支付。OrangePi 3B 边缘计算集群让它真正落地。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">12. <span class="en">CMB AI FinTech</span><span class="zh">招行 AI 金融科技赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Stripe + Lemon Squeezy payment integration built into the deploy pipeline. One voice command = monetized product.</span>
-          <span class="zh">Stripe + Lemon Squeezy 支付集成内置于部署管线。一句语音指令 = 可盈利产品。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">13. <span class="en">Injective Blockchain</span><span class="zh">Injective 区块链赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Voice-deploy smart contracts. Coding Vibe orchestrates Web3 development — compile, test, deploy to Injective testnet.</span>
-          <span class="zh">语音部署智能合约。Coding Vibe 编排 Web3 开发——编译、测试、部署到 Injective 测试网。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">14. <span class="en">HyperAI Digital Future</span><span class="zh">HyperAI 数智未来赛道</span></div>
-        <div class="d-desc">
-          <span class="en">RTX 5090 + RTX PRO 6000 GPU compute. Edge AI on OrangePi NPUs + cloud GPU for heavy inference. Future of AI-assisted development.</span>
-          <span class="zh">RTX 5090 + RTX PRO 6000 GPU 算力。OrangePi NPU 边缘 AI + 云端 GPU 重推理。AI 辅助开发的未来。</span>
-        </div>
-      </div>
-      <div class="diff-card reveal">
-        <div class="d-title">15. <span class="en">SSPAI Cyber Stationery</span><span class="zh">少数派·赛博文具赛道</span></div>
-        <div class="d-desc">
-          <span class="en">Coding Vibe as the ultimate creative tool — a "pen" that writes code, designs, and ships products. 少数派年度会员已提供。</span>
-          <span class="zh">Coding Vibe 作为终极创作工具——一支会写代码、做设计、发布产品的「笔」。少数派年度会员已提供。</span>
+          <span class="en"><strong>Built with 灵光闪, published to 灵光圈.</strong> Coding Vibe is the ultimate "build for yourself" tool. Deploy via 灵光闪 one-click. ¥30,000 pool, 8 awards.</span>
+          <span class="zh"><strong>灵光闪构建，灵光圈发布。</strong>Coding Vibe 是终极「为自己而造」的工具。灵光闪一键部署。¥30,000 奖池，8 个奖项。</span>
         </div>
       </div>
     </div>
 
-    <p class="hw-notice reveal" style="margin-top:16px;">
-      <span class="en"><strong>Strategy:</strong> Submit to ALL 15 tracks + General. Each track gets a customized demo video showing Coding Vibe through that track's lens. Prize cap = 1 theme + 6 tracks — we collect the best 6.</span>
-      <span class="zh"><strong>策略：</strong>全部 15 条赛道 + General 主题奖都提交。每条赛道定制一个 demo 视频，从该赛道的视角展示 Coding Vibe。奖项上限 1 主题 + 6 赛道——拿下最好的 6 个。</span>
+    <!-- All 24 tracks -->
+    <div class="section mt-20">
+      <h2>📋 <span class="en">All 24 Sponsor Tracks</span><span class="zh">全部 24 条赞助赛道</span></h2>
+    </div>
+
+    <div class="gate-card reveal" style="margin-bottom:12px;">
+      <div class="gate-header">
+        <span class="en">All tracks we can submit to (prize details in tracks-and-themes-2026.md)</span>
+        <span class="zh">可提交的全部赛道（奖金详见 tracks-and-themes-2026.md）</span>
+      </div>
+      <div class="gate-item">01. Injective Blockchain x AI — ¥100,000 pool</div>
+      <div class="gate-item">02. 清闲 Desktop Daemon 桌面常驻精灵 — ¥30,000</div>
+      <div class="gate-item">03. 灵光「见自己」— ¥30,000 / 8 awards</div>
+      <div class="gate-item">04. Qoder · 一个人 = 一支工程团队 — ¥40,000</div>
+      <div class="gate-item">05. 不做第一，做唯一（智能少年）— ¥28,000</div>
+      <div class="gate-item">06. 快快快 Amazon Quick (AWS) — ¥30,000</div>
+      <div class="gate-item">07. 小红书 · Build in Public — ¥30,000</div>
+      <div class="gate-item">08. 干杯！B站新纪元 — ¥30,000+ / 实习机会</div>
+      <div class="gate-item">09. Dimensional · Give Agents a Body — ¥30,000</div>
+      <div class="gate-item">10. Hack the Rest 重新创造休息 (蓝盒子) — ¥20,000</div>
+      <div class="gate-item">11. WOPC 新国货出海 · AI重新表达中国文化 — ¥30,000</div>
+      <div class="gate-item">12. 松灵机器人 · 教会机器人新技能 — ¥35,000+</div>
+      <div class="gate-item">13. PICO OS 6 · Escape the Rectangle — ¥56,000</div>
+      <div class="gate-item">14. 阶跃星辰 · 前端自进化工厂 — ¥30,000+</div>
+      <div class="gate-item">15. Money Whisperer · AI native 理财 (度小满) — ¥26,000</div>
+      <div class="gate-item">16. 秒哒 · 应用美学赛道 (百度) — ¥26,000</div>
+      <div class="gate-item">17. Superun · Context to Code (有赞) — ¥30,000</div>
+      <div class="gate-item">18. PandaAI · Build the Next AI Trader — ¥30,000</div>
+      <div class="gate-item">19. 米哈游 · 发行二周目 — 游戏发行 AI</div>
+      <div class="gate-item">20. D-Robotics · Give AI a Body — ¥30,000</div>
+      <div class="gate-item">21. 涂鸦智能 · 破界者 — ¥30,000</div>
+      <div class="gate-item">22. ⭐ viaim · 耳边的好AI — ¥10,000 + 耳机</div>
+      <div class="gate-item">23. 弦指科技 · 伴身智能 — ¥30,000</div>
+      <div class="gate-item">24. Photon · 消息即界面 — 给 Agent 一个手机号</div>
+    </div>
+
+    <p class="hw-notice reveal" style="margin-top:12px;">
+      <span class="en"><strong>Strategy:</strong> Submit to all 24 tracks. Prioritize demo quality for the Top 6 that fit Coding Vibe perfectly. Each track gets a tailored demo angle. Prize cap = 1 theme + 6 tracks.</span>
+      <span class="zh"><strong>策略：</strong>24 条赛道全部提交。优先打磨最契合的 Top 6 赛道 demo。每条赛道定制展示视角。奖项上限 1 主题 + 6 赛道。</span>
     </p>
   </div>
 
@@ -1068,6 +1199,11 @@
       <span class="zh">Coding Vibe · 永远在线的多 Agent 编码伴侣<br>AdventureX 2026 · 杭州</span>
     </div>
     <div class="motto">⛰ Aim High · 🌊 Embrace All · 🚢 Set Sail · 🗼 Be a Lighthouse · ⭕ Wholeness</div>
+    <div class="links" style="margin:10px 0;">
+      <a href="https://onezion12344.github.io/projects/" target="_blank"><span class="en">All Projects</span><span class="zh">全部项目</span> ↗</a>
+      <span style="color:var(--muted);opacity:0.3;">|</span>
+      <a href="https://github.com/onezion12344" target="_blank">GitHub ↗</a>
+    </div>
     <div class="ax-credit">
       AdventureX 2026 · 7/22–26 · <span class="en">Hangzhou · Future Sci-Tech City</span><span class="zh">杭州 · 未来科技城</span><br>
       <span class="en">Proudly built with Claude Code Agent Orchestra</span>
@@ -1158,6 +1294,15 @@ function toggleLang() {
     });
   }, { rootMargin: '-15% 0px -70% 0px' });
   sections.forEach(function(s) { io.observe(s); });
+})();
+
+// Back to top visibility
+(function() {
+  var btt = document.getElementById('btt');
+  if (!btt) return;
+  window.addEventListener('scroll', function() {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, {passive: true});
 })();
 </script>
 </body>
