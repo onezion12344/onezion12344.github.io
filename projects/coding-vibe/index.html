@@ -636,13 +636,21 @@
         </span>
       </div>
       <p class="arch-desc">
-        <span class="en"><strong>Not ASR→LLM→TTS pipeline. One model, voice in/out natively.</strong></span>
-        <span class="zh"><strong>不是 ASR→LLM→TTS 管道。一个模型，原生语音输入输出。</strong></span>
+        <span class="en"><strong>Why full-duplex, not ASR→LLM→TTS pipeline.</strong> After researching 3 generations of GPT voice tech + StepFun + Doubao Seeduplex + Gemini Live.</span>
+        <span class="zh"><strong>为什么是全双工，不是 ASR→LLM→TTS 管道。</strong>调研了三代 GPT 语音技术 + StepFun + 豆包 Seeduplex + Gemini Live 后的结论。</span>
       </p>
       <ul class="arch-items">
-        <li><span class="en"><strong>StepFun Realtime API</strong> (stepaudio-2.5-realtime) — WebSocket full-duplex. Built-in ASR, VAD, web search, KB retrieval. Handles voice conversation natively: receives your voice, understands intent, delegates to agent pool, responds in voice.</span><span class="zh"><strong>StepFun Realtime API</strong>（stepaudio-2.5-realtime）——WebSocket 全双工。内置 ASR、VAD、web search、知识库检索。原生处理语音对话：接收你的语音→理解意图→分派给 Agent 池→语音回复。</span></li>
-        <li><span class="en"><strong>Why full-duplex:</strong> No pipeline latency. Model hears you, thinks, and speaks concurrently — like a real teammate. Dual-Brain Architecture (Formulation + Articulation) enables concurrent reasoning and voice generation.</span><span class="zh"><strong>为什么全双工：</strong>无管道延迟。模型同时听、想、说——像真正的队友。Dual-Brain 架构（Formulation + Articulation）实现并行推理与语音生成。</span></li>
+        <li><span class="en"><strong>Gen 1 (2023):</strong> Whisper→GPT→TTS pipeline. 2.8-5.4s latency. Tone/emotion lost at ASR boundary. ❌</span><span class="zh"><strong>Gen 1（2023）：</strong>Whisper→GPT→TTS 管道。2.8-5.4s 延迟。ASR 边界丢失情绪、语调。❌</span></li>
+        <li><span class="en"><strong>Gen 2 (2024 GPT-4o):</strong> Single end-to-end model. 232ms latency. But turn-based — 67% false interruptions. No API backchannels.</span><span class="zh"><strong>Gen 2（2024 GPT-4o）：</strong>单模型端到端。232ms 延迟。但是回合制——67% 误中断。无 API backchannel。</span></li>
+        <li><span class="en"><strong>Gen 3 (2026 GPT-Live):</strong> Full-duplex + GPT-5.5 delegation. 0% false interruptions. Backchannels ("mhmm"). GPQA 84.2% vs AVM's 45.3%. But NO API — ChatGPT app only.</span><span class="zh"><strong>Gen 3（2026 GPT-Live）：</strong>全双工+GPT-5.5 后台委派。0% 误中断。Backchannel（"嗯哼"）。GPQA 84.2% vs AVM 45.3%。但没有 API——仅 ChatGPT app。</span></li>
+      </ul>
+      <p class="arch-desc" style="margin-top:10px;">
+        <span class="en"><strong>Our choice: StepFun stepaudio-2.5-realtime</strong> — WebSocket full-duplex API available NOW. Paralinguistic score 82.18 (beats GPT-4o's 80.46). Built-in VAD, ASR, web search. Dual-Brain Architecture. $0.064/hr input. Fallback: Doubao Seeduplex (full-duplex, Volcano Engine API) or OpenAI gpt-realtime-2.1 (turn-based but best function calling at 2.1% error rate).</span>
+        <span class="zh"><strong>我们选择：StepFun stepaudio-2.5-realtime</strong>——全双工 WebSocket API 现在可用。副语言理解 82.18 分（超过 GPT-4o 的 80.46）。内置 VAD、ASR、web search。Dual-Brain 架构。$0.064/hr 输入。备选：豆包 Seeduplex（全双工，火山引擎 API）或 OpenAI gpt-realtime-2.1（回合制但 function calling 最强，2.1% 错误率）。</span>
+      </p>
+      <ul class="arch-items">
         <li><span class="en"><strong>Wake word:</strong> "Hey Vibe" → Porcupine on OrangePi NPU → triggers StepFun Realtime session</span><span class="zh"><strong>唤醒词：</strong>「Hey Vibe」→ OrangePi NPU 上 Porcupine → 触发 StepFun Realtime 会话</span></li>
+        <li><span class="en"><strong>Fallback chain:</strong> StepFun → Doubao Seeduplex → OpenAI Realtime-2.1 (degraded to turn-based)</span><span class="zh"><strong>降级链：</strong>StepFun → 豆包 Seeduplex → OpenAI Realtime-2.1（降级为回合制）</span></li>
       </ul>
     </div>
 
@@ -1265,8 +1273,8 @@
         <span class="en">🛠️ Tech Stack</span><span class="zh">🛠️ 技术栈</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>Voice Boss:</strong> StepFun stepaudio-2.5-realtime (full-duplex WebSocket)</span>
-        <span class="zh"><strong>语音 Boss：</strong>StepFun stepaudio-2.5-realtime（全双工 WebSocket）</span>
+        <span class="en"><strong>Voice Boss:</strong> StepFun stepaudio-2.5-realtime (full-duplex) → Doubao Seeduplex (fallback) → OpenAI gpt-realtime-2.1 (degraded)</span>
+        <span class="zh"><strong>语音 Boss：</strong>StepFun stepaudio-2.5-realtime（全双工）→ 豆包 Seeduplex（备选）→ OpenAI gpt-realtime-2.1（降级）</span>
       </div>
       <div class="gate-item">
         <span class="en"><strong>Orchestrator:</strong> Python asyncio daemon — OpenOPC HeartbeatScheduler + EscalationEngine + Gate Harness patterns</span>
