@@ -574,10 +574,10 @@
 
     <div class="tags">
       <span class="tag">Always-On</span>
-      <span class="tag pink">Multi-Agent</span>
+      <span class="tag pink">OpenOPC</span>
       <span class="tag blue">Voice-First</span>
       <span class="tag">Claude Code</span>
-      <span class="tag pink">CEO Pattern</span>
+      <span class="tag pink">Company Mode</span>
       <span class="tag blue">Hardware-Native</span>
     </div>
 
@@ -622,8 +622,8 @@
     <div class="pull-quote reveal">
       <span class="pq-mark">&ldquo;</span>
       <div class="pq-text">
-        <span class="en">OpenOPC orchestration patterns + StepFun full-duplex voice + lopi agent pool = 24/7 coding companion.</span>
-        <span class="zh">OpenOPC 编排模式 + StepFun 全双工语音 + lopi Agent 池 = 24/7 编码伴侣。</span>
+        <span class="en">OpenOPC company-mode orchestrator + full-duplex voice (abstracted) + DeepSeek brain + Claude Code agents = 24/7 coding companion.</span>
+        <span class="zh">OpenOPC 公司模式编排器 + 全双工语音（可替换） + DeepSeek 大脑 + Claude Code Agent = 24/7 编码伴侣。</span>
       </div>
     </div>
 
@@ -636,21 +636,21 @@
         </span>
       </div>
       <p class="arch-desc">
-        <span class="en"><strong>Why full-duplex, not ASR→LLM→TTS pipeline.</strong> After researching 3 generations of GPT voice tech + StepFun + Doubao Seeduplex + Gemini Live.</span>
-        <span class="zh"><strong>为什么是全双工，不是 ASR→LLM→TTS 管道。</strong>调研了三代 GPT 语音技术 + StepFun + 豆包 Seeduplex + Gemini Live 后的结论。</span>
+        <span class="en"><strong>Voice models are mouths & ears, not brains.</strong> Full-duplex speech models (StepAudio, Seeduplex, GPT-Live) handle conversation — but NONE support function calling or code reasoning. The brain is a separate text model (DeepSeek-V4-Pro). This split architecture is exactly what OpenAI GPT-Live uses (GPT-Live-1 + GPT-5.5). We abstract all voice providers behind one interface.</span>
+        <span class="zh"><strong>语音模型是嘴和耳朵，不是大脑。</strong>全双工语音模型（StepAudio、Seeduplex、GPT-Live）负责对话——但都不支持 function calling 或代码推理。大脑是独立的文本模型（DeepSeek-V4-Pro）。这个分离架构正是 GPT-Live 的做法（GPT-Live-1 + GPT-5.5）。所有语音提供商抽象为统一接口。</span>
       </p>
       <ul class="arch-items">
-        <li><span class="en"><strong>Gen 1 (2023):</strong> Whisper→GPT→TTS pipeline. 2.8-5.4s latency. Tone/emotion lost at ASR boundary. ❌</span><span class="zh"><strong>Gen 1（2023）：</strong>Whisper→GPT→TTS 管道。2.8-5.4s 延迟。ASR 边界丢失情绪、语调。❌</span></li>
-        <li><span class="en"><strong>Gen 2 (2024 GPT-4o):</strong> Single end-to-end model. 232ms latency. But turn-based — 67% false interruptions. No API backchannels.</span><span class="zh"><strong>Gen 2（2024 GPT-4o）：</strong>单模型端到端。232ms 延迟。但是回合制——67% 误中断。无 API backchannel。</span></li>
-        <li><span class="en"><strong>Gen 3 (2026 GPT-Live):</strong> Full-duplex + GPT-5.5 delegation. 0% false interruptions. Backchannels ("mhmm"). GPQA 84.2% vs AVM's 45.3%. But NO API — ChatGPT app only.</span><span class="zh"><strong>Gen 3（2026 GPT-Live）：</strong>全双工+GPT-5.5 后台委派。0% 误中断。Backchannel（"嗯哼"）。GPQA 84.2% vs AVM 45.3%。但没有 API——仅 ChatGPT app。</span></li>
+        <li><span class="en"><strong>Gen 1 (2023):</strong> Whisper→GPT→TTS pipeline. 2.8-5.4s latency. Tone lost at ASR boundary. ❌</span><span class="zh"><strong>Gen 1（2023）：</strong>Whisper→GPT→TTS 管道。2.8-5.4s 延迟。ASR 丢失语调。❌</span></li>
+        <li><span class="en"><strong>Gen 2 (2024 GPT-4o):</strong> Single end-to-end model. 232ms. Turn-based — 67% false interrupts.</span><span class="zh"><strong>Gen 2（2024 GPT-4o）：</strong>单模型端到端。232ms。回合制——67% 误中断。</span></li>
+        <li><span class="en"><strong>Gen 3 (2026 GPT-Live):</strong> Full-duplex + GPT-5.5 delegation. 0% false interrupts. GPQA 84.2%. But NO API.</span><span class="zh"><strong>Gen 3（2026 GPT-Live）：</strong>全双工+GPT-5.5 委派。0% 误中断。GPQA 84.2%。但无 API。</span></li>
       </ul>
       <p class="arch-desc" style="margin-top:10px;">
-        <span class="en"><strong>Our choice: StepFun stepaudio-2.5-realtime</strong> — WebSocket full-duplex API available NOW. Paralinguistic score 82.18 (beats GPT-4o's 80.46). Built-in VAD, ASR, web search. Dual-Brain Architecture. $0.064/hr input. Fallback: Doubao Seeduplex (full-duplex, Volcano Engine API) or OpenAI gpt-realtime-2.1 (turn-based but best function calling at 2.1% error rate).</span>
-        <span class="zh"><strong>我们选择：StepFun stepaudio-2.5-realtime</strong>——全双工 WebSocket API 现在可用。副语言理解 82.18 分（超过 GPT-4o 的 80.46）。内置 VAD、ASR、web search。Dual-Brain 架构。$0.064/hr 输入。备选：豆包 Seeduplex（全双工，火山引擎 API）或 OpenAI gpt-realtime-2.1（回合制但 function calling 最强，2.1% 错误率）。</span>
+        <span class="en"><strong>Voice: abstracted.</strong> Primary: ByteDance Seeduplex (npm SDK, WebRTC, free 100min/mo, 数亿用户验证). Alt: StepFun stepaudio-2.5-realtime (WebSocket, paralinguistic 82.18). Fallback: any half-duplex STT+TTS combo. All implement the same VoiceProvider interface — swap with one config line.</span>
+        <span class="zh"><strong>语音层：可替换。</strong>首选：字节 Seeduplex（npm SDK + WebRTC，免费 100min/月，数亿用户验证）。备选：StepFun stepaudio-2.5-realtime（WebSocket，副语言 82.18）。降级：任意半双工 STT+TTS 组合。全部实现同一个 VoiceProvider 接口——一行配置切换。</span>
       </p>
       <ul class="arch-items">
-        <li><span class="en"><strong>Wake word:</strong> "Hey Vibe" → Porcupine on OrangePi NPU → triggers StepFun Realtime session</span><span class="zh"><strong>唤醒词：</strong>「Hey Vibe」→ OrangePi NPU 上 Porcupine → 触发 StepFun Realtime 会话</span></li>
-        <li><span class="en"><strong>Fallback chain:</strong> StepFun → Doubao Seeduplex → OpenAI Realtime-2.1 (degraded to turn-based)</span><span class="zh"><strong>降级链：</strong>StepFun → 豆包 Seeduplex → OpenAI Realtime-2.1（降级为回合制）</span></li>
+        <li><span class="en"><strong>Wake word:</strong> "Hey Vibe" → Porcupine on OrangePi NPU → triggers full-duplex session</span><span class="zh"><strong>唤醒词：</strong>「Hey Vibe」→ OrangePi NPU 上 Porcupine → 触发全双工会话</span></li>
+        <li><span class="en"><strong>Brain (DeepSeek-V4-Pro):</strong> receives transcribed text → reasons + plans + calls tools → text response → voice model speaks it. Voice models CANNOT function-call — the text brain does that.</span><span class="zh"><strong>大脑（DeepSeek-V4-Pro）：</strong>接收转写文本 → 推理+规划+调用工具 → 文本回复 → 语音模型播报。语音模型不能 function call——文本大脑来做。</span></li>
       </ul>
     </div>
 
@@ -678,34 +678,34 @@
       <div class="arch-header">
         <span class="arch-icon">🧠</span>
         <span class="arch-name">
-          <span class="en">Layer 2: Orchestrator — OpenOPC Patterns + lopi Agent Pool</span>
-          <span class="zh">第二层：编排器——OpenOPC 模式 + lopi Agent 池</span>
+          <span class="en">Layer 2: Orchestrator — OpenOPC Company Mode</span>
+          <span class="zh">第二层：编排器——OpenOPC 公司模式</span>
         </span>
       </div>
       <p class="arch-desc">
-        <span class="en">A lightweight daemon combining proven patterns from OpenOPC (HKUDS) with lopi's scored agent pool:</span>
-        <span class="zh">轻量守护进程，融合 OpenOPC（HKUDS）的成熟模式与 lopi 的评分 Agent 池：</span>
+        <span class="en">OpenOPC (HKUDS, 958⭐, MIT) runs as a full AI company — not just patterns. It already ships a Claude Code adapter (659-line <code>claude_code.py</code>), git worktree isolation, and a 7-layer conflict resolution system. No lopi needed — OpenOPC covers it.</span>
+        <span class="zh">OpenOPC（HKUDS，958⭐，MIT）以完整 AI 公司形式运行——不只是模式。已内置 Claude Code adapter（659 行 <code>claude_code.py</code>）、git worktree 隔离、7 层冲突解决系统。不需要 lopi——OpenOPC 全覆盖。</span>
       </p>
       <ul class="arch-items">
         <li>
-          <span class="en"><strong style="color:var(--accent2)">HeartbeatScheduler</strong> (OpenOPC) — wakes agents every 30s to check pending tasks. In-process asyncio loop, no separate service needed.</span>
-          <span class="zh"><strong style="color:var(--accent2)">HeartbeatScheduler</strong>（OpenOPC）——每 30s 唤醒 agent 检查待办。进程内 asyncio 循环，无需独立服务。</span>
+          <span class="en"><strong style="color:var(--accent2)">Company Mode</strong> — recruiter agent auto-staffs roles (CEO, CTO, Engineer…), builds org chart, delegates work via DAG. Roles = persistent sessions with memory.</span>
+          <span class="zh"><strong style="color:var(--accent2)">公司模式</strong>——recruiter agent 自动招聘角色（CEO、CTO、Engineer…），构建组织架构，DAG 委派任务。角色 = 持久会话+记忆。</span>
         </li>
         <li>
-          <span class="en"><strong style="color:var(--accent2)">EscalationEngine</strong> (OpenOPC) — blocks runtime, escalates key decisions to you via voice. Types: INFO_NEEDED, DECISION_NEEDED, RISK_WARNING. Timeout + default action.</span>
-          <span class="zh"><strong style="color:var(--accent2)">EscalationEngine</strong>（OpenOPC）——挂起运行，将关键决策通过语音上报给你。类型：信息需求、决策需求、风险警告。超时+默认动作。</span>
+          <span class="en"><strong style="color:var(--accent2)">7-Layer Conflict Resolution</strong> — DM → Meeting (multi-round semantic consensus, LLM judge) → Manager escalation → DFS deadlock detection → AWAITING_HUMAN → you. Other frameworks (CrewAI, AutoGen) have none of this.</span>
+          <span class="zh"><strong style="color:var(--accent2)">7 层冲突解决</strong>——DM → 多轮语义共识会议（LLM judge）→ Manager 上报 → DFS 图论死锁检测 → AWAITING_HUMAN → 你。其他框架（CrewAI、AutoGen）完全没有这套。</span>
         </li>
         <li>
-          <span class="en"><strong style="color:var(--accent2)">Gate Harness</strong> (OpenOPC) — LLM judge evaluates completed work: pass / rework / escalate. Same blocker N times → auto-escalate to human.</span>
-          <span class="zh"><strong style="color:var(--accent2)">Gate Harness</strong>（OpenOPC）——LLM 裁判评估完成质量：通过/返工/上报。同一问题 N 次→自动上报给你。</span>
+          <span class="en"><strong style="color:var(--accent2)">Gate Harness</strong> — LLM judge evaluates completed work: pass / rework / escalate. Same blocker N times → auto-escalate.</span>
+          <span class="zh"><strong style="color:var(--accent2)">Gate Harness</strong>——LLM 裁判评估完成质量：通过/返工/上报。同一问题 N 次→自动上报。</span>
         </li>
         <li>
-          <span class="en"><strong style="color:var(--accent2)">lopi AgentPool</strong> — N concurrent Claude Code agents in worktree branches. Scored retry loop: Plan → Implement → Test → Score → Retry → PR. SQLite memory with pattern mining.</span>
-          <span class="zh"><strong style="color:var(--accent2)">lopi AgentPool</strong>——N 个并发 Claude Code agent，各自在 worktree 分支。评分重试循环：Plan→Implement→Test→Score→Retry→PR。SQLite 记忆+模式挖掘。</span>
+          <span class="en"><strong style="color:var(--accent2)">Single-Model Orchestration</strong> — all roles share one model (DeepSeek-V4-Pro). Academia confirms: 68% of production multi-agent cases match single-model at ~3x lower cost. Multi-agent value = org structure, not model diversity.</span>
+          <span class="zh"><strong style="color:var(--accent2)">单模型编排</strong>——所有角色共用一个模型（DeepSeek-V4-Pro）。学术界确认：68% 的生产多 agent 场景可以用单模型达到同样效果，成本 ~3x 更低。多 agent 的价值在组织结构，不在模型多样性。</span>
         </li>
         <li>
-          <span class="en"><strong style="color:var(--accent2)">Work-Item DAG</strong> (OpenOPC) — dependency graph of tasks. Independent items run in parallel; dependent items wait. Phase transitions: TODO → IN_PROGRESS → IN_REVIEW → DONE.</span>
-          <span class="zh"><strong style="color:var(--accent2)">Work-Item DAG</strong>（OpenOPC）——任务依赖图。独立项并行执行；依赖项等待前序完成。状态流转：TODO→IN_PROGRESS→IN_REVIEW→DONE。</span>
+          <span class="en"><strong style="color:var(--accent2)">Self-Grown Memory</strong> — per-employee evolution tracking. Same pattern repeated 2x → auto-generates SKILL.md. ChromaDB + SQLite memory layers. 3-tier context compaction (message → session → durable).</span>
+          <span class="zh"><strong style="color:var(--accent2)">自进化记忆</strong>——每员工进化追踪。同一 pattern 重复 2 次→自动生成 SKILL.md。ChromaDB + SQLite 三层记忆。三层上下文压缩（消息→会话→持久）。</span>
         </li>
       </ul>
     </div>
@@ -714,13 +714,13 @@
       <div class="arch-header">
         <span class="arch-icon">⚙️</span>
         <span class="arch-name">
-          <span class="en">Layer 3: Claude Code Agent Pool (lopi-powered)</span>
-          <span class="zh">第三层：Claude Code Agent 池（lopi 驱动）</span>
+          <span class="en">Layer 3: Claude Code Agent Pool (OpenOPC adapters)</span>
+          <span class="zh">第三层：Claude Code Agent 池（OpenOPC adapter 驱动）</span>
         </span>
       </div>
       <p class="arch-desc">
-        <span class="en">Specialized agents running in parallel git worktrees. Managed by lopi's AgentPool with scored retry loops and SQLite memory.</span>
-        <span class="zh">多个专业 Agent 并行运行在独立 git worktree 中。lopi AgentPool 管理，评分重试循环 + SQLite 记忆。</span>
+        <span class="en">OpenOPC ships with production-grade adapters for 4 external agents: Claude Code, Codex, Cursor, OpenCode. The <code>claude_code.py</code> adapter spawns <code>claude --print --output-format stream-json</code> as subprocess — stream-json parsing, session resume, permission modes, workspace isolation. Each role gets its own git worktree branch via <code>runtime_v2/worktree.py</code>.</span>
+        <span class="zh">OpenOPC 内置 4 个外部 agent adapter：Claude Code、Codex、Cursor、OpenCode。<code>claude_code.py</code> adapter 启动 <code>claude --print --output-format stream-json</code> 子进程——stream-json 解析、session resume、权限模式、工作区隔离。每个角色通过 <code>runtime_v2/worktree.py</code> 获得独立 git worktree 分支。</span>
       </p>
       <div class="agent-roles">
         <div class="agent-role"><span class="ar-name">Architect</span><span class="ar-desc"><span class="en">System design</span><span class="zh">系统设计</span></span></div>
@@ -1082,12 +1082,12 @@
         <span class="zh">集成链路：所有硬件如何串联</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>🎧 Earphones → 🍊 OrangePi Wake Word → ☁️ StepFun Realtime</strong> — User speaks → OrangePi 3B detects "Hey Vibe" wake word (Porcupine on NPU) → BT A2DP audio relay to MacBook → StepFun Realtime API processes full-duplex voice (ASR + understanding + TTS in one WebSocket). No separate ASR pipeline needed.</span>
-        <span class="zh"><strong>🎧 耳机 → 🍊 OrangePi 唤醒词 → ☁️ StepFun Realtime</strong>——用户说话 → OrangePi 3B 检测「Hey Vibe」唤醒词（NPU 上 Porcupine）→ 蓝牙 A2DP 音频中继到 MacBook → StepFun Realtime API 全双工处理（ASR+理解+TTS 一个 WebSocket）。无需独立 ASR 管道。</span>
+        <span class="en"><strong>🎧 Earphones → 🍊 OrangePi Wake Word → ☁️ Voice Provider</strong> — User speaks → OrangePi 3B detects "Hey Vibe" wake word (Porcupine on NPU) → BT A2DP audio relay to MacBook → VoiceProvider (Seeduplex primary, StepAudio alt) transcribes speech → text → DeepSeek-V4-Pro (OpenOPC) reasons + calls tools → text back → VoiceProvider TTS. Voice = mouth/ears, DeepSeek = brain.</span>
+        <span class="zh"><strong>🎧 耳机 → 🍊 OrangePi 唤醒词 → ☁️ 语音提供商</strong>——用户说话 → OrangePi 3B 检测「Hey Vibe」唤醒词（NPU 上 Porcupine）→ 蓝牙 A2DP 音频中继到 MacBook → VoiceProvider（Seeduplex 首选，StepAudio 备选）转写语音 → 文本 → DeepSeek-V4-Pro（OpenOPC）推理+调用工具 → 文本回复 → VoiceProvider TTS。语音 = 嘴/耳，DeepSeek = 大脑。</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>💍 WIZPR Ring → 🍊 OrangePi → ☁️ StepFun</strong> — Whisper into ring → button-triggered audio capture → Bluetooth BLE to OrangePi → forwarded to MacBook → StepFun Realtime private mode transcription. Ring = private input channel for sensitive commands.</span>
-        <span class="zh"><strong>💍 WIZPR 戒指 → 🍊 OrangePi → ☁️ StepFun</strong>——对戒指悄声说话 → 按键触发录音 → 蓝牙 BLE 传至 OrangePi → 转发到 MacBook → StepFun Realtime 私密模式转录。戒指 = 敏感指令的私密输入通道。</span>
+        <span class="en"><strong>💍 WIZPR Ring → 🍊 OrangePi → ☁️ Voice Provider</strong> — Whisper into ring → button-triggered audio capture → Bluetooth BLE to OrangePi → forwarded to MacBook → VoiceProvider transcribes in private mode. Ring = private input channel for sensitive commands.</span>
+        <span class="zh"><strong>💍 WIZPR 戒指 → 🍊 OrangePi → ☁️ 语音提供商</strong>——对戒指悄声说话 → 按键触发录音 → 蓝牙 BLE 传至 OrangePi → 转发到 MacBook → VoiceProvider 私密模式转录。戒指 = 敏感指令的私密输入通道。</span>
       </div>
       <div class="gate-item">
         <span class="en"><strong>👓 Even Realities G2 → MacBook</strong> — Agent status/notifications formatted as HTML → rendered via npm @evenrealities/g2-sdk → pushed to G2 Terminal Mode over BLE → R1 ring tap sends confirm/scroll events back to Orchestrator → EscalationEngine resolves.</span>
