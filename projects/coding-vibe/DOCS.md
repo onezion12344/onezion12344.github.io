@@ -1,6 +1,6 @@
 # Coding Vibe — Architecture & Research Log
 
-> 2026-07-23 | AdventureX 2026 | Last updated: after OpenOPC deep-dive
+> 2026-07-23 | AdventureX 2026 | Last updated: after AudioChannel + company profile implementation
 
 ## Architecture Decision: OpenOPC as Orchestrator
 
@@ -204,9 +204,48 @@ All heavy compute is cloud API (DeepSeek, StepAudio/Seeduplex, Claude Code subsc
 
 | Day | Tasks |
 |-----|-------|
-| **Day 2** | Clone OpenOPC → `uv install` → configure DeepSeek → run company mode. Write AudioChannel. Write Coding Vibe company profile + skills. |
+| **Day 2** | ~~Clone OpenOPC → `uv install` → configure DeepSeek → run company mode. Write AudioChannel. Write Coding Vibe company profile + skills.~~ **DONE 2026-07-23** |
 | **Day 3** | End-to-end: voice → OpenOPC orchestration → Claude Code → voice response. Test with real coding tasks. |
 | **Day 4** | Demo recording, polishing, submission. |
+
+## Implementation Progress (2026-07-23)
+
+### AudioChannel (`opc/channels/audio.py`)
+
+- ~100 lines, registered as `PollingChannel` with delivery_mode `polling`
+- Inbound: voice transcripts pushed via `push_transcript(text)` → internal `asyncio.Queue` → `poll_once()` → `publish_inbound()`
+- Outbound: `SystemMessage` → `send()` → macOS `say` (halfduplex default) or custom TTS command
+- Config in `channel_config.yaml`: `voice_provider`, `stepaudio_api_key`, `seeduplex_api_key`, `tts_command`
+- Registered in `provider_registry.py` with spec and config in `config.py` (`AudioChannelConfig`)
+- Verified: "Channel configured: audio" on engine init, "audio channel stopped" on shutdown
+
+### Coding Vibe Company Profile
+
+- **Org ID:** `coding-vibe` | 4 roles: Boss, Architect, Builder, Reviewer
+- **Boss** (coordinator, native execution): Voice interface, delegates to architect, speaks results back
+- **Architect** (coordinator, external/claude_code): Research + design → spec → dispatch to builder
+- **Builder** (worker, external/claude_code): Implements specs via Claude Code, runs tests
+- **Reviewer** (worker, external/claude_code): Sanity check — correctness, security, spec compliance
+- Config at `.opc/config/company_orgs/org_coding-vibe_config.yaml`
+- Active org set in `org_index.yaml`
+- Verified: all 4 roles appear in staffing prompt with correct hierarchy
+
+### Usage
+
+```bash
+# Activate coding-vibe org (auto-loaded from org_index)
+uv run opc exec -p demo --mode org --org coding-vibe --agent claude_code "message"
+
+# Interactive chat with audio channel
+uv run opc chat -p coding-vibe --mode org --org coding-vibe --agent claude_code
+```
+
+### Next: Day 3
+
+- Handle interactive staffing (auto_recruit or pre-staff)
+- Connect real voice provider (Seeduplex or StepAudio) to AudioChannel
+- End-to-end: voice transcript → Boss → Architect → Builder (Claude Code) → Reviewer → Boss → TTS
+- Test with real coding task: "add a health endpoint to this FastAPI app"
 
 ---
 
