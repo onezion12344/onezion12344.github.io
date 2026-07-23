@@ -605,6 +605,7 @@
     <a href="#different"><span class="en">Why</span><span class="zh">差异</span></a>
     <a href="#tracks"><span class="en">Tracks</span><span class="zh">赛道</span></a>
     <a href="#hardware"><span class="en">Hardware</span><span class="zh">硬件</span></a>
+    <a href="#prototype"><span class="en">Plan</span><span class="zh">计划</span></a>
   </nav>
 
   <!-- Signal -->
@@ -621,9 +622,28 @@
     <div class="pull-quote reveal">
       <span class="pq-mark">&ldquo;</span>
       <div class="pq-text">
-        <span class="en">A 24/7 factory of Claude Code agents working on your projects. You're the CEO — the system only comes to you for key decisions.</span>
-        <span class="zh">一支 24/7 运行的 Claude Code Agent 军团。你是 CEO——系统只在关键决策时找你。</span>
+        <span class="en">OpenOPC orchestration patterns + StepFun full-duplex voice + lopi agent pool = 24/7 coding companion.</span>
+        <span class="zh">OpenOPC 编排模式 + StepFun 全双工语音 + lopi Agent 池 = 24/7 编码伴侣。</span>
       </div>
+    </div>
+
+    <div class="arch-card l1 reveal">
+      <div class="arch-header">
+        <span class="arch-icon">🔊</span>
+        <span class="arch-name">
+          <span class="en">Layer 0: Boss — Full-Duplex Voice Interface</span>
+          <span class="zh">第〇层：Boss——全双工语音接口</span>
+        </span>
+      </div>
+      <p class="arch-desc">
+        <span class="en"><strong>Not ASR→LLM→TTS pipeline. One model, voice in/out natively.</strong></span>
+        <span class="zh"><strong>不是 ASR→LLM→TTS 管道。一个模型，原生语音输入输出。</strong></span>
+      </p>
+      <ul class="arch-items">
+        <li><span class="en"><strong>StepFun Realtime API</strong> (stepaudio-2.5-realtime) — WebSocket full-duplex. Built-in ASR, VAD, web search, KB retrieval. Handles voice conversation natively: receives your voice, understands intent, delegates to agent pool, responds in voice.</span><span class="zh"><strong>StepFun Realtime API</strong>（stepaudio-2.5-realtime）——WebSocket 全双工。内置 ASR、VAD、web search、知识库检索。原生处理语音对话：接收你的语音→理解意图→分派给 Agent 池→语音回复。</span></li>
+        <li><span class="en"><strong>Why full-duplex:</strong> No pipeline latency. Model hears you, thinks, and speaks concurrently — like a real teammate. Dual-Brain Architecture (Formulation + Articulation) enables concurrent reasoning and voice generation.</span><span class="zh"><strong>为什么全双工：</strong>无管道延迟。模型同时听、想、说——像真正的队友。Dual-Brain 架构（Formulation + Articulation）实现并行推理与语音生成。</span></li>
+        <li><span class="en"><strong>Wake word:</strong> "Hey Vibe" → Porcupine on OrangePi NPU → triggers StepFun Realtime session</span><span class="zh"><strong>唤醒词：</strong>「Hey Vibe」→ OrangePi NPU 上 Porcupine → 触发 StepFun Realtime 会话</span></li>
+      </ul>
     </div>
 
     <div class="arch-card l1 reveal">
@@ -642,7 +662,7 @@
         <li><span class="en">Earphones: Always-on audio I/O — captures your voice, plays back agent updates</span><span class="zh">耳机：常驻音频通道——捕捉你的语音，播放 Agent 状态</span></li>
         <li><span class="en">Smart Ring (WIZPR): Whisper voice input, button capture, voice-based confirm. SDK at hardware lab.</span><span class="zh">智能戒指（WIZPR）：悄声语音输入，按键捕捉灵感，语音确认决策。SDK 在硬件实验室。</span></li>
         <li><span class="en">XR Glasses (Even Realities G2): Terminal Mode HUD — agent status, diffs, diagrams. Includes R1 ring. Web SDK (npm).</span><span class="zh">XR 眼镜（Even Realities G2）：Terminal Mode HUD——Agent 状态、diff、架构图。含 R1 戒指。Web SDK (npm)。</span></li>
-        <li><span class="en">Edge Compute (OrangePi 3B, 80 units): NPU-accelerated ASR, wake word, BT audio relay. 1.6W idle.</span><span class="zh">边缘计算（OrangePi 3B，80 片）：NPU 加速 ASR，唤醒词，蓝牙音频中继。1.6W 待机。</span></li>
+        <li><span class="en">Edge Compute (OrangePi 3B, 80 units): Wake word detection on NPU, BT audio relay to MacBook. 1.6W idle.</span><span class="zh">边缘计算（OrangePi 3B，80 片）：NPU 唤醒词检测，蓝牙音频中继到 MacBook。1.6W 待机。</span></li>
       </ul>
     </div>
 
@@ -650,26 +670,34 @@
       <div class="arch-header">
         <span class="arch-icon">🧠</span>
         <span class="arch-name">
-          <span class="en">Layer 2: Orchestrator (Always-Running Daemon)</span>
-          <span class="zh">第二层：编排器（常驻守护进程）</span>
+          <span class="en">Layer 2: Orchestrator — OpenOPC Patterns + lopi Agent Pool</span>
+          <span class="zh">第二层：编排器——OpenOPC 模式 + lopi Agent 池</span>
         </span>
       </div>
       <p class="arch-desc">
-        <span class="en">The brain. A persistent process with three core components:</span>
-        <span class="zh">大脑。一个永不停止的进程，包含三个核心组件：</span>
+        <span class="en">A lightweight daemon combining proven patterns from OpenOPC (HKUDS) with lopi's scored agent pool:</span>
+        <span class="zh">轻量守护进程，融合 OpenOPC（HKUDS）的成熟模式与 lopi 的评分 Agent 池：</span>
       </p>
       <ul class="arch-items">
         <li>
-          <span class="en"><strong style="color:var(--accent2)">Watcher Agent</strong> — listens to hardware stream, filters signal from noise</span>
-          <span class="zh"><strong style="color:var(--accent2)">监听 Agent</strong>——感知硬件输入，过滤噪音，识别意图</span>
+          <span class="en"><strong style="color:var(--accent2)">HeartbeatScheduler</strong> (OpenOPC) — wakes agents every 30s to check pending tasks. In-process asyncio loop, no separate service needed.</span>
+          <span class="zh"><strong style="color:var(--accent2)">HeartbeatScheduler</strong>（OpenOPC）——每 30s 唤醒 agent 检查待办。进程内 asyncio 循环，无需独立服务。</span>
         </li>
         <li>
-          <span class="en"><strong style="color:var(--accent2)">Router Agent</strong> — decides: dispatch to agent pool? spawn new agent? escalate to user?</span>
-          <span class="zh"><strong style="color:var(--accent2)">路由 Agent</strong>——决策：分派到 Agent 池？创建新 Agent？还是上报给你？</span>
+          <span class="en"><strong style="color:var(--accent2)">EscalationEngine</strong> (OpenOPC) — blocks runtime, escalates key decisions to you via voice. Types: INFO_NEEDED, DECISION_NEEDED, RISK_WARNING. Timeout + default action.</span>
+          <span class="zh"><strong style="color:var(--accent2)">EscalationEngine</strong>（OpenOPC）——挂起运行，将关键决策通过语音上报给你。类型：信息需求、决策需求、风险警告。超时+默认动作。</span>
         </li>
         <li>
-          <span class="en"><strong style="color:var(--accent2)">Decision Gate</strong> — ONLY interrupts you for high-stakes decisions. Everything else: autonomous.</span>
-          <span class="zh"><strong style="color:var(--accent2)">决策门</strong>——仅在高风险决策时打断你。其余全部自主执行。</span>
+          <span class="en"><strong style="color:var(--accent2)">Gate Harness</strong> (OpenOPC) — LLM judge evaluates completed work: pass / rework / escalate. Same blocker N times → auto-escalate to human.</span>
+          <span class="zh"><strong style="color:var(--accent2)">Gate Harness</strong>（OpenOPC）——LLM 裁判评估完成质量：通过/返工/上报。同一问题 N 次→自动上报给你。</span>
+        </li>
+        <li>
+          <span class="en"><strong style="color:var(--accent2)">lopi AgentPool</strong> — N concurrent Claude Code agents in worktree branches. Scored retry loop: Plan → Implement → Test → Score → Retry → PR. SQLite memory with pattern mining.</span>
+          <span class="zh"><strong style="color:var(--accent2)">lopi AgentPool</strong>——N 个并发 Claude Code agent，各自在 worktree 分支。评分重试循环：Plan→Implement→Test→Score→Retry→PR。SQLite 记忆+模式挖掘。</span>
+        </li>
+        <li>
+          <span class="en"><strong style="color:var(--accent2)">Work-Item DAG</strong> (OpenOPC) — dependency graph of tasks. Independent items run in parallel; dependent items wait. Phase transitions: TODO → IN_PROGRESS → IN_REVIEW → DONE.</span>
+          <span class="zh"><strong style="color:var(--accent2)">Work-Item DAG</strong>（OpenOPC）——任务依赖图。独立项并行执行；依赖项等待前序完成。状态流转：TODO→IN_PROGRESS→IN_REVIEW→DONE。</span>
         </li>
       </ul>
     </div>
@@ -678,13 +706,13 @@
       <div class="arch-header">
         <span class="arch-icon">⚙️</span>
         <span class="arch-name">
-          <span class="en">Layer 3: Claude Code Agent Pool</span>
-          <span class="zh">第三层：Claude Code Agent 池</span>
+          <span class="en">Layer 3: Claude Code Agent Pool (lopi-powered)</span>
+          <span class="zh">第三层：Claude Code Agent 池（lopi 驱动）</span>
         </span>
       </div>
       <p class="arch-desc">
-        <span class="en">Specialized agents running in parallel git worktrees. Spawned and killed by the orchestrator as needed.</span>
-        <span class="zh">多个专业 Agent 并行运行在独立 git worktree 中。由编排器按需创建和回收。</span>
+        <span class="en">Specialized agents running in parallel git worktrees. Managed by lopi's AgentPool with scored retry loops and SQLite memory.</span>
+        <span class="zh">多个专业 Agent 并行运行在独立 git worktree 中。lopi AgentPool 管理，评分重试循环 + SQLite 记忆。</span>
       </p>
       <div class="agent-roles">
         <div class="agent-role"><span class="ar-name">Architect</span><span class="ar-desc"><span class="en">System design</span><span class="zh">系统设计</span></span></div>
@@ -1046,16 +1074,16 @@
         <span class="zh">集成链路：所有硬件如何串联</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>🎧 Earphones → 🍊 OrangePi BT Relay</strong> — User speaks into earphones → Bluetooth A2DP audio stream → OrangePi 3B receives via BlueZ A2DP sink → on-device NPU runs sherpa-onnx ASR → transcribed text forwarded over LAN to MacBook</span>
-        <span class="zh"><strong>🎧 耳机 → 🍊 OrangePi 蓝牙中继</strong>——用户对耳机说话 → 蓝牙 A2DP 音频流 → OrangePi 3B 通过 BlueZ A2DP sink 接收 → 板载 NPU 运行 sherpa-onnx ASR → 转录文本通过局域网转发到 MacBook</span>
+        <span class="en"><strong>🎧 Earphones → 🍊 OrangePi Wake Word → ☁️ StepFun Realtime</strong> — User speaks → OrangePi 3B detects "Hey Vibe" wake word (Porcupine on NPU) → BT A2DP audio relay to MacBook → StepFun Realtime API processes full-duplex voice (ASR + understanding + TTS in one WebSocket). No separate ASR pipeline needed.</span>
+        <span class="zh"><strong>🎧 耳机 → 🍊 OrangePi 唤醒词 → ☁️ StepFun Realtime</strong>——用户说话 → OrangePi 3B 检测「Hey Vibe」唤醒词（NPU 上 Porcupine）→ 蓝牙 A2DP 音频中继到 MacBook → StepFun Realtime API 全双工处理（ASR+理解+TTS 一个 WebSocket）。无需独立 ASR 管道。</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>💍 WIZPR Ring → 🍊 OrangePi Voice Endpoint</strong> — Whisper into ring → button-triggered audio capture → Bluetooth BLE to OrangePi → same NPU ASR pipeline → private mode transcription</span>
-        <span class="zh"><strong>💍 WIZPR 戒指 → 🍊 OrangePi 语音端点</strong>——对戒指悄声说话 → 按键触发录音 → 蓝牙 BLE 传至 OrangePi → 同一 NPU ASR 管线 → 私密模式转录</span>
+        <span class="en"><strong>💍 WIZPR Ring → 🍊 OrangePi → ☁️ StepFun</strong> — Whisper into ring → button-triggered audio capture → Bluetooth BLE to OrangePi → forwarded to MacBook → StepFun Realtime private mode transcription. Ring = private input channel for sensitive commands.</span>
+        <span class="zh"><strong>💍 WIZPR 戒指 → 🍊 OrangePi → ☁️ StepFun</strong>——对戒指悄声说话 → 按键触发录音 → 蓝牙 BLE 传至 OrangePi → 转发到 MacBook → StepFun Realtime 私密模式转录。戒指 = 敏感指令的私密输入通道。</span>
       </div>
       <div class="gate-item">
-        <span class="en"><strong>👓 Even Realities G2 → 🍊 OrangePi Compute</strong> — Agent status/notifications formatted as HTML → rendered via npm @evenrealities/g2-sdk → pushed to G2 Terminal Mode over BLE → R1 ring tap sends confirm/scroll events back</span>
-        <span class="zh"><strong>👓 Even Realities G2 → 🍊 OrangePi 计算节点</strong>——Agent 状态/通知格式化为 HTML → 通过 npm @evenrealities/g2-sdk 渲染 → 经 BLE 推送到 G2 Terminal Mode → R1 戒指点击返回确认/滚动事件</span>
+        <span class="en"><strong>👓 Even Realities G2 → MacBook</strong> — Agent status/notifications formatted as HTML → rendered via npm @evenrealities/g2-sdk → pushed to G2 Terminal Mode over BLE → R1 ring tap sends confirm/scroll events back to Orchestrator → EscalationEngine resolves.</span>
+        <span class="zh"><strong>👓 Even Realities G2 → MacBook</strong>——Agent 状态/通知格式化为 HTML → 通过 npm @evenrealities/g2-sdk 渲染 → 经 BLE 推送到 G2 Terminal Mode → R1 戒指点击返回确认/滚动事件至 Orchestrator → EscalationEngine 决策。</span>
       </div>
       <div class="gate-item">
         <span class="en"><strong>🖥️ Rokid Max 2 → Station 2 → MacBook</strong> — Station 2 runs Android APK displaying 3 virtual monitors via USB-C DP → MacBook extends desktop → Claude Code terminal + VS Code + agent dashboard = 3-screen spatial coding rig</span>
@@ -1188,6 +1216,81 @@
     </div>
   </div>
 
+  <!-- Signal -->
+  <div class="signal-divider reveal">
+    <div class="line"></div>
+    <span class="en">PROTOTYPE PLAN</span><span class="zh">原型计划</span>
+    <div class="line"></div>
+  </div>
+
+  <!-- Prototype Plan -->
+  <div class="section" id="prototype">
+    <h2>🚀 <span class="en">3-Day Prototype Plan</span><span class="zh">三天原型计划</span></h2>
+
+    <p class="section-quote reveal">
+      <span class="en">Goal: voice command → agent pool → deployed result. Demo on Day 4 (Jul 26 Expo).</span>
+      <span class="zh">目标：语音指令 → Agent 池 → 部署产物。Day 4（7/26 Expo）演示。</span>
+    </p>
+
+    <div class="wf-step reveal">
+      <div class="wf-num">D2</div>
+      <div class="wf-text">
+        <strong><span class="en">Core Orchestrator + Agent Pool</span><span class="zh">核心编排器 + Agent 池</span></strong><br>
+        <span class="en">• Set up lopi AgentPool with 3 Claude Code workers<br>• Implement OpenOPC HeartbeatScheduler pattern (asyncio daemon)<br>• Git worktree isolation per agent<br>• Scored retry loop: Plan → Implement → Test → Score → PR<br>• Deploy on MacBook as launchd service</span>
+        <span class="zh">• 搭建 lopi AgentPool，3 个 Claude Code worker<br>• 实现 OpenOPC HeartbeatScheduler 模式（asyncio 守护进程）<br>• 每个 agent 独立 git worktree 隔离<br>• 评分重试循环：Plan→Implement→Test→Score→PR<br>• MacBook 上 launchd 部署</span>
+      </div>
+    </div>
+
+    <div class="wf-step reveal">
+      <div class="wf-num">D3</div>
+      <div class="wf-text">
+        <strong><span class="en">Voice Boss + Hardware Integration</span><span class="zh">语音 Boss + 硬件集成</span></strong><br>
+        <span class="en">• StepFun Realtime API WebSocket client (Boss agent)<br>• Wake word "Hey Vibe" on OrangePi (Porcupine + NPU)<br>• BT audio relay: earphones → OrangePi → MacBook<br>• Intent routing: voice command → classify → dispatch to agent pool<br>• EscalationEngine: key decisions → voice notification to earphones<br>• Even Realities G2 HUD: agent status display</span>
+        <span class="zh">• StepFun Realtime API WebSocket 客户端（Boss agent）<br>• OrangePi 唤醒词「Hey Vibe」（Porcupine + NPU）<br>• 蓝牙音频中继：耳机→OrangePi→MacBook<br>• 意图路由：语音指令→分类→分派到 Agent 池<br>• EscalationEngine：关键决策→语音通知到耳机<br>• Even Realities G2 HUD：Agent 状态显示</span>
+      </div>
+    </div>
+
+    <div class="wf-step reveal">
+      <div class="wf-num">D4</div>
+      <div class="wf-text">
+        <strong><span class="en">End-to-End Demo + Submission</span><span class="zh">端到端演示 + 提交</span></strong><br>
+        <span class="en">• Full demo: "Hey Vibe, build a todo app with React" → agents build → deploy → voice confirmation<br>• Record demo videos for 6 priority tracks<br>• Submit to all 24 sponsor tracks<br>• Expo presentation (9am-3pm)</span>
+        <span class="zh">• 完整演示：「Hey Vibe，做个 React todo app」→ agents 构建→部署→语音确认<br>• 录制 6 条优先赛道的 demo 视频<br>• 提交全部 24 条赞助赛道<br>• Expo 展示（9am-3pm）</span>
+      </div>
+    </div>
+
+    <!-- Tech stack summary -->
+    <div class="gate-card reveal" style="margin-top: 16px;">
+      <div class="gate-header">
+        <span class="en">🛠️ Tech Stack</span><span class="zh">🛠️ 技术栈</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Voice Boss:</strong> StepFun stepaudio-2.5-realtime (full-duplex WebSocket)</span>
+        <span class="zh"><strong>语音 Boss：</strong>StepFun stepaudio-2.5-realtime（全双工 WebSocket）</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Orchestrator:</strong> Python asyncio daemon — OpenOPC HeartbeatScheduler + EscalationEngine + Gate Harness patterns</span>
+        <span class="zh"><strong>编排器：</strong>Python asyncio 守护进程——OpenOPC HeartbeatScheduler + EscalationEngine + Gate Harness 模式</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Agent Pool:</strong> lopi (Rust) — scored retry loop, SQLite memory, worktree isolation</span>
+        <span class="zh"><strong>Agent 池：</strong>lopi（Rust）——评分重试循环、SQLite 记忆、worktree 隔离</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Edge:</strong> OrangePi 3B — Porcupine wake word, BlueZ BT relay, MQTT mesh</span>
+        <span class="zh"><strong>边缘：</strong>OrangePi 3B——Porcupine 唤醒词、BlueZ 蓝牙中继、MQTT mesh</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>Agents:</strong> Claude Code (via one-api → iHackCN/StepFun/AiPing/DeepSeek priority routing)</span>
+        <span class="zh"><strong>Agent 执行：</strong>Claude Code（通过 one-api → iHackCN/StepFun/AiPing/DeepSeek 优先级路由）</span>
+      </div>
+      <div class="gate-item">
+        <span class="en"><strong>HUD:</strong> Even Realities G2 Terminal Mode (npm @evenrealities/g2-sdk)</span>
+        <span class="zh"><strong>HUD：</strong>Even Realities G2 Terminal Mode（npm @evenrealities/g2-sdk）</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <div class="footer">
     <div class="big-text">
@@ -1282,7 +1385,7 @@ function toggleLang() {
   var links = document.querySelectorAll('.mini-nav a');
   var map = {};
   links.forEach(function(a) { map[a.getAttribute('href').slice(1)] = a; });
-  var sections = document.querySelectorAll('#architecture, #ceo, #workflow, #different, #tracks, #hardware');
+  var sections = document.querySelectorAll('#architecture, #ceo, #workflow, #different, #tracks, #hardware, #prototype');
   if (!('IntersectionObserver' in window)) return;
   var io = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
