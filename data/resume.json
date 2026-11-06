@@ -1,0 +1,150 @@
+{
+  "education": [
+    {
+      "org": {
+        "en": "The University of Hong Kong",
+        "zh-Hant": "香港大學"
+      },
+      "orgShort": "HKU",
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "2025",
+      "end": "TODO(owner)",
+      "endLabel": {
+        "en": "expected",
+        "zh-Hant": "預計"
+      },
+      "programmes": [
+        {
+          "en": "BEng, AI & Data Science",
+          "zh-Hant": "工學士，人工智能與數據科學"
+        },
+        {
+          "en": "BA, AI and Humanities",
+          "zh-Hant": "文學士，人工智能與人文"
+        }
+      ],
+      "exactTitles": "TODO(owner)",
+      "gpa": "TODO(owner)",
+      "summary": {
+        "en": "A double degree across engineering and the humanities. Second year as of 2026–27.",
+        "zh-Hant": "橫跨工程與人文的雙學位。2026–27 學年為二年級。"
+      },
+      "highlights": [
+        {
+          "en": "Philosophy taken as the advanced elective within the BA.",
+          "zh-Hant": "文學士學位以哲學為高階選修。"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "org": {
+        "en": "WeWrites",
+        "zh-Hant": "WeWrites"
+      },
+      "title": {
+        "en": "Co-founder & CTO",
+        "zh-Hant": "聯合創辦人兼技術總監"
+      },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "TODO(owner)",
+      "end": "present",
+      "summary": {
+        "en": "A DSE tutoring team: the public site and content system, built so the team publishes classes and updates without a developer, plus the technical direction behind the curriculum products.",
+        "zh-Hant": "DSE 補習團隊：對外網站與內容系統，讓團隊不用等開發者就能發佈課程與更新；同時負責課程產品背後的技術方向。"
+      },
+      "highlights": [
+        {
+          "en": "Site and content system live on its own domain (wewrites.onezion.top).",
+          "zh-Hant": "網站與內容系統已在自己的網域上線（wewrites.onezion.top）。"
+        },
+        {
+          "en": "Edit path designed for non-developers, so the team is not blocked on engineering.",
+          "zh-Hant": "編輯流程為非技術同事而設，團隊不會卡在工程上。"
+        }
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "org": {
+        "en": "Hack4SDGs GenAI Inter-University Hackathon",
+        "zh-Hant": "Hack4SDGs GenAI 跨院校黑客松"
+      },
+      "year": "2025",
+      "title": {
+        "en": "Team lead — “Echoes of Thought”",
+        "zh-Hant": "隊長 —《Echoes of Thought》"
+      },
+      "result": "TODO(owner)",
+      "summary": {
+        "en": "An AI interactive visual novel with GenAI as a dynamic game master: it reads a viewer's YouTube watch history and surfaces cognitive biases and echo chambers through personalised stories.",
+        "zh-Hant": "以生成式 AI 作為動態遊戲主持的互動視覺小說：讀取使用者的 YouTube 觀看紀錄，用個人化故事呈現認知偏差與資訊繭房。"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "group": {
+        "en": "Languages",
+        "zh-Hant": "語言"
+      },
+      "items": ["Python", "JavaScript / Node.js", "TypeScript", "Swift", "Lua", "Shell"]
+    },
+    {
+      "group": {
+        "en": "AI & agents",
+        "zh-Hant": "人工智能與 Agent"
+      },
+      "items": ["LLM engineering", "Multi-agent orchestration", "MCP", "RAG", "Local model deployment", "Evaluation"]
+    },
+    {
+      "group": {
+        "en": "Data",
+        "zh-Hant": "資料"
+      },
+      "items": ["SQLite", "SQLite FTS5", "ChromaDB", "Data pipelines"]
+    },
+    {
+      "group": {
+        "en": "Platform & web",
+        "zh-Hant": "平台與網頁"
+      },
+      "items": ["macOS", "Linux", "Next.js", "Vercel", "Cloudflare", "OpenRouter", "GitHub Actions"]
+    }
+  ],
+  "languages": [
+    {
+      "name": {
+        "en": "English",
+        "zh-Hant": "英語"
+      },
+      "level": {
+        "en": "Fluent — IELTS 7.5 overall, Reading 9.0",
+        "zh-Hant": "流利 — IELTS 整體 7.5，閱讀 9.0"
+      }
+    },
+    {
+      "name": {
+        "en": "Cantonese",
+        "zh-Hant": "粵語"
+      },
+      "level": "TODO(owner)"
+    },
+    {
+      "name": {
+        "en": "Mandarin",
+        "zh-Hant": "普通話"
+      },
+      "level": "TODO(owner)"
+    }
+  ],
+  "certifications": []
+}

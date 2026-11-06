@@ -1,0 +1,136 @@
+{
+  "name": {
+    "en": "Harry Huang",
+    "zh-Hant": "Harry Huang"
+  },
+  "aka": {
+    "en": "Harry OneZion",
+    "zh-Hant": "Harry OneZion"
+  },
+  "headline": {
+    "en": "AI & Data Science, HKU",
+    "zh-Hant": "港大 · 人工智能與數據科學"
+  },
+  "tagline": {
+    "en": "I build small, complete tools — and write down what makes them true.",
+    "zh-Hant": "我做小而完整的工具，也把「為甚麼成立」寫清楚。"
+  },
+  "location": {
+    "en": "Hong Kong",
+    "zh-Hant": "香港"
+  },
+  "email": null,
+  "photo": "/assets/onezion.png",
+  "photoAlt": {
+    "en": "Pixel-art illustration of Harry Huang at a desk, with the caption “one more leap of faith”.",
+    "zh-Hant": "Harry Huang 坐在書桌前的像素插畫，附有「為創造，再一次信仰之躍」的題字。"
+  },
+  "bio": [
+    {
+      "en": "I'm a second-year student at HKU, reading AI & Data Science alongside AI and Humanities. Most of what I build starts at that seam: engineering that has to hold up in front of people, and questions about people that only engineering can answer at scale.",
+      "zh-Hant": "我是港大二年級學生，主修人工智能與數據科學，同時修讀人工智能與人文。我大部分作品都從這條接縫開始：一邊是要在人前站得住的工程，另一邊是關於人、只有工程才回答得動的問題。"
+    },
+    {
+      "en": "I ship small, complete things rather than demos: a site a tutoring team updates without me, a menu-bar app that keeps a Mac awake with the lid closed, a verification layer that an agent cannot quietly skip. Every one of them has a URL or a repository.",
+      "zh-Hant": "我交付的是小而完整的東西，不是示範：一個補習團隊自己就能更新的網站、一個合上蓋仍讓 Mac 保持清醒的選單列工具、一層讓 Agent 無法悄悄跳過的驗證機制。每一件都有一條網址或一個倉庫。"
+    },
+    {
+      "en": "The method repeats. Question the frame before solving inside it, decompose until every piece can be verified, and never call something finished without evidence I can point at.",
+      "zh-Hant": "方法每次都一樣。先質疑框架，再在框架內解題；分解到每一塊都可以驗證；沒有指得出的證據，就不說完成。"
+    }
+  ],
+  "now": [
+    {
+      "date": "2026-11",
+      "title": {
+        "en": "Personal OS",
+        "zh-Hant": "Personal OS"
+      },
+      "body": {
+        "en": "A private control plane for personal agents — six layers from input to memory to execution. Local only, reachable over Tailscale, 669 contract tests green as of 2026-11-05.",
+        "zh-Hant": "個人 Agent 的私有控制面——由輸入、記憶到執行共六層。只在本地運行，經 Tailscale 存取；截至 2026-11-05，669 個契約測試全綠。"
+      }
+    },
+    {
+      "date": "2026",
+      "title": {
+        "en": "WeWrites",
+        "zh-Hant": "WeWrites"
+      },
+      "body": {
+        "en": "Co-founder and CTO of a DSE tutoring team: the public site and content system, and the technical direction behind the curriculum products.",
+        "zh-Hant": "DSE 補習團隊的聯合創辦人兼技術總監：負責對外網站與內容系統，以及課程產品背後的技術方向。"
+      }
+    },
+    {
+      "date": "2026",
+      "title": {
+        "en": "HKU · year two",
+        "zh-Hant": "港大 · 二年級"
+      },
+      "body": {
+        "en": "AI & Data Science with AI and Humanities. Coursework stays off this site; the projects here are self-run.",
+        "zh-Hant": "人工智能與數據科學，配人工智能與人文。課業不放在這個網站；這裏的項目都是自己做的。"
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "github",
+      "label": {
+        "en": "GitHub",
+        "zh-Hant": "GitHub"
+      },
+      "handle": "@onezion12344",
+      "url": "https://github.com/onezion12344"
+    },
+    {
+      "id": "linkedin",
+      "label": {
+        "en": "LinkedIn",
+        "zh-Hant": "LinkedIn"
+      },
+      "handle": "harry-onezion",
+      "url": "https://www.linkedin.com/in/harry-onezion"
+    },
+    {
+      "id": "x",
+      "label": {
+        "en": "X",
+        "zh-Hant": "X"
+      },
+      "handle": "@onezion12344",
+      "url": "https://x.com/onezion12344"
+    }
+  ],
+  "stack": [
+    {
+      "group": {
+        "en": "Languages",
+        "zh-Hant": "語言"
+      },
+      "items": ["Python", "JavaScript / Node.js", "TypeScript", "Swift", "Lua", "Shell"]
+    },
+    {
+      "group": {
+        "en": "AI",
+        "zh-Hant": "人工智能"
+      },
+      "items": ["LLM engineering", "Multi-agent", "MCP", "RAG", "Local model deployment"]
+    },
+    {
+      "group": {
+        "en": "Data",
+        "zh-Hant": "資料"
+      },
+      "items": ["SQLite", "FTS5", "ChromaDB"]
+    },
+    {
+      "group": {
+        "en": "Platform",
+        "zh-Hant": "平台"
+      },
+      "items": ["macOS", "Linux", "Next.js", "Vercel", "Cloudflare", "OpenRouter"]
+    }
+  ]
+}

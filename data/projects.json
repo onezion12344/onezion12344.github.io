@@ -1,0 +1,495 @@
+[
+  {
+    "id": "wewrites",
+    "slug": "we-writes",
+    "year": 2026,
+    "featured": true,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "WeWrites", "zh-Hant": "WeWrites" },
+    "role": { "en": "Co-founder & CTO", "zh-Hant": "聯合創辦人兼技術總監" },
+    "tags": ["Next.js", "Content system", "Education"],
+    "links": [
+      { "label": { "en": "wewrites.onezion.top", "zh-Hant": "wewrites.onezion.top" }, "url": "https://wewrites.onezion.top/" }
+    ],
+    "summary": {
+      "en": "The site and content system for a DSE tutoring team — bilingual copy, class photography, teacher and course pages, and an edit path a non-developer can run.",
+      "zh-Hant": "DSE 補習團隊的網站與內容系統——雙語文案、課堂相片、導師與課程頁，以及非技術同事也操作得來的編輯流程。"
+    },
+    "what": {
+      "en": "A public site for a Hong Kong DSE tutoring team: who teaches, what each class covers, and how to get in touch. Behind it sits a content system the team updates itself.",
+      "zh-Hant": "香港 DSE 補習團隊的對外網站：誰任教、每堂課教甚麼、怎樣聯絡。背後是一套由團隊自己更新的內容系統。"
+    },
+    "why": {
+      "en": "Parents and students choose a tutor on trust. The site has to carry that trust on real class photography, and the team should not have to wait on a developer every time a class changes.",
+      "zh-Hant": "家長與學生選補習，靠的是信任。網站要用真實的課堂相片承住這份信任，而團隊每次改課程都不應該等開發者。"
+    },
+    "challenge": {
+      "en": "Keeping the visual system intact while people who do not write code edit the content — and building the layout around real class photography rather than placeholders.",
+      "zh-Hant": "在由不寫程式的同事編輯內容的前提下，保住整套視覺系統；並且讓版面圍繞真實課堂相片來設計，而不是先用佔位圖再硬塞。"
+    },
+    "highlights": [
+      { "en": "Live on its own domain.", "zh-Hant": "已在自己的網域上線。" },
+      { "en": "Bilingual copy across the site.", "zh-Hant": "全站雙語文案。" },
+      { "en": "The team publishes class and teacher updates without a developer.", "zh-Hant": "團隊不用開發者也能更新課程與導師資料。" }
+    ],
+    "evidence": [
+      { "text": { "en": "Live at wewrites.onezion.top", "zh-Hant": "在 wewrites.onezion.top 上線" }, "source": "portfolio, measured 2026-10-31" },
+      { "text": { "en": "Dark editorial layout built to survive real class photos rather than placeholders", "zh-Hant": "深色編輯式版面，為真實課堂相片而設，而非佔位圖" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": {
+      "mp4": "/assets/video/we-writes.mp4",
+      "webm": "/assets/video/we-writes.webm",
+      "poster": "/assets/video/we-writes.jpg",
+      "width": 1280,
+      "height": 720
+    }
+  },
+  {
+    "id": "mac-closed-awake",
+    "slug": "mac-closed-awake",
+    "year": 2026,
+    "featured": true,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "MacClosedAwake", "zh-Hant": "MacClosedAwake" },
+    "role": { "en": "Design, build, release", "zh-Hant": "設計、開發、發佈" },
+    "tags": ["Swift", "macOS", "Menu bar"],
+    "links": [
+      { "label": { "en": "Landing page", "zh-Hant": "產品頁" }, "url": "https://onezion12344.github.io/mac-closed-awake/" },
+      { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/mac-closed-awake" },
+      { "label": { "en": "Homebrew cask", "zh-Hant": "Homebrew cask" }, "url": "https://github.com/onezion12344/homebrew-mac-closed-awake" }
+    ],
+    "summary": {
+      "en": "A menu-bar app that keeps a Mac awake with the lid closed, so a long build or a deploy does not die when you walk away.",
+      "zh-Hant": "選單列小工具：合上蓋仍讓 Mac 保持清醒，長時間編譯或部署不會因為你離開而中斷。"
+    },
+    "what": {
+      "en": "A macOS menu-bar app with a timer, a forever mode, a memory panel and quiet cleanup. It holds the machine awake with the lid shut.",
+      "zh-Hant": "macOS 選單列小工具：計時器、永久模式、記憶體面板，以及安靜的清理。合上蓋也讓機器保持清醒。"
+    },
+    "why": {
+      "en": "Long builds and deploys fail when the Mac sleeps, and closing the lid is how a laptop is normally carried. It should not be how work gets killed.",
+      "zh-Hant": "Mac 一睡，長時間的編譯與部署就斷；而合上蓋本來就是攜帶筆記簿的常態，不應該成為工作中斷的原因。"
+    },
+    "challenge": {
+      "en": "Shipping a menu-bar utility that a stranger can actually install: a versioned release, a Homebrew cask, and a landing page that explains it in one screen.",
+      "zh-Hant": "把選單列小工具做到陌生人真的裝得起來：有版本號的發佈、Homebrew cask，以及一屏就講清楚的產品頁。"
+    },
+    "highlights": [
+      { "en": "51 commits, tagged through v1.7.0.", "zh-Hant": "51 個 commit，版本標籤至 v1.7.0。" },
+      { "en": "Installable through a Homebrew cask.", "zh-Hant": "可經 Homebrew cask 安裝。" },
+      { "en": "Its own landing page, with the install line and a mascot.", "zh-Hant": "有自己的產品頁，附安裝指令與吉祥物。" }
+    ],
+    "evidence": [
+      { "text": { "en": "51 commits, tagged through v1.7.0, installable via Homebrew cask", "zh-Hant": "51 個 commit，版本標籤至 v1.7.0，可經 Homebrew cask 安裝" }, "source": "portfolio, measured 2026-10-31" },
+      { "text": { "en": "Public repository and separate Homebrew tap", "zh-Hant": "公開倉庫，另設 Homebrew tap" }, "source": "gh api, 2026-11-06" }
+    ],
+    "media": {
+      "mp4": "/assets/video/mac-closed-awake.mp4",
+      "webm": "/assets/video/mac-closed-awake.webm",
+      "poster": "/assets/video/mac-closed-awake.jpg",
+      "width": 1280,
+      "height": 720
+    }
+  },
+  {
+    "id": "double-check",
+    "slug": "double-check",
+    "year": 2026,
+    "featured": true,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "Double-Check", "zh-Hant": "Double-Check" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Agents", "Verification", "Python"],
+    "links": [
+      { "label": { "en": "Documentation", "zh-Hant": "說明文件" }, "url": "https://onezion12344.github.io/double-check-agent/" },
+      { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/double-check-agent" }
+    ],
+    "summary": {
+      "en": "A verification plugin for AI agents: fact, logic and tool-use checks that run outside the model, through hooks the agent cannot skip.",
+      "zh-Hant": "AI Agent 的驗證外掛：事實、邏輯與工具使用的核查在模型之外進行，透過 Agent 跳不過的 hook 執行。"
+    },
+    "what": {
+      "en": "A plugin that puts a fixed sequence of checks around an agent's answer — a dedup gate, pre-answer checks, and post-answer audit stages drawing on SIFT, IFCN, CoVe, FIRE and FABLE.",
+      "zh-Hant": "在 Agent 的回答前後套上固定核查序列的外掛——去重閘、答前核查，以及取材自 SIFT、IFCN、CoVe、FIRE、FABLE 的答後審核階段。"
+    },
+    "why": {
+      "en": "Making a model more capable does not make it more honest. The check has to live outside the thing being checked.",
+      "zh-Hant": "把模型做得更強，不會令它更誠實。核查必須住在被核查的東西之外。"
+    },
+    "challenge": {
+      "en": "Enforcing the sequence from outside: a skipped check has to surface as a failure, not as silence.",
+      "zh-Hant": "從外部強制執行整個序列：跳過的核查必須顯示為失敗，而不是靜靜地沒有發生。"
+    },
+    "highlights": [
+      { "en": "Each phase does one job; information flows down and never back up.", "zh-Hant": "每個階段只做一件事；資訊只向下流，不回頭。" },
+      { "en": "Enforcement is external, through hooks the agent cannot opt out of.", "zh-Hant": "強制執行在外部，透過 Agent 無法退出的 hook。" },
+      { "en": "Public documentation page and repository.", "zh-Hant": "公開的說明頁與倉庫。" }
+    ],
+    "evidence": [
+      { "text": { "en": "31 commits, 5,991 lines", "zh-Hant": "31 個 commit，5,991 行" }, "source": "portfolio, measured 2026-10-31" },
+      { "text": { "en": "Documentation live on GitHub Pages", "zh-Hant": "說明文件在 GitHub Pages 上線" }, "source": "gh api, 2026-11-06" }
+    ],
+    "media": {
+      "mp4": "/assets/video/double-check.mp4",
+      "webm": "/assets/video/double-check.webm",
+      "poster": "/assets/video/double-check.jpg",
+      "width": 1280,
+      "height": 720
+    }
+  },
+  {
+    "id": "personal-os",
+    "slug": "personal-os",
+    "year": 2026,
+    "featured": true,
+    "status": "local",
+    "visibility": "private-local",
+    "title": { "en": "Personal OS", "zh-Hant": "Personal OS" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Agents", "TypeScript", "Local-first"],
+    "links": [],
+    "summary": {
+      "en": "A private control plane for personal agents — input, memory, execution, communication, outreach and evolving — running locally, never publicly.",
+      "zh-Hant": "個人 Agent 的私有控制面——輸入、記憶、執行、通訊、對外接觸與演化——只在本地運行，不對外公開。"
+    },
+    "what": {
+      "en": "Six layers behind one local API: activity input, a memory layer with a propose → inbox → drain path, a task, run and approval state machine, communication channels, outreach scans, and a set of deterministic detectors. The product repository holds no personal data.",
+      "zh-Hant": "六層架構，共用一個本地 API：活動輸入、以「提案 → 收件箱 → 處理」運作的記憶層、任務／執行／審批狀態機、通訊頻道、對外接觸掃描，以及一組確定性的偵測器。產品倉庫不存放個人資料。"
+    },
+    "why": {
+      "en": "An agent that acts on your behalf needs somewhere to remember, decide and be audited. A chat window is not that place, and a cloud service holding your context is the wrong default.",
+      "zh-Hant": "替你辦事的 Agent，需要一個能記住、能決定、能被審計的地方。聊天視窗不是那個地方，而把你的上下文交給雲端服務，是不該預設的選擇。"
+    },
+    "challenge": {
+      "en": "Keeping every agent action auditable while the system stays usable: sending, payment, approvals, privacy and backup are deliberately not things the agent can change by itself.",
+      "zh-Hant": "在系統仍然好用的前提下，令每個 Agent 動作都可審計：發送、付款、審批、私隱與備份，刻意不讓 Agent 自行改動。"
+    },
+    "highlights": [
+      { "en": "669 contract tests green, typecheck clean (2026-11-05).", "zh-Hant": "669 個契約測試全綠，typecheck 乾淨（2026-11-05）。" },
+      { "en": "Local by default, reachable over Tailscale.", "zh-Hant": "預設本地，經 Tailscale 存取。" },
+      { "en": "Product code and personal data kept in separate repositories.", "zh-Hant": "產品程式與個人資料分開兩個倉庫。" }
+    ],
+    "evidence": [
+      { "text": { "en": "669 contract tests green; `npm run typecheck` clean", "zh-Hant": "669 個契約測試全綠；`npm run typecheck` 乾淨" }, "source": "personal-os README, 2026-11-05" },
+      { "text": { "en": "Six layers; product repo contains no personal data", "zh-Hant": "六層架構；產品倉庫不含個人資料" }, "source": "personal-os README, 2026-11-05" }
+    ],
+    "media": {
+      "mp4": "/assets/video/personal-os.mp4",
+      "webm": "/assets/video/personal-os.webm",
+      "poster": "/assets/video/personal-os.jpg",
+      "width": 1280,
+      "height": 720
+    }
+  },
+  {
+    "id": "comp2119-lectures",
+    "slug": "comp2119-lectures",
+    "year": 2026,
+    "featured": false,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "COMP2119 Lectures", "zh-Hant": "COMP2119 講課" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Teaching", "HTML/CSS/JS", "Audio"],
+    "links": [
+      { "label": { "en": "Live lectures", "zh-Hant": "線上講課" }, "url": "https://onezion12344.github.io/comp2119-lectures/" }
+    ],
+    "summary": {
+      "en": "Narrated, slide-faithful lectures for an algorithms course: every element appears at the moment the narration explains it, and stays on screen.",
+      "zh-Hant": "演算法課程的旁白講課，與課件逐格對齊：每個元素都在旁白講到它的那一刻出現，然後留在畫面上。"
+    },
+    "what": {
+      "en": "Eleven narrated lectures for COMP2119 Introduction to Algorithms, built as animated slides that keep pace with the voice, with click-through tools for recursion trees, sorting and graph traversal.",
+      "zh-Hant": "COMP2119《演算法導論》的十一講旁白課，以跟得上聲音的動畫課件呈現，並有可逐步點開的遞迴樹、排序與圖走訪工具。"
+    },
+    "why": {
+      "en": "A recorded lecture is a video you cannot step through; slides alone do not explain themselves. This keeps both: hands-free autoplay, or step through it yourself.",
+      "zh-Hant": "錄影課是你沒法逐步拆開的影片；單看課件又不會自己解釋。這個做法兩者都保留：可以免手動自動播放，也可以自己逐步走。"
+    },
+    "challenge": {
+      "en": "Timing every element to the narration so nothing appears before it is explained, across 596 slides.",
+      "zh-Hant": "在 596 張課件之中，把每個元素的時間對準旁白，令任何東西都不會在講解之前出現。"
+    },
+    "highlights": [
+      { "en": "11 lectures, 596 slides.", "zh-Hant": "11 講、596 張課件。" },
+      { "en": "Six click-through step tools, including recursion trees and graph traversal.", "zh-Hant": "六個可逐步點開的工具，包括遞迴樹與圖走訪。" },
+      { "en": "Contrast lifted to WCAG AA in both themes.", "zh-Hant": "深淺兩種主題的對比度都提升至 WCAG AA。" }
+    ],
+    "evidence": [
+      { "text": { "en": "11 narrated lectures, 596 slides", "zh-Hant": "11 講旁白課，596 張課件" }, "source": "repository description, 2026-11-06" },
+      { "text": { "en": "Live on GitHub Pages", "zh-Hant": "在 GitHub Pages 上線" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": null
+  },
+  {
+    "id": "dse-paper-4-live",
+    "slug": "dse-paper-4-live",
+    "year": 2026,
+    "featured": false,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "DSE Paper 4 Live", "zh-Hant": "DSE Paper 4 Live" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Voice", "WebSocket", "Node"],
+    "links": [
+      { "label": { "en": "p4.onezion.top (access code)", "zh-Hant": "p4.onezion.top（存取碼）" }, "url": "https://p4.onezion.top/" }
+    ],
+    "summary": {
+      "en": "A speaking practice room for HKDSE English Paper 4: a pre-recorded examiner, a live voice model as the other candidate, and a report that quotes what you actually said.",
+      "zh-Hant": "HKDSE 英文 Paper 4 的口試練習室：預錄考官、以即時語音模型扮演另一位考生，以及引用你原話的報告。"
+    },
+    "what": {
+      "en": "A live voice room for Paper 4 group discussion practice. The examiner's turns are pre-recorded so the rules do not drift; the other candidate is generated live.",
+      "zh-Hant": "用於 Paper 4 小組討論練習的即時語音房間。考官的話語預先錄好，規則不會漂移；另一位考生即時生成。"
+    },
+    "why": {
+      "en": "Paper 4 is a group discussion. Practising alone does not reproduce the interruption, the turn cap, or the need to respond to another person.",
+      "zh-Hant": "Paper 4 是小組討論。自己一個人練，重現不了被打斷、時限，以及要回應另一個人的壓力。"
+    },
+    "challenge": {
+      "en": "Real-time audio with interruption handling, relayed server-side so the browser needs no VPN.",
+      "zh-Hant": "具備打斷處理的即時語音，經伺服器轉發，瀏覽器不用 VPN。"
+    },
+    "highlights": [
+      { "en": "120-second turn cap with interruption handling — practice rules, not exam rules.", "zh-Hant": "每輪 120 秒上限並處理打斷——是練習規則，不是考試規則。" },
+      { "en": "Reports anchored to the candidate's own sentences, not a generic score.", "zh-Hant": "報告扣住考生自己的句子，而不是一個通用分數。" },
+      { "en": "Server-side relay, so no VPN is needed.", "zh-Hant": "伺服器端轉發，不需要 VPN。" }
+    ],
+    "evidence": [
+      { "text": { "en": "Live at p4.onezion.top with an access code", "zh-Hant": "在 p4.onezion.top 上線，需存取碼" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": null
+  },
+  {
+    "id": "shanghainese-course",
+    "slug": "shanghainese-course",
+    "year": 2026,
+    "featured": false,
+    "status": "local",
+    "visibility": "private-local",
+    "title": { "en": "Shanghainese Course", "zh-Hant": "上海話課程" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["PWA", "Content pipeline", "Offline"],
+    "links": [],
+    "summary": {
+      "en": "An installable PWA course engine for Shanghainese, where a lesson only ships from sourced material and the engine refuses to invent answers.",
+      "zh-Hant": "可安裝的上海話課程 PWA：課程只會從有出處的材料出貨，引擎拒絕自行編答案。"
+    },
+    "what": {
+      "en": "A Duolingo-shaped course engine for a dialect with almost no course material, with a content pipeline that flags what it cannot verify.",
+      "zh-Hant": "為幾乎沒有教材的方言而做的 Duolingo 式課程引擎，內容管線會標明它無法核實的部分。"
+    },
+    "why": {
+      "en": "The scarce thing is not the app; it is trustworthy content for a language that is mostly spoken and rarely written down.",
+      "zh-Hant": "稀缺的不是應用程式，而是一門以口語為主、很少寫下來的語言的可靠內容。"
+    },
+    "challenge": {
+      "en": "Building a pipeline that marks what it cannot source, instead of filling the gap with plausible text.",
+      "zh-Hant": "建一條會標示「找不到出處」的管線，而不是用看起來合理的文字填滿空隙。"
+    },
+    "highlights": [
+      { "en": "35,501 lines across 13 commits, with 11 test files.", "zh-Hant": "35,501 行、13 個 commit、11 個測試檔。" },
+      { "en": "Same engine across five courses; four are deliberately shown as unopened.", "zh-Hant": "同一引擎支援五個課程；其中四個刻意顯示為未開啟。" },
+      { "en": "Local build, not published — the content is not cleared for public use yet.", "zh-Hant": "本地建置，未公開發佈——內容尚未取得公開授權。" }
+    ],
+    "evidence": [
+      { "text": { "en": "35,501 lines · 13 commits · 11 test files", "zh-Hant": "35,501 行 · 13 個 commit · 11 個測試檔" }, "source": "portfolio, measured 2026-10-31" },
+      { "text": { "en": "Local build; not published", "zh-Hant": "本地建置；未公開發佈" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": null
+  },
+  {
+    "id": "model-gateway",
+    "slug": "model-gateway",
+    "year": 2026,
+    "featured": false,
+    "status": "local",
+    "visibility": "private-local",
+    "title": { "en": "Model Gateway", "zh-Hant": "模型閘道" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Protocols", "Routing", "Local"],
+    "links": [],
+    "summary": {
+      "en": "One loopback endpoint that speaks both the Anthropic and OpenAI protocols and routes by model prefix, so one CLI can use several vendors.",
+      "zh-Hant": "一個本機迴環端點，同時講 Anthropic 與 OpenAI 兩種協定，並按模型前綴路由，令一個 CLI 可以用多間廠商的模型。"
+    },
+    "what": {
+      "en": "A local gateway that accepts requests in either protocol, routes them by model prefix, and keeps streaming and tool calls working across vendors.",
+      "zh-Hant": "本地閘道：接受兩種協定的請求，按模型前綴路由，並令串流與工具呼叫跨廠商仍然可用。"
+    },
+    "why": {
+      "en": "Agent CLIs each speak one protocol, while the models worth using are spread across vendors. A translator at the loopback is cheaper than forking every CLI.",
+      "zh-Hant": "每個 Agent CLI 只講一種協定，而值得用的模型散落在不同廠商。在迴環位做一個翻譯層，比為每個 CLI 開分支便宜。"
+    },
+    "challenge": {
+      "en": "Keeping both protocols faithful enough that streaming, tool calls and errors survive the translation.",
+      "zh-Hant": "令兩種協定都忠實到串流、工具呼叫與錯誤都能安然渡過翻譯。"
+    },
+    "highlights": [
+      { "en": "13.7k lines across 16 test modules.", "zh-Hant": "13.7k 行，16 個測試模組。" },
+      { "en": "Routes by model prefix, one process per machine.", "zh-Hant": "按模型前綴路由，每部機器一個程序。" },
+      { "en": "Local only; no vendor traffic passes through a third party.", "zh-Hant": "只在本地；廠商流量不經第三方。" }
+    ],
+    "evidence": [
+      { "text": { "en": "13.7k lines · 16 test modules", "zh-Hant": "13.7k 行 · 16 個測試模組" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": null
+  },
+  {
+    "id": "personal-finance-importer",
+    "slug": "personal-finance-importer",
+    "year": 2026,
+    "featured": false,
+    "status": "local",
+    "visibility": "private-local",
+    "title": { "en": "Personal finance importer", "zh-Hant": "個人帳目匯入器" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["SQLite", "Data", "pytest"],
+    "links": [],
+    "summary": {
+      "en": "WeChat Pay and Alipay exports into SQLite — de-duplicated, categorised, with monthly reports built from real statements.",
+      "zh-Hant": "把微信支付與支付寶的匯出檔匯入 SQLite——去重、分類，並用真實帳單生成每月報告。"
+    },
+    "what": {
+      "en": "An importer that reads both apps' export formats into one local database, then produces categorised monthly reports.",
+      "zh-Hant": "一個匯入器：讀取兩個應用程式的匯出格式，寫入同一個本地資料庫，再生成分類的每月報告。"
+    },
+    "why": {
+      "en": "Spending records live in two apps that do not talk to each other, in two export formats. A local database answers questions neither app will.",
+      "zh-Hant": "消費紀錄住在兩個互不相通的應用程式、兩種匯出格式裏。一個本地資料庫能回答兩邊都答不出的問題。"
+    },
+    "challenge": {
+      "en": "De-duplicating overlapping exports without dropping legitimate same-day, same-amount transactions.",
+      "zh-Hant": "在重疊的匯出檔之間去重，同時不能誤刪同一天、同一金額的真實交易。"
+    },
+    "highlights": [
+      { "en": "Tested against real WeChat Pay and Alipay exports, not sample rows.", "zh-Hant": "以真實的微信支付與支付寶匯出檔測試，不是範例資料。" },
+      { "en": "Runs entirely locally.", "zh-Hant": "完全在本地運行。" }
+    ],
+    "evidence": [
+      { "text": { "en": "pytest against real WeChat Pay + Alipay exports", "zh-Hant": "以真實微信支付與支付寶匯出檔跑 pytest" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": null
+  },
+  {
+    "id": "koreader-onedrive",
+    "slug": "koreader-onedrive",
+    "year": 2026,
+    "featured": false,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "KOReader OneDrive Sync", "zh-Hant": "KOReader OneDrive 同步" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Lua", "OAuth2", "Graph API"],
+    "links": [
+      { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/koreader-onedrive-plugin" }
+    ],
+    "summary": {
+      "en": "A KOReader sync plugin: OAuth2 device-code authentication, the Microsoft Graph API, and bidirectional sync.",
+      "zh-Hant": "KOReader 同步外掛：OAuth2 裝置碼認證、Microsoft Graph API，以及雙向同步。"
+    },
+    "what": {
+      "en": "A Lua plugin that adds OneDrive as a sync target inside KOReader, signed in with the OAuth2 device-code flow.",
+      "zh-Hant": "以 Lua 寫成的外掛，在 KOReader 內加入 OneDrive 作為同步目標，用 OAuth2 裝置碼流程登入。"
+    },
+    "why": {
+      "en": "KOReader had no OneDrive option. The protocol had to be understood from zero before anything could ship.",
+      "zh-Hant": "KOReader 本來沒有 OneDrive 選項。要先把協定由零理解清楚，才談得上交付。"
+    },
+    "challenge": {
+      "en": "Implementing device-code OAuth and the Graph API calls in Lua, inside KOReader's plugin model.",
+      "zh-Hant": "在 KOReader 的外掛模型裏，用 Lua 實作裝置碼 OAuth 與 Graph API 呼叫。"
+    },
+    "highlights": [
+      { "en": "OAuth2 device-code authentication, so no browser is needed on the device.", "zh-Hant": "OAuth2 裝置碼認證，裝置上不需要瀏覽器。" },
+      { "en": "Bidirectional sync engine against Microsoft Graph.", "zh-Hant": "對接 Microsoft Graph 的雙向同步引擎。" },
+      { "en": "Public repository.", "zh-Hant": "公開倉庫。" }
+    ],
+    "evidence": [
+      { "text": { "en": "Public Lua plugin repository, created 2026-07", "zh-Hant": "公開的 Lua 外掛倉庫，建立於 2026-07" }, "source": "gh api, 2026-11-06" }
+    ],
+    "media": null
+  },
+  {
+    "id": "let-go-journey",
+    "slug": "let-go-journey",
+    "year": 2026,
+    "featured": false,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "Let Go Journey", "zh-Hant": "Let Go Journey" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["CBT", "Interactive", "Bilingual"],
+    "links": [
+      { "label": { "en": "Live", "zh-Hant": "線上版" }, "url": "https://onezion12344.github.io/let-go-journey/" },
+      { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/let-go-journey" }
+    ],
+    "summary": {
+      "en": "A CBT-based game for getting through a breakup: thirty days, ten minutes a day, bilingual.",
+      "zh-Hant": "以認知行為治療為基礎的療癒遊戲：三十天、每天十分鐘、雙語。"
+    },
+    "what": {
+      "en": "An interactive daily programme built on cognitive behavioural therapy, written in English and Chinese.",
+      "zh-Hant": "以認知行為治療建成的每日互動課程，中英雙語。"
+    },
+    "why": {
+      "en": "The hard part of a breakup is not information; it is doing one small thing every day.",
+      "zh-Hant": "分手最難的不是資訊，而是每天真的做一件小事。"
+    },
+    "challenge": {
+      "en": "Turning a therapy structure into daily play without making it feel like homework or a quiz.",
+      "zh-Hant": "把治療結構變成每日遊玩，又不至於像功課或測驗。"
+    },
+    "highlights": [
+      { "en": "Thirty days, ten minutes a day.", "zh-Hant": "三十天，每天十分鐘。" },
+      { "en": "Bilingual throughout.", "zh-Hant": "全程雙語。" },
+      { "en": "Live on GitHub Pages.", "zh-Hant": "在 GitHub Pages 上線。" }
+    ],
+    "evidence": [
+      { "text": { "en": "Live at onezion12344.github.io/let-go-journey", "zh-Hant": "在 onezion12344.github.io/let-go-journey 上線" }, "source": "gh api, 2026-11-06" }
+    ],
+    "media": null
+  },
+  {
+    "id": "casual-research",
+    "slug": "casual-research",
+    "year": 2026,
+    "featured": false,
+    "status": "live",
+    "visibility": "public",
+    "title": { "en": "Casual Research", "zh-Hant": "Casual Research" },
+    "role": { "en": "Author", "zh-Hant": "作者" },
+    "tags": ["Research", "Writing", "Psychology"],
+    "links": [
+      { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/casual-research" }
+    ],
+    "summary": {
+      "en": "Fact-checked research pages on psychology, relationships and everyday curiosity — written for people outside the field.",
+      "zh-Hant": "關於心理學、親密關係與日常好奇心的查證研究頁——寫給不在這個領域的人。"
+    },
+    "what": {
+      "en": "A set of long-form pages that take one question each — attachment, conflict styles, self-love versus approval — and follow it through the research rather than the discourse.",
+      "zh-Hant": "一組長文頁面，每頁處理一個問題——依附、衝突風格、自愛與社會肯定——順著研究走，而不是順著流行說法走。"
+    },
+    "why": {
+      "en": "Research that changes how you live is usually locked in papers, or flattened into claims with no source.",
+      "zh-Hant": "能改變生活的東西，通常鎖在論文裏；流傳出來的，又常被壓成沒有出處的斷言。"
+    },
+    "challenge": {
+      "en": "Keeping every claim traceable to a study while writing for a reader who will not open the PDF.",
+      "zh-Hant": "在寫給不會去開 PDF 的讀者的同時，令每個說法都追得回一項研究。"
+    },
+    "highlights": [
+      { "en": "Each page ends with its references.", "zh-Hant": "每頁結尾都附參考文獻。" },
+      { "en": "Written in Chinese and English.", "zh-Hant": "中英雙語。" },
+      { "en": "Published as a public collection.", "zh-Hant": "以公開合集形式發佈。" }
+    ],
+    "evidence": [
+      { "text": { "en": "Public repository and reference list on every page", "zh-Hant": "公開倉庫，每頁附參考文獻" }, "source": "gh api, 2026-11-06" }
+    ],
+    "media": null
+  }
+]

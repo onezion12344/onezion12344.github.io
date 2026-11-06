@@ -1,0 +1,329 @@
+{
+  "reviewed": {
+    "en": true,
+    "zh-Hant": true,
+    "zh-Hans": false
+  },
+  "strings": {
+    "meta.siteName": {
+      "en": "Harry Huang",
+      "zh-Hant": "Harry Huang"
+    },
+    "meta.title.home": {
+      "en": "Harry Huang — AI & Data Science, HKU",
+      "zh-Hant": "Harry Huang — 港大人工智能與數據科學"
+    },
+    "meta.desc.home": {
+      "en": "Harry Huang — AI & Data Science at HKU. A portfolio, a project index and a generated CV: small, complete tools, each with a URL or a repository behind it.",
+      "zh-Hant": "Harry Huang——港大人工智能與數據科學。作品集、項目索引與自動生成的履歷：每件小而完整的工具，背後都有一條網址或一個倉庫。"
+    },
+    "meta.title.cv": {
+      "en": "CV — Harry Huang",
+      "zh-Hant": "履歷 — Harry Huang"
+    },
+    "meta.desc.cv": {
+      "en": "The CV of Harry Huang: education at HKU, WeWrites, selected work and skills, in English, Traditional and Simplified Chinese.",
+      "zh-Hant": "Harry Huang 的履歷：港大教育背景、WeWrites、部分作品與技能，提供英文、繁體及簡體中文。"
+    },
+    "meta.title.projects": {
+      "en": "Projects — Harry Huang",
+      "zh-Hant": "項目 — Harry Huang"
+    },
+    "meta.desc.projects": {
+      "en": "Every project Harry Huang has shipped or built for himself — each with a URL, a repository, or an honest note that it runs locally only.",
+      "zh-Hant": "Harry Huang 交付過或自己做的每一個項目——每項都附網址、倉庫，或誠實註明只在本地運行。"
+    },
+    "meta.title.project": {
+      "en": "{title} — Harry Huang",
+      "zh-Hant": "{title} — Harry Huang"
+    },
+    "meta.title.404": {
+      "en": "Page not found — Harry Huang",
+      "zh-Hant": "找不到頁面 — Harry Huang"
+    },
+    "meta.desc.404": {
+      "en": "This page does not exist. The work is still here.",
+      "zh-Hant": "這一頁不存在。作品還在。"
+    },
+    "nav.skip": {
+      "en": "Skip to content",
+      "zh-Hant": "跳至內容"
+    },
+    "nav.home": {
+      "en": "Home",
+      "zh-Hant": "首頁"
+    },
+    "nav.cv": {
+      "en": "CV",
+      "zh-Hant": "履歷"
+    },
+    "nav.projects": {
+      "en": "Projects",
+      "zh-Hant": "項目"
+    },
+    "section.about": {
+      "en": "about",
+      "zh-Hant": "關於"
+    },
+    "section.now": {
+      "en": "now",
+      "zh-Hant": "現況"
+    },
+    "section.work": {
+      "en": "work",
+      "zh-Hant": "作品"
+    },
+    "section.projects": {
+      "en": "projects",
+      "zh-Hant": "項目"
+    },
+    "section.contacts": {
+      "en": "contacts",
+      "zh-Hant": "聯絡"
+    },
+    "home.stackLabel": {
+      "en": "stack",
+      "zh-Hant": "技術"
+    },
+    "home.updated": {
+      "en": "Updated November 2026",
+      "zh-Hant": "更新於 2026 年 11 月"
+    },
+    "home.workMore": {
+      "en": "All projects",
+      "zh-Hant": "全部項目"
+    },
+    "home.projectsCount": {
+      "en": "{n} projects, all self-run",
+      "zh-Hant": "{n} 個項目，全部自己做"
+    },
+    "cv.heading": {
+      "en": "Portfolio",
+      "zh-Hant": "作品集"
+    },
+    "cv.lede": {
+      "en": "A short record: where I study, what I run, and the work behind the projects on this site. The printable version is A4 and stays legible in black and white.",
+      "zh-Hant": "一份簡短的紀錄：在哪裏讀書、在經營甚麼，以及這個網站上各項目背後的工作。可列印版本為 A4，黑白輸出仍然清楚。"
+    },
+    "cv.summary": {
+      "en": "Summary",
+      "zh-Hant": "簡介"
+    },
+    "cv.print": {
+      "en": "Printable CV",
+      "zh-Hant": "可列印履歷"
+    },
+    "cv.markdown": {
+      "en": "Markdown (ATS)",
+      "zh-Hant": "Markdown（ATS）"
+    },
+    "cv.note": {
+      "en": "Use the browser's print dialog to save as PDF. The sheet is set to A4.",
+      "zh-Hant": "用瀏覽器的列印功能存成 PDF。版面已設為 A4。"
+    },
+    "cv.printButton": {
+      "en": "Print / Save as PDF",
+      "zh-Hant": "列印／存為 PDF"
+    },
+    "cv.present": {
+      "en": "Present",
+      "zh-Hant": "現任"
+    },
+    "cv.expected": {
+      "en": "expected",
+      "zh-Hant": "預計"
+    },
+    "cv.gpa": {
+      "en": "GPA",
+      "zh-Hant": "GPA"
+    },
+    "cv.contact": {
+      "en": "Contact",
+      "zh-Hant": "聯絡"
+    },
+    "cv.education": {
+      "en": "Education",
+      "zh-Hant": "教育"
+    },
+    "cv.experience": {
+      "en": "Experience",
+      "zh-Hant": "經歷"
+    },
+    "cv.awards": {
+      "en": "Awards",
+      "zh-Hant": "獎項"
+    },
+    "cv.skills": {
+      "en": "Skills",
+      "zh-Hant": "技能"
+    },
+    "cv.languages": {
+      "en": "Languages",
+      "zh-Hant": "語言"
+    },
+    "cv.certifications": {
+      "en": "Certifications",
+      "zh-Hant": "證書"
+    },
+    "projects.heading": {
+      "en": "Projects",
+      "zh-Hant": "項目"
+    },
+    "projects.lede": {
+      "en": "Everything I have built that I can point at. Each entry has a URL, a repository, or an honest note that it only runs on my machine.",
+      "zh-Hant": "我指得出來的每一件作品。每項都附網址、倉庫，或誠實註明只在我自己的機器上運行。"
+    },
+    "projects.countLabel": {
+      "en": "{n} projects",
+      "zh-Hant": "{n} 個項目"
+    },
+    "projects.privateNote": {
+      "en": "Local-only work is listed without a public link.",
+      "zh-Hant": "只在本地運行的作品，不附公開連結。"
+    },
+    "projects.featuredLabel": {
+      "en": "featured",
+      "zh-Hant": "精選"
+    },
+    "project.year": {
+      "en": "Year",
+      "zh-Hant": "年份"
+    },
+    "project.role": {
+      "en": "Role",
+      "zh-Hant": "角色"
+    },
+    "project.status": {
+      "en": "Status",
+      "zh-Hant": "狀態"
+    },
+    "project.links": {
+      "en": "Links",
+      "zh-Hant": "連結"
+    },
+    "project.what": {
+      "en": "What it is",
+      "zh-Hant": "這是甚麼"
+    },
+    "project.why": {
+      "en": "Why it exists",
+      "zh-Hant": "為甚麼做"
+    },
+    "project.challenge": {
+      "en": "Hardest part",
+      "zh-Hant": "最難的部分"
+    },
+    "project.highlights": {
+      "en": "Highlights",
+      "zh-Hant": "重點"
+    },
+    "project.evidence": {
+      "en": "Evidence",
+      "zh-Hant": "證據"
+    },
+    "project.back": {
+      "en": "All projects",
+      "zh-Hant": "全部項目"
+    },
+    "project.prev": {
+      "en": "Previous",
+      "zh-Hant": "上一個"
+    },
+    "project.next": {
+      "en": "Next",
+      "zh-Hant": "下一個"
+    },
+    "status.live": {
+      "en": "live",
+      "zh-Hant": "已上線"
+    },
+    "status.local": {
+      "en": "local",
+      "zh-Hant": "本地"
+    },
+    "status.archived": {
+      "en": "archived",
+      "zh-Hant": "已歸檔"
+    },
+    "visibility.public": {
+      "en": "public",
+      "zh-Hant": "公開"
+    },
+    "visibility.private-local": {
+      "en": "private / local",
+      "zh-Hant": "私有／本地"
+    },
+    "video.label": {
+      "en": "Recording",
+      "zh-Hant": "錄影"
+    },
+    "video.play": {
+      "en": "Play",
+      "zh-Hant": "播放"
+    },
+    "video.note": {
+      "en": "Click to play. Muted loop, no autoplay.",
+      "zh-Hant": "點擊播放。靜音循環，不自動播放。"
+    },
+    "video.missing": {
+      "en": "Recording pending.",
+      "zh-Hant": "錄影待補。"
+    },
+    "contacts.note": {
+      "en": "No email on this site for now. These are the ways to reach me.",
+      "zh-Hant": "這個網站暫時不公開電郵。以下是可以找到我的方式。"
+    },
+    "footer.rights": {
+      "en": "© {year} Harry Huang",
+      "zh-Hant": "© {year} Harry Huang"
+    },
+    "footer.built": {
+      "en": "Built from data/ — no framework, no analytics, no cookies.",
+      "zh-Hant": "由 data/ 生成——沒有框架、沒有分析、沒有 cookie。"
+    },
+    "footer.translation": {
+      "en": "Simplified Chinese here is a machine conversion of the Traditional Chinese text and has not been reviewed yet.",
+      "zh-Hant": "此處的簡體中文由繁體文本機器轉換而成，尚未經校對。"
+    },
+    "footer.top": {
+      "en": "Top",
+      "zh-Hant": "回到頂部"
+    },
+    "notfound.heading": {
+      "en": "This page does not exist.",
+      "zh-Hant": "這一頁不存在。"
+    },
+    "notfound.body": {
+      "en": "The link may be old, or the page may have moved. The work is still here.",
+      "zh-Hant": "連結可能已經舊了，或者頁面搬了。作品還在。"
+    },
+    "notfound.back": {
+      "en": "Back to the homepage",
+      "zh-Hant": "回到首頁"
+    },
+    "theme.label": {
+      "en": "Theme",
+      "zh-Hant": "主題"
+    },
+    "theme.toggle": {
+      "en": "Toggle theme",
+      "zh-Hant": "切換主題"
+    },
+    "lang.label": {
+      "en": "Language",
+      "zh-Hant": "語言"
+    },
+    "lang.en": {
+      "en": "EN",
+      "zh-Hant": "EN"
+    },
+    "lang.zh-Hant": {
+      "en": "繁",
+      "zh-Hant": "繁"
+    },
+    "lang.zh-Hans": {
+      "en": "简",
+      "zh-Hant": "簡"
+    }
+  }
+}

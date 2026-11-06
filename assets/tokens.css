@@ -1,0 +1,166 @@
+/*
+ * Personal OS — shared design tokens and base elements.
+ *
+ * The one source of truth for the preview suite. Pages may lay out their own
+ * components, but colours, type, radius and spacing come from here.
+ * Reference page: kanban-prototype.html (Task Board).
+ */
+
+:root {
+  /* colour */
+  --bg: #0b0b0c;
+  --surface: #131314;
+  --surface-2: #1a1a1c;
+  --line: #2c2c2f;
+  --line-strong: #4a4a4e;
+  --text: #f2f2f2;
+  --muted: #a3a3a6;
+  --dim: #747477;
+  --overlay: rgb(0 0 0 / 70%);
+  --scrim: rgb(0 0 0 / 45%);
+  --scrim-soft: rgb(0 0 0 / 38%);
+  --scrim-faint: rgb(0 0 0 / 18%);
+
+  /* type */
+  --ui: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  /* shape and rhythm */
+  --radius: 2px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+
+  color-scheme: dark;
+}
+
+/*
+ * Chat keeps its light/dark switch. The palette is still owned here so no page
+ * carries colour literals of its own.
+ */
+:root[data-theme="light"] {
+  --bg: #f6f6f3;
+  --surface: #ffffff;
+  --surface-2: #efeeea;
+  --line: #d9d8d2;
+  --line-strong: #a5a49d;
+  --text: #171716;
+  --muted: #5e5d58;
+  --dim: #8a8983;
+  --overlay: rgb(255 255 255 / 70%);
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* ---------- base elements ---------- */
+
+button,
+input,
+select,
+textarea { font: inherit; color: inherit; }
+
+button {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--text);
+  padding: var(--sp-1) var(--sp-2);
+  cursor: pointer;
+}
+
+button:hover { border-color: var(--line-strong); }
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]):not([type="file"]),
+select,
+textarea {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  padding: var(--sp-1) var(--sp-2);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: 2px;
+}
+
+table { border-collapse: collapse; }
+
+th,
+td { text-align: left; vertical-align: top; }
+
+th {
+  color: var(--muted);
+  font: 11px var(--mono);
+  font-weight: 400;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+/* ---------- shared components ---------- */
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--sp-3);
+}
+
+.chip {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1px 6px;
+  color: var(--muted);
+  font: 10px var(--mono);
+}
+
+.badge {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0 5px;
+  color: var(--muted);
+  font: 10px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* 中 / EN switch, mounted by i18n.js into [data-lang-toggle]. */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font: 10px var(--mono);
+  color: var(--muted);
+}
+
+.lang-toggle button {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--dim);
+  padding: 0;
+  font: inherit;
+}
+
+.lang-toggle button:hover { color: var(--text); }
+
+.lang-toggle button.on { color: var(--text); }
+
+.lang-toggle .lang-sep { color: var(--line-strong); }
+
+.lang-slot { margin-top: var(--sp-3); }
