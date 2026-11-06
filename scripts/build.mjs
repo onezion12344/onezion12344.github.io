@@ -162,7 +162,7 @@ function videoBlock(project, lang) {
           <source src="${esc(m.mp4)}" type="video/mp4">
         </video>
         <button type="button" class="video-play" data-play aria-label="${esc(t(strings, "video.play", lang))}">▶ <span>${esc(t(strings, "video.play", lang))}</span></button>
-        <figcaption>${esc(label)}. ${esc(t(strings, "video.note", lang))}</figcaption>
+        <figcaption>${esc(label)} · ${esc(t(strings, "video.note", lang))}</figcaption>
       </figure>`;
 }
 

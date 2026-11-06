@@ -8,7 +8,7 @@
     "visibility": "public",
     "title": { "en": "WeWrites", "zh-Hant": "WeWrites" },
     "role": { "en": "Co-founder & CTO", "zh-Hant": "聯合創辦人兼技術總監" },
-    "tags": ["Next.js", "Content system", "Education"],
+    "tags": ["Content system", "Bilingual", "Education"],
     "links": [
       { "label": { "en": "wewrites.onezion.top", "zh-Hant": "wewrites.onezion.top" }, "url": "https://wewrites.onezion.top/" }
     ],
