@@ -189,8 +189,28 @@ h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
 .prose p { margin: 0 0 var(--sp-4); }
 .prose h2.marker { margin-top: 48px; }
 
-.bullets { margin: 0; padding-left: 18px; }
-.bullets li { margin-bottom: var(--sp-2); }
+/* Highlights: each claim may carry a short clip that shows the claim. */
+.highlight-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-5); }
+
+.highlight { display: grid; gap: var(--sp-4); }
+.highlight p { margin: 0; max-width: 60ch; }
+
+.highlight.has-clip {
+  grid-template-columns: minmax(0, 1fr) 288px;
+  align-items: start;
+  gap: var(--sp-5);
+}
+
+.clip { position: relative; margin: 0; }
+
+.clip video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 1px solid var(--line);
+  background: #000;
+}
 
 /* ---------- hero ---------- */
 
@@ -528,6 +548,8 @@ h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
   .site-nav { margin-left: 0; gap: var(--sp-3); }
   .head-tools { margin-left: auto; padding-left: var(--sp-3); border-left: 0; }
   .hero-top { flex-direction: column; gap: var(--sp-4); }
+  .highlight.has-clip { grid-template-columns: minmax(0, 1fr); }
+  .clip { max-width: 300px; }
   .avatar { width: 96px; height: 96px; }
   .work-grid { grid-template-columns: minmax(0, 1fr); }
   .row-link { grid-template-columns: 44px minmax(0, 1fr); }

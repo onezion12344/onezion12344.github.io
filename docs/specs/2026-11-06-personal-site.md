@@ -104,6 +104,11 @@ Unverified fields are the literal string `"TODO(owner)"` and are listed in the r
 }
 ```
 
+A highlight may carry its own short clip (`highlights[i].media`, same shape as
+`media`): a small looping tile beside the claim it demonstrates. Only add one when
+the footage actually shows the claim — a clip that merely resembles it is worse
+than no clip.
+
 Video slots exist for exactly four projects: WeWrites, MacClosedAwake, Double-Check,
 Personal OS. Personal OS is `private-local`, recorded from `127.0.0.1:18871`, and
 carries no public URL.

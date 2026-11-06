@@ -258,8 +258,8 @@
       "zh-Hant": "播放"
     },
     "video.note": {
-      "en": "Click to play. Muted loop, no autoplay.",
-      "zh-Hant": "點擊播放。靜音循環，不自動播放。"
+      "en": "Click to play. Loops, no autoplay.",
+      "zh-Hant": "點擊播放。循環放映，不自動播放。"
     },
     "video.missing": {
       "en": "Recording pending.",

@@ -154,7 +154,7 @@ function footer({ strings, lang, profile, reviewed }) {
 </footer>`;
 }
 
-const VIDEO_SCRIPT = `<script>(function(){var b=document.querySelector("[data-play]");if(!b)return;var f=b.closest("[data-video]");var v=f&&f.querySelector("video");if(!v)return;b.addEventListener("click",function(){v.play();v.setAttribute("controls","");b.hidden=true;});})();</script>`;
+const VIDEO_SCRIPT = `<script>(function(){var bs=document.querySelectorAll("[data-play]");for(var i=0;i<bs.length;i++){(function(b){var f=b.closest("[data-video]");var v=f&&f.querySelector("video");if(!v)return;b.addEventListener("click",function(){v.muted=false;v.play();v.setAttribute("controls","");b.hidden=true;});})(bs[i]);}})();</script>`;
 const THEME_SCRIPT = `<script>(function(){var b=document.querySelector("[data-theme-toggle]");if(!b)return;b.addEventListener("click",function(){var r=document.documentElement;var cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");var next=cur==="light"?"dark":"light";r.dataset.theme=next;try{localStorage.setItem("theme",next)}catch(e){}});})();</script>`;
 
 /**

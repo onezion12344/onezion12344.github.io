@@ -475,8 +475,23 @@ function renderProject(project, lang) {
               : ""
           }
           <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.highlights", lang))}</h2>
-          <ul class="bullets">${project.highlights
-            .map((h) => `<li>${esc(loc(h, lang))}</li>`)
+          <ul class="highlight-list">${project.highlights
+            .map(
+              (h) => `<li class="highlight${h.media ? " has-clip" : ""}">
+            <p>${esc(loc(h, lang))}</p>${
+              h.media
+                ? `
+            <figure class="clip" data-video>
+              <video width="${h.media.width}" height="${h.media.height}" muted loop playsinline preload="none" poster="${esc(h.media.poster)}">
+                <source src="${esc(h.media.webm)}" type="video/webm">
+                <source src="${esc(h.media.mp4)}" type="video/mp4">
+              </video>
+              <button type="button" class="video-play" data-play aria-label="${esc(t(strings, "video.play", lang))}">▶</button>
+            </figure>`
+                : ""
+            }
+          </li>`,
+            )
             .join("")}</ul>
           <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.evidence", lang))}</h2>
           <ul class="evidence">${project.evidence

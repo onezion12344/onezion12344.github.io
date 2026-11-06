@@ -27,7 +27,14 @@
     "highlights": [
       {
         "en": "A design system built to stay consistent and reusable, and to follow the brand's philosophy rather than a template's.",
-        "zh-Hant": "設計系統維持一致、可重用，並跟隨品牌理念，而不是套用範本。"
+        "zh-Hant": "設計系統維持一致、可重用，並跟隨品牌理念，而不是套用範本。",
+        "media": {
+          "mp4": "/assets/video/we-writes-tour.mp4",
+          "webm": "/assets/video/we-writes-tour.webm",
+          "poster": "/assets/video/we-writes-tour.jpg",
+          "width": 640,
+          "height": 360
+        }
       },
       {
         "en": "Content and components link to one another as a graph, which makes dependencies easier to manage.",
