@@ -42,6 +42,7 @@ function markdown(lang) {
   const push = (...lines) => L.push(...lines);
 
   push(`# ${loc(profile.name, lang)}`, "");
+  push(t(strings, "cv.aka", lang), "");
   push(`${loc(profile.headline, lang)} · ${loc(profile.location, lang)}`, "");
   push(contactLine(lang), "");
   push(`## ${t(strings, "cv.summary", lang)}`, "");
@@ -207,6 +208,7 @@ function printHtml(lang) {
 
   <header class="cv-head">
     <h1>${esc(loc(profile.name, lang))}</h1>
+    <p class="aka">${esc(t(strings, "cv.aka", lang))}</p>
     <p class="headline">${esc(loc(profile.headline, lang))}</p>
     <p class="contact-line">${esc(loc(profile.location, lang))} · ${contacts}</p>
   </header>

@@ -6,40 +6,40 @@
   },
   "strings": {
     "meta.siteName": {
-      "en": "Harry Huang",
-      "zh-Hant": "Harry Huang"
+      "en": "Harry OneZion",
+      "zh-Hant": "Harry OneZion"
     },
     "meta.title.home": {
-      "en": "Harry Huang — AI & Data Science, HKU",
-      "zh-Hant": "Harry Huang — 港大人工智能與數據科學"
+      "en": "Harry OneZion — AI & Data Science, HKU",
+      "zh-Hant": "Harry OneZion — 港大人工智能與數據科學"
     },
     "meta.desc.home": {
-      "en": "Harry Huang — AI & Data Science at HKU. A portfolio, a project index and a generated CV: small, complete tools, each with a URL or a repository behind it.",
-      "zh-Hant": "Harry Huang——港大人工智能與數據科學。作品集、項目索引與自動生成的履歷：每件小而完整的工具，背後都有一條網址或一個倉庫。"
+      "en": "Harry OneZion — AI & Data Science at HKU. A portfolio, a project index and a generated CV: small, complete tools, each with a URL or a repository behind it.",
+      "zh-Hant": "Harry OneZion——港大人工智能與數據科學。作品集、項目索引與自動生成的履歷：每件小而完整的工具，背後都有一條網址或一個倉庫。"
     },
     "meta.title.cv": {
-      "en": "CV — Harry Huang",
-      "zh-Hant": "履歷 — Harry Huang"
+      "en": "CV — Harry OneZion",
+      "zh-Hant": "履歷 — Harry OneZion"
     },
     "meta.desc.cv": {
-      "en": "The CV of Harry Huang: education at HKU, WeWrites, selected work and skills, in English, Traditional and Simplified Chinese.",
-      "zh-Hant": "Harry Huang 的履歷：港大教育背景、WeWrites、部分作品與技能，提供英文、繁體及簡體中文。"
+      "en": "The CV of Harry OneZion (Harry Huang): education at HKU, WeWrites, selected work and skills, in English, Traditional and Simplified Chinese.",
+      "zh-Hant": "Harry OneZion（Harry Huang）的履歷：港大教育背景、WeWrites、部分作品與技能，提供英文、繁體及簡體中文。"
     },
     "meta.title.projects": {
-      "en": "Projects — Harry Huang",
-      "zh-Hant": "項目 — Harry Huang"
+      "en": "Projects — Harry OneZion",
+      "zh-Hant": "項目 — Harry OneZion"
     },
     "meta.desc.projects": {
-      "en": "Every project Harry Huang has shipped or built for himself — each with a URL, a repository, or an honest note that it runs locally only.",
-      "zh-Hant": "Harry Huang 交付過或自己做的每一個項目——每項都附網址、倉庫，或誠實註明只在本地運行。"
+      "en": "Every project Harry OneZion has shipped or built for himself — each with a URL, a repository, or an honest note that it runs locally only.",
+      "zh-Hant": "Harry OneZion 交付過或自己做的每一個項目——每項都附網址、倉庫，或誠實註明只在本地運行。"
     },
     "meta.title.project": {
-      "en": "{title} — Harry Huang",
-      "zh-Hant": "{title} — Harry Huang"
+      "en": "{title} — Harry OneZion",
+      "zh-Hant": "{title} — Harry OneZion"
     },
     "meta.title.404": {
-      "en": "Page not found — Harry Huang",
-      "zh-Hant": "找不到頁面 — Harry Huang"
+      "en": "Page not found — Harry OneZion",
+      "zh-Hant": "找不到頁面 — Harry OneZion"
     },
     "meta.desc.404": {
       "en": "This page does not exist. The work is still here.",
@@ -274,8 +274,8 @@
       "zh-Hant": "這個網站暫時不公開電郵。以下是可以找到我的方式。"
     },
     "footer.rights": {
-      "en": "© {year} Harry Huang",
-      "zh-Hant": "© {year} Harry Huang"
+      "en": "© {year} Harry OneZion",
+      "zh-Hant": "© {year} Harry OneZion"
     },
     "footer.built": {
       "en": "Built from data/ — no framework, no analytics, no cookies.",
@@ -324,6 +324,10 @@
     "lang.zh-Hans": {
       "en": "简",
       "zh-Hant": "簡"
+    },
+    "cv.aka": {
+      "en": "Also known as Harry Huang",
+      "zh-Hant": "亦稱 Harry Huang"
     }
   }
 }

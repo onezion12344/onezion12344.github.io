@@ -1,11 +1,11 @@
 {
   "name": {
-    "en": "Harry Huang",
-    "zh-Hant": "Harry Huang"
-  },
-  "aka": {
     "en": "Harry OneZion",
     "zh-Hant": "Harry OneZion"
+  },
+  "aka": {
+    "en": "Harry Huang",
+    "zh-Hant": "Harry Huang"
   },
   "headline": {
     "en": "AI & Data Science, HKU",
@@ -22,8 +22,8 @@
   "email": null,
   "photo": "/assets/onezion.png",
   "photoAlt": {
-    "en": "Pixel-art illustration of Harry Huang at a desk, with the caption “one more leap of faith”.",
-    "zh-Hant": "Harry Huang 坐在書桌前的像素插畫，附有「為創造，再一次信仰之躍」的題字。"
+    "en": "Pixel-art illustration of Harry OneZion at a desk, with the caption “one more leap of faith”.",
+    "zh-Hant": "Harry OneZion 坐在書桌前的像素插畫，附有「為創造，再一次信仰之躍」的題字。"
   },
   "bio": [
     {
@@ -109,28 +109,52 @@
         "en": "Languages",
         "zh-Hant": "語言"
       },
-      "items": ["Python", "JavaScript / Node.js", "TypeScript", "Swift", "Lua", "Shell"]
+      "items": [
+        "Python",
+        "JavaScript / Node.js",
+        "TypeScript",
+        "Swift",
+        "Lua",
+        "Shell"
+      ]
     },
     {
       "group": {
         "en": "AI",
         "zh-Hant": "人工智能"
       },
-      "items": ["LLM engineering", "Multi-agent", "MCP", "RAG", "Local model deployment"]
+      "items": [
+        "LLM engineering",
+        "Multi-agent",
+        "MCP",
+        "RAG",
+        "Local model deployment"
+      ]
     },
     {
       "group": {
         "en": "Data",
         "zh-Hant": "資料"
       },
-      "items": ["SQLite", "FTS5", "ChromaDB"]
+      "items": [
+        "SQLite",
+        "FTS5",
+        "ChromaDB"
+      ]
     },
     {
       "group": {
         "en": "Platform",
         "zh-Hant": "平台"
       },
-      "items": ["macOS", "Linux", "Next.js", "Vercel", "Cloudflare", "OpenRouter"]
+      "items": [
+        "macOS",
+        "Linux",
+        "Next.js",
+        "Vercel",
+        "Cloudflare",
+        "OpenRouter"
+      ]
     }
   ]
 }

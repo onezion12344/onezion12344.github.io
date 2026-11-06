@@ -102,7 +102,7 @@ function langSwitch(strings, lang, path) {
   return `<nav class="lang-toggle" aria-label="${esc(t(strings, "lang.label", lang))}">${items}</nav>`;
 }
 
-function header({ strings, lang, path, home = false }) {
+function header({ strings, lang, path, profile, home = false }) {
   const nav = [
     `<a href="${esc(urlFor(lang))}"${home ? ' aria-current="page"' : ""}>${esc(
       t(strings, "nav.home", lang),
@@ -117,7 +117,7 @@ function header({ strings, lang, path, home = false }) {
 
   return `<header class="site-head">
   <div class="wrap-wide head-row">
-    <a class="brand" href="${esc(urlFor(lang))}">Harry Huang</a>
+    <a class="brand" href="${esc(urlFor(lang))}">${esc(loc(profile.name, lang))}</a>
     <nav class="site-nav" aria-label="Main">${nav}</nav>
     <div class="head-tools">
       ${langSwitch(strings, lang, path)}
@@ -216,7 +216,7 @@ export function page({
 </head>
 <body class="${esc(bodyClass)}" id="top">
   <a class="skip" href="#main">${esc(t(strings, "nav.skip", lang))}</a>
-  ${header({ strings, lang, path: switchPath, home: switchPath === "" })}
+  ${header({ strings, lang, path: switchPath, profile, home: switchPath === "" })}
   <main id="main">
 ${body}
   </main>

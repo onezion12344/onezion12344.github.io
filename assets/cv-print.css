@@ -77,6 +77,12 @@ h1 {
   margin: 0 0 4px;
 }
 
+.aka {
+  font: 9pt var(--mono);
+  color: var(--ink-dim);
+  margin: 0 0 4px;
+}
+
 .headline {
   font: 10pt var(--mono);
   letter-spacing: .06em;

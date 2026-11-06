@@ -192,8 +192,9 @@ Dark (default) and light palettes exactly as in `tokens.css`; light also applies
 - Existing `.card`, `.chip`, `.badge`, `.lang-toggle` reused.
 - Layout: mono `# about` / `# now` / `# work` section markers, prose-first, generous
   vertical rhythm, ~720 px prose measure, ~1000 px project index.
-- Exactly one expressive gesture: the illustration. Grayscale at rest → full colour on
-  hover/focus, 400 ms reveal on first paint. Everything else is static CSS hover.
+- Exactly one expressive gesture: the illustration, in full colour at rest, with a
+  400 ms reveal on first paint. Everything else is static CSS hover. (The original
+  grayscale-at-rest treatment was dropped at the owner's request on 2026-11-06.)
   Under `prefers-reduced-motion: reduce` the gesture is absent.
 - Banned: parallax, cursor follower, scroll-jacking, gradient text, scroll-reveal JS.
 
