@@ -38,7 +38,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 14px/1.6 var(--ui);
+  font: 16px/1.65 var(--ui);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -85,7 +85,7 @@ a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
 }
 
 .brand {
-  font: 11px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: .14em;
   text-transform: uppercase;
   text-decoration: none;
@@ -99,7 +99,7 @@ a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
 }
 
 .site-nav a {
-  font: 11px var(--mono);
+  font: 13px var(--mono);
   letter-spacing: .04em;
   color: var(--muted);
   text-decoration: none;
@@ -112,6 +112,7 @@ a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
   display: flex;
   align-items: center;
   gap: var(--sp-3);
+  font: 12px var(--mono);
   padding-left: var(--sp-4);
   border-left: 1px solid var(--line);
 }
@@ -131,7 +132,7 @@ a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
   background: none;
   color: var(--muted);
   padding: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1;
   cursor: pointer;
 }
@@ -141,49 +142,55 @@ a:focus-visible { outline: 1px solid var(--text); outline-offset: 2px; }
 /* ---------- sections and type ---------- */
 
 .section {
-  padding: var(--sp-6) 0 56px;
+  padding: 56px 0 64px;
   border-top: 1px solid var(--line);
 }
 
 main > .section:first-of-type { border-top: 0; }
 
 .marker {
-  font: 11px var(--mono);
-  font-weight: 400;
-  letter-spacing: .12em;
-  text-transform: lowercase;
-  color: var(--dim);
-  margin: 0 0 var(--sp-5);
+  font: 400 1.5rem/1.25 var(--serif);
+  letter-spacing: -.01em;
+  color: var(--text);
+  margin: 0 0 var(--sp-4);
+}
+
+/* The "#" is scaffolding, not content: small, quiet, and hidden from AT. */
+.marker .hash {
+  font: 400 .62em var(--mono);
+  letter-spacing: 0;
+  color: var(--muted);
+  margin-right: .5em;
 }
 
 h1 {
-  font: 400 clamp(2rem, 6vw, 3.25rem)/1.06 var(--serif);
+  font: 400 clamp(2.5rem, 7vw, 4rem)/1.02 var(--serif);
   letter-spacing: -.02em;
   margin: 0 0 var(--sp-3);
 }
 
-h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
+h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
 
 .lede {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.55;
   color: var(--muted);
   max-width: 60ch;
   margin: 0 0 var(--sp-5);
 }
 
 .section-note {
-  font: 11px var(--mono);
-  color: var(--dim);
+  font: 12px var(--mono);
+  color: var(--muted);
   margin: 0 0 var(--sp-5);
 }
 
 .prose { max-width: 68ch; }
 .prose p { margin: 0 0 var(--sp-4); }
-.prose h2.marker { margin-top: var(--sp-6); }
+.prose h2.marker { margin-top: 48px; }
 
 .bullets { margin: 0; padding-left: 18px; }
-.bullets li { margin-bottom: var(--sp-1); }
+.bullets li { margin-bottom: var(--sp-2); }
 
 /* ---------- hero ---------- */
 
@@ -210,14 +217,14 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 }
 
 .headline {
-  font: 11px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 var(--sp-2);
 }
 
-.tagline { color: var(--muted); margin: 0; max-width: 46ch; }
+.tagline { color: var(--muted); font-size: 1.0625rem; margin: 0; max-width: 46ch; }
 
 .stack {
   display: grid;
@@ -227,14 +234,14 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   border-top: 1px solid var(--line);
 }
 
+/* Group headings inside a chip block: still headings, so still larger than
+ * body text. Uppercase mono at 10px was the smallest type on the page. */
 .stack-group h3,
 .skill-group h3 {
-  font: 10px var(--mono);
-  font-weight: 400;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--dim);
-  margin: 0 0 var(--sp-1);
+  font: 400 1.125rem/1.3 var(--serif);
+  letter-spacing: 0;
+  color: var(--text);
+  margin: 0 0 var(--sp-2);
 }
 
 .chips {
@@ -254,10 +261,10 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   border-top: 1px solid var(--line);
 }
 
-.now-item h3 { margin: 0 0 var(--sp-1); font-size: 15px; font-weight: 500; }
+.now-item h3 { margin: 0 0 var(--sp-1); font-size: 1.125rem; font-weight: 500; }
 .now-item p { margin: 0; color: var(--muted); max-width: 62ch; }
 
-.date { font: 11px var(--mono); color: var(--dim); margin: 0; }
+.date { font: 12px var(--mono); color: var(--muted); margin: 0; }
 
 /* ---------- work cards ---------- */
 
@@ -286,14 +293,14 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   background: var(--surface-2);
 }
 
-.work-year { font: 10px var(--mono); color: var(--dim); }
+.work-year { font: 12px var(--mono); color: var(--muted); }
 
 .work-card h3 {
-  font: 400 20px/1.25 var(--serif);
+  font: 400 1.375rem/1.2 var(--serif);
   margin: var(--sp-1) 0 var(--sp-2);
 }
 
-.work-card p { margin: 0 0 var(--sp-3); color: var(--muted); font-size: 13px; }
+.work-card p { margin: 0 0 var(--sp-3); color: var(--muted); font-size: .9375rem; }
 
 .more { margin: var(--sp-5) 0 0; }
 
@@ -316,10 +323,10 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 .row-link:hover { background: var(--surface); }
 .row-link:hover .row-title { text-decoration: underline; text-underline-offset: 3px; }
 
-.row-year { font: 11px var(--mono); color: var(--dim); }
-.row-title { font: 400 18px/1.3 var(--serif); }
-.row-role { display: block; font: 10px var(--mono); color: var(--dim); margin-top: 2px; }
-.row-sum { display: block; color: var(--muted); font-size: 13px; margin-top: 4px; max-width: 72ch; }
+.row-year { font: 12px var(--mono); color: var(--muted); }
+.row-title { font: 400 1.25rem/1.25 var(--serif); }
+.row-role { display: block; font: 12px var(--mono); color: var(--muted); margin-top: 3px; }
+.row-sum { display: block; color: var(--muted); font-size: .9375rem; margin-top: 4px; max-width: 72ch; }
 .row-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .row-side { white-space: nowrap; }
 
@@ -338,7 +345,7 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 }
 
 .contacts a:hover { background: var(--surface); }
-.contact-handle { font: 11px var(--mono); color: var(--dim); }
+.contact-handle { font: 12px var(--mono); color: var(--muted); }
 
 /* ---------- buttons ---------- */
 
@@ -348,8 +355,8 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   border-radius: var(--radius);
   background: none;
   color: var(--text);
-  padding: 7px 12px;
-  font: 11px var(--mono);
+  padding: 9px 14px;
+  font: 12px var(--mono);
   letter-spacing: .04em;
   text-decoration: none;
   transition: background-color .18s ease, color .18s ease, border-color .18s ease;
@@ -363,7 +370,7 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 
 /* ---------- project page ---------- */
 
-.back { font: 11px var(--mono); margin: 0 0 var(--sp-5); }
+.back { font: 12px var(--mono); margin: 0 0 var(--sp-5); }
 .back a { color: var(--muted); text-decoration: none; }
 .back a:hover { color: var(--text); }
 
@@ -375,10 +382,10 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 }
 
 .facts dt {
-  font: 10px var(--mono);
+  font: 12px var(--mono);
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: var(--muted);
 }
 
 .facts dd { margin: 2px 0 0; }
@@ -409,7 +416,7 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   background: var(--bg);
   border: 1px solid var(--line-strong);
   color: var(--text);
-  font: 11px var(--mono);
+  font: 12px var(--mono);
   padding: var(--sp-2) var(--sp-3);
 }
 
@@ -417,22 +424,22 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 .video-play[hidden] { display: none; }
 
 .video figcaption {
-  font: 10px var(--mono);
-  color: var(--dim);
+  font: 12px var(--mono);
+  color: var(--muted);
   margin-top: var(--sp-1);
 }
 
 .evidence { list-style: none; margin: 0; padding: 0; }
 
 .evidence li {
-  padding: var(--sp-2) 0;
+  padding: var(--sp-3) 0;
   border-top: 1px solid var(--line);
 }
 
 .evidence .src {
   display: block;
-  font: 10px var(--mono);
-  color: var(--dim);
+  font: 12px var(--mono);
+  color: var(--muted);
   margin-top: 2px;
 }
 
@@ -443,7 +450,7 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   border-top: 1px solid var(--line);
   margin-top: 48px;
   padding-top: var(--sp-4);
-  font: 11px var(--mono);
+  font: 12px var(--mono);
 }
 
 .pager a { color: var(--muted); text-decoration: none; }
@@ -458,15 +465,15 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 }
 
 .entry h3 {
-  font: 400 18px/1.3 var(--serif);
+  font: 400 1.25rem/1.3 var(--serif);
   margin: 0 0 var(--sp-1);
 }
 
-.entry-meta { font: 10px var(--mono); color: var(--dim); margin: 0 0 var(--sp-2); }
+.entry-meta { font: 12px var(--mono); color: var(--muted); margin: 0 0 var(--sp-2); }
 .entry-title { margin: 0 0 var(--sp-2); }
 .entry ul { margin: var(--sp-2) 0 0; padding-left: 18px; }
 .entry li { margin-bottom: 2px; }
-.entry-note { font: 11px var(--mono); color: var(--dim); margin: var(--sp-2) 0 0; }
+.entry-note { font: 12px var(--mono); color: var(--muted); margin: var(--sp-2) 0 0; }
 
 .skills { display: grid; gap: var(--sp-4); }
 
@@ -482,13 +489,6 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 
 .muted { color: var(--muted); }
 
-.aka {
-  font: var(--ui);
-  font-size: 12px;
-  letter-spacing: .06em;
-  color: var(--muted);
-  margin: 0 0 12px;
-}
 .formats { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 
 /* ---------- 404 ---------- */
@@ -509,7 +509,7 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   margin-top: var(--sp-6);
   padding: var(--sp-6) 0 56px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .site-foot p { margin: 0 0 var(--sp-2); max-width: 66ch; }
@@ -517,9 +517,9 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
 .site-foot a:hover { color: var(--text); }
 
 .foot-links { list-style: none; display: flex; flex-wrap: wrap; gap: var(--sp-4); padding: 0; margin: 0 0 var(--sp-4); }
-.foot-links a { border-bottom: 0; font: 11px var(--mono); }
-.footer-note { color: var(--dim); font: 11px var(--mono); }
-.foot-top { font: 11px var(--mono); }
+.foot-links a { border-bottom: 0; font: 12px var(--mono); }
+.footer-note { color: var(--muted); font: 12px var(--mono); }
+.foot-top { font: 12px var(--mono); }
 
 /* ---------- responsive ---------- */
 
@@ -542,3 +542,13 @@ h2 { font: 400 1.25rem/1.3 var(--serif); margin: 0 0 var(--sp-3); }
   .avatar { animation: none; transition: none; }
   *, *::before, *::after { scroll-behavior: auto !important; }
 }
+
+/* tokens.css ships chip, badge and the language switch at 10px. That is
+ * unreadable next to 16px body text, so the site lifts them to 12px without
+ * touching the token file. */
+.chip,
+.badge,
+.lang-toggle { font-size: 12px; }
+
+.chip { padding: 2px 7px; }
+.badge { padding: 1px 6px; }

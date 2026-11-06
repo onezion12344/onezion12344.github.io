@@ -59,9 +59,8 @@ recorded as unreviewed until the owner checks it (§7).
 
 ```jsonc
 {
-  "name": {…},           // publishing name — the only name on public pages
-  "legalName": "…",      // legal name; CV documents and CV meta only, never a
-                         // public page, and not in JSON-LD
+  "name": {…},           // the only name the site ever prints; the legal name
+                         // is not stored here and must not be published
   "headline": {…},       // one line, e.g. "AI & Data Science, HKU"
   "location": {…},
   "email": null,         // privacy: no e-mail in v1
@@ -187,12 +186,14 @@ extensions live in `assets/site.css` and add no new colours.
 Dark (default) and light palettes exactly as in `tokens.css`; light also applies via
 `@media (prefers-color-scheme: light)` when no `data-theme` is set.
 
-- Type: `--ui` 14 px/1.5 body; `--serif` for display headlines; `--mono` for labels,
-  dates, stack tags, section markers.
+- Type: `--ui` 16 px/1.65 body; `--serif` for display headlines **and** every
+  section heading; `--mono` for labels, dates, stack tags and metadata, never
+  below 12 px.
 - `--radius: 2px`; 1 px hairlines only; spacing scale 4/8/12/16/24/32.
 - **No accent colour.** Emphasis is inversion: text on background, background on text.
 - Existing `.card`, `.chip`, `.badge`, `.lang-toggle` reused.
-- Layout: mono `# about` / `# now` / `# work` section markers, prose-first, generous
+- Layout: `# about` / `# now` / `# work` section markers — the `#` is a small mono
+  decoration, the heading text is serif and larger than body, prose-first, generous
   vertical rhythm, ~720 px prose measure, ~1000 px project index.
 - Exactly one expressive gesture: the illustration, in full colour at rest, with a
   400 ms reveal on first paint. Everything else is static CSS hover. (The original
@@ -222,12 +223,11 @@ Dark (default) and light palettes exactly as in `tokens.css`; light also applies
 
 - `email: null`; the contacts block is GitHub, LinkedIn, X.
 - No phone, address, student ID, or grades anywhere in generated output.
-- Two names, two jobs. The publishing name ("Harry OneZion") is the only name on
-  public pages. The legal name (`legalName`) appears only in the CV documents and
-  the CV page's own title/description, because that is where a legal name does
-  work; it is deliberately absent from the home page, project pages, footer and
-  JSON-LD. Swapping the publishing name for the legal name everywhere would undo
-  this split.
+- One name only. "Harry OneZion" is the publishing name and the only name in
+  generated output, JSON-LD included. The legal name is deliberately not stored in
+  `data/` and must never be published: the owner asked for it to stay off the site
+  after weighing search visibility against doxxing risk. Do not reintroduce it as
+  an "alternateName", a CV alias line, or a meta description.
 - No raw `mailto:` while `email` is null.
 - Never invent clients, earnings, reviews, testimonials, portfolio work, or results.
   Coursework is not client work. Every claim traces to a listed source:

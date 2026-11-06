@@ -345,8 +345,7 @@ function renderCv(lang) {
 
   const body = `<section class="section">
       <div class="wrap">
-        <h1>${esc(profile.legalName)}</h1>
-        <p class="aka">${esc(t(strings, "cv.aka", lang))}</p>
+        <h1>${esc(loc(profile.name, lang))}</h1>
         <p class="lede">${esc(t(strings, "cv.lede", lang))}</p>
         <p class="formats">
           <a class="btn" href="/cv/${lang}.html">${esc(t(strings, "cv.print", lang))}</a>
@@ -354,31 +353,31 @@ function renderCv(lang) {
         </p>
         <p class="section-note">${esc(t(strings, "cv.note", lang))}</p>
 
-        <h2 class="marker"># ${esc(t(strings, "cv.education", lang))}</h2>
+        <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.education", lang))}</h2>
         ${education}
 
-        <h2 class="marker"># ${esc(t(strings, "cv.experience", lang))}</h2>
+        <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.experience", lang))}</h2>
         ${experience}
 
-        <h2 class="marker"># ${esc(t(strings, "cv.awards", lang))}</h2>
+        <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.awards", lang))}</h2>
         ${awards}
 
-        <h2 class="marker"># ${esc(t(strings, "cv.skills", lang))}</h2>
+        <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.skills", lang))}</h2>
         <div class="skills">
         ${skills}
         </div>
 
-        <h2 class="marker"># ${esc(t(strings, "cv.languages", lang))}</h2>
+        <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.languages", lang))}</h2>
         <ul class="plain">${languages}</ul>
 
         ${
           certifications
-            ? `<h2 class="marker"># ${esc(t(strings, "cv.certifications", lang))}</h2>
+            ? `<h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.certifications", lang))}</h2>
         <ul class="plain">${certifications}</ul>`
             : ""
         }
 
-        <h2 class="marker"># ${esc(t(strings, "cv.contact", lang))}</h2>
+        <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.contact", lang))}</h2>
         <ul class="plain">${profile.links
           .map(
             (l) =>
@@ -465,21 +464,21 @@ function renderProject(project, lang) {
         ${links}
         ${videoBlock(project, lang)}
         <div class="prose">
-          <h2 class="marker"># ${esc(t(strings, "project.what", lang))}</h2>
+          <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.what", lang))}</h2>
           <p>${esc(loc(project.what, lang))}</p>
-          <h2 class="marker"># ${esc(t(strings, "project.why", lang))}</h2>
+          <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.why", lang))}</h2>
           <p>${esc(loc(project.why, lang))}</p>
           ${
             project.challenge
-              ? `<h2 class="marker"># ${esc(t(strings, "project.challenge", lang))}</h2>
+              ? `<h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.challenge", lang))}</h2>
           <p>${esc(loc(project.challenge, lang))}</p>`
               : ""
           }
-          <h2 class="marker"># ${esc(t(strings, "project.highlights", lang))}</h2>
+          <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.highlights", lang))}</h2>
           <ul class="bullets">${project.highlights
             .map((h) => `<li>${esc(loc(h, lang))}</li>`)
             .join("")}</ul>
-          <h2 class="marker"># ${esc(t(strings, "project.evidence", lang))}</h2>
+          <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.evidence", lang))}</h2>
           <ul class="evidence">${project.evidence
             .map(
               (e) =>

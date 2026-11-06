@@ -229,7 +229,7 @@ ${body}
 }
 
 export function marker(strings, key, lang) {
-  return `<h2 class="marker" data-section="${esc(key)}"># ${esc(t(strings, key, lang))}</h2>`;
+  return `<h2 class="marker" data-section="${esc(key)}"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, key, lang))}</h2>`;
 }
 
 export function statusBadge(strings, lang, project) {
