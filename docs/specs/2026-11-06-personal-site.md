@@ -229,8 +229,8 @@ Dark (default) and light palettes exactly as in `tokens.css`; light also applies
 
 ## 11. Illustration and media
 
-- `assets/onezion.png` + `assets/onezion.webp` from the provided 1024×1024 pixel-art
-  image (caption retained).
+- `assets/onezion.png` + `assets/onezion.webp` from the provided pixel-art image
+  (960×960 as supplied; caption retained).
 - Home: 96–120 px avatar. 404 and Open Graph: full size with caption intact.
 - Videos: `<video muted loop playsinline preload="none" poster="…">`, click-to-play,
   16:9, ≤ 20 s, ≤ 2 MB, MP4 (H.264) plus WebM when cheap. Posters are the first
