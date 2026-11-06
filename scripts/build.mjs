@@ -52,7 +52,6 @@ function personJsonLd(lang) {
     mainEntity: {
       "@type": "Person",
       name: loc(profile.name, lang),
-      alternateName: loc(profile.aka, lang),
       jobTitle: loc(profile.headline, lang),
       description: loc(profile.tagline, lang),
       image: BASE + profile.photo,
@@ -346,7 +345,8 @@ function renderCv(lang) {
 
   const body = `<section class="section">
       <div class="wrap">
-        <h1>${esc(t(strings, "cv.heading", lang))}</h1>
+        <h1>${esc(profile.legalName)}</h1>
+        <p class="aka">${esc(t(strings, "cv.aka", lang))}</p>
         <p class="lede">${esc(t(strings, "cv.lede", lang))}</p>
         <p class="formats">
           <a class="btn" href="/cv/${lang}.html">${esc(t(strings, "cv.print", lang))}</a>

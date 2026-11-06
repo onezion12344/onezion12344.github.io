@@ -18,12 +18,12 @@
       "zh-Hant": "Harry OneZion——港大人工智能與數據科學。作品集、項目索引與自動生成的履歷：每件小而完整的工具，背後都有一條網址或一個倉庫。"
     },
     "meta.title.cv": {
-      "en": "CV — Harry OneZion",
-      "zh-Hant": "履歷 — Harry OneZion"
+      "en": "CV — Huang Ziyang",
+      "zh-Hant": "履歷 — Huang Ziyang"
     },
     "meta.desc.cv": {
-      "en": "The CV of Harry OneZion (Harry Huang): education at HKU, WeWrites, selected work and skills, in English, Traditional and Simplified Chinese.",
-      "zh-Hant": "Harry OneZion（Harry Huang）的履歷：港大教育背景、WeWrites、部分作品與技能，提供英文、繁體及簡體中文。"
+      "en": "The CV of Huang Ziyang, published as Harry OneZion: education at HKU, WeWrites, selected work and skills, in English, Traditional and Simplified Chinese.",
+      "zh-Hant": "Huang Ziyang（發布名 Harry OneZion）的履歷：港大教育背景、WeWrites、部分作品與技能，提供英文、繁體及簡體中文。"
     },
     "meta.title.projects": {
       "en": "Projects — Harry OneZion",
@@ -96,10 +96,6 @@
     "home.projectsCount": {
       "en": "{n} projects, all self-run",
       "zh-Hant": "{n} 個項目，全部自己做"
-    },
-    "cv.heading": {
-      "en": "Portfolio",
-      "zh-Hant": "作品集"
     },
     "cv.lede": {
       "en": "A short record: where I study, what I run, and the work behind the projects on this site. The printable version is A4 and stays legible in black and white.",
@@ -326,8 +322,8 @@
       "zh-Hant": "簡"
     },
     "cv.aka": {
-      "en": "Also known as Harry Huang",
-      "zh-Hant": "亦稱 Harry Huang"
+      "en": "Also known as Harry OneZion",
+      "zh-Hant": "亦稱 Harry OneZion"
     }
   }
 }

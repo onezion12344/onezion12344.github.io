@@ -41,7 +41,7 @@ function markdown(lang) {
   const L = [];
   const push = (...lines) => L.push(...lines);
 
-  push(`# ${loc(profile.name, lang)}`, "");
+  push(`# ${profile.legalName}`, "");
   push(t(strings, "cv.aka", lang), "");
   push(`${loc(profile.headline, lang)} · ${loc(profile.location, lang)}`, "");
   push(contactLine(lang), "");
@@ -107,7 +107,7 @@ function markdown(lang) {
 
 function printHtml(lang) {
   const meta = LANGS.find((l) => l.code === lang);
-  const headline = `${loc(profile.name, lang)} — ${loc(profile.headline, lang)}`;
+  const headline = `${profile.legalName} — ${loc(profile.headline, lang)}`;
   const li = (items) => items.map((h) => `<li>${esc(loc(h, lang))}</li>`).join("");
 
   const education = resume.education
@@ -207,7 +207,7 @@ function printHtml(lang) {
   </div>
 
   <header class="cv-head">
-    <h1>${esc(loc(profile.name, lang))}</h1>
+    <h1>${esc(profile.legalName)}</h1>
     <p class="aka">${esc(t(strings, "cv.aka", lang))}</p>
     <p class="headline">${esc(loc(profile.headline, lang))}</p>
     <p class="contact-line">${esc(loc(profile.location, lang))} · ${contacts}</p>

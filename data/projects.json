@@ -25,9 +25,18 @@
       "zh-Hant": "家長與學生選補習，靠的是信任。網站要用真實的課堂相片承住這份信任，而團隊每次改課程都不應該等開發者。"
     },
     "highlights": [
-      { "en": "Live on its own domain.", "zh-Hant": "已在自己的網域上線。" },
-      { "en": "Bilingual copy across the site.", "zh-Hant": "全站雙語文案。" },
-      { "en": "The team publishes class and teacher updates without a developer.", "zh-Hant": "團隊不用開發者也能更新課程與導師資料。" }
+      {
+        "en": "A design system built to stay consistent and reusable, and to follow the brand's philosophy rather than a template's.",
+        "zh-Hant": "設計系統維持一致、可重用，並跟隨品牌理念，而不是套用範本。"
+      },
+      {
+        "en": "Content and components link to one another as a graph, which makes dependencies easier to manage.",
+        "zh-Hant": "內容與元件以圖譜互相連結，依賴關係因此更易管理。"
+      },
+      {
+        "en": "Milestone pages are generated from available sources and fact-checked automatically.",
+        "zh-Hant": "里程碑頁面按現有來源自動生成，並自動核查事實。"
+      }
     ],
     "evidence": [
       { "text": { "en": "Live at wewrites.onezion.top", "zh-Hant": "在 wewrites.onezion.top 上線" }, "source": "portfolio, measured 2026-10-31" },

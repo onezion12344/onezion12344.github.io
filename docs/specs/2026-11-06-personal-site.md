@@ -59,8 +59,9 @@ recorded as unreviewed until the owner checks it (§7).
 
 ```jsonc
 {
-  "name": {…},           // display name
-  "nameRomanized": {…},  // Latin form used in meta/OG
+  "name": {…},           // publishing name — the only name on public pages
+  "legalName": "…",      // legal name; CV documents and CV meta only, never a
+                         // public page, and not in JSON-LD
   "headline": {…},       // one line, e.g. "AI & Data Science, HKU"
   "location": {…},
   "email": null,         // privacy: no e-mail in v1
@@ -221,6 +222,12 @@ Dark (default) and light palettes exactly as in `tokens.css`; light also applies
 
 - `email: null`; the contacts block is GitHub, LinkedIn, X.
 - No phone, address, student ID, or grades anywhere in generated output.
+- Two names, two jobs. The publishing name ("Harry OneZion") is the only name on
+  public pages. The legal name (`legalName`) appears only in the CV documents and
+  the CV page's own title/description, because that is where a legal name does
+  work; it is deliberately absent from the home page, project pages, footer and
+  JSON-LD. Swapping the publishing name for the legal name everywhere would undo
+  this split.
 - No raw `mailto:` while `email` is null.
 - Never invent clients, earnings, reviews, testimonials, portfolio work, or results.
   Coursework is not client work. Every claim traces to a listed source:
