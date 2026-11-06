@@ -7,7 +7,7 @@
     "status": "live",
     "visibility": "public",
     "title": { "en": "WeWrites", "zh-Hant": "WeWrites" },
-    "role": { "en": "Co-founder & CTO", "zh-Hant": "聯合創辦人兼技術總監" },
+    "role": { "en": "Engineer", "zh-Hant": "工程師" },
     "tags": ["Content system", "Bilingual", "Education"],
     "links": [
       { "label": { "en": "wewrites.onezion.top", "zh-Hant": "wewrites.onezion.top" }, "url": "https://wewrites.onezion.top/" }
@@ -23,10 +23,6 @@
     "why": {
       "en": "Parents and students choose a tutor on trust. The site has to carry that trust on real class photography, and the team should not have to wait on a developer every time a class changes.",
       "zh-Hant": "家長與學生選補習，靠的是信任。網站要用真實的課堂相片承住這份信任，而團隊每次改課程都不應該等開發者。"
-    },
-    "challenge": {
-      "en": "Keeping the visual system intact while people who do not write code edit the content — and building the layout around real class photography rather than placeholders.",
-      "zh-Hant": "在由不寫程式的同事編輯內容的前提下，保住整套視覺系統；並且讓版面圍繞真實課堂相片來設計，而不是先用佔位圖再硬塞。"
     },
     "highlights": [
       { "en": "Live on its own domain.", "zh-Hant": "已在自己的網域上線。" },

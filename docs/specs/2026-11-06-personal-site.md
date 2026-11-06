@@ -96,7 +96,7 @@ Unverified fields are the literal string `"TODO(owner)"` and are listed in the r
   "summary": {…},                    // index card
   "what": {…},                       // what it is
   "why": {…},                        // why it exists
-  "challenge": {…},                  // hardest part
+  "challenge": {…},                  // hardest part; optional — omit rather than pad
   "highlights": [ {…} ],
   "evidence": [ {…} ],               // measured facts with a source date
   "video": "assets/video/<slug>.mp4",
@@ -139,7 +139,8 @@ Home sections:
 `/cv/` renders `resume.json` as prose-first HTML with print styles, links to the
 printable CV (`/cv/<lang>.html`) and the markdown CV (`/cv/<lang>.md`).
 
-Project pages render `what`, `why`, `challenge`, `highlights`, `evidence`, links,
+Project pages render `what`, `why`, `challenge` (when present), `highlights`,
+`evidence`, links,
 video (when present), and prev/next navigation.
 
 ## 6. Build pipeline

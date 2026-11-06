@@ -47,8 +47,8 @@
         "zh-Hant": "WeWrites"
       },
       "title": {
-        "en": "Co-founder & CTO",
-        "zh-Hant": "聯合創辦人兼技術總監"
+        "en": "Engineer",
+        "zh-Hant": "工程師"
       },
       "location": {
         "en": "Hong Kong",
@@ -57,8 +57,8 @@
       "start": "TODO(owner)",
       "end": "present",
       "summary": {
-        "en": "A DSE tutoring team: the public site and content system, built so the team publishes classes and updates without a developer, plus the technical direction behind the curriculum products.",
-        "zh-Hant": "DSE 補習團隊：對外網站與內容系統，讓團隊不用等開發者就能發佈課程與更新；同時負責課程產品背後的技術方向。"
+        "en": "The public site and content system for a DSE tutoring team, built so the team publishes classes and updates without waiting on a developer.",
+        "zh-Hant": "DSE 補習團隊的對外網站與內容系統，讓團隊不用等開發者就能發佈課程與更新。"
       },
       "highlights": [
         {

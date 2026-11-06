@@ -469,8 +469,12 @@ function renderProject(project, lang) {
           <p>${esc(loc(project.what, lang))}</p>
           <h2 class="marker"># ${esc(t(strings, "project.why", lang))}</h2>
           <p>${esc(loc(project.why, lang))}</p>
-          <h2 class="marker"># ${esc(t(strings, "project.challenge", lang))}</h2>
-          <p>${esc(loc(project.challenge, lang))}</p>
+          ${
+            project.challenge
+              ? `<h2 class="marker"># ${esc(t(strings, "project.challenge", lang))}</h2>
+          <p>${esc(loc(project.challenge, lang))}</p>`
+              : ""
+          }
           <h2 class="marker"># ${esc(t(strings, "project.highlights", lang))}</h2>
           <ul class="bullets">${project.highlights
             .map((h) => `<li>${esc(loc(h, lang))}</li>`)
