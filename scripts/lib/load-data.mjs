@@ -2,12 +2,11 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import { addSimplified } from "./hant-to-hans.mjs";
 import { BuildError } from "./render.mjs";
 
-export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../..");
+export const ROOT = path.resolve(import.meta.dirname, "../..");
 export const DATA = path.join(ROOT, "data");
 export const DIST = path.join(ROOT, "dist");
 
