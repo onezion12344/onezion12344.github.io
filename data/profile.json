@@ -102,29 +102,41 @@
   "stack": [
     {
       "group": {
-        "en": "Languages",
-        "zh-Hant": "語言"
+        "en": "AI & agents",
+        "zh-Hant": "人工智能與 Agent"
       },
       "items": [
-        "Python",
-        "JavaScript / Node.js",
-        "TypeScript",
-        "Swift",
-        "Lua",
-        "Shell"
+        "LLM engineering",
+        "Agent orchestration",
+        "Agentic workflows",
+        "MCP",
+        "RAG",
+        "Evaluation"
       ]
     },
     {
       "group": {
-        "en": "AI",
-        "zh-Hant": "人工智能"
+        "en": "Engineering",
+        "zh-Hant": "工程"
       },
       "items": [
-        "LLM engineering",
-        "Multi-agent",
-        "MCP",
-        "RAG",
-        "Local model deployment"
+        "Python",
+        "JavaScript / Node.js",
+        "Backend",
+        "DevOps"
+      ]
+    },
+    {
+      "group": {
+        "en": "Frontend & product",
+        "zh-Hant": "前端與產品"
+      },
+      "items": [
+        "Frontend design",
+        "Product management",
+        "Next.js",
+        "Vercel",
+        "Cloudflare"
       ]
     },
     {
@@ -135,21 +147,19 @@
       "items": [
         "SQLite",
         "FTS5",
-        "ChromaDB"
+        "ChromaDB",
+        "Data pipelines"
       ]
     },
     {
       "group": {
-        "en": "Platform",
-        "zh-Hant": "平台"
+        "en": "Automation",
+        "zh-Hant": "自動化"
       },
       "items": [
-        "macOS",
-        "Linux",
-        "Next.js",
-        "Vercel",
-        "Cloudflare",
-        "OpenRouter"
+        "Playwright",
+        "Browser automation",
+        "Open Computer Use"
       ]
     }
   ]

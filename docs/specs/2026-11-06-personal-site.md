@@ -138,7 +138,9 @@ Home sections:
 1. `#about` — illustration avatar (96–120 px), name, headline, prose bio, stack line.
 2. `#now` — a short dated list of what is being worked on now.
 3. `#work` — four featured project cards with poster stills, linking to project pages.
-4. `#projects` — the full index (compact rows: year, title, role, tags, status).
+4. `#projects` — the full index, grouped by activity: Internship, Flagship
+   products, Other projects (`projects[i].group`). Each group is a section with
+   its own heading and count; rows stay compact (year, title, role, tags, status).
 5. `#contacts` — plain list: GitHub, LinkedIn, X. No `mailto:` while `email` is null.
 
 `/cv/` renders `resume.json` as prose-first HTML with print styles, links to the

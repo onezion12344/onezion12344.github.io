@@ -2,6 +2,7 @@
   {
     "id": "wewrites",
     "slug": "we-writes",
+    "group": "internship",
     "year": 2026,
     "featured": true,
     "status": "live",
@@ -10,7 +11,7 @@
     "role": { "en": "Engineer", "zh-Hant": "工程師" },
     "tags": ["Content system", "Bilingual", "Education"],
     "links": [
-      { "label": { "en": "wewrites.onezion.top", "zh-Hant": "wewrites.onezion.top" }, "url": "https://wewrites.onezion.top/" }
+      { "label": { "en": "wewrites.ai", "zh-Hant": "wewrites.ai" }, "url": "https://wewrites.ai/" }
     ],
     "summary": {
       "en": "The site and content system for a DSE tutoring team — bilingual copy, class photography, teacher and course pages, and an edit path a non-developer can run.",
@@ -46,7 +47,7 @@
       }
     ],
     "evidence": [
-      { "text": { "en": "Live at wewrites.onezion.top", "zh-Hant": "在 wewrites.onezion.top 上線" }, "source": "portfolio, measured 2026-10-31" },
+      { "text": { "en": "Live at wewrites.ai", "zh-Hant": "在 wewrites.ai 上線" }, "source": "owner, 2026-11-07" },
       { "text": { "en": "Dark editorial layout built to survive real class photos rather than placeholders", "zh-Hant": "深色編輯式版面，為真實課堂相片而設，而非佔位圖" }, "source": "portfolio, measured 2026-10-31" }
     ],
     "media": {
@@ -60,6 +61,7 @@
   {
     "id": "mac-closed-awake",
     "slug": "mac-closed-awake",
+    "group": "flagship",
     "year": 2026,
     "featured": true,
     "status": "live",
@@ -108,6 +110,7 @@
   {
     "id": "double-check",
     "slug": "double-check",
+    "group": "flagship",
     "year": 2026,
     "featured": true,
     "status": "live",
@@ -155,6 +158,7 @@
   {
     "id": "personal-os",
     "slug": "personal-os",
+    "group": "flagship",
     "year": 2026,
     "featured": true,
     "status": "local",
@@ -199,6 +203,7 @@
   {
     "id": "comp2119-lectures",
     "slug": "comp2119-lectures",
+    "group": "other",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -234,11 +239,18 @@
       { "text": { "en": "11 narrated lectures, 596 slides", "zh-Hant": "11 講旁白課，596 張課件" }, "source": "repository description, 2026-11-06" },
       { "text": { "en": "Live on GitHub Pages", "zh-Hant": "在 GitHub Pages 上線" }, "source": "portfolio, measured 2026-10-31" }
     ],
-    "media": null
+        "media": {
+      "mp4": "/assets/video/comp2119-lectures.mp4",
+      "webm": "/assets/video/comp2119-lectures.webm",
+      "poster": "/assets/video/comp2119-lectures.jpg",
+      "width": 1280,
+      "height": 720
+    }
   },
   {
     "id": "dse-paper-4-live",
     "slug": "dse-paper-4-live",
+    "group": "other",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -278,6 +290,7 @@
   {
     "id": "shanghainese-course",
     "slug": "shanghainese-course",
+    "group": "other",
     "year": 2026,
     "featured": false,
     "status": "local",
@@ -316,6 +329,7 @@
   {
     "id": "model-gateway",
     "slug": "model-gateway",
+    "group": "flagship",
     "year": 2026,
     "featured": false,
     "status": "local",
@@ -353,6 +367,7 @@
   {
     "id": "personal-finance-importer",
     "slug": "personal-finance-importer",
+    "group": "flagship",
     "year": 2026,
     "featured": false,
     "status": "local",
@@ -389,6 +404,7 @@
   {
     "id": "koreader-onedrive",
     "slug": "koreader-onedrive",
+    "group": "flagship",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -428,6 +444,7 @@
   {
     "id": "let-go-journey",
     "slug": "let-go-journey",
+    "group": "flagship",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -463,11 +480,18 @@
     "evidence": [
       { "text": { "en": "Live at onezion12344.github.io/let-go-journey", "zh-Hant": "在 onezion12344.github.io/let-go-journey 上線" }, "source": "gh api, 2026-11-06" }
     ],
-    "media": null
+        "media": {
+      "mp4": "/assets/video/let-go-journey.mp4",
+      "webm": "/assets/video/let-go-journey.webm",
+      "poster": "/assets/video/let-go-journey.jpg",
+      "width": 1280,
+      "height": 720
+    }
   },
   {
     "id": "casual-research",
     "slug": "casual-research",
+    "group": "other",
     "year": 2026,
     "featured": false,
     "status": "live",

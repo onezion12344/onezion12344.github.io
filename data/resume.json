@@ -5,39 +5,33 @@
         "en": "The University of Hong Kong",
         "zh-Hant": "香港大學"
       },
-      "orgShort": "HKU",
-      "location": {
-        "en": "Hong Kong",
-        "zh-Hant": "香港"
-      },
       "start": "2025",
       "end": "TODO(owner)",
-      "endLabel": {
-        "en": "expected",
-        "zh-Hant": "預計"
-      },
       "programmes": [
         {
           "en": "BEng, AI & Data Science",
-          "zh-Hant": "工學士，人工智能與數據科學"
+          "zh-Hant": "工學學士，人工智能與數據科學"
         },
         {
           "en": "BA, AI and Humanities",
           "zh-Hant": "文學士，人工智能與人文"
         }
       ],
-      "exactTitles": "TODO(owner)",
-      "gpa": "TODO(owner)",
       "summary": {
         "en": "A double degree across engineering and the humanities. Second year as of 2026–27.",
-        "zh-Hant": "橫跨工程與人文的雙學位。2026–27 學年為二年級。"
+        "zh-Hant": "工程與人文並行的雙學位。2026–27 學年為二年級。"
       },
       "highlights": [
         {
           "en": "Philosophy taken as the advanced elective within the BA.",
-          "zh-Hant": "文學士學位以哲學為高階選修。"
+          "zh-Hant": "哲學為文學士課程內的高階選修。"
         }
-      ]
+      ],
+      "gpa": "TODO(owner)",
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      }
     }
   ],
   "experience": [
@@ -47,8 +41,8 @@
         "zh-Hant": "WeWrites"
       },
       "title": {
-        "en": "Engineer",
-        "zh-Hant": "工程師"
+        "en": "Engineer, internship",
+        "zh-Hant": "工程師（實習）"
       },
       "location": {
         "en": "Hong Kong",
@@ -57,19 +51,78 @@
       "start": "TODO(owner)",
       "end": "present",
       "summary": {
-        "en": "The public site and content system for a DSE tutoring team, built so the team publishes classes and updates without waiting on a developer.",
-        "zh-Hant": "DSE 補習團隊的對外網站與內容系統，讓團隊不用等開發者就能發佈課程與更新。"
+        "en": "The public site and content system for a DSE tutoring team, built so the team publishes classes and updates without waiting on a developer, plus the listening-material pipeline behind its course products.",
+        "zh-Hant": "DSE 補習團隊的對外網站與內容系統，讓團隊不用等開發者就能發佈課程與更新；同時負責課程產品背後的聆聽教材流水線。"
       },
       "highlights": [
         {
-          "en": "Site and content system live on its own domain (wewrites.onezion.top).",
-          "zh-Hant": "網站與內容系統已在自己的網域上線（wewrites.onezion.top）。"
+          "en": "Site and content system live on its own domain (wewrites.ai).",
+          "zh-Hant": "網站與內容系統已在自己的網域上線（wewrites.ai）。"
         },
         {
           "en": "Edit path designed for non-developers, so the team is not blocked on engineering.",
           "zh-Hant": "編輯流程為非技術同事而設，團隊不會卡在工程上。"
+        },
+        {
+          "en": "DSE listening-material pipeline, generating papers from analysed past papers.",
+          "zh-Hant": "DSE 聆聽教材流水線，按分析過的往卷生成試卷。"
         }
       ]
+    },
+    {
+      "org": {
+        "en": "The Fourth Media, Malaysia",
+        "zh-Hant": "The Fourth Media（馬來西亞）"
+      },
+      "title": {
+        "en": "Project Intern",
+        "zh-Hant": "項目實習生"
+      },
+      "location": {
+        "en": "Malaysia",
+        "zh-Hant": "馬來西亞"
+      },
+      "start": "2025-12",
+      "end": "2026-01",
+      "summary": {
+        "en": "Selected through the HKU Horizon and Common Purpose leadership programme.",
+        "zh-Hant": "經港大 Horizon 及 Common Purpose 領袖計劃獲選。"
+      },
+      "highlights": [
+        {
+          "en": "Compiled a structured contact database of target faculties and student groups.",
+          "zh-Hant": "建立目標學院與學生組織的結構化聯絡資料庫。"
+        },
+        {
+          "en": "Ran research-driven cold outreach that turned into new partnership models for journalism departments.",
+          "zh-Hant": "以研究為本進行陌生開發，最終為新聞系促成新的合作模式。"
+        },
+        {
+          "en": "Built a “University Outreach Starter Pack” of pitch decks and email templates.",
+          "zh-Hant": "整理出「大學外展起始包」，內含提案簡報與電郵範本。"
+        }
+      ]
+    },
+    {
+      "org": {
+        "en": "Bloomberg Investment Challenge 2025",
+        "zh-Hant": "彭博投資挑戰賽 2025"
+      },
+      "title": {
+        "en": "Participant",
+        "zh-Hant": "參賽者"
+      },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "2025",
+      "end": "2025",
+      "summary": {
+        "en": "Ran a tech-focused stock portfolio on my own for a one-month competition.",
+        "zh-Hant": "在為期一個月的比賽中，獨自管理一個以科技股為主的投資組合。"
+      },
+      "highlights": []
     }
   ],
   "awards": [
@@ -93,31 +146,82 @@
   "skills": [
     {
       "group": {
-        "en": "Languages",
-        "zh-Hant": "語言"
-      },
-      "items": ["Python", "JavaScript / Node.js", "TypeScript", "Swift", "Lua", "Shell"]
-    },
-    {
-      "group": {
         "en": "AI & agents",
         "zh-Hant": "人工智能與 Agent"
       },
-      "items": ["LLM engineering", "Multi-agent orchestration", "MCP", "RAG", "Local model deployment", "Evaluation"]
+      "items": [
+        "LLM engineering",
+        "Agent orchestration",
+        "Agentic workflows",
+        "MCP",
+        "RAG",
+        "Evaluation",
+        "Local model deployment"
+      ]
+    },
+    {
+      "group": {
+        "en": "Engineering",
+        "zh-Hant": "工程"
+      },
+      "items": [
+        "Python",
+        "JavaScript / Node.js",
+        "Backend",
+        "DevOps",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "group": {
+        "en": "Frontend & product",
+        "zh-Hant": "前端與產品"
+      },
+      "items": [
+        "Frontend design",
+        "Product management",
+        "Next.js",
+        "Vercel",
+        "Cloudflare"
+      ]
     },
     {
       "group": {
         "en": "Data",
         "zh-Hant": "資料"
       },
-      "items": ["SQLite", "SQLite FTS5", "ChromaDB", "Data pipelines"]
+      "items": [
+        "SQLite",
+        "SQLite FTS5",
+        "ChromaDB",
+        "Data pipelines"
+      ]
     },
     {
       "group": {
-        "en": "Platform & web",
-        "zh-Hant": "平台與網頁"
+        "en": "Automation",
+        "zh-Hant": "自動化"
       },
-      "items": ["macOS", "Linux", "Next.js", "Vercel", "Cloudflare", "OpenRouter", "GitHub Actions"]
+      "items": [
+        "Playwright",
+        "Browser automation",
+        "Open Browser Use",
+        "Open Computer Use"
+      ]
+    },
+    {
+      "group": {
+        "en": "Platforms",
+        "zh-Hant": "平台"
+      },
+      "items": [
+        "OpenRouter",
+        "Fly.io",
+        "Modal",
+        "ElevenLabs ConvAI",
+        "macOS",
+        "Linux"
+      ]
     }
   ],
   "languages": [
@@ -127,23 +231,29 @@
         "zh-Hant": "英語"
       },
       "level": {
-        "en": "Fluent — IELTS 7.5 overall, Reading 9.0",
-        "zh-Hant": "流利 — IELTS 整體 7.5，閱讀 9.0"
+        "en": "Fluent — IELTS 7.5 (2023)",
+        "zh-Hant": "流利——IELTS 7.5（2023）"
       }
-    },
-    {
-      "name": {
-        "en": "Cantonese",
-        "zh-Hant": "粵語"
-      },
-      "level": "TODO(owner)"
     },
     {
       "name": {
         "en": "Mandarin",
         "zh-Hant": "普通話"
       },
-      "level": "TODO(owner)"
+      "level": {
+        "en": "Native",
+        "zh-Hant": "母語"
+      }
+    },
+    {
+      "name": {
+        "en": "Cantonese",
+        "zh-Hant": "廣東話"
+      },
+      "level": {
+        "en": "Learning",
+        "zh-Hant": "學習中"
+      }
     }
   ],
   "certifications": []

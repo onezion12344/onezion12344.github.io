@@ -320,6 +320,18 @@
     "lang.zh-Hans": {
       "en": "简",
       "zh-Hant": "簡"
+    },
+    "projects.group.internship": {
+      "en": "Internship",
+      "zh-Hant": "實習"
+    },
+    "projects.group.flagship": {
+      "en": "Flagship products",
+      "zh-Hant": "旗艦產品"
+    },
+    "projects.group.other": {
+      "en": "Other projects",
+      "zh-Hant": "其他項目"
     }
   }
 }

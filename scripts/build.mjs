@@ -242,9 +242,7 @@ function renderHome(lang) {
         <p class="section-note">${esc(
           t(strings, "home.projectsCount", lang, { n: projects.length }),
         )}</p>
-        <ul class="rows">
-        ${projects.map((p) => projectRow(p, lang)).join("\n        ")}
-        </ul>
+        ${projectIndexGroups(lang)}
       </div>
     </section>
 
@@ -400,6 +398,25 @@ function renderCv(lang) {
   });
 }
 
+const GROUP_ORDER = ["internship", "flagship", "other"];
+
+function projectIndexGroups(lang) {
+  return GROUP_ORDER.map((key) => ({
+    key,
+    items: projects.filter((p) => (p.group || "other") === key),
+  }))
+    .filter((g) => g.items.length)
+    .map(
+      ({ key, items }) => `<h2 class="marker group-head"><span class="hash" aria-hidden="true">#</span>${esc(
+        t(strings, `projects.group.${key}`, lang),
+      )}<span class="group-count">${items.length}</span></h2>
+        <ul class="rows">
+        ${items.map((p) => projectRow(p, lang)).join("\n        ")}
+        </ul>`,
+    )
+    .join("\n        ");
+}
+
 function renderProjectIndex(lang) {
   const meta = metaFor(lang, "projects");
   const body = `<section class="section">
@@ -409,9 +426,7 @@ function renderProjectIndex(lang) {
         <p class="section-note">${esc(
           t(strings, "projects.countLabel", lang, { n: projects.length }),
         )} · ${esc(t(strings, "projects.privateNote", lang))}</p>
-        <ul class="rows">
-        ${projects.map((p) => projectRow(p, lang)).join("\n        ")}
-        </ul>
+        ${projectIndexGroups(lang)}
       </div>
     </section>`;
   return page({
