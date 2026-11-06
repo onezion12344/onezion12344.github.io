@@ -329,9 +329,9 @@
       "en": "Flagship products",
       "zh-Hant": "旗艦產品"
     },
-    "projects.group.other": {
-      "en": "Other projects",
-      "zh-Hant": "其他項目"
+    "projects.group.personal": {
+      "en": "Personal projects",
+      "zh-Hant": "個人項目"
     }
   }
 }

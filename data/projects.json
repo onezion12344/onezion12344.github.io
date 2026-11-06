@@ -62,7 +62,8 @@
     "id": "mac-closed-awake",
     "slug": "mac-closed-awake",
     "group": "flagship",
-    "year": 2026,
+    
+    "rank": 2,"year": 2026,
     "featured": true,
     "status": "live",
     "visibility": "public",
@@ -111,7 +112,8 @@
     "id": "double-check",
     "slug": "double-check",
     "group": "flagship",
-    "year": 2026,
+    
+    "rank": 3,"year": 2026,
     "featured": true,
     "status": "live",
     "visibility": "public",
@@ -159,7 +161,8 @@
     "id": "personal-os",
     "slug": "personal-os",
     "group": "flagship",
-    "year": 2026,
+    
+    "rank": 1,"year": 2026,
     "featured": true,
     "status": "local",
     "visibility": "private-local",
@@ -203,7 +206,7 @@
   {
     "id": "comp2119-lectures",
     "slug": "comp2119-lectures",
-    "group": "other",
+    "group": "personal",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -250,7 +253,7 @@
   {
     "id": "dse-paper-4-live",
     "slug": "dse-paper-4-live",
-    "group": "other",
+    "group": "personal",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -290,11 +293,11 @@
   {
     "id": "shanghainese-course",
     "slug": "shanghainese-course",
-    "group": "other",
+    "group": "personal",
     "year": 2026,
     "featured": false,
-    "status": "local",
-    "visibility": "private-local",
+    "status": "live",
+    "visibility": "public",
     "title": { "en": "Shanghainese Course", "zh-Hant": "上海話課程" },
     "role": { "en": "Author", "zh-Hant": "作者" },
     "tags": ["PWA", "Content pipeline", "Offline"],
@@ -316,21 +319,22 @@
       "zh-Hant": "建一條會標示「找不到出處」的管線，而不是用看起來合理的文字填滿空隙。"
     },
     "highlights": [
-      { "en": "35,501 lines across 13 commits, with 11 test files.", "zh-Hant": "35,501 行、13 個 commit、11 個測試檔。" },
-      { "en": "Same engine across five courses; four are deliberately shown as unopened.", "zh-Hant": "同一引擎支援五個課程；其中四個刻意顯示為未開啟。" },
-      { "en": "Local build, not published — the content is not cleared for public use yet.", "zh-Hant": "本地建置，未公開發佈——內容尚未取得公開授權。" }
+      { "en": "270 sourced words, 55 quoted sentences, 47 lessons across 6 units.", "zh-Hant": "270 個有出處的詞、55 句附引例的句子、6 個單元共 47 課。" },
+      { "en": "Pinyin is never hand-written: every reading must appear in the harvested entry or the build fails — the gate caught 71 hand-written errors.", "zh-Hant": "拼音不由人手寫：每個讀音都必須出現在抓回來的字條裡，否則建置失敗——這道門禁擋下了 71 處手寫錯誤。" },
+      { "en": "32,366 lines in 13 commits, with 11 test files.", "zh-Hant": "32,366 行、13 個 commit、11 個測試檔。" }
     ],
     "evidence": [
-      { "text": { "en": "35,501 lines · 13 commits · 11 test files", "zh-Hant": "35,501 行 · 13 個 commit · 11 個測試檔" }, "source": "portfolio, measured 2026-10-31" },
-      { "text": { "en": "Local build; not published", "zh-Hant": "本地建置；未公開發佈" }, "source": "portfolio, measured 2026-10-31" }
-    ],
-    "media": null
+      { "text": { "en": "270 words · 55 sentences · 47 lessons · 6 units", "zh-Hant": "270 個詞 · 55 句 · 47 課 · 6 個單元" }, "source": "generated course data, measured 2026-11-07" },
+      { "text": { "en": "32,366 lines · 13 commits · 11 test files", "zh-Hant": "32,366 行 · 13 個 commit · 11 個測試檔" }, "source": "repository, measured 2026-11-07" },
+      { "text": { "en": "Live, with several courses inside", "zh-Hant": "已上線，內有數門課程" }, "source": "owner, 2026-11-07" }
+    ]
   },
   {
     "id": "model-gateway",
     "slug": "model-gateway",
     "group": "flagship",
-    "year": 2026,
+    
+    "rank": 4,"year": 2026,
     "featured": false,
     "status": "local",
     "visibility": "private-local",
@@ -367,7 +371,7 @@
   {
     "id": "personal-finance-importer",
     "slug": "personal-finance-importer",
-    "group": "flagship",
+    "group": "personal",
     "year": 2026,
     "featured": false,
     "status": "local",
@@ -404,7 +408,7 @@
   {
     "id": "koreader-onedrive",
     "slug": "koreader-onedrive",
-    "group": "flagship",
+    "group": "personal",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -444,7 +448,7 @@
   {
     "id": "let-go-journey",
     "slug": "let-go-journey",
-    "group": "flagship",
+    "group": "personal",
     "year": 2026,
     "featured": false,
     "status": "live",
@@ -491,7 +495,7 @@
   {
     "id": "casual-research",
     "slug": "casual-research",
-    "group": "other",
+    "group": "personal",
     "year": 2026,
     "featured": false,
     "status": "live",

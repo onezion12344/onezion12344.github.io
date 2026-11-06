@@ -398,12 +398,14 @@ function renderCv(lang) {
   });
 }
 
-const GROUP_ORDER = ["internship", "flagship", "other"];
+const GROUP_ORDER = ["flagship", "internship", "personal"];
 
 function projectIndexGroups(lang) {
   return GROUP_ORDER.map((key) => ({
     key,
-    items: projects.filter((p) => (p.group || "other") === key),
+    items: projects
+      .filter((p) => (p.group || "personal") === key)
+      .sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99)),
   }))
     .filter((g) => g.items.length)
     .map(

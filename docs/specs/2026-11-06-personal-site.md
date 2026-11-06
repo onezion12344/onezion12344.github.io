@@ -1,7 +1,7 @@
 # Personal site rebuild — specification
 
 - Date: 2026-11-06
-- Owner: Harry Huang (`onezion12344`)
+- Owner: Harry OneZion (`onezion12344`)
 - Repository: `onezion12344/onezion12344.github.io` (GitHub Pages, branch `main`)
 - Status: implementation specification; owner reviews a local preview before publish.
 
@@ -88,6 +88,8 @@ Unverified fields are the literal string `"TODO(owner)"` and are listed in the r
   "year": 2026,
   "title": {…},
   "role": {…},
+  "group": "flagship",               // flagship | internship | personal
+  "rank": 1,                         // optional; orders items inside a group
   "status": "live",                  // live | local | archived
   "visibility": "public",            // public | private-local
   "featured": true,
@@ -109,9 +111,10 @@ A highlight may carry its own short clip (`highlights[i].media`, same shape as
 the footage actually shows the claim — a clip that merely resembles it is worse
 than no clip.
 
-Video slots exist for exactly four projects: WeWrites, MacClosedAwake, Double-Check,
-Personal OS. Personal OS is `private-local`, recorded from `127.0.0.1:18871`, and
-carries no public URL.
+Flagship is capped at four curated items (Personal OS, MacClosedAwake, Double-Check,
+Model Gateway). Personal OS is `private-local`, recorded from `127.0.0.1:18871`, and
+carries no public URL. Shanghainese Course is `live` / `public`: it ships several
+courses, so its copy no longer describes it as a local-only build.
 
 ### `data/i18n.json`
 
@@ -138,9 +141,12 @@ Home sections:
 1. `#about` — illustration avatar (96–120 px), name, headline, prose bio, stack line.
 2. `#now` — a short dated list of what is being worked on now.
 3. `#work` — four featured project cards with poster stills, linking to project pages.
-4. `#projects` — the full index, grouped by activity: Internship, Flagship
-   products, Other projects (`projects[i].group`). Each group is a section with
-   its own heading and count; rows stay compact (year, title, role, tags, status).
+4. `#projects` — the full index, grouped by activity in this order: **Flagship
+   products**, Internship, Personal projects (`projects[i].group`). Flagship leads
+   because it is the curated set: four items, ordered by `projects[i].rank`.
+   Everything that is not flagship or internship is a personal project. Each group
+   is a section with its own heading and count; rows stay compact (year, title,
+   role, tags, status).
 5. `#contacts` — plain list: GitHub, LinkedIn, X. No `mailto:` while `email` is null.
 
 `/cv/` renders `resume.json` as prose-first HTML with print styles, links to the
@@ -210,8 +216,8 @@ Dark (default) and light palettes exactly as in `tokens.css`; light also applies
 
 ## 9. SEO
 
-- Title pattern for the Home page: `Harry Huang — AI & Data Science, HKU`; other pages
-  follow `Page — Harry Huang`.
+- Title pattern for the Home page: `Harry OneZion — AI & Data Science, HKU`; other pages
+  follow `Page — Harry OneZion`.
 - Unique description per page and language.
 - Home: JSON-LD `ProfilePage` + `Person` (name, jobTitle, affiliation HKU, sameAs →
   GitHub / LinkedIn / X, image).
