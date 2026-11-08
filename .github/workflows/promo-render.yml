@@ -1,0 +1,127 @@
+# Promo video rendering.
+#
+# Manual only: this workflow never runs on push. It exists so that, once the
+# storyboard is approved, every project can be re-rendered in parallel — one
+# job per project — without a render farm or a local machine.
+#
+# Not pushed yet. Enable it with: gh workflow enable promo-render
+# or by pushing the branch that contains it.
+
+name: Promo videos
+
+on:
+  workflow_dispatch:
+    inputs:
+      variant:
+        description: Storyboard variant to render
+        type: choice
+        options: [a, b, c]
+        default: a
+      project:
+        description: Optional single project slug (blank = all)
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: promo-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      slug: ${{ steps.list.outputs.slug }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: list
+        # One matrix entry per project in data/projects.json, unless the
+        # dispatch asked for a single one.
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const wanted = process.env.WANTED;
+            const slugs = JSON.parse(fs.readFileSync("data/projects.json", "utf8"))
+              .map((p) => p.slug)
+              .filter((s) => !wanted || s === wanted);
+            console.log("slug=" + JSON.stringify(slugs));
+          ' >> "$GITHUB_OUTPUT"
+        env:
+          WANTED: ${{ inputs.project }}
+
+  render:
+    needs: plan
+    runs-on: macos-14
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        slug: ${{ fromJson(needs.plan.outputs.slug) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      - name: Install
+        working-directory: video
+        run: npm ci
+
+      - name: Resolve composition
+        id: comp
+        working-directory: video
+        # Compositions are named Promo<StudlySlug>, e.g. we-writes -> PromoWeWrites.
+        # A project without a composition yet is skipped, not failed.
+        run: |
+          NAME=$(node -e '
+            const s = process.argv[1];
+            const studly = s.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join("");
+            console.log("Promo" + studly);
+          ' "${{ matrix.slug }}")
+          # The listings table prints one composition id per line, padded with
+          # columns; a word match survives that, an exact-line match does not.
+          if npx remotion compositions src/index.ts | grep -qw "$NAME"; then
+            echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "No composition $NAME yet; skipping ${{ matrix.slug }}."
+          fi
+
+      - name: Render MP4
+        if: steps.comp.outputs.skip != 'true'
+        working-directory: video
+        run: |
+          mkdir -p out
+          npx remotion render src/index.ts "${{ steps.comp.outputs.name }}" \
+            "out/${{ matrix.slug }}.mp4" \
+            --codec h264 --crf 20 --pixel-format yuv420p --log=error
+
+      - name: Render WebM
+        if: steps.comp.outputs.skip != 'true'
+        working-directory: video
+        run: |
+          npx remotion render src/index.ts "${{ steps.comp.outputs.name }}" \
+            "out/${{ matrix.slug }}.webm" \
+            --codec vp8 --crf 28 --pixel-format yuv420p --log=error
+
+      - name: Poster frame
+        if: steps.comp.outputs.skip != 'true'
+        working-directory: video
+        run: |
+          npx remotion still src/index.ts "${{ steps.comp.outputs.name }}" \
+            "out/${{ matrix.slug }}.jpg" --frame=45 --image-format=jpeg --log=error
+
+      - uses: actions/upload-artifact@v4
+        if: steps.comp.outputs.skip != 'true'
+        with:
+          name: promo-${{ matrix.slug }}
+          path: |
+            video/out/${{ matrix.slug }}.mp4
+            video/out/${{ matrix.slug }}.webm
+            video/out/${{ matrix.slug }}.jpg
+          retention-days: 14

@@ -1,2 +1,10 @@
 dist/
 .DS_Store
+
+# Promo video project — dependencies and render output stay out of the site.
+video/node_modules/
+video/out/
+video/renders/
+
+# Local memory store, not part of the site.
+.neuralmemory/
