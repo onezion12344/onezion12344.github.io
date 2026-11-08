@@ -3,6 +3,8 @@
 Stills are 1920×1080, rendered from the Remotion compositions in `video/src`.
 Every screen in them is a real capture of wewrites.ai; nothing is mocked up.
 
+`contact-sheet.png` shows all five variants, one still per scene.
+
 | # | File | Frame | Scene |
 |---|------|-------|-------|
 | 01 | `a/01-open.png` | 45 | Statement: a team publishing without a developer |
@@ -24,10 +26,6 @@ Every screen in them is a real capture of wewrites.ai; nothing is mocked up.
 | 25 | `c/05-home.png` | 465 | Home, framed as the outcome |
 | 26 | `c/06-end.png` | 555 | End card |
 
-Variants **d** (cold open) and **e** (two layers) are authored in
-`src/we-writes/scenes.tsx` but deliberately not rendered on this machine — the
-disk cannot take another Remotion install. Their stills come from CI:
-
 | # | File | Frame | Scene |
 |---|------|-------|-------|
 | 31 | `d/01-proof.png` | 30 | Cold open: milestone entry with its source |
@@ -46,9 +44,17 @@ disk cannot take another Remotion install. Their stills come from CI:
 gh workflow run promo-render.yml -f project=we-writes -f variant=all -f stage=stills
 ```
 
-Re-render one still — in CI, never locally:
+Re-render one still — locally with the installed Chrome (`node_modules` is
+~190 MB; Remotion does not download its own browser when `--browser-executable`
+is passed), or in CI:
 
 ```sh
 gh workflow run promo-render.yml -f project=we-writes -f variant=b -f stage=stills
 gh run download --name storyboard-we-writes-b
+
+# locally
+cd video && npm install
+npx remotion still src/index.ts WeWritesB storyboards/we-writes/b/02-spec.png \
+  --frame=145 \
+  --browser-executable="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ```

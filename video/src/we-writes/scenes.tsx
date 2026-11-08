@@ -296,7 +296,8 @@ const d: Scene[] = [
         src="shots/wewrites-milestones-sources.png"
         {...PANEL}
         focus="0% 0%"
-        zoom={1.06}
+        base={1.06}
+        zoom={1.1}
         label="wewrites.ai/milestones"
       />
     ),
@@ -393,10 +394,10 @@ const e: Scene[] = [
           width={812}
           height={366}
           focus="0% 0%"
-          zoom={1.04}
+          zoom={1.08}
           label="wewrites.ai/milestones"
         />
-        <Caption y={760}>The page a visitor sees, and the pipeline behind it.</Caption>
+        <Caption y={830}>The page a visitor sees, and the pipeline behind it.</Caption>
       </>
     ),
   },

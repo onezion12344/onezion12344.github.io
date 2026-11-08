@@ -39,12 +39,11 @@ video/
   storyboards/we-writes/{a,b,c}/   1920x1080 stills, one per scene
 ```
 
-## Render — in CI only
+## Render
 
-This directory holds source, not a toolchain. Do **not** run `npm install`,
-`npx remotion …`, or any Chromium download on the authoring machine: a single
-`node_modules` is ~450 MB and Remotion's headless Chrome lands inside it, which
-is enough to fill a nearly-full disk. Rendering happens in GitHub Actions.
+`node_modules` is ~190 MB and Remotion downloads **no browser of its own** if
+you point it at an installed one. Keep a local install only while the disk has
+room; the batch path is still CI, which needs nothing on this machine.
 
 `.github/workflows/promo-render.yml` is manual (`workflow_dispatch`) and runs in
 two stages:
@@ -55,7 +54,7 @@ two stages:
    `promo-<project>-<variant>`, and failed if a file exceeds 2 MB.
 
 ```sh
-# stills only (the review step)
+# stills first — the review gate
 gh workflow run promo-render.yml -f project=we-writes -f variant=all -f stage=stills
 
 # everything, or one variant's MP4s
@@ -72,13 +71,13 @@ fails the job rather than silently rendering the wrong beat.
 Composition ids: `WeWritesA` (18.0 s), `WeWritesB` (20.0 s), `WeWritesC` (19.8 s),
 `WeWritesD` (16.0 s), `WeWritesE` (15.5 s), all 1920x1080 at 30 fps.
 
-The `a`–`c` stills in this repo were rendered before the CI-only rule and are
-kept as reference. `d` and `e` exist as code only until the workflow runs.
+All five stills sets (`a`–`e`) are in `storyboards/we-writes/`, rendered locally
+with the installed Google Chrome.
 
 ## Storyboards
 
-Five variants, same rule set, different arguments. `a`–`c` were rendered to
-stills; `d` and `e` are authored and pending a CI run.
+Five variants, same rule set, different arguments. All five are rendered to
+stills.
 
 ### A — The site
 
