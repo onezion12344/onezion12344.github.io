@@ -39,29 +39,46 @@ video/
   storyboards/we-writes/{a,b,c}/   1920x1080 stills, one per scene
 ```
 
-## Render
+## Render — in CI only
 
-Remotion's CLI is unhappy on the machine's default Node 26, so pin Node 22:
+This directory holds source, not a toolchain. Do **not** run `npm install`,
+`npx remotion …`, or any Chromium download on the authoring machine: a single
+`node_modules` is ~450 MB and Remotion's headless Chrome lands inside it, which
+is enough to fill a nearly-full disk. Rendering happens in GitHub Actions.
+
+`.github/workflows/promo-render.yml` is manual (`workflow_dispatch`) and runs in
+two stages:
+
+1. **stills** — one PNG per scene, per variant, uploaded as
+   `storyboard-<project>-<variant>`. This is the review gate.
+2. **video** — MP4 + WebM + poster per variant, uploaded as
+   `promo-<project>-<variant>`, and failed if a file exceeds 2 MB.
 
 ```sh
-cd video
-export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
-npm install
+# stills only (the review step)
+gh workflow run promo-render.yml -f project=we-writes -f variant=all -f stage=stills
 
-# one storyboard still (1920x1080)
-npx remotion still src/index.ts WeWritesA storyboards/we-writes/a/02-home.png --frame=140
+# everything, or one variant's MP4s
+gh workflow run promo-render.yml -f project=we-writes -f variant=c -f stage=both
 
-# preview all three in the browser
-npx remotion studio src/index.ts
-
-# final video, once a variant is approved
-npx remotion render src/index.ts WeWritesA out/we-writes-a.mp4
+# collect the artifacts
+gh run download --name storyboard-we-writes-d
 ```
 
+Scene timings for CI live in `storyboards/manifest.json`. They mirror the
+`frames` in `src/we-writes/scenes.tsx`; a frame past the end of a composition
+fails the job rather than silently rendering the wrong beat.
+
 Composition ids: `WeWritesA` (18.0 s), `WeWritesB` (20.0 s), `WeWritesC` (19.8 s),
-all 1920x1080 at 30 fps.
+`WeWritesD` (16.0 s), `WeWritesE` (15.5 s), all 1920x1080 at 30 fps.
+
+The `a`–`c` stills in this repo were rendered before the CI-only rule and are
+kept as reference. `d` and `e` exist as code only until the workflow runs.
 
 ## Storyboards
+
+Five variants, same rule set, different arguments. `a`–`c` were rendered to
+stills; `d` and `e` are authored and pending a CI run.
 
 ### A — The site
 
@@ -93,6 +110,24 @@ twice, and the home page arrives last, framed as the outcome rather than the
 introduction. This is the variant to pick if the video is going to a hiring
 manager who cares what the day job was. Rhythm: work, product, product, claim,
 outcome, card.
+
+### D — Cold open
+
+Starts on the artefact instead of the pitch: a milestone entry with its source
+attached, held for two seconds with no caption at all. The claim arrives second
+— everything on that page was generated from a source and checked against it —
+and only then does the site itself appear. It is the shortest of the five and
+the one built for someone who will scroll past unless the first frame is
+concrete. Rhythm: object, claim, two screens, claim, card.
+
+### E — Two layers
+
+The only variant that puts two screens in one frame: the public page on the
+left, the milestone pipeline on the right, both labelled, one caption
+underneath tying them together. It answers "what is the system" spatially
+rather than chronologically, and it is the calmest cut — nothing moves except
+two slow push-ins. Pick it if the video plays somewhere without sound and the
+viewer has time to read. Rhythm: thesis, split, thesis, product, card.
 
 ## Rules the video copy follows
 

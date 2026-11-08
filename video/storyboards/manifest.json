@@ -1,0 +1,61 @@
+{
+  "_comment": "Scene timings for the storyboard workflow. Mirrors the scene arrays in src/we-writes/scenes.tsx; a still is rendered at the midpoint of each scene. If a scene's `frames` changes in the TSX, update the frame here too — a frame past the composition's end fails the job loudly.",
+  "we-writes": {
+    "variants": {
+      "a": {
+        "durationInFrames": 540,
+        "scenes": [
+          { "id": "01-open", "frame": 45 },
+          { "id": "02-home", "frame": 140 },
+          { "id": "03-courses", "frame": 245 },
+          { "id": "04-milestones", "frame": 350 },
+          { "id": "05-claim", "frame": 440 },
+          { "id": "06-end", "frame": 510 }
+        ]
+      },
+      "b": {
+        "durationInFrames": 600,
+        "scenes": [
+          { "id": "01-open", "frame": 36 },
+          { "id": "02-spec", "frame": 145 },
+          { "id": "03-milestones", "frame": 280 },
+          { "id": "04-claim", "frame": 380 },
+          { "id": "05-product", "frame": 470 },
+          { "id": "06-end", "frame": 560 }
+        ]
+      },
+      "c": {
+        "durationInFrames": 594,
+        "scenes": [
+          { "id": "01-open", "frame": 42 },
+          { "id": "02-product", "frame": 140 },
+          { "id": "03-milestones", "frame": 260 },
+          { "id": "04-claim", "frame": 370 },
+          { "id": "05-home", "frame": 465 },
+          { "id": "06-end", "frame": 555 }
+        ]
+      },
+      "d": {
+        "durationInFrames": 480,
+        "scenes": [
+          { "id": "01-proof", "frame": 30 },
+          { "id": "02-claim", "frame": 105 },
+          { "id": "03-home", "frame": 200 },
+          { "id": "04-courses", "frame": 295 },
+          { "id": "05-claim", "frame": 380 },
+          { "id": "06-end", "frame": 450 }
+        ]
+      },
+      "e": {
+        "durationInFrames": 465,
+        "scenes": [
+          { "id": "01-open", "frame": 37 },
+          { "id": "02-split", "frame": 135 },
+          { "id": "03-claim", "frame": 240 },
+          { "id": "04-product", "frame": 330 },
+          { "id": "05-end", "frame": 427 }
+        ]
+      }
+    }
+  }
+}

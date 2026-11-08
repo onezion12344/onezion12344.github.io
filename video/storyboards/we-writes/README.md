@@ -1,4 +1,4 @@
-# WeWrites — three storyboards
+# WeWrites — five storyboards
 
 Stills are 1920×1080, rendered from the Remotion compositions in `video/src`.
 Every screen in them is a real capture of wewrites.ai; nothing is mocked up.
@@ -24,10 +24,31 @@ Every screen in them is a real capture of wewrites.ai; nothing is mocked up.
 | 25 | `c/05-home.png` | 465 | Home, framed as the outcome |
 | 26 | `c/06-end.png` | 555 | End card |
 
-Re-render one still:
+Variants **d** (cold open) and **e** (two layers) are authored in
+`src/we-writes/scenes.tsx` but deliberately not rendered on this machine — the
+disk cannot take another Remotion install. Their stills come from CI:
+
+| # | File | Frame | Scene |
+|---|------|-------|-------|
+| 31 | `d/01-proof.png` | 30 | Cold open: milestone entry with its source |
+| 32 | `d/02-claim.png` | 105 | Statement: generated from a source, then checked |
+| 33 | `d/03-home.png` | 200 | Home |
+| 34 | `d/04-courses.png` | 295 | Teacher grid |
+| 35 | `d/05-claim.png` | 380 | Statement: the team edits it |
+| 36 | `d/06-end.png` | 450 | End card |
+| 41 | `e/01-open.png` | 37 | Statement: a public site and the system that feeds it |
+| 42 | `e/02-split.png` | 135 | Two panels: courses and milestones, side by side |
+| 43 | `e/03-claim.png` | 240 | Statement: one design system across both |
+| 44 | `e/04-product.png` | 330 | EdTech products page |
+| 45 | `e/05-end.png` | 427 | End card |
 
 ```sh
-cd video
-export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
-npx remotion still src/index.ts WeWritesB storyboards/we-writes/b/02-spec.png --frame=145
+gh workflow run promo-render.yml -f project=we-writes -f variant=all -f stage=stills
+```
+
+Re-render one still — in CI, never locally:
+
+```sh
+gh workflow run promo-render.yml -f project=we-writes -f variant=b -f stage=stills
+gh run download --name storyboard-we-writes-b
 ```

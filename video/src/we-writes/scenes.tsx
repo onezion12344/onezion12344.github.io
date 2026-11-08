@@ -6,7 +6,7 @@ import { Stage } from "../components/Stage";
 import { MARGIN } from "../brand";
 
 /**
- * Three storyboards for the WeWrites promo.
+ * Five storyboards for the WeWrites promo.
  *
  * All three are cut from the same rule set — real product screens only, one
  * corner caption, hairline frames, no gradients, no centred title cards — and
@@ -282,14 +282,173 @@ const c: Scene[] = [
   },
 ];
 
+/* ------------------------------------------------------------------ variant D
+ * Cold open. Start on the artefact — a milestone entry with its source
+ * attached — then step back and say what it is. The claim arrives after the
+ * evidence instead of before it.
+ */
+const d: Scene[] = [
+  {
+    id: "01-proof",
+    frames: 60,
+    render: (
+      <Shot
+        src="shots/wewrites-milestones-sources.png"
+        {...PANEL}
+        focus="0% 0%"
+        zoom={1.06}
+        label="wewrites.ai/milestones"
+      />
+    ),
+  },
+  {
+    id: "02-claim",
+    frames: 90,
+    render: (
+      <Statement kicker="Everything on that page" top={372}>
+        generated from a source, then checked against it.
+      </Statement>
+    ),
+  },
+  {
+    id: "03-home",
+    frames: 105,
+    render: (
+      <>
+        <Shot src="shots/wewrites-home.png" {...PANEL} focus="0% 0%" zoom={1.05} delay={6} />
+        <Caption>A live site for a DSE tutoring team.</Caption>
+      </>
+    ),
+  },
+  {
+    id: "04-courses",
+    frames: 90,
+    render: (
+      <>
+        <Shot
+          src="shots/wewrites-courses-scroll.png"
+          {...PANEL}
+          focus="0% 20%"
+          zoom={1}
+          label="wewrites.ai/courses"
+        />
+        <Caption>Teachers and classes, each with a page of its own.</Caption>
+      </>
+    ),
+  },
+  {
+    id: "05-claim",
+    frames: 75,
+    render: (
+      <Statement kicker="So" top={372}>
+        the team edits it, and nobody waits for a deploy.
+      </Statement>
+    ),
+  },
+  {
+    id: "06-end",
+    frames: 60,
+    render: (
+      <EndCard
+        title="wewrites.ai"
+        meta={["Live site", "Engineer, internship", "Sources · Generated pages"]}
+      />
+    ),
+  },
+];
+
+/* ------------------------------------------------------------------ variant E
+ * Two layers, shown side by side: the page a visitor sees, and the pipeline
+ * that produced it. The only variant that puts two screens in one frame.
+ */
+const e: Scene[] = [
+  {
+    id: "01-open",
+    frames: 75,
+    render: (
+      <Statement kicker="Two layers" top={360} size={84}>
+        A public site, and the system that feeds it.
+      </Statement>
+    ),
+  },
+  {
+    id: "02-split",
+    frames: 120,
+    render: (
+      <>
+        <Shot
+          src="shots/wewrites-courses-scroll.png"
+          x={MARGIN}
+          y={230}
+          width={812}
+          height={366}
+          focus="0% 20%"
+          zoom={1}
+          label="wewrites.ai/courses"
+        />
+        <Shot
+          src="shots/wewrites-milestones-sources.png"
+          x={980}
+          y={230}
+          width={812}
+          height={366}
+          focus="0% 0%"
+          zoom={1.04}
+          label="wewrites.ai/milestones"
+        />
+        <Caption y={760}>The page a visitor sees, and the pipeline behind it.</Caption>
+      </>
+    ),
+  },
+  {
+    id: "03-claim",
+    frames: 90,
+    render: (
+      <Statement kicker="Shared" top={372}>
+        One design system across both layers.
+      </Statement>
+    ),
+  },
+  {
+    id: "04-product",
+    frames: 105,
+    render: (
+      <>
+        <Shot
+          src="shots/wewrites-techproduct.png"
+          {...PANEL}
+          focus="0% 25%"
+          zoom={1.06}
+          label="wewrites.ai/techproduct"
+        />
+        <Caption>And the course products the pipeline exists to feed.</Caption>
+      </>
+    ),
+  },
+  {
+    id: "05-end",
+    frames: 75,
+    render: (
+      <EndCard
+        title="wewrites.ai"
+        meta={["Live site", "Engineer, internship", "Design system · Content graph"]}
+      />
+    ),
+  },
+];
+
 export const WeWritesA: React.FC = () => <Variant scenes={a} />;
 export const WeWritesB: React.FC = () => <Variant scenes={b} />;
 export const WeWritesC: React.FC = () => <Variant scenes={c} />;
+export const WeWritesD: React.FC = () => <Variant scenes={d} />;
+export const WeWritesE: React.FC = () => <Variant scenes={e} />;
 
 export const durations = {
   a: a.reduce((n, s) => n + s.frames, 0),
   b: b.reduce((n, s) => n + s.frames, 0),
   c: c.reduce((n, s) => n + s.frames, 0),
+  d: d.reduce((n, s) => n + s.frames, 0),
+  e: e.reduce((n, s) => n + s.frames, 0),
 };
 
-export const sceneIndex = { a, b, c };
+export const sceneIndex = { a, b, c, d, e };

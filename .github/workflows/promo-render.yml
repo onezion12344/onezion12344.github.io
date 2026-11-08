@@ -1,64 +1,144 @@
 # Promo video rendering.
 #
-# Manual only: this workflow never runs on push. It exists so that, once the
-# storyboard is approved, every project can be re-rendered in parallel — one
-# job per project — without a render farm or a local machine.
+# Rendering happens here and only here: the authoring machine keeps no
+# node_modules and no Chromium download. Stills run first so a storyboard can
+# be reviewed before anyone spends a render on the MP4.
 #
-# Not pushed yet. Enable it with: gh workflow enable promo-render
-# or by pushing the branch that contains it.
+# Manual only — this workflow never runs on push.
 
 name: Promo videos
 
 on:
   workflow_dispatch:
     inputs:
-      variant:
-        description: Storyboard variant to render
-        type: choice
-        options: [a, b, c]
-        default: a
       project:
-        description: Optional single project slug (blank = all)
+        description: Project slug from data/projects.json
         type: string
-        default: ""
+        default: we-writes
+      variant:
+        description: Storyboard variant, or "all"
+        type: choice
+        options: [all, a, b, c, d, e]
+        default: all
+      stage:
+        description: What to render
+        type: choice
+        options: [stills, video, both]
+        default: both
 
 permissions:
   contents: read
 
 concurrency:
-  group: promo-${{ github.ref }}
+  group: promo-${{ github.ref }}-${{ inputs.project }}
   cancel-in-progress: true
+
+env:
+  REMOTION_VERSION: 4.0.429
 
 jobs:
   plan:
     runs-on: ubuntu-latest
     outputs:
-      slug: ${{ steps.list.outputs.slug }}
+      variants: ${{ steps.pick.outputs.variants }}
+      composition: ${{ steps.pick.outputs.composition }}
     steps:
       - uses: actions/checkout@v4
-      - id: list
-        # One matrix entry per project in data/projects.json, unless the
-        # dispatch asked for a single one.
+      - id: pick
         run: |
           node -e '
             const fs = require("node:fs");
-            const wanted = process.env.WANTED;
-            const slugs = JSON.parse(fs.readFileSync("data/projects.json", "utf8"))
-              .map((p) => p.slug)
-              .filter((s) => !wanted || s === wanted);
-            console.log("slug=" + JSON.stringify(slugs));
+            const project = process.env.PROJECT;
+            const wanted = process.env.VARIANT;
+            const manifest = JSON.parse(
+              fs.readFileSync("video/storyboards/manifest.json", "utf8"),
+            );
+            const entry = manifest[project];
+            if (!entry) {
+              console.error("No storyboard manifest for " + project);
+              process.exit(1);
+            }
+            const all = Object.keys(entry.variants);
+            const variants = wanted === "all" ? all : all.filter((v) => v === wanted);
+            if (!variants.length) {
+              console.error("No such variant: " + wanted);
+              process.exit(1);
+            }
+            console.log("variants=" + JSON.stringify(variants));
+            console.log("composition=" + project.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(""));
           ' >> "$GITHUB_OUTPUT"
         env:
-          WANTED: ${{ inputs.project }}
+          PROJECT: ${{ inputs.project }}
+          VARIANT: ${{ inputs.variant }}
 
-  render:
+  stills:
     needs: plan
-    runs-on: macos-14
+    if: inputs.stage != 'video'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: ${{ fromJson(needs.plan.outputs.variants) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: video/package-lock.json
+
+      # node_modules is rebuilt per run and never committed.
+      - name: Install
+        working-directory: video
+        run: npm ci
+
+      - name: Report disk before rendering
+        run: df -h /
+
+      - name: Render one still per scene
+        working-directory: video
+        env:
+          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          VARIANT: ${{ matrix.variant }}
+          PROJECT: ${{ inputs.project }}
+        run: |
+          mkdir -p "storyboards/$PROJECT/$VARIANT"
+          node -e '
+            const fs = require("node:fs");
+            const m = JSON.parse(fs.readFileSync("storyboards/manifest.json", "utf8"));
+            const v = m[process.env.PROJECT].variants[process.env.VARIANT];
+            for (const s of v.scenes) console.log(s.id + "\t" + s.frame);
+          ' > /tmp/scenes.tsv
+
+          while IFS=$'\t' read -r id frame; do
+            echo "· $VARIANT/$id @ frame $frame"
+            npx remotion still src/index.ts "$COMPOSITION" \
+              "storyboards/$PROJECT/$VARIANT/$id.png" \
+              --frame="$frame" --log=error
+          done < /tmp/scenes.tsv
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: storyboard-${{ inputs.project }}-${{ matrix.variant }}
+          path: video/storyboards/${{ inputs.project }}/${{ matrix.variant }}/*.png
+          retention-days: 14
+
+  video:
+    needs: [plan, stills]
+    # Stills are the review gate: if they failed, or were all that was asked
+    # for, no MP4 is rendered.
+    if: |
+      always() &&
+      inputs.stage != 'stills' &&
+      (needs.stills.result == 'success' || needs.stills.result == 'skipped')
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     strategy:
       fail-fast: false
       matrix:
-        slug: ${{ fromJson(needs.plan.outputs.slug) }}
+        variant: ${{ fromJson(needs.plan.outputs.variants) }}
     steps:
       - uses: actions/checkout@v4
 
@@ -72,56 +152,52 @@ jobs:
         working-directory: video
         run: npm ci
 
-      - name: Resolve composition
-        id: comp
-        working-directory: video
-        # Compositions are named Promo<StudlySlug>, e.g. we-writes -> PromoWeWrites.
-        # A project without a composition yet is skipped, not failed.
-        run: |
-          NAME=$(node -e '
-            const s = process.argv[1];
-            const studly = s.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join("");
-            console.log("Promo" + studly);
-          ' "${{ matrix.slug }}")
-          # The listings table prints one composition id per line, padded with
-          # columns; a word match survives that, an exact-line match does not.
-          if npx remotion compositions src/index.ts | grep -qw "$NAME"; then
-            echo "name=$NAME" >> "$GITHUB_OUTPUT"
-          else
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "No composition $NAME yet; skipping ${{ matrix.slug }}."
-          fi
-
       - name: Render MP4
-        if: steps.comp.outputs.skip != 'true'
         working-directory: video
+        env:
+          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          VARIANT: ${{ matrix.variant }}
         run: |
           mkdir -p out
-          npx remotion render src/index.ts "${{ steps.comp.outputs.name }}" \
-            "out/${{ matrix.slug }}.mp4" \
+          npx remotion render src/index.ts "$COMPOSITION" "out/$VARIANT.mp4" \
             --codec h264 --crf 20 --pixel-format yuv420p --log=error
 
       - name: Render WebM
-        if: steps.comp.outputs.skip != 'true'
         working-directory: video
+        env:
+          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          VARIANT: ${{ matrix.variant }}
         run: |
-          npx remotion render src/index.ts "${{ steps.comp.outputs.name }}" \
-            "out/${{ matrix.slug }}.webm" \
+          npx remotion render src/index.ts "$COMPOSITION" "out/$VARIANT.webm" \
             --codec vp8 --crf 28 --pixel-format yuv420p --log=error
 
       - name: Poster frame
-        if: steps.comp.outputs.skip != 'true'
+        working-directory: video
+        env:
+          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          VARIANT: ${{ matrix.variant }}
+        run: |
+          npx remotion still src/index.ts "$COMPOSITION" "out/$VARIANT.jpg" \
+            --frame=30 --image-format=jpeg --log=error
+
+      # The site budget is 2 MB per clip. Fail here rather than at review.
+      - name: Check size budget
         working-directory: video
         run: |
-          npx remotion still src/index.ts "${{ steps.comp.outputs.name }}" \
-            "out/${{ matrix.slug }}.jpg" --frame=45 --image-format=jpeg --log=error
+          for f in out/"${{ matrix.variant }}".mp4 out/"${{ matrix.variant }}".webm; do
+            size=$(stat -c%s "$f")
+            echo "$f $size bytes"
+            if [ "$size" -gt 2097152 ]; then
+              echo "::error::$f exceeds 2 MB"
+              exit 1
+            fi
+          done
 
       - uses: actions/upload-artifact@v4
-        if: steps.comp.outputs.skip != 'true'
         with:
-          name: promo-${{ matrix.slug }}
+          name: promo-${{ inputs.project }}-${{ matrix.variant }}
           path: |
-            video/out/${{ matrix.slug }}.mp4
-            video/out/${{ matrix.slug }}.webm
-            video/out/${{ matrix.slug }}.jpg
+            video/out/${{ matrix.variant }}.mp4
+            video/out/${{ matrix.variant }}.webm
+            video/out/${{ matrix.variant }}.jpg
           retention-days: 14
