@@ -3,6 +3,12 @@
 Stills are 1920×1080, rendered from the Remotion compositions in `video/src`.
 Every screen in them is a real capture of wewrites.ai; nothing is mocked up.
 
+**Finished cut: variant D (Cold open).** 16.0 s, `video/out/d.mp4` at 1.0 MB,
+WebM 733 KB, poster `video/out/d.jpg`. It was picked over the other four
+because it is the shortest, it opens on a real milestone entry with its source
+attached rather than on a title card, and it still visits the home page and the
+teacher grid before the end card.
+
 `contact-sheet.png` shows all five variants, one still per scene.
 
 | # | File | Frame | Scene |

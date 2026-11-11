@@ -40,8 +40,7 @@ jobs:
   plan:
     runs-on: ubuntu-latest
     outputs:
-      variants: ${{ steps.pick.outputs.variants }}
-      composition: ${{ steps.pick.outputs.composition }}
+      matrix: ${{ steps.pick.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
       - id: pick
@@ -58,14 +57,24 @@ jobs:
               console.error("No storyboard manifest for " + project);
               process.exit(1);
             }
+            const derived = project
+              .split("-")
+              .map((w) => w[0].toUpperCase() + w.slice(1))
+              .join("");
             const all = Object.keys(entry.variants);
             const variants = wanted === "all" ? all : all.filter((v) => v === wanted);
             if (!variants.length) {
               console.error("No such variant: " + wanted);
               process.exit(1);
             }
-            console.log("variants=" + JSON.stringify(variants));
-            console.log("composition=" + project.split("-").map((w) => w[0].toUpperCase() + w.slice(1)).join(""));
+            // we-writes has one composition per variant (WeWritesA..E); the
+            // batch promos have a single composition each, named in the manifest.
+            const matrix = variants.map((v) => ({
+              variant: v,
+              composition: entry.composition ?? derived + v.toUpperCase(),
+              poster: entry.variants[v].posterFrame ?? 30,
+            }));
+            console.log("matrix=" + JSON.stringify(matrix));
           ' >> "$GITHUB_OUTPUT"
         env:
           PROJECT: ${{ inputs.project }}
@@ -79,7 +88,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: ${{ fromJson(needs.plan.outputs.variants) }}
+        include: ${{ fromJson(needs.plan.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
 
@@ -100,7 +109,7 @@ jobs:
       - name: Render one still per scene
         working-directory: video
         env:
-          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          COMPOSITION: ${{ matrix.composition }}
           VARIANT: ${{ matrix.variant }}
           PROJECT: ${{ inputs.project }}
         run: |
@@ -138,7 +147,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: ${{ fromJson(needs.plan.outputs.variants) }}
+        include: ${{ fromJson(needs.plan.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
 
@@ -155,30 +164,35 @@ jobs:
       - name: Render MP4
         working-directory: video
         env:
-          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          COMPOSITION: ${{ matrix.composition }}
           VARIANT: ${{ matrix.variant }}
         run: |
           mkdir -p out
+          # crf 20 measured 2.6 MB for the 16 s cut; 24 lands at ~1.0 MB
+          # with no visible loss on flat UI, which leaves headroom under 2 MB.
           npx remotion render src/index.ts "$COMPOSITION" "out/$VARIANT.mp4" \
-            --codec h264 --crf 20 --pixel-format yuv420p --log=error
+            --codec h264 --crf 24 --pixel-format yuv420p --log=error
 
       - name: Render WebM
         working-directory: video
         env:
-          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          COMPOSITION: ${{ matrix.composition }}
           VARIANT: ${{ matrix.variant }}
         run: |
+          # vp9 rather than vp8: vp8 crf 28 ran 20+ minutes on a bright
+          # screen and landed over the 2 MB budget; vp9 at crf 32 encoded the
+          # same cut in seconds at well under half the size.
           npx remotion render src/index.ts "$COMPOSITION" "out/$VARIANT.webm" \
-            --codec vp8 --crf 28 --pixel-format yuv420p --log=error
+            --codec vp9 --crf 32 --pixel-format yuv420p --log=error
 
       - name: Poster frame
         working-directory: video
         env:
-          COMPOSITION: ${{ needs.plan.outputs.composition }}${{ matrix.variant }}
+          COMPOSITION: ${{ matrix.composition }}
           VARIANT: ${{ matrix.variant }}
         run: |
           npx remotion still src/index.ts "$COMPOSITION" "out/$VARIANT.jpg" \
-            --frame=30 --image-format=jpeg --log=error
+            --frame="${{ matrix.poster }}" --image-format=jpeg --log=error
 
       # The site budget is 2 MB per clip. Fail here rather than at review.
       - name: Check size budget

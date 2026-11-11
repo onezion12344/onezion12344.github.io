@@ -9,6 +9,8 @@ import {
   WeWritesE,
   durations,
 } from "./we-writes/scenes";
+import { Promo, totalFrames } from "./projects/promo";
+import { compositionIds, promos } from "./projects/specs";
 
 /**
  * One composition per storyboard variant. Nothing here renders on its own —
@@ -56,5 +58,19 @@ export const RemotionRoot: React.FC = () => (
       width={brand.width}
       height={brand.height}
     />
+    {Object.entries(promos).map(([slug, scenes]) => {
+      const SceneList: React.FC = () => <Promo scenes={scenes} />;
+      return (
+        <Composition
+          key={slug}
+          id={compositionIds[slug]}
+          component={SceneList}
+          durationInFrames={totalFrames(scenes)}
+          fps={brand.fps}
+          width={brand.width}
+          height={brand.height}
+        />
+      );
+    })}
   </>
 );

@@ -32,11 +32,13 @@ type is a subtitle, not a headline.
 video/
   src/
     brand.ts            tokens mirrored from assets/tokens.css
-    Root.tsx            one composition per storyboard
+    Root.tsx            one composition per storyboard, and one per batch promo
     components/         Stage, Shot (panel + push-in), Text (Caption, Statement, SpecList, EndCard)
-    we-writes/scenes.tsx  the three storyboards, as data
-  public/shots/         real screenshots, captured from the live site
-  storyboards/we-writes/{a,b,c}/   1920x1080 stills, one per scene
+    we-writes/scenes.tsx  the five storyboards, as data
+    projects/promo.tsx    the shared batch shape: claim, screens, claim, card
+    projects/specs.ts     one data entry per project that has real footage
+  public/shots/         real screenshots: live captures, and frames lifted from the tour clips
+  storyboards/we-writes/{a,b,c,d,e}/   1920x1080 stills, one per scene
 ```
 
 ## Render
@@ -69,7 +71,13 @@ Scene timings for CI live in `storyboards/manifest.json`. They mirror the
 fails the job rather than silently rendering the wrong beat.
 
 Composition ids: `WeWritesA` (18.0 s), `WeWritesB` (20.0 s), `WeWritesC` (19.8 s),
-`WeWritesD` (16.0 s), `WeWritesE` (15.5 s), all 1920x1080 at 30 fps.
+`WeWritesD` (16.0 s), `WeWritesE` (15.5 s), `MacClosedAwake` (14.5 s),
+`DoubleCheck` (14.5 s), `Comp2119Lectures` (14.5 s), `LetGoJourney` (18.0 s),
+all 1920x1080 at 30 fps.
+
+The 2 MB budget is enforced by the workflow, so the bitrate is set to fit it:
+h264 at `--crf 24` measured 1.0–1.6 MB across the finished cuts, where `--crf 20`
+produced 2.6 MB for the 16 s WeWrites cut and would have failed the gate.
 
 All five stills sets (`a`–`e`) are in `storyboards/we-writes/`, rendered locally
 with the installed Google Chrome.
@@ -127,6 +135,25 @@ underneath tying them together. It answers "what is the system" spatially
 rather than chronologically, and it is the calmest cut — nothing moves except
 two slow push-ins. Pick it if the video plays somewhere without sound and the
 viewer has time to read. Rhythm: thesis, split, thesis, product, card.
+
+## Batch promos
+
+Four projects have real footage and now have a finished promo: `mac-closed-awake`,
+`double-check`, `comp2119-lectures`, `let-go-journey`. They share one component,
+`src/projects/promo.tsx`, and differ only by their entry in `src/projects/specs.ts`.
+Adding a project is a data entry, not a new composition.
+
+The shape is fixed: a claim, the screens it is talking about, the claim that
+closes the loop, and the card. Screens are frames lifted from the tour clips in
+`assets/video/`, so nothing is staged and every frame is as publishable as the
+clip already on the site.
+
+The remaining projects have no footage at all — `dse-paper-4-live`,
+`shanghainese-course`, `model-gateway`, `personal-finance-importer`,
+`koreader-onedrive`, `casual-research`. They are not in `specs.ts` on purpose:
+without a real capture there is nothing honest to show, and the rule is real
+screens only. `personal-os` has footage but one static screen for the whole
+clip, so it needs a new recording with actual interaction before it gets a promo.
 
 ## Rules the video copy follows
 

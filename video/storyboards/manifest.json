@@ -1,5 +1,5 @@
 {
-  "_comment": "Scene timings for the storyboard workflow. Mirrors the scene arrays in src/we-writes/scenes.tsx; a still is rendered at the midpoint of each scene. If a scene's `frames` changes in the TSX, update the frame here too — a frame past the composition's end fails the job loudly.",
+  "_comment": "Scene timings for the storyboard workflow. Mirrors the scene arrays in src/we-writes/scenes.tsx and src/projects/specs.ts; a still is rendered at the midpoint of each scene. If a scene's `frames` changes in the TSX, update the frame here too — a frame past the composition's end fails the job loudly. `composition` overrides the id the workflow derives from the slug; `posterFrame` overrides the default poster frame (30).",
   "we-writes": {
     "variants": {
       "a": {
@@ -54,6 +54,71 @@
           { "id": "03-claim", "frame": 240 },
           { "id": "04-product", "frame": 330 },
           { "id": "05-end", "frame": 427 }
+        ]
+      }
+    }
+  },
+  "mac-closed-awake": {
+    "composition": "MacClosedAwake",
+    "variants": {
+      "a": {
+        "durationInFrames": 435,
+        "posterFrame": 127,
+        "scenes": [
+          { "id": "01-open", "frame": 37 },
+          { "id": "02-screen", "frame": 127 },
+          { "id": "03-screen", "frame": 232 },
+          { "id": "05-claim", "frame": 330 },
+          { "id": "06-end", "frame": 405 }
+        ]
+      }
+    }
+  },
+  "double-check": {
+    "composition": "DoubleCheck",
+    "variants": {
+      "a": {
+        "durationInFrames": 435,
+        "posterFrame": 127,
+        "scenes": [
+          { "id": "01-open", "frame": 37 },
+          { "id": "02-screen", "frame": 127 },
+          { "id": "03-screen", "frame": 232 },
+          { "id": "05-claim", "frame": 330 },
+          { "id": "06-end", "frame": 405 }
+        ]
+      }
+    }
+  },
+  "comp2119-lectures": {
+    "composition": "Comp2119Lectures",
+    "variants": {
+      "a": {
+        "durationInFrames": 435,
+        "posterFrame": 127,
+        "scenes": [
+          { "id": "01-open", "frame": 37 },
+          { "id": "02-screen", "frame": 127 },
+          { "id": "03-screen", "frame": 232 },
+          { "id": "05-claim", "frame": 330 },
+          { "id": "06-end", "frame": 405 }
+        ]
+      }
+    }
+  },
+  "let-go-journey": {
+    "composition": "LetGoJourney",
+    "variants": {
+      "a": {
+        "durationInFrames": 540,
+        "posterFrame": 127,
+        "scenes": [
+          { "id": "01-open", "frame": 37 },
+          { "id": "02-screen", "frame": 127 },
+          { "id": "03-screen", "frame": 232 },
+          { "id": "04-screen", "frame": 337 },
+          { "id": "05-claim", "frame": 435 },
+          { "id": "06-end", "frame": 510 }
         ]
       }
     }
