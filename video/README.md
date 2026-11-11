@@ -77,7 +77,9 @@ all 1920x1080 at 30 fps.
 
 The 2 MB budget is enforced by the workflow, so the bitrate is set to fit it:
 h264 at `--crf 24` measured 1.0–1.6 MB across the finished cuts, where `--crf 20`
-produced 2.6 MB for the 16 s WeWrites cut and would have failed the gate.
+produced 2.6 MB for the 16 s WeWrites cut and would have failed the gate. WebM is
+VP9 at `--crf 32`, which measured 0.7–1.5 MB; the earlier vp8 `--crf 28` setting
+ran for 20+ minutes on one bright screen and still overshot.
 
 All five stills sets (`a`–`e`) are in `storyboards/we-writes/`, rendered locally
 with the installed Google Chrome.
