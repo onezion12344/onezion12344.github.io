@@ -283,3 +283,39 @@ path is created.
    social metadata.
 7. Print CV renders at A4 with no clipped sections; markdown CV contains no tables.
 8. No analytics, no cookies, no third-party requests; no `mailto:` in output.
+
+---
+
+## Amendments
+
+### 2026-11-16 — e-mail, hire page, and two Chinese languages
+
+This section supersedes the parts of the document above that it names. The rest stands.
+
+**1. E-mail is published (supersedes §1 table, line 26; §3 `profile.email`, line 66; §5.5,
+line 150; §12, lines 237 and 244; §21, line 285).**
+`profile.email` is `huangyang12344@gmail.com` — the address the previous site already published.
+It appears in `#contacts` and as the `mailto:` call to action on `/hire/`. The privacy
+rule that survives is the one about *other* personal data: no phone, address, student ID
+or grades, no analytics, cookies or third-party fetches.
+
+**2. A `/hire/` page exists (extends §5).**
+Fixed-price work, written acceptance criteria, terms, and an FAQ, all from `data/hire.json`.
+It adds a fourth top-level nav item (`Hire` / `服務`) and in-page jump links. Prices,
+scope and the "done means this" sentence are data, not markup.
+
+**3. Chinese is two written languages, not one text in two scripts (supersedes §2 and §4).**
+- `zh-Hant` is **written Cantonese in Traditional characters** (粵繁): the Hong Kong voice.
+- `zh-Hans` is **Mandarin in Simplified characters** (普简): the mainland voice.
+These are different languages, so `zh-Hans` cannot be derived by swapping characters.
+`data/hire.json` therefore carries a hand-written `zh-Hans` for every string. Everywhere
+else, `zh-Hans` is still derived from `zh-Hant` at build time, because that copy is plain
+written Chinese in both registers.
+
+The build holds this to a rule: an authored `zh-Hans` that contains any Traditional
+character known to `scripts/lib/hant-to-hans.mjs` fails the build. Derivation and
+hand-writing can coexist; drift cannot.
+
+**4. Awards are not a separate section (supersedes §5.2).**
+Competitions and awards are experience entries. `resume.awards` remains in the schema and
+the section renders only when it is non-empty.

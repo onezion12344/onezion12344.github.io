@@ -37,6 +37,70 @@
   "experience": [
     {
       "org": {
+        "en": "HKU-CDS Shanghai Semester",
+        "zh-Hant": "港大-CDS 上海學期"
+      },
+      "title": {
+        "en": "Student Ambassador · Master of Ceremony",
+        "zh-Hant": "學生大使 · 司儀"
+      },
+      "location": {
+        "en": "Shanghai",
+        "zh-Hant": "上海"
+      },
+      "start": "2026-09",
+      "end": "present",
+      "summary": {
+        "en": "One semester of the HKU-CDS programme taught in Shanghai. Student ambassador for the cohort, and host of the programme ceremony.",
+        "zh-Hant": "港大-CDS 在上海授課的一個學期。擔任本屆學生大使，並主持課程典禮。"
+      },
+      "highlights": [
+        {
+          "en": "Selected as the cohort's student ambassador.",
+          "zh-Hant": "獲選為本屆學生大使。"
+        },
+        {
+          "en": "Master of Ceremony for the programme ceremony; the event was covered by TVB Jade.",
+          "zh-Hant": "擔任課程典禮司儀；活動由無綫電視翡翠台報道。"
+        }
+      ]
+    },
+    {
+      "org": {
+        "en": "AdventureX 2026",
+        "zh-Hant": "AdventureX 2026"
+      },
+      "title": {
+        "en": "Participant — “AnyVibe”",
+        "zh-Hant": "參賽者——《AnyVibe》"
+      },
+      "location": {
+        "en": "Hangzhou",
+        "zh-Hant": "杭州"
+      },
+      "start": "2026-07",
+      "end": "2026-07",
+      "summary": {
+        "en": "A five-day hackathon in Hangzhou. Shipped AnyVibe, a voice-driven coding agent you can use while walking, running or on a bus.",
+        "zh-Hant": "在杭州舉行的五日黑客松。交付《AnyVibe》——一個邊走邊講都能用的語音 coding agent。"
+      },
+      "highlights": [
+        {
+          "en": "Built the Qoder adapter (about 230 lines, 17 tests), so the agent drives Qoder's SDK end to end.",
+          "zh-Hant": "建立 Qoder 適配器（約 230 行、17 個測試），讓 agent 端到端驅動 Qoder 的 SDK。"
+        },
+        {
+          "en": "Built a per-role company view: an LLM summariser plus a kanban for each role, with 16 tests.",
+          "zh-Hant": "建立按角色劃分的公司視圖：LLM 摘要器與每個角色的看板，16 個測試。"
+        },
+        {
+          "en": "Entered the Qoder track, “one person = one engineering team”.",
+          "zh-Hant": "參加 Qoder 賽道「一個人＝一支工程團隊」。"
+        }
+      ]
+    },
+    {
+      "org": {
         "en": "WeWrites",
         "zh-Hant": "WeWrites"
       },
@@ -123,26 +187,31 @@
         "zh-Hant": "在為期一個月的比賽中，獨自管理一個以科技股為主的投資組合。"
       },
       "highlights": []
-    }
-  ],
-  "awards": [
+    },
     {
       "org": {
         "en": "Hack4SDGs GenAI Inter-University Hackathon",
         "zh-Hant": "Hack4SDGs GenAI 跨院校黑客松"
       },
-      "year": "2025",
       "title": {
         "en": "Team lead — “Echoes of Thought”",
         "zh-Hant": "隊長 —《Echoes of Thought》"
       },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "2025",
+      "end": "2025",
       "result": "TODO(owner)",
       "summary": {
         "en": "An AI interactive visual novel with GenAI as a dynamic game master: it reads a viewer's YouTube watch history and surfaces cognitive biases and echo chambers through personalised stories.",
         "zh-Hant": "以生成式 AI 作為動態遊戲主持的互動視覺小說：讀取使用者的 YouTube 觀看紀錄，用個人化故事呈現認知偏差與資訊繭房。"
-      }
+      },
+      "highlights": []
     }
   ],
+  "awards": [],
   "skills": [
     {
       "group": {

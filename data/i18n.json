@@ -37,6 +37,14 @@
       "en": "{title} — Harry OneZion",
       "zh-Hant": "{title} — Harry OneZion"
     },
+    "meta.title.hire": {
+      "en": "Hire — Harry OneZion",
+      "zh-Hant": "服務 — Harry OneZion"
+    },
+    "meta.desc.hire": {
+      "en": "Fixed-price spreadsheet cleanup, PDF-to-Excel, invoice folders, MCP servers, scrapers and AI workflows. Price and acceptance written before the job starts: HK$380–1,800.",
+      "zh-Hant": "定價的表格整理、PDF 轉 Excel、單據檔案、MCP 伺服器、網站爬蟲與 AI 工作流。開工前先寫清價錢與驗收：HK$380–1,800。"
+    },
     "meta.title.404": {
       "en": "Page not found — Harry OneZion",
       "zh-Hant": "找不到頁面 — Harry OneZion"
@@ -60,6 +68,10 @@
     "nav.projects": {
       "en": "Projects",
       "zh-Hant": "項目"
+    },
+    "nav.hire": {
+      "en": "Hire",
+      "zh-Hant": "服務"
     },
     "section.about": {
       "en": "about",
@@ -96,6 +108,26 @@
     "home.projectsCount": {
       "en": "{n} projects, all self-run",
       "zh-Hant": "{n} 個項目，全部自己做"
+    },
+    "home.hireHeading": {
+      "en": "One-off data work?",
+      "zh-Hant": "一次性的資料工作？"
+    },
+    "home.hireBody": {
+      "en": "A spreadsheet to clean, a pile of PDFs to turn into rows, a folder you redo every month — or an MCP server, a scraper, an AI workflow. Fixed price and a written acceptance test before I start.",
+      "zh-Hant": "要整理的表格、要變成一行行資料的一批 PDF、每個月重做一次的目錄；再往外一點，是 MCP 伺服器、網站爬蟲、AI 工作流。開工前先有定價與寫清的驗收標準。"
+    },
+    "home.hireCta": {
+      "en": "Prices and how it works",
+      "zh-Hant": "價錢與流程"
+    },
+    "hire.doneLabel": {
+      "en": "Done means",
+      "zh-Hant": "完成的意思"
+    },
+    "hire.emailCta": {
+      "en": "Email one sample",
+      "zh-Hant": "送一個樣本"
     },
     "cv.lede": {
       "en": "A short record: where I study, what I run, and the work behind the projects on this site. The printable version is A4 and stays legible in black and white.",
@@ -266,8 +298,12 @@
       "zh-Hant": "錄影待補。"
     },
     "contacts.note": {
-      "en": "No email on this site for now. These are the ways to reach me.",
-      "zh-Hant": "這個網站暫時不公開電郵。以下是可以找到我的方式。"
+      "en": "Email, or find me here.",
+      "zh-Hant": "可以寫電郵，也可以在這些地方找到我。"
+    },
+    "contacts.email": {
+      "en": "Email",
+      "zh-Hant": "電郵"
     },
     "footer.rights": {
       "en": "© {year} Harry OneZion",
@@ -278,8 +314,9 @@
       "zh-Hant": "由 data/ 生成——沒有框架、沒有分析、沒有 cookie。"
     },
     "footer.translation": {
-      "en": "Simplified Chinese here is a machine conversion of the Traditional Chinese text and has not been reviewed yet.",
-      "zh-Hant": "此處的簡體中文由繁體文本機器轉換而成，尚未經校對。"
+      "en": "The two Chinese versions are written separately: Traditional for Hong Kong, Simplified in Mandarin. They differ in wording, not only in characters.",
+      "zh-Hant": "兩個中文版本分開寫：繁體給香港，簡體用普通話。不同的不只是字形，措辭也不同。",
+      "zh-Hans": "两个中文版本分开写：繁体给香港，简体用普通话。不同的不只是字形，措辞也不同。"
     },
     "footer.top": {
       "en": "Top",
@@ -314,12 +351,14 @@
       "zh-Hant": "EN"
     },
     "lang.zh-Hant": {
-      "en": "繁",
-      "zh-Hant": "繁"
+      "en": "粵繁",
+      "zh-Hant": "粵繁",
+      "zh-Hans": "粤繁"
     },
     "lang.zh-Hans": {
-      "en": "简",
-      "zh-Hant": "簡"
+      "en": "普简",
+      "zh-Hant": "普簡",
+      "zh-Hans": "普简"
     },
     "projects.group.internship": {
       "en": "Internship",

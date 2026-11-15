@@ -23,8 +23,10 @@ if (!fs.existsSync(DIST)) {
 const isTodo = (v) => v === "TODO(owner)";
 
 function dateRange(lang, { start, end }) {
+  const from = isTodo(start) ? "" : start;
+  if (from && end === from) return from; // a single-month entry is not a range
   const parts = [];
-  if (!isTodo(start) && start) parts.push(start);
+  if (from) parts.push(from);
   if (end === "present") parts.push(t(strings, "cv.present", lang));
   else if (isTodo(end)) parts.push(t(strings, "cv.expected", lang));
   else if (end) parts.push(end);
@@ -62,7 +64,9 @@ function markdown(lang) {
   push(`## ${t(strings, "cv.experience", lang)}`, "");
   for (const e of resume.experience) {
     push(`### ${loc(e.title, lang)}, ${loc(e.org, lang)}`, "");
-    push(`${dateRange(lang, e)} · ${loc(e.location, lang)}`, "");
+    const meta = [dateRange(lang, e), loc(e.location, lang)];
+    if (e.result && !isTodo(e.result)) meta.push(e.result);
+    push(meta.join(" · "), "");
     push(loc(e.summary, lang), "");
     if (e.highlights?.length) {
       for (const h of e.highlights) push(`- ${loc(h, lang)}`);
@@ -70,13 +74,15 @@ function markdown(lang) {
     }
   }
 
-  push(`## ${t(strings, "cv.awards", lang)}`, "");
-  for (const a of resume.awards) {
-    push(`### ${loc(a.title, lang)}`, "");
-    const meta = [loc(a.org, lang), a.year];
-    if (!isTodo(a.result)) meta.push(a.result);
-    push(meta.join(" · "), "");
-    push(loc(a.summary, lang), "");
+  if (resume.awards.length) {
+    push(`## ${t(strings, "cv.awards", lang)}`, "");
+    for (const a of resume.awards) {
+      push(`### ${loc(a.title, lang)}`, "");
+      const meta = [loc(a.org, lang), a.year];
+      if (!isTodo(a.result)) meta.push(a.result);
+      push(meta.join(" · "), "");
+      push(loc(a.summary, lang), "");
+    }
   }
 
   push(`## ${t(strings, "cv.skills", lang)}`, "");
@@ -125,7 +131,11 @@ function printHtml(lang) {
     .map(
       (e) => `<article class="entry">
         <h3>${esc(loc(e.title, lang))} <span class="org">· ${esc(loc(e.org, lang))}</span></h3>
-        <p class="meta">${esc(dateRange(lang, e))} · ${esc(loc(e.location, lang))}</p>
+        <p class="meta">${esc(
+          [dateRange(lang, e), loc(e.location, lang), e.result && !isTodo(e.result) ? e.result : ""]
+            .filter(Boolean)
+            .join(" · "),
+        )}</p>
         <p>${esc(loc(e.summary, lang))}</p>
         ${e.highlights?.length ? `<ul>${li(e.highlights)}</ul>` : ""}
       </article>`,
@@ -219,8 +229,12 @@ function printHtml(lang) {
   <h2>${esc(t(strings, "cv.experience", lang))}</h2>
   ${experience}
 
-  <h2>${esc(t(strings, "cv.awards", lang))}</h2>
-  ${awards}
+  ${
+    resume.awards.length
+      ? `<h2>${esc(t(strings, "cv.awards", lang))}</h2>
+  ${awards}`
+      : ""
+  }
 
   <h2>${esc(t(strings, "cv.skills", lang))}</h2>
   <div class="skills">
@@ -254,6 +268,7 @@ for (const { code } of LANGS) {
   generatedSet.add(fileFor(code, ""));
   generatedSet.add(fileFor(code, "cv/"));
   generatedSet.add(fileFor(code, "projects/"));
+  generatedSet.add(fileFor(code, "hire/"));
   for (const p of projects) generatedSet.add(fileFor(code, `projects/${p.slug}/`));
   generatedSet.add(`cv/${code}.html`);
 }

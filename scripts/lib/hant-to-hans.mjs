@@ -5,9 +5,12 @@
  * derived here at build time, never hand-written, so the two can never drift.
  *
  * Two rules, in order:
- *   1. PHRASES — multi-character overrides where a character-by-character
- *      mapping would pick the wrong word.
- *   2. PAIRS — one character for one character.
+ *   1. WORDS — whole words converted first. This covers both grammatical
+ *      differences (甚麼 → 什么) and vocabulary the two places write with the
+ *      same characters but different words (伺服器 → 服务器, 程式 → 程序).
+ *      Without this step the output is Cantonese-shaped Simplified Chinese:
+ *      correct characters, wrong language.
+ *   2. PAIRS — one character for one character, then quote marks 「」→“”.
  *
  * A Han character that is in neither table is a hard error: new text must be
  * reviewed by a human before it can reach a page, rather than silently passing
@@ -16,6 +19,34 @@
 
 const PHRASES = [
   ["甚麼", "什么"],
+];
+
+// Vocabulary, not script. These words are written with the same characters in
+// both scripts, so a one-for-one map leaves Hong Kong terms sitting inside
+// Simplified text — 伺服器 instead of 服务器, 程式 instead of 程序. Converting
+// the characters alone produces Cantonese-shaped Simplified Chinese, which is not
+// what a mainland reader expects. Whole words are converted first.
+const LOCALE = [
+  ["伺服器", "服务器"], // 伺服器 is Taiwan/HK; 伺服器 never appears in mainland text
+  ["協定", "协议"], // a protocol, not 协定 (an agreement)
+  ["回覆", "回复"],
+  ["紀錄", "记录"], // noun; 記錄 (verb) converts character by character
+  ["設定", "设置"],
+  ["選單", "菜单"],
+  ["登入", "登录"],
+  ["程式", "程序"],
+  ["檔案", "文件"], // a computer file; 档案 means an archive in mainland usage
+  ["原始碼", "源代码"],
+  ["儀表板", "仪表盘"], // dashboard
+  ["個人資料", "个人信息"],
+];
+
+// 「」 and 『』 are the Hong Kong/Taiwan quote marks; mainland text uses “” and ‘’.
+const PUNCT = [
+  ["「", "“"],
+  ["」", "”"],
+  ["『", "‘"],
+  ["』", "’"],
 ];
 
 // One-way pairs. Characters that are identical in both scripts are in
@@ -48,6 +79,9 @@ const PAIRS = [
   "驗验", "體体", "麼么", "點点", "齊齐", "著着", "沒没",
   "軟软", "聽听", "買买", "賣卖", "錢钱", "車车", "歲岁", "價价", "節节", "溫温",
   "戶户", "隻只", "髮发", "臺台", "裡里", "稱称", "維维", "譜谱", "賴赖", "隨随", "賽赛", "織织", "終终", "廣广", "馬马", "亞亚", "劃划", "獨独", "聞闻", "獲获", "戰战", "艦舰", "詞词", "擋挡",
+  "幣币", "們们", "議议", "嗎吗", "許许", "識识", "蟲虫", "檢检",
+  "鍵键", "欄栏", "複复", "適适", "憑凭", "別别", "夠够", "製制", "虛虚", "評评", "義义",
+  "擔担", "屆届", "驅驱", "儀仪", "禮礼", "舉举", "綫线",
 ];
 
 // Han characters whose Traditional and Simplified forms are identical. This is a
@@ -55,9 +89,32 @@ const PAIRS = [
 const IDENTICAL =
   "一三上下不且中串主久之乎也了事亦二互五交人仍付令以仰件任份伺位住何作你使例供依便保信修值偏做像元先免入全公六共其具兼再出分切列利到制刻前力功加包化十升卡印即原去又及取受口句另只叫可台各合吉同向含呈告呼品哪哲商器四回因固在地址坐型域基堂塞填士外多大天失奇契套好始子字存它安完官定宜客室家容密小少尚就尾屏履工差己已常平年序度建式引形影待很得循微心必忠怎性悄意成我或截房手才打扣扮批找承技把拆拒括持指按授排接控描提插援搬播操擎支收改放故教散整文料新方旁日明易是普景智更替最月有服未本材松板析架查校核格框案桌楚次款此步段每比永求治法活流海消深清渡港漂演然片版物玩生由留疑登白的目相看真睡知短研硬示社祥私科秒移稀程究空突窗立站端第等答算管箱簿精系素索繁缺置署翻考者而聊肯育背能自至色英落行被西要角解言走起跑跟跨路跳追退送透逐通造道那部都配醒重量金附陌限院隙集零需非靠面音首香高黑模理用介布里品牌念碑名源致映展彭期母聆袖博水促往投股卷挑他旗拼抓否禁";
 
-const PHRASE_MAP = new Map(PHRASES);
+// Added 2026-11-16 for the hire page copy. Each of these is written the same
+// way in Traditional and Simplified; reviewed one by one, not inferred.
+const IDENTICAL_HIRE = "表除果些半思想假抄七今拿身如覆律省爬逆速率";
+
+// Added 2026-11-16 when the hire copy was rewritten out of Cantonese into
+// standard written Chinese. Same form in both scripts; reviewed one by one.
+const IDENTICAL_WRITTEN = "和照遵副草享健守所稿康效司杭典州摘翡翠";
+
+const PUNCT_MAP = new Map(PUNCT);
 const CHAR_MAP = new Map(PAIRS.map((p) => [p[0], p[1]]));
-const IDENTICAL_SET = new Set([...IDENTICAL]);
+const IDENTICAL_SET = new Set([...IDENTICAL, ...IDENTICAL_HIRE, ...IDENTICAL_WRITTEN]);
+
+// Every Traditional form the tables know. An authored zh-Hans that contains one
+// of these has kept Traditional characters — the commonest way hand-written
+// Simplified goes wrong.
+const TRADITIONAL_ONLY = new Set([...PAIRS.map((p) => p[0]), ...PUNCT.map((p) => p[0])]);
+
+/** Return the Traditional characters found in a string, or "" if it is clean. */
+export function findTraditional(text) {
+  const found = new Set();
+  for (const ch of text) if (TRADITIONAL_ONLY.has(ch)) found.add(ch);
+  return [...found].join("");
+}
+
+// Longest first, so 個人資料 is matched before any shorter rule it contains.
+const WORDS = [...LOCALE, ...PHRASES].sort((a, b) => b[0].length - a[0].length);
 
 const HAN = /[㐀-䶿一-鿿豈-﫿]/;
 
@@ -83,15 +140,17 @@ export function toSimplified(input) {
   let result = "";
   let i = 0;
   while (i < input.length) {
-    const phrase = PHRASES.find(([from]) => input.startsWith(from, i));
-    if (phrase) {
-      result += phrase[1];
-      i += phrase[0].length;
+    const word = WORDS.find(([from]) => input.startsWith(from, i));
+    if (word) {
+      result += word[1];
+      i += word[0].length;
       continue;
     }
     const ch = input[i];
     if (CHAR_MAP.has(ch)) {
       result += CHAR_MAP.get(ch);
+    } else if (PUNCT_MAP.has(ch)) {
+      result += PUNCT_MAP.get(ch);
     } else if (HAN.test(ch) && !IDENTICAL_SET.has(ch)) {
       throw new ConversionError(new Set([ch]), input);
     } else {
@@ -115,11 +174,24 @@ export function addSimplified(value, path = "$", problems = []) {
     }
     const hant = value["zh-Hant"];
     if (typeof hant === "string") {
-      try {
-        out["zh-Hans"] = toSimplified(hant);
-      } catch (err) {
-        problems.push(`${path}: ${err.message.split("\n")[0]}`);
-        out["zh-Hans"] = hant; // keep rendering; the build fails afterwards.
+      const authored = value["zh-Hans"];
+      if (typeof authored === "string") {
+        // An authored zh-Hans is a different written language (Mandarin), not a
+        // script conversion of the Cantonese zh-Hant, so it is used as given.
+        // It must still be genuine Simplified text: a Traditional character that
+        // slipped through means the two versions drifted.
+        const traditional = findTraditional(authored);
+        if (traditional) {
+          problems.push(`${path}: authored zh-Hans contains Traditional characters: ${traditional}`);
+        }
+        out["zh-Hans"] = authored;
+      } else {
+        try {
+          out["zh-Hans"] = toSimplified(hant);
+        } catch (err) {
+          problems.push(`${path}: ${err.message.split("\n")[0]}`);
+          out["zh-Hans"] = hant; // keep rendering; the build fails afterwards.
+        }
       }
     }
     return out;

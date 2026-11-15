@@ -28,7 +28,7 @@ import {
 import { DIST, ROOT, loadData } from "./lib/load-data.mjs";
 import { checkLinks, checkNoindex } from "./lib/verify.mjs";
 
-const { profile, resume, projects, strings, reviewed, todos } = loadData();
+const { profile, resume, projects, hire, strings, reviewed, todos } = loadData();
 
 // -------------------------------------------------------------- small helpers
 
@@ -165,13 +165,18 @@ function videoBlock(project, lang) {
       </figure>`;
 }
 
-function entryMeta(lang, { start, end, endLabel, location }) {
+function entryMeta(lang, { start, end, endLabel, location, result }) {
   const parts = [];
-  if (!isTodo(start) && start) parts.push(start);
-  if (end === "present") parts.push(t(strings, "cv.present", lang));
+  const from = isTodo(start) ? "" : start;
+  const sameMonth = from && end === from;
+  if (from) parts.push(from);
+  if (sameMonth) {
+    // a single-month entry is not a range
+  } else if (end === "present") parts.push(t(strings, "cv.present", lang));
   else if (isTodo(end)) parts.push(t(strings, "cv.expected", lang));
   else if (end) parts.push(end);
   if (location) parts.push(loc(location, lang));
+  if (result && !isTodo(result)) parts.push(result);
   return parts.join(" · ");
 }
 
@@ -183,12 +188,19 @@ function renderHome(lang) {
   if (featured.length !== 4) {
     throw new BuildError(`Expected exactly 4 featured projects, found ${featured.length}`);
   }
-  const contacts = profile.links
-    .map(
+  const contacts = [
+    profile.email
+      ? `<li><a href="mailto:${esc(profile.email)}"><span class="contact-name">${esc(
+          t(strings, "contacts.email", lang),
+        )}</span><span class="contact-handle">${esc(profile.email)}</span></a></li>`
+      : "",
+    ...profile.links.map(
       (l) => `<li><a href="${esc(l.url)}" rel="me noopener"><span class="contact-name">${esc(
         loc(l.label, lang),
       )}</span><span class="contact-handle">${esc(l.handle)}</span></a></li>`,
-    )
+    ),
+  ]
+    .filter(Boolean)
     .join("\n          ");
 
   const body = `<section class="section hero" id="about">
@@ -253,6 +265,13 @@ function renderHome(lang) {
         <ul class="contacts">
           ${contacts}
         </ul>
+        <div class="hire-cta">
+          <h3>${esc(t(strings, "home.hireHeading", lang))}</h3>
+          <p>${esc(t(strings, "home.hireBody", lang))}</p>
+          <p class="more"><a class="btn" href="${esc(
+            urlFor(lang, "hire/"),
+          )}">${esc(t(strings, "home.hireCta", lang))} →</a></p>
+        </div>
       </div>
     </section>`;
 
@@ -356,9 +375,14 @@ function renderCv(lang) {
 
         <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.experience", lang))}</h2>
         ${experience}
-
+${
+  resume.awards.length
+    ? `
         <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.awards", lang))}</h2>
         ${awards}
+`
+    : ""
+}
 
         <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "cv.skills", lang))}</h2>
         <div class="skills">
@@ -551,6 +575,220 @@ function renderProject(project, lang) {
   });
 }
 
+const HIRE_SCRIPT = `<script>(function(){var b=document.querySelector("[data-copy]");if(!b)return;var el=document.getElementById(b.getAttribute("data-copy"));if(!el)return;var label=b.textContent;b.addEventListener("click",function(){var done=function(){b.textContent=b.getAttribute("data-copied-label")||label;setTimeout(function(){b.textContent=label},2000);};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(el.textContent).then(done,function(){done()})}else{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);done()}})})();</script>`;
+
+function sectionHeading(label) {
+  return `<h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(label)}</h2>`;
+}
+
+function offerCard(o, lang) {
+  return `<li class="offer card">
+          <div class="offer-head">
+            <h3>${esc(loc(o.title, lang))}</h3>
+            <p class="offer-price">${esc(o.price)}</p>
+          </div>
+          <p class="offer-days">${esc(loc(o.days, lang))}</p>
+          <p class="done"><span class="done-label">${esc(
+            t(strings, "hire.doneLabel", lang),
+          )}</span> ${esc(loc(o.done, lang))}</p>
+          <ul class="offer-list">
+            ${o.items.map((i) => `<li>${esc(loc(i, lang))}</li>`).join("\n            ")}
+          </ul>
+        </li>`;
+}
+
+function renderHire(lang) {
+  const meta = metaFor(lang, "hire");
+  if (!profile.email) {
+    throw new BuildError("profile.email is empty; the hire page needs an address to send to");
+  }
+  const mailto = `mailto:${profile.email}?subject=${encodeURIComponent(loc(hire.emailSubject, lang))}`;
+
+  const stats = hire.stats
+    .map((s) => `<div><dt>${esc(loc(s.label, lang))}</dt><dd>${esc(loc(s.value, lang))}</dd></div>`)
+    .join("\n          ");
+
+  const jump = hire.jump
+    .map((j) => `<a href="#${esc(j.id)}">${esc(loc(j.label, lang))}</a>`)
+    .join("");
+
+  const offers = hire.offers.map((o) => offerCard(o, lang)).join("\n        ");
+  const build = hire.build.map((o) => offerCard(o, lang)).join("\n        ");
+
+  const steps = hire.steps
+    .map(
+      (s, i) => `<li class="step">
+          <span class="step-n" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>
+          <div class="step-body">
+            <h3>${esc(loc(s.title, lang))}</h3>
+            <p>${esc(loc(s.body, lang))}</p>
+          </div>
+        </li>`,
+    )
+    .join("\n        ");
+
+  const checks = hire.briefChecks.map((c) => `<li>${esc(loc(c, lang))}</li>`).join("\n          ");
+  const template = loc(hire.briefTemplate, lang);
+
+  const terms = hire.terms
+    .map(
+      (term) => `<div class="term">
+          <dt>${esc(loc(term.label, lang))}</dt>
+          <dd>${esc(loc(term.value, lang))}</dd>
+        </div>`,
+    )
+    .join("\n          ");
+
+  const proof = hire.proof
+    .map(
+      (p) => `<a class="card proof-card" href="${esc(urlFor(lang, `projects/${p.slug}/`))}">
+          <h3>${esc(p.title)}</h3>
+          <p>${esc(loc(p.note, lang))}</p>
+        </a>`,
+    )
+    .join("\n        ");
+
+  const faq = hire.faq
+    .map(
+      (f) => `<details class="faq-item">
+          <summary>${esc(loc(f.q, lang))}</summary>
+          <p>${esc(loc(f.a, lang))}</p>
+        </details>`,
+    )
+    .join("\n        ");
+
+  const biggerPrices = hire.bigger.prices
+    .map((p) => `<li>${esc(loc(p, lang))}</li>`)
+    .join("");
+
+  const body = `<section class="section hire-hero">
+      <div class="wrap">
+        <p class="eyebrow">${esc(loc(hire.eyebrow, lang))}</p>
+        <h1>${esc(loc(hire.heading, lang))}</h1>
+        <p class="lede">${esc(loc(hire.lede, lang))}</p>
+        <dl class="hire-stats">
+          ${stats}
+        </dl>
+        <nav class="jump" aria-label="${esc(t(strings, "nav.hire", lang))}">${jump}</nav>
+      </div>
+    </section>
+
+    <section class="section" id="offers">
+      <div class="wrap-wide">
+        ${sectionHeading(loc(hire.offersHeading, lang))}
+        <p class="section-note">${esc(loc(hire.offersNote, lang))}</p>
+        <ul class="offers">
+        ${offers}
+        </ul>
+        <p class="price-note">${esc(loc(hire.priceNote, lang))}</p>
+
+        <h2 class="marker build-head"><span class="hash" aria-hidden="true">#</span>${esc(
+          loc(hire.buildHeading, lang),
+        )}</h2>
+        <p class="section-note">${esc(loc(hire.buildNote, lang))}</p>
+        <ul class="offers offers-build">
+        ${build}
+        </ul>
+
+        <div class="bigger">
+          <h3>${esc(loc(hire.bigger.title, lang))}</h3>
+          <p>${esc(loc(hire.bigger.body, lang))}</p>
+          <ul class="bigger-prices">${biggerPrices}</ul>
+          <p class="section-note">${esc(loc(hire.bigger.note, lang))}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="steps">
+      <div class="wrap">
+        ${sectionHeading(loc(hire.stepsHeading, lang))}
+        <p class="section-note">${esc(loc(hire.stepsNote, lang))}</p>
+        <ol class="steps">
+        ${steps}
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="brief">
+      <div class="wrap">
+        ${sectionHeading(loc(hire.briefHeading, lang))}
+        <p class="section-note">${esc(loc(hire.briefNote, lang))}</p>
+        <div class="brief-grid">
+          <ul class="checks">
+          ${checks}
+          </ul>
+          <div class="template">
+            <pre id="brief-text">${esc(template)}</pre>
+            <button type="button" class="btn" data-copy="brief-text" data-copied-label="${esc(
+              loc(hire.copiedLabel, lang),
+            )}">${esc(loc(hire.copyLabel, lang))}</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="terms">
+      <div class="wrap">
+        ${sectionHeading(loc(hire.termsHeading, lang))}
+        <p class="section-note">${esc(loc(hire.termsNote, lang))}</p>
+        <dl class="terms">
+          ${terms}
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="proof">
+      <div class="wrap-wide">
+        ${sectionHeading(loc(hire.proofHeading, lang))}
+        <p class="section-note">${esc(loc(hire.proofNote, lang))}</p>
+        <div class="proof-grid">
+        ${proof}
+        </div>
+        <p class="more"><a class="btn" href="${esc(
+          urlFor(lang, "projects/"),
+        )}">${esc(loc(hire.projectsMore, lang))} →</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        ${sectionHeading(loc(hire.faqHeading, lang))}
+        <p class="section-note">${esc(loc(hire.faqNote, lang))}</p>
+        <div class="faq">
+        ${faq}
+        </div>
+      </div>
+    </section>
+
+    <section class="section hire-contact" id="contact">
+      <div class="wrap">
+        ${sectionHeading(loc(hire.contactHeading, lang))}
+        <p class="lede">${esc(loc(hire.contactNote, lang))}</p>
+        <p class="formats">
+          <a class="btn btn-solid" href="${esc(mailto)}">${esc(
+            t(strings, "hire.emailCta", lang),
+          )} →</a>
+          <a class="btn" href="${esc(urlFor(lang, "projects/"))}">${esc(
+            t(strings, "projects.heading", lang),
+          )} →</a>
+        </p>
+        <p class="section-note">${esc(profile.email)}</p>
+      </div>
+    </section>`;
+
+  return page({
+    lang,
+    path: "hire/",
+    title: meta.title,
+    description: meta.description,
+    body,
+    strings,
+    profile,
+    reviewed,
+    extraScript: HIRE_SCRIPT,
+  });
+}
+
 function render404() {
   const lang = "en";
   const meta = metaFor(lang, "404");
@@ -620,6 +858,7 @@ function sitemap() {
     urls.push(canonical(lang.code));
     urls.push(canonical(lang.code, "cv/"));
     urls.push(canonical(lang.code, "projects/"));
+    urls.push(canonical(lang.code, "hire/"));
     for (const p of projects) urls.push(canonical(lang.code, `projects/${p.slug}/`));
   }
   const body = urls
@@ -645,6 +884,7 @@ for (const langMeta of LANGS) {
     ["", renderHome(lang)],
     ["cv/", renderCv(lang)],
     ["projects/", renderProjectIndex(lang)],
+    ["hire/", renderHire(lang)],
     ...projects.map((p) => [`projects/${p.slug}/`, renderProject(p, lang)]),
   ];
   for (const [p, html] of pages) {

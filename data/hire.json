@@ -1,0 +1,842 @@
+{
+  "eyebrow": {
+    "en": "One job at a time · Hong Kong, GMT+8",
+    "zh-Hant": "一次一單 · 香港 · GMT+8",
+    "zh-Hans": "一次只接一件 · 香港 · GMT+8"
+  },
+  "heading": {
+    "en": "Price and “done means this” — before I start.",
+    "zh-Hant": "先講價錢，同「做幾多先算完成」，再開工。",
+    "zh-Hans": "先讲价钱，再讲“怎样才算完成”，然后开工。"
+  },
+  "lede": {
+    "en": "I clean spreadsheets, turn PDF piles into rows, automate the folder you redo every month — and build the small tools around it: an MCP server, a scraper, an AI workflow. You get a price and a “done means this” sentence before I start, then a clean file, a log of what changed, and a script you can run again.",
+    "zh-Hant": "我整理表格、把一批 PDF 變成一行行資料，也會把你每個月重做一次的檔案流程自動化；再往外一點，是 MCP 伺服器、網站抓取、AI 工作流這些小工具。開工之前，你先拿到價錢，同「做幾多先算完成」這一句；交付時有乾淨的檔案、改了甚麼的紀錄，同一支可以再跑的程式。",
+    "zh-Hans": "我整理表格、把一批 PDF 变成一行行数据，也会把你每个月重做一次的文件流程自动化；再往外一点，是 MCP 服务器、网站抓取、AI 工作流这些小工具。开工之前，你先拿到价钱，以及“怎样才算完成”这一句；交付时有一份干净的文件、一份改动记录，和一份可以重复运行的程序。"
+  },
+  "stats": [
+    {
+      "value": {
+        "en": "2–5 days",
+        "zh-Hant": "2–5 日",
+        "zh-Hans": "2–5 日"
+      },
+      "label": {
+        "en": "delivery",
+        "zh-Hant": "交付",
+        "zh-Hans": "交付"
+      }
+    },
+    {
+      "value": {
+        "en": "HK$380–1,800",
+        "zh-Hant": "HK$380–1,800",
+        "zh-Hans": "HK$380–1,800"
+      },
+      "label": {
+        "en": "fixed price, per job",
+        "zh-Hant": "定價，每單",
+        "zh-Hans": "定价，每项工作"
+      }
+    },
+    {
+      "value": {
+        "en": "1",
+        "zh-Hant": "1",
+        "zh-Hans": "1"
+      },
+      "label": {
+        "en": "revision included",
+        "zh-Hant": "包括一次修改",
+        "zh-Hans": "包括一次修改"
+      }
+    },
+    {
+      "value": {
+        "en": "24 h",
+        "zh-Hant": "24 小時",
+        "zh-Hans": "24 小时"
+      },
+      "label": {
+        "en": "reply, 09:00–21:00",
+        "zh-Hant": "回覆，09:00–21:00",
+        "zh-Hans": "回复，09:00–21:00"
+      }
+    }
+  ],
+  "jump": [
+    {
+      "id": "offers",
+      "label": {
+        "en": "Jobs",
+        "zh-Hant": "工作",
+        "zh-Hans": "工作"
+      }
+    },
+    {
+      "id": "steps",
+      "label": {
+        "en": "Process",
+        "zh-Hant": "流程",
+        "zh-Hans": "流程"
+      }
+    },
+    {
+      "id": "brief",
+      "label": {
+        "en": "Brief",
+        "zh-Hant": "說明",
+        "zh-Hans": "说明"
+      }
+    },
+    {
+      "id": "terms",
+      "label": {
+        "en": "Terms",
+        "zh-Hant": "條款",
+        "zh-Hans": "条款"
+      }
+    },
+    {
+      "id": "proof",
+      "label": {
+        "en": "Proof",
+        "zh-Hant": "作品",
+        "zh-Hans": "作品"
+      }
+    },
+    {
+      "id": "faq",
+      "label": {
+        "en": "FAQ",
+        "zh-Hant": "問答",
+        "zh-Hans": "问答"
+      }
+    },
+    {
+      "id": "contact",
+      "label": {
+        "en": "Contact",
+        "zh-Hant": "聯絡",
+        "zh-Hans": "联络"
+      }
+    }
+  ],
+  "offersHeading": {
+    "en": "Fixed-price jobs",
+    "zh-Hant": "定價工作",
+    "zh-Hans": "定价工作"
+  },
+  "offersNote": {
+    "en": "intro price · first three orders of each job",
+    "zh-Hant": "入門價 · 每種工作首三單",
+    "zh-Hans": "入门价 · 每种工作首三件"
+  },
+  "offers": [
+    {
+      "title": {
+        "en": "Sheet rescue",
+        "zh-Hant": "表格整理",
+        "zh-Hans": "表格整理"
+      },
+      "price": "HK$480",
+      "days": {
+        "en": "2 days",
+        "zh-Hant": "2 日",
+        "zh-Hans": "2 日"
+      },
+      "done": {
+        "en": "Row counts reconcile, key columns have no nulls, the chart total equals the cleaned total.",
+        "zh-Hant": "行數對得上，重要的格沒有空值，圖表總數等於整理後的總數。",
+        "zh-Hans": "行数对得上，关键列没有空值，图表总数等于整理后的总数。"
+      },
+      "items": [
+        {
+          "en": "One file, up to 5,000 rows",
+          "zh-Hant": "一個檔案，最多 5,000 行",
+          "zh-Hans": "一个文件，最多 5,000 行"
+        },
+        {
+          "en": "Duplicates removed; dates and currency normalised",
+          "zh-Hant": "去重，日期與貨幣格式統一",
+          "zh-Hans": "去重，日期与货币格式统一"
+        },
+        {
+          "en": "Every null and excluded row written down",
+          "zh-Hant": "每一個空值與被排除的行都寫下來",
+          "zh-Hans": "每一个空值与被排除的行都写下来"
+        },
+        {
+          "en": "Clean CSV, one chart, and a README",
+          "zh-Hant": "乾淨的 CSV、一張圖表、一份說明",
+          "zh-Hans": "干净的 CSV、一张图表、一份说明"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Invoice folder → CSV",
+        "zh-Hant": "單據檔案 → CSV",
+        "zh-Hans": "单据 → CSV"
+      },
+      "price": "HK$880",
+      "days": {
+        "en": "2–3 days",
+        "zh-Hant": "2–3 日",
+        "zh-Hans": "2–3 日"
+      },
+      "done": {
+        "en": "100 files in, clean CSV and exception list out, no double counting on the second run.",
+        "zh-Hant": "100 個檔案入，乾淨的 CSV 與例外清單出，第二次跑結果一樣。",
+        "zh-Hans": "100 份文件入，一份干净的 CSV 与例外清单出，第二次运行结果一样。"
+      },
+      "items": [
+        {
+          "en": "One folder, up to 100 files",
+          "zh-Hant": "一個目錄，最多 100 個檔案",
+          "zh-Hans": "一个目录，最多 100 份文件"
+        },
+        {
+          "en": "Required fields validated, duplicates caught",
+          "zh-Hant": "必要的資料先驗證，相同的檔案會被找出",
+          "zh-Hans": "必要栏位先验证，重复的文件会被找出"
+        },
+        {
+          "en": "Every skipped file gets a reason",
+          "zh-Hant": "每一個被跳過的檔案都有原因",
+          "zh-Hans": "每一份被跳过的文件都有原因"
+        },
+        {
+          "en": "Rerun-safe: the second run is identical",
+          "zh-Hant": "可以再跑，第二次結果一樣",
+          "zh-Hans": "可以重复运行，第二次结果一样"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "PDF data → Excel",
+        "zh-Hant": "PDF 資料 → Excel",
+        "zh-Hans": "PDF 数据 → Excel"
+      },
+      "price": "HK$380",
+      "days": {
+        "en": "2 days",
+        "zh-Hant": "2 日",
+        "zh-Hans": "2 日"
+      },
+      "done": {
+        "en": "10 PDFs → 10 rows or documented exceptions, totals reconcile.",
+        "zh-Hant": "10 個 PDF 變成 10 行，或者有寫下來的例外，總數對得上。",
+        "zh-Hans": "10 个 PDF 变成 10 行，或者有写下来的例外，总数对得上。"
+      },
+      "items": [
+        {
+          "en": "One layout, up to 10 PDFs",
+          "zh-Hant": "一種版式，最多 10 個 PDF",
+          "zh-Hans": "一种版式，最多 10 份 PDF"
+        },
+        {
+          "en": "Field map agreed before I start",
+          "zh-Hant": "開工前先對好對應表",
+          "zh-Hans": "开工前先对好对应表"
+        },
+        {
+          "en": "Validation report: what mapped, what did not",
+          "zh-Hant": "驗證報告：哪些對上了，哪些沒有",
+          "zh-Hans": "验证报告：哪些对上了，哪些没有"
+        },
+        {
+          "en": "One mapping revision included",
+          "zh-Hant": "包括一次對應修改",
+          "zh-Hans": "包括一次对应修改"
+        }
+      ]
+    }
+  ],
+  "buildHeading": {
+    "en": "Build work",
+    "zh-Hant": "開發工作",
+    "zh-Hans": "开发工作"
+  },
+  "buildNote": {
+    "en": "same rule: price and acceptance before I start",
+    "zh-Hant": "同一原則：開工前先有價錢與驗收",
+    "zh-Hans": "同一原则：开工前先有价钱与验收"
+  },
+  "build": [
+    {
+      "title": {
+        "en": "MCP server",
+        "zh-Hant": "MCP 伺服器",
+        "zh-Hans": "MCP 服务器"
+      },
+      "price": "HK$1,200",
+      "days": {
+        "en": "3–5 days",
+        "zh-Hant": "3–5 日",
+        "zh-Hans": "3–5 日"
+      },
+      "done": {
+        "en": "A fresh checkout starts it from the README; every listed tool answers once with the documented shape.",
+        "zh-Hant": "由 README 就可以啟動；每一個列出的工具都回答一次，形狀與說明一樣。",
+        "zh-Hans": "依照 README 就可以启动；每一个列出的工具都回答一次，格式与说明一致。"
+      },
+      "items": [
+        {
+          "en": "One API or CLI, wrapped as a local stdio server",
+          "zh-Hant": "一個 API 或 CLI，包成本地 stdio 伺服器",
+          "zh-Hans": "一个 API 或 CLI，包成本地 stdio 服务器"
+        },
+        {
+          "en": "Up to five tools, read-only by default",
+          "zh-Hant": "最多五個工具，預設只讀",
+          "zh-Hans": "最多五个工具，预设只读"
+        },
+        {
+          "en": "Writes need an explicit confirmation step",
+          "zh-Hant": "寫入要先明確確認",
+          "zh-Hans": "写入要先明确确认"
+        },
+        {
+          "en": "README, config example, one test call per tool",
+          "zh-Hant": "說明、設定範例、每個工具一次測試呼叫",
+          "zh-Hans": "说明、设置范例、每个工具一次测试呼叫"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Website scraper",
+        "zh-Hant": "網站爬蟲",
+        "zh-Hans": "网站爬虫"
+      },
+      "price": "HK$880",
+      "days": {
+        "en": "2–3 days",
+        "zh-Hant": "2–3 日",
+        "zh-Hans": "2–3 日"
+      },
+      "done": {
+        "en": "1,000 pages in, CSV or JSON out, every skipped page has a reason, the second run is identical.",
+        "zh-Hant": "1,000 頁入，CSV 或 JSON 出，每一個被跳過的頁都有原因，第二次結果一樣。",
+        "zh-Hans": "1,000 页入，CSV 或 JSON 出，每一个被跳过的页都有原因，第二次结果一致。"
+      },
+      "items": [
+        {
+          "en": "One public site, up to 1,000 pages",
+          "zh-Hant": "一個公開網站，最多 1,000 頁",
+          "zh-Hans": "一个公开网站，最多 1,000 页"
+        },
+        {
+          "en": "Rate limits and robots.txt respected",
+          "zh-Hant": "按網站的速率限制與 robots.txt",
+          "zh-Hans": "遵守网站的速率限制与 robots.txt"
+        },
+        {
+          "en": "No logins, no personal data",
+          "zh-Hant": "不登入，不收集個人資料",
+          "zh-Hans": "不登录，不收集个人信息"
+        },
+        {
+          "en": "Change report between runs",
+          "zh-Hant": "兩次之間有變化報告",
+          "zh-Hans": "两次之间有变化报告"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Protocol replay",
+        "zh-Hant": "協定重放",
+        "zh-Hans": "协议重放"
+      },
+      "price": "HK$1,800",
+      "days": {
+        "en": "4–6 days",
+        "zh-Hant": "4–6 日",
+        "zh-Hans": "4–6 日"
+      },
+      "done": {
+        "en": "A script logs in, makes the three calls, prints the documented fields — no browser in the loop.",
+        "zh-Hant": "一支程式登入、做三次呼叫、印出寫明的項目，過程中不需要瀏覽器。",
+        "zh-Hans": "一个程序登录、发出三次呼叫、印出写明的栏位，整个过程不需要浏览器。"
+      },
+      "items": [
+        {
+          "en": "One app, one flow: login plus up to three endpoints",
+          "zh-Hant": "一個程式、一個流程：登入加最多三個接口",
+          "zh-Hans": "一个程序、一个流程：登录加最多三个接口"
+        },
+        {
+          "en": "Your account and your data only",
+          "zh-Hant": "只做你自己的帳號與資料",
+          "zh-Hans": "只做你自己的帐号与数据"
+        },
+        {
+          "en": "No access-control bypass, no DRM, no paid content",
+          "zh-Hant": "不繞過權限、不做 DRM、不做要付費才看到的內容",
+          "zh-Hans": "不绕过权限、不做 DRM、不触及付费内容"
+        },
+        {
+          "en": "HAR in, a documented client out",
+          "zh-Hant": "HAR 入，寫明的客戶端出",
+          "zh-Hans": "HAR 入，写明的客户端出"
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "AI workflow",
+        "zh-Hant": "AI 工作流",
+        "zh-Hans": "AI 工作流"
+      },
+      "price": "HK$1,500",
+      "days": {
+        "en": "3–5 days",
+        "zh-Hant": "3–5 日",
+        "zh-Hans": "3–5 日"
+      },
+      "done": {
+        "en": "Ten runs on the same input pass the same check; cost and failures are in the log.",
+        "zh-Hant": "同一輸入跑十次，十次都過同一個檢查；費用與失敗都寫在紀錄裏。",
+        "zh-Hans": "同一份输入运行十次，十次都通过同一个检查；费用与失败都写在记录里。"
+      },
+      "items": [
+        {
+          "en": "Up to three steps: read, model, write",
+          "zh-Hant": "最多三步：讀、模型、寫",
+          "zh-Hans": "最多三步：读、模型、写"
+        },
+        {
+          "en": "Retries and a cost ceiling",
+          "zh-Hant": "重試與費用上限",
+          "zh-Hans": "重试与费用上限"
+        },
+        {
+          "en": "Human confirmation before anything is sent",
+          "zh-Hant": "送出之前要人確認",
+          "zh-Hans": "送出之前要人确认"
+        },
+        {
+          "en": "Run log with inputs, outputs and cost",
+          "zh-Hant": "紀錄輸入、輸出與費用",
+          "zh-Hans": "记录输入、输出与费用"
+        }
+      ]
+    }
+  ],
+  "priceNote": {
+    "en": "Intro price applies to the first three orders of each job; after that HK$600 / HK$1,080 / HK$480. Half of any entry-job fee is credited toward a bigger build if you upgrade within 30 days.",
+    "zh-Hant": "入門價是每種工作首三單；之後是 HK$600 / HK$1,080 / HK$480。30 日內升級，入門工作的費用一半可以扣。",
+    "zh-Hans": "入门价是每种工作首三件；之后是 HK$600 / HK$1,080 / HK$480。30 日内升级，入门工作的费用可扣一半。"
+  },
+  "bigger": {
+    "title": {
+      "en": "Something bigger than one file",
+      "zh-Hant": "比一個檔案更大的工作",
+      "zh-Hans": "比一个文件更大的工作"
+    },
+    "body": {
+      "en": "A dashboard with several sources, an internal tool, a workflow with a UI. I quote after looking at one sample, not from a form.",
+      "zh-Hant": "多個來源的面板、內部工具、有介面的流程。我看過一個樣本才報價，不靠表格。",
+      "zh-Hans": "多个来源的仪表盘、内部工具、有介面的流程。我看过一个样本才报价，不靠填表。"
+    },
+    "prices": [
+      {
+        "en": "US$800+ — dashboard or data product",
+        "zh-Hant": "US$800+ — 面板或資料產品",
+        "zh-Hans": "US$800+ — 仪表盘或数据产品"
+      },
+      {
+        "en": "US$1,000+ — automation or internal tool",
+        "zh-Hant": "US$1,000+ — 自動化或內部工具",
+        "zh-Hans": "US$1,000+ — 自动化或内部工具"
+      }
+    ],
+    "note": {
+      "en": "Same rule: fixed scope, written acceptance, handover README.",
+      "zh-Hant": "同一原則：寫清範圍、寫清驗收、交付說明。",
+      "zh-Hans": "同一原则：写清范围、写清验收、交付说明。"
+    }
+  },
+  "stepsHeading": {
+    "en": "How an order runs",
+    "zh-Hant": "一張單怎樣走",
+    "zh-Hans": "一笔工作怎样走"
+  },
+  "stepsNote": {
+    "en": "no discovery calls unless you want one",
+    "zh-Hant": "不需要開會，除非你想",
+    "zh-Hans": "不需要开会，除非你想"
+  },
+  "steps": [
+    {
+      "title": {
+        "en": "You send one sample",
+        "zh-Hant": "你先送一個樣本",
+        "zh-Hans": "你先送一个样本"
+      },
+      "body": {
+        "en": "One file or one folder, not the whole archive. I reply within 24 h with the price and what done will mean, or say it is the wrong job for me.",
+        "zh-Hant": "一個檔案或一個目錄，不是整個檔案庫。我在 24 小時內回你價錢，同「完成」的意思；如果這單不是我的工作，我也會說。",
+        "zh-Hans": "一份文件或一个目录，不是整个文件库。我在 24 小时内回你价钱，以及“完成”的意思；如果这件工作不适合我，我也会说。"
+      }
+    },
+    {
+      "title": {
+        "en": "Scope is written down",
+        "zh-Hant": "範圍先寫下來",
+        "zh-Hans": "范围先写下来"
+      },
+      "body": {
+        "en": "One page: what is included, what is excluded, the acceptance test, the delivery date. Nothing starts until you reply “go”.",
+        "zh-Hant": "一頁：包括甚麼、不包括甚麼、驗收標準、交付日期。你說「去」之前，不開始。",
+        "zh-Hans": "一页：包括什么、不包括什么、验收标准、交付日期。你确认之前，不开始。"
+      }
+    },
+    {
+      "title": {
+        "en": "Deposit, then build",
+        "zh-Hant": "先收一半，再開工",
+        "zh-Hans": "先收一半，再开工"
+      },
+      "body": {
+        "en": "50% up front, the other 50% on acceptance. I work on a copy of your data and send a dry run before the final files.",
+        "zh-Hant": "先付一半，驗收後付另一半。我在你資料的另一份上工作，最後交付前先送一次試跑。",
+        "zh-Hans": "先付一半，验收后付另一半。我用你数据的另一份副本工作，交付前先送一次试运行。"
+      }
+    },
+    {
+      "title": {
+        "en": "Handover and deletion",
+        "zh-Hant": "交付與刪除",
+        "zh-Hans": "交付与删除"
+      },
+      "body": {
+        "en": "Files, script and a README that says how to rerun it. Your data is deleted after handover; defects reported in 14 days are fixed free.",
+        "zh-Hant": "檔案、程式，同一份說明怎樣再跑。交付後刪除你的資料；14 日內報的問題，免費修。",
+        "zh-Hans": "文件、程序，加一份说明怎样重复运行。交付后删除你的数据；14 日内报告的问题，免费修。"
+      }
+    }
+  ],
+  "briefHeading": {
+    "en": "The brief",
+    "zh-Hant": "工作說明",
+    "zh-Hans": "工作说明"
+  },
+  "briefNote": {
+    "en": "fill the blanks, send it",
+    "zh-Hant": "寫好、送出",
+    "zh-Hans": "写好、送出"
+  },
+  "briefChecks": [
+    {
+      "en": "One sample. A file with the same shape as the real one. Fake names are fine — I need the columns, not the customers.",
+      "zh-Hant": "一個樣本。與真實檔案同一形狀。假名可以，我要的是格，不是客戶。",
+      "zh-Hans": "一个样本，与真实文件同一形状。可以用假名；我要的是栏位，不是客户。"
+    },
+    {
+      "en": "The end state. “One row per invoice, with a total I can check” beats “clean it up”.",
+      "zh-Hant": "終點。「每張單一行，總數我可以查」比「整理一下」清楚。",
+      "zh-Hans": "目标。“每笔一行，总数我可以核对”比“整理一下”清楚。"
+    },
+    {
+      "en": "Deadline and reader. When you need it, and who opens the file after you.",
+      "zh-Hant": "期限與讀者。何時要，之後誰打開這個檔案。",
+      "zh-Hans": "期限与读者。何时要，之后由谁打开这份文件。"
+    },
+    {
+      "en": "No passwords. Never send an account login. A folder and a file are enough.",
+      "zh-Hant": "不要密碼。不要把帳號登入資料送出來。一個目錄、一個檔案就行。",
+      "zh-Hans": "不要密码，也不要送来帐号的登录凭据。一个目录、一份文件就够。"
+    }
+  ],
+  "briefTemplate": {
+    "en": "What it is:\nOne sample I can look at:\nWhat I want at the end:\nDeadline:\nWho reads the result:\nTools I use:",
+    "zh-Hant": "這是甚麼：\n一個我可以看的樣本：\n我想最後拿到甚麼：\n期限：\n之後誰看結果：\n我用甚麼工具：",
+    "zh-Hans": "这是什么：\n一个我可以看的样本：\n我想最后拿到什么：\n期限：\n之后谁看结果：\n我用什么工具："
+  },
+  "copyLabel": {
+    "en": "Copy",
+    "zh-Hant": "抄下來",
+    "zh-Hans": "复制"
+  },
+  "copiedLabel": {
+    "en": "Copied",
+    "zh-Hant": "已抄下",
+    "zh-Hans": "已复制"
+  },
+  "termsHeading": {
+    "en": "Terms, up front",
+    "zh-Hant": "條款，先寫清楚",
+    "zh-Hans": "条款，先写清楚"
+  },
+  "termsNote": {
+    "en": "the same lines go into every quote",
+    "zh-Hant": "每一份報價都寫同樣幾條",
+    "zh-Hans": "每一份报价都写同样几条"
+  },
+  "terms": [
+    {
+      "label": {
+        "en": "Payment",
+        "zh-Hant": "付款",
+        "zh-Hans": "付款"
+      },
+      "value": {
+        "en": "Through the platform we met on. 50% deposit, 50% on acceptance.",
+        "zh-Hant": "經我們相識的平台。先付一半，驗收後付另一半。",
+        "zh-Hans": "经由我们相识的平台。先付一半，验收后付另一半。"
+      }
+    },
+    {
+      "label": {
+        "en": "Start",
+        "zh-Hant": "開始",
+        "zh-Hans": "开始"
+      },
+      "value": {
+        "en": "Work starts when the deposit clears and the sample arrives.",
+        "zh-Hant": "錢到帳、樣本到手才開始。",
+        "zh-Hans": "钱到帐、样本到手才开始。"
+      }
+    },
+    {
+      "label": {
+        "en": "Changes",
+        "zh-Hant": "修改",
+        "zh-Hans": "修改"
+      },
+      "value": {
+        "en": "One revision inside the agreed scope. New requirements are a separate quote.",
+        "zh-Hant": "議定範圍內一次修改。新要求是另一份報價。",
+        "zh-Hans": "议定范围内一次修改。新要求是另一份报价。"
+      }
+    },
+    {
+      "label": {
+        "en": "Capacity",
+        "zh-Hant": "容量",
+        "zh-Hans": "容量"
+      },
+      "value": {
+        "en": "Two jobs a week, maximum. The queue stays short on purpose.",
+        "zh-Hant": "每七日最多兩單。排隊刻意保持短。",
+        "zh-Hans": "每七日最多两件。排队刻意保持短。"
+      }
+    },
+    {
+      "label": {
+        "en": "Blackout",
+        "zh-Hant": "考試期間",
+        "zh-Hans": "考试期间"
+      },
+      "value": {
+        "en": "No new orders 7–16 Dec 2026 (exam week). Existing orders only.",
+        "zh-Hant": "12 月 7–16 日考試期間不接新單，只做已接的。",
+        "zh-Hans": "12 月 7–16 日考试期间不接新工作，只做已接的。"
+      }
+    },
+    {
+      "label": {
+        "en": "Data",
+        "zh-Hant": "資料",
+        "zh-Hans": "资料"
+      },
+      "value": {
+        "en": "Worked on a copy, deleted after handover. The script and README are yours; I keep no licence to your data.",
+        "zh-Hant": "在你資料的另一份上工作，交付後刪除。程式與說明是你的，我不保留任何使用權。",
+        "zh-Hans": "用你数据的另一份副本工作，交付后删除。程序与说明归你所有，我不保留任何使用权。"
+      }
+    },
+    {
+      "label": {
+        "en": "Accounts",
+        "zh-Hant": "帳號",
+        "zh-Hans": "帐号"
+      },
+      "value": {
+        "en": "I do not take passwords and never send mail from your address. Drafts only, you press send.",
+        "zh-Hant": "我不收密碼，也不會用你的地址發信。只寫好，由你按送出。",
+        "zh-Hans": "我不收密码，也不会用你的地址发信。只写好草稿，由你按下送出。"
+      }
+    },
+    {
+      "label": {
+        "en": "Lawful use",
+        "zh-Hant": "合法使用",
+        "zh-Hans": "合法使用"
+      },
+      "value": {
+        "en": "Scraping and replay work is limited to public pages and accounts you own. No access-control bypass, no DRM, no personal data.",
+        "zh-Hant": "抓取與重放只做公開頁面，以及你自己的帳號。不繞過權限、不做 DRM、不收集個人資料。",
+        "zh-Hans": "抓取与重放只做公开页面，以及你自己的帐号。不绕过权限、不做 DRM、不收集个人信息。"
+      }
+    }
+  ],
+  "proofHeading": {
+    "en": "Things I built that run today",
+    "zh-Hant": "今天仍在跑的作品",
+    "zh-Hans": "今天仍在运行的作品"
+  },
+  "proofNote": {
+    "en": "not screenshots of mockups",
+    "zh-Hant": "不是示意圖",
+    "zh-Hans": "不是示意图"
+  },
+  "proof": [
+    {
+      "slug": "we-writes",
+      "title": "WeWrites",
+      "note": {
+        "en": "A live tutoring site with its own admin, in use now.",
+        "zh-Hant": "有自己後台的補習網站，現在仍在用。",
+        "zh-Hans": "有自己后台的补习网站，现在仍在用。"
+      }
+    },
+    {
+      "slug": "double-check",
+      "title": "Double-Check",
+      "note": {
+        "en": "A six-phase verification pipeline, running in the browser.",
+        "zh-Hant": "六階段驗證流程，在瀏覽器裏跑。",
+        "zh-Hans": "六阶段验证流程，在浏览器里运行。"
+      }
+    },
+    {
+      "slug": "mac-closed-awake",
+      "title": "MacClosedAwake",
+      "note": {
+        "en": "A macOS menu-bar app. Source on GitHub.",
+        "zh-Hant": "macOS 選單列程式，原始碼在 GitHub。",
+        "zh-Hans": "macOS 菜单列程序，源代码在 GitHub。"
+      }
+    },
+    {
+      "slug": "model-gateway",
+      "title": "Model Gateway",
+      "note": {
+        "en": "One local endpoint that speaks both the Anthropic and OpenAI protocols.",
+        "zh-Hant": "一個本地端點，同時說 Anthropic 與 OpenAI 兩種協定。",
+        "zh-Hans": "一个本地端点，同时支援 Anthropic 与 OpenAI 两种协议。"
+      }
+    }
+  ],
+  "projectsMore": {
+    "en": "The full project index, with numbers and evidence.",
+    "zh-Hant": "完整的項目索引，附數字與證據。",
+    "zh-Hans": "完整的项目索引，附数字与证据。"
+  },
+  "faqHeading": {
+    "en": "Questions that come up",
+    "zh-Hant": "常被問的問題",
+    "zh-Hans": "常被问的问题"
+  },
+  "faqNote": {
+    "en": "short answers",
+    "zh-Hant": "簡短回答",
+    "zh-Hans": "简短回答"
+  },
+  "faq": [
+    {
+      "q": {
+        "en": "Can you work with Google Sheets instead of Excel?",
+        "zh-Hant": "可以用 Google Sheets 而不是 Excel 嗎？",
+        "zh-Hans": "可以用 Google Sheets 而不是 Excel 吗？"
+      },
+      "a": {
+        "en": "Yes. Share a copy or export a CSV. The deliverable is a file you can open again, plus the steps to rerun it — not a live connection into your account.",
+        "zh-Hant": "可以。給一份，或匯出 CSV。交付的是一個可以再打開的檔案，加上再跑的方法，不是連進你帳號的連線。",
+        "zh-Hans": "可以。分享一份，或汇出 CSV。交付的是一份可以再打开的文件，加上重复运行的方法，不是连进你帐号的连线。"
+      }
+    },
+    {
+      "q": {
+        "en": "What if my file is bigger than the limit?",
+        "zh-Hant": "檔案比上限大怎麼辦？",
+        "zh-Hans": "文件比上限大怎么办？"
+      },
+      "a": {
+        "en": "Send it. I quote the difference before starting, and the acceptance test is rewritten to match the real size. Nothing is charged before you say go.",
+        "zh-Hant": "送來。我先報差額，驗收標準按真實大小重寫。你說去之前，不收費。",
+        "zh-Hans": "送来。我先报差额，验收标准按真实大小重写。你确认之前，不收费。"
+      }
+    },
+    {
+      "q": {
+        "en": "How is this different from a cheap gig?",
+        "zh-Hant": "這跟便宜的工作有甚麼不同？",
+        "zh-Hans": "这跟便宜的工作有什么不同？"
+      },
+      "a": {
+        "en": "You get an exception log and a validation report, not just an output file. If a row was dropped, you can see which one and why. That is most of the work.",
+        "zh-Hant": "你拿到的不只是一個輸出檔案，還有一份例外紀錄與驗證報告。如果有一行沒有了，你看得到是哪一行、為甚麼。",
+        "zh-Hans": "你拿到的不只是一份输出文件，还有一份例外记录与验证报告。如果有一行缺失，你看得到是哪一行、为什么。"
+      }
+    },
+    {
+      "q": {
+        "en": "Couldn't I just do this with ChatGPT?",
+        "zh-Hant": "我用 ChatGPT 不就行了嗎？",
+        "zh-Hans": "我用 ChatGPT 不就行了吗？"
+      },
+      "a": {
+        "en": "For one file, maybe — and I'll say so. What I sell is the part a chat window cannot reach: your folder structure, the recurring run, the exception list with a written reason for every skipped row.",
+        "zh-Hant": "一個檔案，也許可以，我也會這樣說。我賣的是聊天窗口到不了的部分：你的目錄結構、每月再跑一次、每一行被跳過的原因。",
+        "zh-Hans": "一份文件，也许可以，我也会这样说。我卖的是聊天窗口到不了的部分：你的目录结构、每月再运行一次、每一行被跳过的原因。"
+      }
+    },
+    {
+      "q": {
+        "en": "Why not a friend who studies CS?",
+        "zh-Hant": "為甚麼不找讀 CS 的同學？",
+        "zh-Hans": "为什么不找读 CS 的同学？"
+      },
+      "a": {
+        "en": "Sometimes that is the right call — a one-off favour for a one-off file. The difference is the wrapper: fixed scope in writing, a rerun-safe script, an exception log, and someone who answers about it two weeks later.",
+        "zh-Hant": "有時這樣才對：一次性的檔案，一次性的工作。不同的地方在外面的那一層：寫清的範圍、可以再跑的程式、例外紀錄，同 14 日後仍然回答的人。",
+        "zh-Hans": "有时这样才对：一次性的文件，一次性的工作。分别在外面的那一层：写清的范围、可以重复运行的程序、例外记录，以及 14 日后仍然回答的人。"
+      }
+    },
+    {
+      "q": {
+        "en": "Do you keep my data?",
+        "zh-Hant": "你會保留我的資料嗎？",
+        "zh-Hans": "你会保留我的数据吗？"
+      },
+      "a": {
+        "en": "No. It is worked on a copy, deleted after handover, and never appears in the portfolio. The README shows you how to run the same thing again on your own machine.",
+        "zh-Hant": "不會。在你資料的另一份上工作，交付後刪除，也不會出現在作品集。說明會教你怎樣在自己的機器上再跑一次。",
+        "zh-Hans": "不会。用你数据的另一份副本工作，交付后删除，也不会出现在作品集。说明会教你怎样在自己的机器上重复运行。"
+      }
+    },
+    {
+      "q": {
+        "en": "What can't you do?",
+        "zh-Hant": "你不做甚麼？",
+        "zh-Hans": "你不做什么？"
+      },
+      "a": {
+        "en": "No medical, legal or financial advice; no promises about hours saved that I cannot evidence; no reviews I did not earn; nothing that needs me to hold your account passwords or auto-send messages in your name; no scraping of personal data, and no bypassing access controls.",
+        "zh-Hant": "不做身體、法律或金錢方面的建議；不寫沒有證據的省時說話；不接手帳號密碼，也不用你的名字自動發信；不收集個人資料，也不繞過權限。",
+        "zh-Hans": "不做健康、法律或金钱方面的建议；不说没有证据支持的省时效果；不写虚假的评价；不接管帐号密码，也不用你的名义自动发信；不收集个人信息，也不绕过权限。"
+      }
+    }
+  ],
+  "contactHeading": {
+    "en": "Send one sample",
+    "zh-Hant": "送一個樣本",
+    "zh-Hans": "送一个样本"
+  },
+  "contactNote": {
+    "en": "Email the brief and one sample file. If it is not a job I should take, I will say so.",
+    "zh-Hant": "把說明與一個樣本送來。如果這不是我的工作，我會說。",
+    "zh-Hans": "把说明与一个样本送来。如果这不是适合我的工作，我会说。"
+  },
+  "emailSubject": {
+    "en": "Small job",
+    "zh-Hant": "一個小工作",
+    "zh-Hans": "一个小需求"
+  }
+}

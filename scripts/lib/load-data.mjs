@@ -40,6 +40,7 @@ export function loadData() {
   const profile = addSimplified(readJson("profile.json"), "profile", problems);
   const resume = addSimplified(readJson("resume.json"), "resume", problems);
   const projects = addSimplified(readJson("projects.json"), "projects", problems);
+  const hire = addSimplified(readJson("hire.json"), "hire", problems);
   const i18n = addSimplified(readJson("i18n.json"), "i18n", problems);
 
   if (problems.length) {
@@ -51,6 +52,7 @@ export function loadData() {
   collectTodos(profile, "profile", todos);
   collectTodos(resume, "resume", todos);
   collectTodos(projects, "projects", todos);
+  collectTodos(hire, "hire", todos);
 
   const seen = new Set();
   const duplicateIds = [];
@@ -62,5 +64,5 @@ export function loadData() {
     throw new BuildError(`Duplicate project slug(s): ${duplicateIds.join(", ")}`);
   }
 
-  return { profile, resume, projects, strings: i18n.strings, reviewed: i18n.reviewed, todos };
+  return { profile, resume, projects, hire, strings: i18n.strings, reviewed: i18n.reviewed, todos };
 }

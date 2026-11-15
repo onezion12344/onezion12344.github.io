@@ -113,6 +113,9 @@ function header({ strings, lang, path, profile, home = false }) {
     `<a href="${esc(urlFor(lang, "projects/"))}"${
       path.startsWith("projects") ? ' aria-current="page"' : ""
     }>${esc(t(strings, "nav.projects", lang))}</a>`,
+    `<a href="${esc(urlFor(lang, "hire/"))}"${path === "hire/" ? ' aria-current="page"' : ""}>${esc(
+      t(strings, "nav.hire", lang),
+    )}</a>`,
   ].join("");
 
   return `<header class="site-head">
@@ -173,6 +176,7 @@ export function page({
   robots = "",
   bodyClass = "",
   hasVideo = false,
+  extraScript = "",
   alternateLinks = true,
   switchPath = path,
 }) {
@@ -223,6 +227,7 @@ ${body}
   ${footer({ strings, lang, profile, reviewed })}
   ${hasVideo ? VIDEO_SCRIPT : ""}
   ${THEME_SCRIPT}
+  ${extraScript}
 </body>
 </html>
 `;
