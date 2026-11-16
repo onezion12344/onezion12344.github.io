@@ -51,19 +51,30 @@
       "start": "2026-09",
       "end": "present",
       "summary": {
-        "en": "One semester of the HKU-CDS programme taught in Shanghai. Student ambassador for the cohort, and host of the programme ceremony.",
-        "zh-Hant": "港大-CDS 在上海授課的一個學期。擔任本屆學生大使，並主持課程典禮。"
+        "en": "One semester of the HKU-CDS programme taught at HKU's Zhangjiang Base in Shanghai. Student ambassador for the cohort, and Master of Ceremony for the Semester Start ceremony.",
+        "zh-Hant": "港大-CDS 在上海張江基地授課的一個學期。擔任本屆學生大使，並主持開學典禮。",
+        "zh-Hans": "港大-CDS 在上海张江基地授课的一个学期。担任本届学生大使，并主持开学典礼。"
       },
       "highlights": [
         {
           "en": "Selected as the cohort's student ambassador.",
-          "zh-Hant": "獲選為本屆學生大使。"
+          "zh-Hant": "獲選為本屆學生大使。",
+          "zh-Hans": "获选为本届学生大使。"
         },
         {
-          "en": "Master of Ceremony for the programme ceremony; the event was covered by TVB Jade.",
-          "zh-Hant": "擔任課程典禮司儀；活動由無綫電視翡翠台報道。"
+          "en": "Master of Ceremony for the Semester Start ceremony at HKU's Zhangjiang Base.",
+          "zh-Hant": "擔任港大張江基地開學典禮司儀。",
+          "zh-Hans": "担任港大张江基地开学典礼司仪。"
         }
-      ]
+      ],
+      "link": {
+        "url": "https://news.tvb.com/tc/1192858-%E6%B8%AF%E5%A4%A7%E4%B8%8A%E6%B5%B7%E5%BC%B5%E6%B1%9F%E5%9F%BA%E5%9C%B0%E8%BF%8E%E6%96%B0%E5%AD%B8%E5%B9%B4%E6%A0%A1%E6%96%B9%E7%A8%B1%E5%B0%87%E5%88%A9%E7%94%A8%E7%95%B6%E5%9C%B0%E7%A7%91%E6%8A%80%E7%94%A2%E6%A5%AD%E5%84%AA%E5%8B%A2%E9%96%8B%E5%B1%95%E6%95%99%E5%AD%B8%E7%A7%91%E7%A0%94",
+        "label": {
+          "en": "TVB News, 2 September 2026 — the semester opening",
+          "zh-Hant": "無綫新聞，2026 年 9 月 2 日——開學報道",
+          "zh-Hans": "无线新闻，2026 年 9 月 2 日——开学报道"
+        }
+      }
     },
     {
       "org": {

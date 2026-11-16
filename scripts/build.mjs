@@ -320,6 +320,13 @@ function renderCv(lang) {
               ? `<ul>${e.highlights.map((h) => `<li>${esc(loc(h, lang))}</li>`).join("")}</ul>`
               : ""
           }
+          ${
+            e.link
+              ? `<p class="entry-link"><a href="${esc(e.link.url)}" rel="noopener">${esc(
+                  loc(e.link.label, lang),
+                )}</a></p>`
+              : ""
+          }
         </article>`,
     )
     .join("\n        ");

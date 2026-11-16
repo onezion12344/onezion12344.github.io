@@ -72,6 +72,7 @@ function markdown(lang) {
       for (const h of e.highlights) push(`- ${loc(h, lang)}`);
       push("");
     }
+    if (e.link) push(`[${loc(e.link.label, lang)}](${e.link.url})`, "");
   }
 
   if (resume.awards.length) {
@@ -138,6 +139,13 @@ function printHtml(lang) {
         )}</p>
         <p>${esc(loc(e.summary, lang))}</p>
         ${e.highlights?.length ? `<ul>${li(e.highlights)}</ul>` : ""}
+        ${
+          e.link
+            ? `<p class="meta link"><a href="${esc(e.link.url)}" rel="noopener">${esc(
+                loc(e.link.label, lang),
+              )}</a></p>`
+            : ""
+        }
       </article>`,
     )
     .join("\n");
