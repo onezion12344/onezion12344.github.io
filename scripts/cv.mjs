@@ -71,14 +71,16 @@ function qr(name) {
   return `data:image/png;base64,${fs.readFileSync(file).toString("base64")}`;
 }
 
-function dateRange(lang, { start, end }) {
+function dateRange(lang, { start, end, expectedEnd }) {
   const from = isTodo(start) ? "" : start;
   if (from && end === from) return from; // a single-month entry is not a range
   const parts = [];
   if (from) parts.push(from);
   if (end === "present") parts.push(t(strings, "cv.present", lang));
   else if (isTodo(end)) parts.push(t(strings, "cv.expected", lang));
-  else if (end) parts.push(end);
+  // An expected end is a year plus a qualifier: "2030 (expected)", not a bare
+  // "expected" that says nothing about when. `expectedEnd` opts in per entry.
+  else if (end) parts.push(expectedEnd ? `${end} (${t(strings, "cv.expected", lang)})` : end);
   return parts.join(" — ");
 }
 
@@ -104,13 +106,15 @@ function markdown(lang) {
   push(`## ${t(strings, "cv.education", lang)}`, "");
   for (const e of resume.education) {
     push(`### ${loc(e.org, lang)}`, "");
+    if (e.title) push(`${loc(e.title, lang)}`, "");
     push(`${dateRange(lang, e)} · ${loc(e.location, lang)}`, "");
-    for (const p of e.programmes) push(loc(p, lang), "");
+    for (const p of e.programmes ?? []) push(loc(p, lang), "");
     push(loc(e.summary, lang), "");
     if (e.highlights?.length) {
       for (const h of e.highlights) push(`- ${loc(h, lang)}`);
       push("");
     }
+    if (e.link) push(`[${loc(e.link.label, lang)}](${e.link.url})`, "");
   }
 
   push(`## ${t(strings, "cv.experience", lang)}`, "");
@@ -178,11 +182,24 @@ function printHtml(lang) {
   const education = resume.education
     .map(
       (e) => `<article class="entry">
-        <h3>${esc(loc(e.org, lang))}</h3>
+        <h3>${esc(loc(e.org, lang))}${
+          e.title ? ` <span class="org">· ${esc(loc(e.title, lang))}</span>` : ""
+        }</h3>
         <p class="meta">${esc(dateRange(lang, e))} · ${esc(loc(e.location, lang))}</p>
-        <p class="programme">${e.programmes.map((p) => esc(loc(p, lang))).join("<br>")}</p>
+        ${
+          e.programmes?.length
+            ? `<p class="programme">${e.programmes.map((p) => esc(loc(p, lang))).join("<br>")}</p>`
+            : ""
+        }
         <p>${esc(loc(e.summary, lang))}</p>
         ${e.highlights?.length ? `<ul>${li(e.highlights)}</ul>` : ""}
+        ${
+          e.link
+            ? `<p class="meta link"><a href="${esc(e.link.url)}" rel="noopener">${esc(
+                loc(e.link.label, lang),
+              )}</a></p>`
+            : ""
+        }
       </article>`,
     )
     .join("\n");

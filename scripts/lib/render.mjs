@@ -86,10 +86,46 @@ function themeBoot() {
   return `<script>(function(){try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}})();</script>`;
 }
 
+// Three modes, not two. "System" is the default and is represented by the
+// absence of data-theme, so a visitor who never touches the control keeps
+// following their OS. The choice is stored; system is stored as "system" so an
+// explicit choice of "follow the system" survives a reload.
+//
+// Icons are inline and stroked in currentColor: a glyph like ◐ turns into a
+// featureless white blob the moment the active segment inverts, which is
+// exactly the one state that has to be legible.
 function themeToggle(strings, lang) {
-  return `<button type="button" class="theme-toggle" data-theme-toggle aria-label="${esc(
-    t(strings, "theme.toggle", lang),
-  )}" title="${esc(t(strings, "theme.label", lang))}">◐</button>`;
+  const svg = (body, extra = "") =>
+    `<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"${extra}>${body}</svg>`;
+  const modes = [
+    {
+      id: "system",
+      label: t(strings, "theme.system", lang),
+      icon: svg('<rect x="1.5" y="2.5" width="13" height="9" rx="1"/><path d="M5.5 14h5"/>'),
+    },
+    {
+      id: "light",
+      label: t(strings, "theme.light", lang),
+      icon: svg(
+        '<circle cx="8" cy="8" r="3.1"/><path d="M8 1v1.8M8 13.2V15M1 8h1.8M13.2 8H15M3.1 3.1l1.3 1.3M11.6 11.6l1.3 1.3M12.9 3.1l-1.3 1.3M4.4 11.6l-1.3 1.3"/>',
+      ),
+    },
+    {
+      id: "dark",
+      label: t(strings, "theme.dark", lang),
+      icon: svg('<path d="M13.5 10.2A5.8 5.8 0 0 1 5.8 2.5a5.9 5.9 0 1 0 7.7 7.7z"/>'),
+    },
+  ];
+  return `<div class="theme-switch" role="group" aria-label="${esc(
+    t(strings, "theme.label", lang),
+  )}">${modes
+    .map(
+      (m) =>
+        `<button type="button" class="theme-opt" data-theme-set="${m.id}" title="${esc(
+          m.label,
+        )}" aria-label="${esc(m.label)}" aria-pressed="false">${m.icon}</button>`,
+    )
+    .join("")}</div>`;
 }
 
 function langSwitch(strings, lang, path) {
@@ -157,8 +193,29 @@ function footer({ strings, lang, profile, reviewed }) {
 </footer>`;
 }
 
-const VIDEO_SCRIPT = `<script>(function(){var bs=document.querySelectorAll("[data-play]");for(var i=0;i<bs.length;i++){(function(b){var f=b.closest("[data-video]");var v=f&&f.querySelector("video");if(!v)return;b.addEventListener("click",function(){v.muted=false;v.play();v.setAttribute("controls","");b.hidden=true;});})(bs[i]);}})();</script>`;
-const THEME_SCRIPT = `<script>(function(){var b=document.querySelector("[data-theme-toggle]");if(!b)return;b.addEventListener("click",function(){var r=document.documentElement;var cur=r.dataset.theme||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");var next=cur==="light"?"dark":"light";r.dataset.theme=next;try{localStorage.setItem("theme",next)}catch(e){}});})();</script>`;
+const THEME_SCRIPT = `<script>(function(){
+var r=document.documentElement;
+var btns=[].slice.call(document.querySelectorAll("[data-theme-set]"));
+if(!btns.length)return;
+var mq=matchMedia("(prefers-color-scheme: light)");
+function mode(){var t=r.dataset.theme;return t==="light"||t==="dark"?t:"system";}
+function paint(){
+  var cur=mode();
+  for(var i=0;i<btns.length;i++){
+    var on=btns[i].getAttribute("data-theme-set")===cur;
+    btns[i].setAttribute("aria-pressed",on?"true":"false");
+    btns[i].classList.toggle("on",on);
+  }
+}
+for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){
+  var v=this.getAttribute("data-theme-set");
+  if(v==="system"){delete r.dataset.theme}else{r.dataset.theme=v}
+  try{localStorage.setItem("theme",v)}catch(e){}
+  paint();
+});}
+if(mq.addEventListener){mq.addEventListener("change",paint)}
+paint();
+})();</script>`;
 
 /**
  * Full HTML document shell.
@@ -175,7 +232,6 @@ export function page({
   jsonLd = [],
   robots = "",
   bodyClass = "",
-  hasVideo = false,
   extraScript = "",
   alternateLinks = true,
   switchPath = path,
@@ -225,7 +281,6 @@ export function page({
 ${body}
   </main>
   ${footer({ strings, lang, profile, reviewed })}
-  ${hasVideo ? VIDEO_SCRIPT : ""}
   ${THEME_SCRIPT}
   ${extraScript}
 </body>

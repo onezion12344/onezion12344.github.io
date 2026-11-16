@@ -94,39 +94,25 @@ function projectJsonLd(project, lang) {
 
 // ------------------------------------------------------------------- fragments
 
-function stackBlock(lang) {
-  const groups = profile.stack
-    .map(
-      (group) => `<div class="stack-group">
-          <h3>${esc(loc(group.group, lang))}</h3>
-          <p class="chips">${group.items.map((i) => `<span class="chip">${esc(i)}</span>`).join("")}</p>
-        </div>`,
-    )
-    .join("\n        ");
-  return `<div class="stack" aria-label="${esc(t(strings, "home.stackLabel", lang))}">
-        ${groups}
-      </div>`;
-}
+// The landing page stopped rendering the full stack and the "now" list — both
+// live on the CV and the project hub now — so their renderers went with them.
 
-function nowBlock(lang) {
-  return profile.now
-    .map(
-      (item) => `<div class="now-item">
-          <p class="date">${esc(item.date)}</p>
-          <div>
-            <h3>${esc(loc(item.title, lang))}</h3>
-            <p>${esc(loc(item.body, lang))}</p>
-          </div>
-        </div>`,
-    )
-    .join("\n        ");
+// A project shows a still from its own clip when it has one, and a generated
+// cover when it does not. Failing loudly beats shipping a blank tile.
+function posterFor(project) {
+  if (project.media?.poster) return project.media.poster;
+  const rel = `assets/covers/${project.slug}.svg`;
+  if (!fs.existsSync(path.join(ROOT, rel))) {
+    throw new BuildError(
+      `No still and no cover for "${project.slug}". Run: node scripts/covers.mjs`,
+    );
+  }
+  return `/${rel}`;
 }
 
 function featuredCard(project, lang) {
   const href = urlFor(lang, `projects/${project.slug}/`);
-  const poster = project.media
-    ? `<img src="${esc(project.media.poster)}" width="640" height="360" loading="lazy" alt="">`
-    : "";
+  const poster = `<img src="${esc(posterFor(project))}" width="640" height="360" loading="lazy" alt="">`;
   return `<a class="card work-card" href="${esc(href)}">
           ${poster}
           <span class="work-year">${project.year}</span>
@@ -137,11 +123,15 @@ function featuredCard(project, lang) {
 }
 
 function projectRow(project, lang) {
+  const thumb = `<span class="row-thumb"><img src="${esc(posterFor(project))}" width="256" height="144" loading="lazy" decoding="async" alt=""></span>`;
   return `<li class="row">
           <a class="row-link" href="${esc(urlFor(lang, `projects/${project.slug}/`))}">
-            <span class="row-year">${project.year}</span>
-            <span class="row-main">
-              <span class="row-title">${esc(loc(project.title, lang))}</span>
+            ${thumb}
+            <span class="row-body">
+              <span class="row-head">
+                <span class="row-year">${project.year}</span>
+                <span class="row-title">${esc(loc(project.title, lang))}</span>
+              </span>
               <span class="row-role">${esc(loc(project.role, lang))}</span>
               <span class="row-sum">${esc(loc(project.summary, lang))}</span>
               <span class="row-tags">${tagChips(project.tags)}</span>
@@ -151,21 +141,20 @@ function projectRow(project, lang) {
         </li>`;
 }
 
-function videoBlock(project, lang) {
-  if (!project.media) return "";
+// A still, not a clip: the promo videos are gone from the site, but the frame
+// each project was represented by is still the honest thing to show at the top
+// of its page.
+function stillBlock(project, lang) {
   const m = project.media;
-  const label = `${loc(project.title, lang)} — ${t(strings, "video.label", lang)}`;
-  return `<figure class="video" data-video>
-        <video width="${m.width}" height="${m.height}" muted loop playsinline preload="none" poster="${esc(m.poster)}" aria-label="${esc(label)}">
-          <source src="${esc(m.webm)}" type="video/webm">
-          <source src="${esc(m.mp4)}" type="video/mp4">
-        </video>
-        <button type="button" class="video-play" data-play aria-label="${esc(t(strings, "video.play", lang))}">▶ <span>${esc(t(strings, "video.play", lang))}</span></button>
-        <figcaption>${esc(label)} · ${esc(t(strings, "video.note", lang))}</figcaption>
+  if (!m?.poster) return "";
+  return `<figure class="still">
+        <img src="${esc(m.poster)}" width="${m.width ?? 1280}" height="${
+          m.height ?? 720
+        }" loading="lazy" decoding="async" alt="${esc(loc(project.title, lang))}">
       </figure>`;
 }
 
-function entryMeta(lang, { start, end, endLabel, location, result }) {
+function entryMeta(lang, { start, end, endLabel, expectedEnd, location, result }) {
   const parts = [];
   const from = isTodo(start) ? "" : start;
   const sameMonth = from && end === from;
@@ -174,7 +163,7 @@ function entryMeta(lang, { start, end, endLabel, location, result }) {
     // a single-month entry is not a range
   } else if (end === "present") parts.push(t(strings, "cv.present", lang));
   else if (isTodo(end)) parts.push(t(strings, "cv.expected", lang));
-  else if (end) parts.push(end);
+  else if (end) parts.push(expectedEnd ? `${end} (${t(strings, "cv.expected", lang)})` : end);
   if (location) parts.push(loc(location, lang));
   if (result && !isTodo(result)) parts.push(result);
   return parts.join(" · ");
@@ -203,6 +192,14 @@ function renderHome(lang) {
     .filter(Boolean)
     .join("\n          ");
 
+  // A landing page, not a second index: one paragraph and three ways out. The
+  // depth lives on the pages this one points at.
+  const routes = [
+    { path: "projects/", label: t(strings, "nav.projects", lang), solid: true },
+    { path: "cv/", label: t(strings, "nav.cv", lang), solid: false },
+    { path: "hire/", label: t(strings, "nav.hire", lang), solid: false },
+  ];
+
   const body = `<section class="section hero" id="about">
       <div class="wrap">
         ${marker(strings, "section.about", lang)}
@@ -219,24 +216,21 @@ function renderHome(lang) {
             <p class="tagline">${esc(loc(profile.tagline, lang))}</p>
           </div>
         </div>
-        <div class="prose">
-        ${paragraphs(profile.bio, lang)}
-        </div>
-        ${stackBlock(lang)}
+        <p class="lede">${esc(loc(profile.bio[0], lang))} ${esc(loc(profile.bio[1], lang))}</p>
+        <nav class="home-routes" aria-label="${esc(t(strings, "home.routesLabel", lang))}">
+          ${routes
+            .map(
+              (r) =>
+                `<a class="btn${r.solid ? " btn-solid" : ""}" href="${esc(
+                  urlFor(lang, r.path),
+                )}">${esc(r.label)} →</a>`,
+            )
+            .join("\n          ")}
+        </nav>
       </div>
     </section>
 
-    <section class="section" id="now">
-      <div class="wrap">
-        ${marker(strings, "section.now", lang)}
-        <p class="section-note">${esc(t(strings, "home.updated", lang))}</p>
-        <div class="now-list">
-        ${nowBlock(lang)}
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="work">
+    <section class="section" id="flagship">
       <div class="wrap-wide">
         ${marker(strings, "section.work", lang)}
         <div class="work-grid">
@@ -245,16 +239,6 @@ function renderHome(lang) {
         <p class="more"><a class="btn" href="${esc(
           urlFor(lang, "projects/"),
         )}">${esc(t(strings, "home.workMore", lang))} →</a></p>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="wrap-wide">
-        ${marker(strings, "section.projects", lang)}
-        <p class="section-note">${esc(
-          t(strings, "home.projectsCount", lang, { n: projects.length }),
-        )}</p>
-        ${projectIndexGroups(lang)}
       </div>
     </section>
 
@@ -294,16 +278,22 @@ function renderCv(lang) {
   const education = resume.education
     .map((e) => {
       const gpa = isTodo(e.gpa) ? "" : `<p class="entry-note">${esc(t(strings, "cv.gpa", lang))}: ${esc(e.gpa)}</p>`;
-      const programmes = e.programmes.map((p) => esc(loc(p, lang))).join("<br>");
+      const programmes = (e.programmes ?? []).map((p) => esc(loc(p, lang))).join("<br>");
       const highlights = e.highlights?.length
         ? `<ul>${e.highlights.map((h) => `<li>${esc(loc(h, lang))}</li>`).join("")}</ul>`
         : "";
+      const link = e.link
+        ? `<p class="entry-note"><a href="${esc(e.link.url)}" rel="noopener">${esc(loc(e.link.label, lang))}</a></p>`
+        : "";
       return `<article class="entry">
-          <h3>${esc(loc(e.org, lang))}</h3>
+          <h3>${esc(loc(e.org, lang))}${
+            e.title ? ` <span class="org">· ${esc(loc(e.title, lang))}</span>` : ""
+          }</h3>
           <p class="entry-meta">${esc(entryMeta(lang, e))}</p>
-          <p class="entry-title">${programmes}</p>
+          ${programmes ? `<p class="entry-title">${programmes}</p>` : ""}
           <p>${esc(loc(e.summary, lang))}</p>
           ${highlights}
+          ${link}
           ${gpa}
         </article>`;
     })
@@ -459,6 +449,7 @@ function renderProjectIndex(lang) {
         <p class="section-note">${esc(
           t(strings, "projects.countLabel", lang, { n: projects.length }),
         )} · ${esc(t(strings, "projects.privateNote", lang))}</p>
+        <p class="section-note">${esc(t(strings, "projects.hubNote", lang))}</p>
         ${projectIndexGroups(lang)}
       </div>
     </section>`;
@@ -510,7 +501,7 @@ function renderProject(project, lang) {
           )}</span></dd></div>
         </dl>
         ${links}
-        ${videoBlock(project, lang)}
+        ${stillBlock(project, lang)}
         <div class="prose">
           <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.what", lang))}</h2>
           <p>${esc(loc(project.what, lang))}</p>
@@ -524,22 +515,7 @@ function renderProject(project, lang) {
           }
           <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.highlights", lang))}</h2>
           <ul class="highlight-list">${project.highlights
-            .map(
-              (h) => `<li class="highlight${h.media ? " has-clip" : ""}">
-            <p>${esc(loc(h, lang))}</p>${
-              h.media
-                ? `
-            <figure class="clip" data-video>
-              <video width="${h.media.width}" height="${h.media.height}" muted loop playsinline preload="none" poster="${esc(h.media.poster)}">
-                <source src="${esc(h.media.webm)}" type="video/webm">
-                <source src="${esc(h.media.mp4)}" type="video/mp4">
-              </video>
-              <button type="button" class="video-play" data-play aria-label="${esc(t(strings, "video.play", lang))}">▶</button>
-            </figure>`
-                : ""
-            }
-          </li>`,
-            )
+            .map((h) => `<li class="highlight"><p>${esc(loc(h, lang))}</p></li>`)
             .join("")}</ul>
           <h2 class="marker"><span class="hash" aria-hidden="true">#</span>${esc(t(strings, "project.evidence", lang))}</h2>
           <ul class="evidence">${project.evidence
@@ -578,7 +554,7 @@ function renderProject(project, lang) {
     profile,
     reviewed,
     jsonLd: [projectJsonLd(project, lang)],
-    hasVideo: Boolean(project.media),
+    path: `projects/${project.slug}/`,
   });
 }
 

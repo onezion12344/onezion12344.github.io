@@ -6,7 +6,8 @@
         "zh-Hant": "香港大學"
       },
       "start": "2025",
-      "end": "TODO(owner)",
+      "end": "2030",
+      "expectedEnd": true,
       "programmes": [
         {
           "en": "BEng, AI & Data Science",
@@ -32,9 +33,7 @@
         "en": "Hong Kong",
         "zh-Hant": "香港"
       }
-    }
-  ],
-  "experience": [
+    },
     {
       "org": {
         "en": "HKU-CDS Shanghai Semester",
@@ -55,18 +54,6 @@
         "zh-Hant": "港大-CDS 在上海張江基地授課的一個學期。擔任本屆學生大使，並主持開學典禮。",
         "zh-Hans": "港大-CDS 在上海张江基地授课的一个学期。担任本届学生大使，并主持开学典礼。"
       },
-      "highlights": [
-        {
-          "en": "Selected as the cohort's student ambassador.",
-          "zh-Hant": "獲選為本屆學生大使。",
-          "zh-Hans": "获选为本届学生大使。"
-        },
-        {
-          "en": "Master of Ceremony for the Semester Start ceremony at HKU's Zhangjiang Base.",
-          "zh-Hant": "擔任港大張江基地開學典禮司儀。",
-          "zh-Hans": "担任港大张江基地开学典礼司仪。"
-        }
-      ],
       "link": {
         "url": "https://news.tvb.com/tc/1192858-%E6%B8%AF%E5%A4%A7%E4%B8%8A%E6%B5%B7%E5%BC%B5%E6%B1%9F%E5%9F%BA%E5%9C%B0%E8%BF%8E%E6%96%B0%E5%AD%B8%E5%B9%B4%E6%A0%A1%E6%96%B9%E7%A8%B1%E5%B0%87%E5%88%A9%E7%94%A8%E7%95%B6%E5%9C%B0%E7%A7%91%E6%8A%80%E7%94%A2%E6%A5%AD%E5%84%AA%E5%8B%A2%E9%96%8B%E5%B1%95%E6%95%99%E5%AD%B8%E7%A7%91%E7%A0%94",
         "label": {
@@ -75,7 +62,9 @@
           "zh-Hans": "无线新闻，2026 年 9 月 2 日——开学报道"
         }
       }
-    },
+    }
+  ],
+  "experience": [
     {
       "org": {
         "en": "Independent",
@@ -106,14 +95,9 @@
           "zh-Hans": "\u4e3a Excel \u4e0e CSV \u5bf9\u8d26\u505a\u4e86\u4ea4\u4ed8\u5de5\u5177\uff1a24 \u9879\u81ea\u68c0\uff0c\u4e24\u4e07\u884c 0.48 \u79d2\u5b8c\u6210\uff0cGBK \u4e0e UTF-8 \u90fd\u5904\u7406\u3002"
         },
         {
-          "en": "Built the intake: a broker over ten freelance platforms, plus a daily loop that ranks new listings and drafts a scope before I read them.",
+          "en": "Built the intake: a broker over ten freelance platforms, plus a daily loop that ranks new listings and drafts a scope before review.",
           "zh-Hant": "\u505a\u4e86\u63a5\u55ae\u90a3\u4e00\u7aef\uff1a\u8986\u84cb\u5341\u500b\u81ea\u7531\u5de5\u4f5c\u5e73\u53f0\u7684\u4e2d\u7e7c\uff0c\u52a0\u4e0a\u6bcf\u65e5\u8ff4\u5708\uff0c\u5148\u66ff\u6211\u6392\u5e8f\u65b0\u59d4\u8a17\u4e26\u8349\u64ec\u7bc4\u570d\u3002",
           "zh-Hans": "\u505a\u4e86\u63a5\u5355\u90a3\u4e00\u7aef\uff1a\u8986\u76d6\u5341\u4e2a\u81ea\u7531\u5de5\u4f5c\u5e73\u53f0\u7684\u4e2d\u7ee7\uff0c\u52a0\u4e0a\u6bcf\u65e5\u5faa\u73af\uff0c\u5148\u66ff\u6211\u6392\u5e8f\u65b0\u59d4\u6258\u5e76\u8349\u62df\u8303\u56f4\u3002"
-        },
-        {
-          "en": "Priced per job, so the scope is agreed before the work starts.",
-          "zh-Hant": "\u6309\u55ae\u5b9a\u50f9\uff0c\u7bc4\u570d\u5728\u958b\u5de5\u524d\u5c31\u8b1b\u5b9a\u3002",
-          "zh-Hans": "\u6309\u5355\u5b9a\u4ef7\uff0c\u8303\u56f4\u5728\u5f00\u5de5\u524d\u5c31\u8bb2\u5b9a\u3002"
         }
       ]
     },
@@ -138,8 +122,8 @@
       },
       "highlights": [
         {
-          "en": "Built the Qoder adapter (about 230 lines, 17 tests), so the agent drives Qoder's SDK end to end.",
-          "zh-Hant": "建立 Qoder 適配器（約 230 行、17 個測試），讓 agent 端到端驅動 Qoder 的 SDK。"
+          "en": "Built the Qoder adapter (17 tests), so the agent drives Qoder's SDK end to end.",
+          "zh-Hant": "建立 Qoder 適配器（17 個測試），讓 agent 端到端驅動 Qoder 的 SDK。"
         },
         {
           "en": "Built a per-role company view: an LLM summariser plus a kanban for each role, with 16 tests.",
@@ -167,23 +151,9 @@
       "start": "2026-06",
       "end": "present",
       "summary": {
-        "en": "The public site and content system for a DSE tutoring team, built so the team publishes classes and updates without waiting on a developer, plus the listening-material pipeline behind its course products.",
-        "zh-Hant": "DSE 補習團隊的對外網站與內容系統，讓團隊不用等開發者就能發佈課程與更新；同時負責課程產品背後的聆聽教材流水線。"
-      },
-      "highlights": [
-        {
-          "en": "Site and content system live on its own domain (wewrites.ai).",
-          "zh-Hant": "網站與內容系統已在自己的網域上線（wewrites.ai）。"
-        },
-        {
-          "en": "Edit path designed for non-developers, so the team is not blocked on engineering.",
-          "zh-Hant": "編輯流程為非技術同事而設，團隊不會卡在工程上。"
-        },
-        {
-          "en": "DSE listening-material pipeline, generating papers from analysed past papers.",
-          "zh-Hant": "DSE 聆聽教材流水線，按分析過的往卷生成試卷。"
-        }
-      ]
+        "en": "The public site and content system for a DSE tutoring team, live at wewrites.ai — built so the team publishes classes and updates without waiting on a developer, plus the DSE Paper 3 Part A production system behind its course products.",
+        "zh-Hant": "DSE 補習團隊的對外網站與內容系統，已在 wewrites.ai 上線——讓團隊不用等開發者就能發佈課程與更新，同時負責課程產品背後的 DSE Paper 3 Part A 生產系統。"
+      }
     },
     {
       "org": {
@@ -259,6 +229,51 @@
       "summary": {
         "en": "An AI interactive visual novel with GenAI as a dynamic game master: it reads a viewer's YouTube watch history and surfaces cognitive biases and echo chambers through personalised stories.",
         "zh-Hant": "以生成式 AI 作為動態遊戲主持的互動視覺小說：讀取使用者的 YouTube 觀看紀錄，用個人化故事呈現認知偏差與資訊繭房。"
+      },
+      "highlights": []
+    },
+    {
+      "org": {
+        "en": "NOVA: National AI Creativity Competition",
+        "zh-Hant": "NOVA: National AI Creativity Competition"
+      },
+      "title": {
+        "en": "Two-person entry — “Double-Check”",
+        "zh-Hant": "雙人參賽——《Double-Check》"
+      },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "2026",
+      "end": "2026",
+      "summary": {
+        "en": "A fact-checking tool entered in the Social Impact track of HKUST and Tencent Research Institute's national AI creativity competition — demo live at factcheck.onezion.top.",
+        "zh-Hant": "為科大與騰訊研究院合辦的全國人工智能創意大賽「社會影響」組所做的查證工具——示範站 factcheck.onezion.top 仍在線。",
+        "zh-Hans": "为科大与腾讯研究院合办的全国人工智能创意大赛“社会影响”组所做的查证工具——示范站 factcheck.onezion.top 仍在线。"
+      },
+      "highlights": []
+    },
+    {
+      "org": {
+        "en": "HKCGI Corporate Governance Paper Competition 2026",
+        "zh-Hant": "HKCGI 2026 企業管治論文比賽",
+        "zh-Hans": "HKCGI 2026 公司治理论文比赛"
+      },
+      "title": {
+        "en": "Essay — “Reflection Is All We Left”",
+        "zh-Hant": "論文——《Reflection Is All We Left》"
+      },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "2026",
+      "end": "2026",
+      "summary": {
+        "en": "An essay on whether AI is the make-or-break for corporate governance, entered in the HKCGI paper competition.",
+        "zh-Hant": "一篇討論「AI 是否企業管治成敗關鍵」的論文，參加 HKCGI 論文比賽。",
+        "zh-Hans": "一篇讨论“AI 是否公司治理成败关键”的论文，参加 HKCGI 论文比赛。"
       },
       "highlights": []
     }

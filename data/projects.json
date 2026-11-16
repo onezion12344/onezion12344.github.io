@@ -14,8 +14,8 @@
       { "label": { "en": "wewrites.ai", "zh-Hant": "wewrites.ai" }, "url": "https://wewrites.ai/" }
     ],
     "summary": {
-      "en": "The site and content system for a DSE tutoring team — bilingual copy, class photography, teacher and course pages, and an edit path a non-developer can run.",
-      "zh-Hant": "DSE 補習團隊的網站與內容系統——雙語文案、課堂相片、導師與課程頁，以及非技術同事也操作得來的編輯流程。"
+      "en": "The site and content system for a DSE tutoring team — bilingual copy, class photography, teacher and course pages, an edit path a non-developer can run, and the DSE Paper 3 Part A production system behind its course products.",
+      "zh-Hant": "DSE 補習團隊的網站與內容系統——雙語文案、課堂相片、導師與課程頁、非技術同事也操作得來的編輯流程，以及課程產品背後的 DSE Paper 3 Part A 生產系統。"
     },
     "what": {
       "en": "A public site for a Hong Kong DSE tutoring team: who teaches, what each class covers, and how to get in touch. Behind it sits a content system the team updates itself.",
@@ -28,14 +28,7 @@
     "highlights": [
       {
         "en": "A design system built to stay consistent and reusable, and to follow the brand's philosophy rather than a template's.",
-        "zh-Hant": "設計系統維持一致、可重用，並跟隨品牌理念，而不是套用範本。",
-        "media": {
-          "mp4": "/assets/video/we-writes-tour.mp4",
-          "webm": "/assets/video/we-writes-tour.webm",
-          "poster": "/assets/video/we-writes-tour.jpg",
-          "width": 640,
-          "height": 360
-        }
+        "zh-Hant": "設計系統維持一致、可重用，並跟隨品牌理念，而不是套用範本。"
       },
       {
         "en": "Content and components link to one another as a graph, which makes dependencies easier to manage.",
@@ -51,9 +44,7 @@
       { "text": { "en": "Dark editorial layout built to survive real class photos rather than placeholders", "zh-Hant": "深色編輯式版面，為真實課堂相片而設，而非佔位圖" }, "source": "portfolio, measured 2026-10-31" }
     ],
     "media": {
-      "mp4": "/assets/video/we-writes.mp4",
-      "webm": "/assets/video/we-writes.webm",
-      "poster": "/assets/video/we-writes.jpg",
+      "poster": "/assets/shots/we-writes.jpg",
       "width": 1280,
       "height": 720
     }
@@ -102,9 +93,7 @@
       { "text": { "en": "Public repository and separate Homebrew tap", "zh-Hant": "公開倉庫，另設 Homebrew tap" }, "source": "gh api, 2026-11-06" }
     ],
     "media": {
-      "mp4": "/assets/video/mac-closed-awake.mp4",
-      "webm": "/assets/video/mac-closed-awake.webm",
-      "poster": "/assets/video/mac-closed-awake.jpg",
+      "poster": "/assets/shots/mac-closed-awake.jpg",
       "width": 1280,
       "height": 720
     }
@@ -152,9 +141,7 @@
       { "text": { "en": "Documentation live on GitHub Pages", "zh-Hant": "說明文件在 GitHub Pages 上線" }, "source": "gh api, 2026-11-06" }
     ],
     "media": {
-      "mp4": "/assets/video/double-check.mp4",
-      "webm": "/assets/video/double-check.webm",
-      "poster": "/assets/video/double-check.jpg",
+      "poster": "/assets/shots/double-check.jpg",
       "width": 1280,
       "height": 720
     }
@@ -174,8 +161,8 @@
     "tags": ["Agents", "TypeScript", "Local-first"],
     "links": [],
     "summary": {
-      "en": "A private control plane for personal agents — input, memory, execution, communication, outreach and evolving — running locally, never publicly.",
-      "zh-Hant": "個人 Agent 的私有控制面——輸入、記憶、執行、通訊、對外接觸與演化——只在本地運行，不對外公開。"
+      "en": "A private control plane for personal agents — input, memory, execution, communication, outreach and evolving — running locally, never publicly. 669 contract tests green.",
+      "zh-Hant": "個人 Agent 的私有控制面——輸入、記憶、執行、通訊、對外接觸與演化——只在本地運行，不對外公開。669 個契約測試全綠。"
     },
     "what": {
       "en": "Six layers behind one local API: activity input, a memory layer with a propose → inbox → drain path, a task, run and approval state machine, communication channels, outreach scans, and a set of deterministic detectors. The product repository holds no personal data.",
@@ -199,9 +186,7 @@
       { "text": { "en": "Six layers; product repo contains no personal data", "zh-Hant": "六層架構；產品倉庫不含個人資料" }, "source": "personal-os README, 2026-11-05" }
     ],
     "media": {
-      "mp4": "/assets/video/personal-os.mp4",
-      "webm": "/assets/video/personal-os.webm",
-      "poster": "/assets/video/personal-os.jpg",
+      "poster": "/assets/shots/personal-os.jpg",
       "width": 1280,
       "height": 720
     }
@@ -246,9 +231,7 @@
       { "text": { "en": "Live on GitHub Pages", "zh-Hant": "在 GitHub Pages 上線" }, "source": "portfolio, measured 2026-10-31" }
     ],
         "media": {
-      "mp4": "/assets/video/comp2119-lectures.mp4",
-      "webm": "/assets/video/comp2119-lectures.webm",
-      "poster": "/assets/video/comp2119-lectures.jpg",
+      "poster": "/assets/shots/comp2119-lectures.jpg",
       "width": 1280,
       "height": 720
     }
@@ -291,7 +274,11 @@
     "evidence": [
       { "text": { "en": "Live at p4.onezion.top with an access code", "zh-Hant": "在 p4.onezion.top 上線，需存取碼" }, "source": "portfolio, measured 2026-10-31" }
     ],
-    "media": null
+    "media": {
+      "poster": "/assets/shots/dse-paper-4-live.png",
+      "width": 1000,
+      "height": 625
+    }
   },
   {
     "id": "shanghainese-course",
@@ -330,7 +317,12 @@
       { "text": { "en": "270 words · 55 sentences · 47 lessons · 6 units", "zh-Hant": "270 個詞 · 55 句 · 47 課 · 6 個單元" }, "source": "generated course data, measured 2026-11-07" },
       { "text": { "en": "32,366 lines · 13 commits · 11 test files", "zh-Hant": "32,366 行 · 13 個 commit · 11 個測試檔" }, "source": "repository, measured 2026-11-07" },
       { "text": { "en": "Live, with several courses inside", "zh-Hant": "已上線，內有數門課程" }, "source": "owner, 2026-11-07" }
-    ]
+    ],
+    "media": {
+      "poster": "/assets/shots/shanghainese-course.png",
+      "width": 560,
+      "height": 350
+    }
   },
   {
     "id": "model-gateway",
@@ -347,8 +339,8 @@
     "tags": ["Protocols", "Routing", "Local"],
     "links": [],
     "summary": {
-      "en": "One loopback endpoint that speaks both the Anthropic and OpenAI protocols and routes by model prefix, so one CLI can use several vendors.",
-      "zh-Hant": "一個本機迴環端點，同時講 Anthropic 與 OpenAI 兩種協定，並按模型前綴路由，令一個 CLI 可以用多間廠商的模型。"
+      "en": "One loopback endpoint that speaks both the Anthropic and OpenAI protocols and routes by model prefix, so one CLI can use several vendors. 13.7k lines, 16 test modules.",
+      "zh-Hant": "一個本機迴環端點，同時講 Anthropic 與 OpenAI 兩種協定，並按模型前綴路由，令一個 CLI 可以用多間廠商的模型。13.7k 行，16 個測試模組。"
     },
     "what": {
       "en": "A local gateway that accepts requests in either protocol, routes them by model prefix, and keeps streaming and tool calls working across vendors.",
@@ -386,9 +378,9 @@
     "tags": ["MCP", "TypeScript", "Event bus", "Policy"],
     "links": [],
     "summary": {
-      "en": "Every message between agents, the staff layer and outside clients passes one policy point — with per-route limits, a capability gate and a record of who was told what.",
-      "zh-Hant": "Agent、幕僚層與外部客戶之間的每一條訊息都經過同一個策略點：逐路由上限、能力閘門，以及誰被告知了什麼的記錄。",
-      "zh-Hans": "Agent、幕僚层与外部客户之间的每一条消息都经过同一个策略点：逐路由上限、能力闸门，以及谁被告知了什么的记录。"
+      "en": "Every message between agents, the staff layer and outside clients passes one policy point — with per-route limits, a capability gate and a record of who was told what. 119 test cases across 16 files.",
+      "zh-Hant": "Agent、幕僚層與外部客戶之間的每一條訊息都經過同一個策略點：逐路由上限、能力閘門，以及誰被告知了什麼的記錄。16 個檔案共 119 個測試案例。",
+      "zh-Hans": "Agent、幕僚层与外部客户之间的每一条消息都经过同一个策略点：逐路由上限、能力闸门，以及谁被告知了什么的记录。16 个文件共 119 个测试用例。"
     },
     "what": {
       "en": "A broker inside a private agent platform. It routes internal, staff-level and external conversations, owns delivery and retries, and hands outside client work to a separate freelancing broker over MCP rather than doing it itself.",
@@ -532,9 +524,7 @@
       { "text": { "en": "Live at onezion12344.github.io/let-go-journey", "zh-Hant": "在 onezion12344.github.io/let-go-journey 上線" }, "source": "gh api, 2026-11-06" }
     ],
         "media": {
-      "mp4": "/assets/video/let-go-journey.mp4",
-      "webm": "/assets/video/let-go-journey.webm",
-      "poster": "/assets/video/let-go-journey.jpg",
+      "poster": "/assets/shots/let-go-journey.jpg",
       "width": 1280,
       "height": 720
     }

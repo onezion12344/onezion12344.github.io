@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Model Gateway — cover">
+  <rect width="640" height="360" fill="#0b0b0c"/>
+  <g><path d="M330 320 L454 40" stroke="#4a4a4e" stroke-width="6" opacity="0.85"/><path d="M370 320 L494 40" stroke="#4a4a4e" stroke-width="6" opacity="0.85"/><path d="M410 320 L534 40" stroke="#4a4a4e" stroke-width="6" opacity="0.85"/><path d="M450 320 L574 40" stroke="#4a4a4e" stroke-width="6" opacity="0.85"/><path d="M490 320 L614 40" stroke="#f2f2f2" stroke-width="8" opacity="0.85"/><path d="M530 320 L654 40" stroke="#4a4a4e" stroke-width="6" opacity="0.85"/><path d="M570 320 L694 40" stroke="#4a4a4e" stroke-width="6" opacity="0.85"/></g>
+  <rect x="0.5" y="0.5" width="639" height="359" fill="none" stroke="#2c2c2f"/>
+  <text x="40" y="52" fill="#747477" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" letter-spacing="2">2026 · local</text>
+  <rect x="40" y="120" width="44" height="3" fill="#f2f2f2"/>
+<text x="40" y="190" fill="#f2f2f2" font-family="ui-serif, Iowan Old Style, Palatino, Georgia, serif" font-size="30">Model Gateway</text>
+  <text x="40" y="316" fill="#a3a3a6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5">protocols · routing · local</text>
+</svg>

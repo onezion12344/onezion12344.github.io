@@ -5,14 +5,14 @@
     "zh-Hans": "一次只接一件 · 香港 · GMT+8"
   },
   "heading": {
-    "en": "Price and “done means this” — before I start.",
-    "zh-Hant": "先講價錢，同「做幾多先算完成」，再開工。",
-    "zh-Hans": "先讲价钱，再讲“怎样才算完成”，然后开工。"
+    "en": "AI drafts it. I sign it off.",
+    "zh-Hant": "AI 寫第一稿，我簽收。",
+    "zh-Hans": "AI 写第一稿，我签收。"
   },
   "lede": {
-    "en": "I clean spreadsheets, turn PDF piles into rows, automate the folder you redo every month — and build the small tools around it: an MCP server, a scraper, an AI workflow. You get a price and a “done means this” sentence before I start, then a clean file, a log of what changed, and a script you can run again.",
-    "zh-Hant": "我整理表格、把一批 PDF 變成一行行資料，也會把你每個月重做一次的檔案流程自動化；再往外一點，是 MCP 伺服器、網站抓取、AI 工作流這些小工具。開工之前，你先拿到價錢，同「做幾多先算完成」這一句；交付時有乾淨的檔案、改了甚麼的紀錄，同一支可以再跑的程式。",
-    "zh-Hans": "我整理表格、把一批 PDF 变成一行行数据，也会把你每个月重做一次的文件流程自动化；再往外一点，是 MCP 服务器、网站抓取、AI 工作流这些小工具。开工之前，你先拿到价钱，以及“怎样才算完成”这一句；交付时有一份干净的文件、一份改动记录，和一份可以重复运行的程序。"
+    "en": "You could paste this into a chat window and get something back in ten seconds. The ten seconds are not the expensive part — the hour afterwards is: working out which rows were guessed, which numbers came from nowhere, and who answers when it is wrong. I take that hour. We agree “done means this” in one sentence, I run the tools, check the output row by row, and sign the file: a clean spreadsheet, a folder that runs itself, an MCP server, a scraper.",
+    "zh-Hant": "你可以把這件事丟進聊天視窗，十秒就有東西回來。貴的從來不是那十秒，而是之後那一小時：搞清楚哪幾行是它猜的、哪個數字不知從何而來，以及出錯時找誰。那一小時由我來做。我和你用一句話講定「做幾多先算完成」，然後我跑工具、逐行核對，最後在文件上簽名：一個乾淨的表格、一個會自己跑的資料夾、一個 MCP 伺服器、一個抓取腳本。",
+    "zh-Hans": "你可以把这件事丢进聊天窗口，十秒就有东西回来。贵的从来不是那十秒，而是之后那一小时：弄清哪几行是它猜的、哪个数字不知从何而来，以及出错时找谁。那一小时由我来做。我和你用一句话讲定“怎样才算完成”，然后我跑工具、逐行核对，最后在文件上签名：一个干净的表格、一个会自己跑的文件夹、一个 MCP 服务器、一个抓取脚本。"
   },
   "stats": [
     {
@@ -580,6 +580,18 @@
   "terms": [
     {
       "label": {
+        "en": "What I promise",
+        "zh-Hant": "我承諾咩",
+        "zh-Hans": "我承诺什么"
+      },
+      "value": {
+        "en": "Every job starts with one written sentence: done means this. If the result misses it and you say so within 14 days, I redo it free — or refund the fee for that job. That is the whole of what I owe you.",
+        "zh-Hant": "每單開工前，先寫低一句：做幾多先算完成。交付後 14 日內你指出結果唔符合嗰句，我免費重做；做唔到，退返嗰單嘅錢。我對嗰單嘅義務就係咁多。",
+        "zh-Hans": "每件工作在开工前，先写下的一句：做到什么才算完成。交付后 14 天内你指出结果不符合这一句，我免费重做；做不到，退回这一件工作的费用。我对这一件工作的义务就这么多。"
+      }
+    },
+    {
+      "label": {
         "en": "Payment",
         "zh-Hant": "付款",
         "zh-Hans": "付款"
@@ -672,6 +684,42 @@
         "en": "Scraping and replay work is limited to public pages and accounts you own. No access-control bypass, no DRM, no personal data.",
         "zh-Hant": "抓取與重放只做公開頁面，以及你自己的帳號。不繞過權限、不做 DRM、不收集個人資料。",
         "zh-Hans": "抓取与重放只做公开页面，以及你自己的帐号。不绕过权限、不做 DRM、不收集个人信息。"
+      }
+    },
+    {
+      "label": {
+        "en": "Limit",
+        "zh-Hant": "上限",
+        "zh-Hans": "上限"
+      },
+      "value": {
+        "en": "Total liability for any job is capped at the fee you paid for that job. No indirect or consequential loss, lost profit, lost business or lost data — keep your own backup before you send anything.",
+        "zh-Hant": "任何一單嘅責任，合計唔超過你就嗰單實際付嘅費用。唔包間接損失、利潤損失、生意機會損失、資料損失——送件前請自己留一份備份。",
+        "zh-Hans": "任何一件工作的责任，合计不超过你就该件工作实际支付的费用。不包括间接损失、利润损失、商业机会损失、数据丢失——送件前请自己留一份备份。"
+      }
+    },
+    {
+      "label": {
+        "en": "Where the limit doesn't apply",
+        "zh-Hant": "上限唔適用嘅情況",
+        "zh-Hans": "上限不适用的情形"
+      },
+      "value": {
+        "en": "Nothing above limits liability for fraud or wilful misconduct, or anything else the law does not allow to be excluded.",
+        "zh-Hant": "以上各條，唔限制欺詐、故意不當行為，以及法律唔准排除嘅責任。",
+        "zh-Hans": "以上各条，不限制欺诈、故意不当行为，以及法律不准排除的责任。"
+      }
+    },
+    {
+      "label": {
+        "en": "What I don't promise",
+        "zh-Hant": "我唔承諾咩",
+        "zh-Hans": "我不承诺什么"
+      },
+      "value": {
+        "en": "Anything past the written acceptance test. Not fitness for a purpose we never wrote down. No legal, tax, medical or investment advice. A delivery date is a target: if I slip I tell you early, and refund or extend by the day.",
+        "zh-Hant": "書面驗收標準以外嘅嘢。你冇寫低嘅用途，我唔保證啱用。唔做法律、稅務、醫療、投資意見。交貨日係目標日：我遲咗會早講，按日退款或者順延。",
+        "zh-Hans": "书面验收标准以外的东西。你没有写下的用途，我不保证适用。不做法律、税务、医疗、投资意见。交货日是目标日：我延误了会提前说，按日退款或者顺延。"
       }
     }
   ],
@@ -782,9 +830,21 @@
         "zh-Hans": "我用 ChatGPT 不就行了吗？"
       },
       "a": {
-        "en": "For one file, maybe — and I'll say so. What I sell is the part a chat window cannot reach: your folder structure, the recurring run, the exception list with a written reason for every skipped row.",
-        "zh-Hant": "一個檔案，也許可以，我也會這樣說。我賣的是聊天窗口到不了的部分：你的目錄結構、每月再跑一次、每一行被跳過的原因。",
-        "zh-Hans": "一份文件，也许可以，我也会这样说。我卖的是聊天窗口到不了的部分：你的目录结构、每月再运行一次、每一行被跳过的原因。"
+        "en": "For one file, maybe — and I'll say so. The gap is what happens after you press enter. A chat window gives you an answer; it does not tell you which rows it guessed, it does not run again next month by itself, and there is nobody to ask when it is wrong. I agree “done means this” with you first, check the output row by row, and hand back an exception list with a written reason for every skipped row — and the file carries my name, so when something is wrong, the asking lands on me.",
+        "zh-Hant": "一個檔案，也許可以，我也會這樣說。差別在按下 Enter 之後。聊天視窗給你一個答案，但不會告訴你哪幾行是它猜的，不會下個月自己再跑一次，出錯時也沒有人可以問。我先和你講定「做幾多先算完成」，逐行核對，交回一份例外清單，列明每一行為何被跳過——而文件上有我的名字，所以出問題時，是找我。",
+        "zh-Hans": "一个文件，也许可以，我也会这样说。差别在按下 Enter 之后。聊天窗口给你一个答案，但不会告诉你哪几行是它猜的，不会下个月自己再跑一次，出错时也没有人可以问。我先和你讲定“怎样才算完成”，逐行核对，交回一份例外清单，列明每一行为何被跳过——而文件上有我的名字，所以出问题时，是找我。"
+      }
+    },
+    {
+      "q": {
+        "en": "If the result is wrong, what actually happens?",
+        "zh-Hant": "如果結果是錯的，會怎樣？",
+        "zh-Hans": "如果结果是错的，会怎样？"
+      },
+      "a": {
+        "en": "Tell me within 14 days. I reproduce it against the acceptance sentence we wrote, then either redo it free or refund that job's fee. How long the file has been sitting is not the test — when you tell me is. Total liability for a job is capped at the fee you paid for that job.",
+        "zh-Hant": "14 日內告訴我。我按我們當初寫下的驗收句重現問題，然後免費重做，或退回這一單的費用。文件放了多久不是重點，重點是你何時告訴我。每一單的總責任，以該單已付的費用為上限。",
+        "zh-Hans": "14 天内告诉我。我按我们当初写下的验收句复现问题，然后免费重做，或退回这一单的费用。文件放了多久不是重点，重点是你何时告诉我。每一单的总责任，以该单已付的费用为上限。"
       }
     },
     {

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Comms Broker — cover">
+  <rect width="640" height="360" fill="#0b0b0c"/>
+  <g><circle cx="360" cy="80" r="12" fill="#4a4a4e" opacity="0.75"/><circle cx="412" cy="80" r="12" fill="#4a4a4e" opacity="0.75"/><circle cx="464" cy="80" r="22" fill="#f2f2f2" opacity="0.95"/><circle cx="360" cy="132" r="12" fill="#4a4a4e" opacity="0.75"/><circle cx="412" cy="132" r="22" fill="#f2f2f2" opacity="0.95"/><circle cx="464" cy="132" r="22" fill="#f2f2f2" opacity="0.95"/><circle cx="360" cy="184" r="22" fill="#f2f2f2" opacity="0.95"/><circle cx="412" cy="184" r="12" fill="#4a4a4e" opacity="0.75"/><circle cx="464" cy="184" r="12" fill="#4a4a4e" opacity="0.75"/><circle cx="360" cy="236" r="12" fill="#4a4a4e" opacity="0.75"/><circle cx="412" cy="236" r="22" fill="#f2f2f2" opacity="0.95"/><circle cx="464" cy="236" r="12" fill="#4a4a4e" opacity="0.75"/></g>
+  <rect x="0.5" y="0.5" width="639" height="359" fill="none" stroke="#2c2c2f"/>
+  <text x="40" y="52" fill="#747477" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" letter-spacing="2">2026 · local</text>
+  <rect x="40" y="120" width="44" height="3" fill="#f2f2f2"/>
+<text x="40" y="190" fill="#f2f2f2" font-family="ui-serif, Iowan Old Style, Palatino, Georgia, serif" font-size="30">Comms Broker</text>
+  <text x="40" y="316" fill="#a3a3a6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="1.5">mcp · typescript · event bus</text>
+</svg>

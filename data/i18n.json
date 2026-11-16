@@ -82,8 +82,9 @@
       "zh-Hant": "現況"
     },
     "section.work": {
-      "en": "work",
-      "zh-Hant": "作品"
+      "en": "flagship",
+      "zh-Hant": "旗艦",
+      "zh-Hans": "旗舰"
     },
     "section.projects": {
       "en": "projects",
@@ -101,9 +102,15 @@
       "en": "Updated November 2026",
       "zh-Hant": "更新於 2026 年 11 月"
     },
+    "home.routesLabel": {
+      "en": "Where to go",
+      "zh-Hant": "去哪裏看",
+      "zh-Hans": "去哪里看"
+    },
     "home.workMore": {
-      "en": "All projects",
-      "zh-Hant": "全部項目"
+      "en": "Project hub",
+      "zh-Hant": "項目總匯",
+      "zh-Hans": "项目总汇"
     },
     "home.projectsCount": {
       "en": "{n} projects, all self-run",
@@ -198,8 +205,9 @@
       "zh-Hant": "項目"
     },
     "projects.lede": {
-      "en": "Everything I have built that I can point at. Each entry has a URL, a repository, or an honest note that it only runs on my machine.",
-      "zh-Hant": "我指得出來的每一件作品。每項都附網址、倉庫，或誠實註明只在我自己的機器上運行。"
+      "en": "The project hub — everything I have built that I can point at, one index, no duplication. Each entry has a URL, a repository, or an honest note that it only runs on my machine.",
+      "zh-Hant": "項目總匯——我指得出來的每一件作品，一份索引，不重複。每項都附網址、倉庫，或誠實註明只在我自己的機器上運行。",
+      "zh-Hans": "项目总汇——我指得出来的每一件作品，一份索引，不重复。每一项都附网址、仓库，或诚实注明只在我自己的机器上运行。"
     },
     "projects.countLabel": {
       "en": "{n} projects",
@@ -212,6 +220,11 @@
     "projects.featuredLabel": {
       "en": "featured",
       "zh-Hant": "精選"
+    },
+    "projects.hubNote": {
+      "en": "The four on the home page are the flagship set. Everything else lives here, once.",
+      "zh-Hant": "首頁放的是四件旗艦。其餘全部只在這裏，出現一次。",
+      "zh-Hans": "首页放的是四件旗舰。其余全部只在这里，出现一次。"
     },
     "project.year": {
       "en": "Year",
@@ -342,6 +355,21 @@
       "en": "Toggle theme",
       "zh-Hant": "切換主題"
     },
+    "theme.system": {
+      "en": "System",
+      "zh-Hant": "跟系統",
+      "zh-Hans": "跟随系统"
+    },
+    "theme.light": {
+      "en": "Light",
+      "zh-Hant": "淺色",
+      "zh-Hans": "浅色"
+    },
+    "theme.dark": {
+      "en": "Dark",
+      "zh-Hant": "深色",
+      "zh-Hans": "深色"
+    },
     "lang.label": {
       "en": "Language",
       "zh-Hant": "語言"
@@ -365,12 +393,12 @@
       "zh-Hant": "實習"
     },
     "projects.group.flagship": {
-      "en": "Flagship products",
-      "zh-Hant": "旗艦產品"
+      "en": "Flagship",
+      "zh-Hant": "旗艦"
     },
     "projects.group.personal": {
-      "en": "Personal projects",
-      "zh-Hant": "個人項目"
+      "en": "Personal",
+      "zh-Hant": "自用"
     },
     "cv.selectedWork": {
       "en": "Selected work",

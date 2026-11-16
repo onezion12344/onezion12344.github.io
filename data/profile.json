@@ -27,8 +27,9 @@
       "zh-Hant": "我是港大二年級學生，主修人工智能與數據科學，同時修讀人工智能與人文。我大部分作品都從這條接縫開始：一邊是要在人前站得住的工程，另一邊是關於人、只有工程才回答得動的問題。"
     },
     {
-      "en": "I ship small, complete things rather than demos: a site a tutoring team updates without me, a menu-bar app that keeps a Mac awake with the lid closed, a verification layer that an agent cannot quietly skip. Every one of them has a URL or a repository.",
-      "zh-Hant": "我交付的是小而完整的東西，不是示範：一個補習團隊自己就能更新的網站、一個合上蓋仍讓 Mac 保持清醒的選單列工具、一層讓 Agent 無法悄悄跳過的驗證機制。每一件都有一條網址或一個倉庫。"
+      "en": "I ship small, complete things rather than demos: a polished site with design styles customized to a HKDSE education company, a menu-bar app that keeps a Mac awake with the lid closed, a communication abstraction proxy MCP that agents go through to manage all platforms and draft messages, with a UI for human approval. Every one of them has a URL or a repository.",
+      "zh-Hant": "我交付的是小而完整的東西，不是示範：一個為香港 DSE 教育公司度身設計、有自己設計語言的網站；一個合上蓋仍讓 Mac 保持清醒的選單列工具；一個通訊抽象代理 MCP——所有平台都經它管理、經它起草訊息，再由介面取得人手批准。每一件都有一條網址或一個倉庫。",
+      "zh-Hans": "我交付的是小而完整的东西，不是演示：一个为香港 DSE 教育公司量身设计、有自己设计语言的网站；一个合上盖仍让 Mac 保持清醒的菜单栏工具；一个通信抽象代理 MCP——所有平台都经它管理、经它起草消息，再通过界面取得人工批准。每一件都有一个网址或一个仓库。"
     },
     {
       "en": "The method repeats. Question the frame before solving inside it, decompose until every piece can be verified, and never call something finished without evidence I can point at.",
@@ -54,8 +55,8 @@
         "zh-Hant": "WeWrites"
       },
       "body": {
-        "en": "Engineer at a DSE tutoring team: the public site and content system, which the team updates without a developer.",
-        "zh-Hant": "DSE 補習團隊的工程師：負責對外網站與內容系統，團隊不用開發者也能自行更新。"
+        "en": "Engineer at a DSE tutoring team: the public site and content system, which the team updates without a developer, plus the DSE Paper 3 Part A production system behind its course products.",
+        "zh-Hant": "DSE 補習團隊的工程師：負責對外網站與內容系統，團隊不用開發者也能自行更新；同時負責課程產品背後的 DSE Paper 3 Part A 生產系統。"
       }
     },
     {
