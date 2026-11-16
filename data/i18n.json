@@ -15,7 +15,8 @@
     },
     "meta.desc.home": {
       "en": "Harry OneZion — AI & Data Science at HKU. A portfolio, a project index and a generated CV: small, complete tools, each with a URL or a repository behind it.",
-      "zh-Hant": "Harry OneZion——港大人工智能與數據科學。作品集、項目索引與自動生成的履歷：每件小而完整的工具，背後都有一條網址或一個倉庫。"
+      "zh-Hant": "Harry OneZion——港大人工智能與數據科學。作品集、項目索引同自動生成嘅履歷：每件細而完整嘅工具，背後都有一條網址或者一個倉。",
+      "zh-Hans": "Harry OneZion——港大人工智能与数据科学。作品集、项目索引与自动生成的履历：每件小而完整的工具，背后都有一个网址或者一个仓库。"
     },
     "meta.title.cv": {
       "en": "CV — Harry OneZion",
@@ -23,7 +24,8 @@
     },
     "meta.desc.cv": {
       "en": "The CV of Harry OneZion: education at HKU, WeWrites, selected work and skills, in English, Traditional and Simplified Chinese.",
-      "zh-Hant": "Harry OneZion 的履歷：港大教育背景、WeWrites、部分作品與技能，提供英文、繁體及簡體中文。"
+      "zh-Hant": "Harry OneZion 嘅履歷：港大教育背景、WeWrites、部分作品同技能，有英文、繁體同簡體中文。",
+      "zh-Hans": "Harry OneZion 的履历：港大教育背景、WeWrites、部分作品与技能，有英文、繁体与简体中文。"
     },
     "meta.title.projects": {
       "en": "Projects — Harry OneZion",
@@ -31,7 +33,8 @@
     },
     "meta.desc.projects": {
       "en": "Every project Harry OneZion has shipped or built for himself — each with a URL, a repository, or an honest note that it runs locally only.",
-      "zh-Hant": "Harry OneZion 交付過或自己做的每一個項目——每項都附網址、倉庫，或誠實註明只在本地運行。"
+      "zh-Hant": "Harry OneZion 交過或者自己整嘅每一個項目——每項都附網址、倉，或者老實講明只喺我部機度行。",
+      "zh-Hans": "Harry OneZion 交过或者自己做的每一个项目——每一项都附网址、仓库，或者老实说明只在我自己的机器上跑。"
     },
     "meta.title.project": {
       "en": "{title} — Harry OneZion",
@@ -42,8 +45,9 @@
       "zh-Hant": "服務 — Harry OneZion"
     },
     "meta.desc.hire": {
-      "en": "Fixed-price spreadsheet cleanup, PDF-to-Excel, invoice folders, MCP servers, scrapers and AI workflows. Price and acceptance written before the job starts: HK$380–1,800.",
-      "zh-Hant": "定價的表格整理、PDF 轉 Excel、單據檔案、MCP 伺服器、網站爬蟲與 AI 工作流。開工前先寫清價錢與驗收：HK$380–1,800。"
+      "en": "Fixed-price spreadsheet cleanup, PDF-to-Excel, invoice folders, MCP servers, scrapers and AI workflows. Price and acceptance written before the job starts: HK$100–1,800.",
+      "zh-Hant": "定價嘅表格整理、PDF 轉 Excel、單據檔案、MCP 伺服器、網站爬蟲同 AI 工作流。開工前先寫清價錢同驗收：HK$100–1,800。",
+      "zh-Hans": "定价的表格整理、PDF 转 Excel、单据文件夹、MCP 服务器、网站爬虫与 AI 工作流。开工前先写清价钱与验收：HK$100–1,800。"
     },
     "meta.title.404": {
       "en": "Page not found — Harry OneZion",
@@ -51,7 +55,8 @@
     },
     "meta.desc.404": {
       "en": "This page does not exist. The work is still here.",
-      "zh-Hant": "這一頁不存在。作品還在。"
+      "zh-Hant": "呢一頁唔存在。作品仲喺度。",
+      "zh-Hans": "这一页不存在。作品还在。"
     },
     "nav.skip": {
       "en": "Skip to content",
@@ -100,11 +105,12 @@
     },
     "home.updated": {
       "en": "Updated November 2026",
-      "zh-Hant": "更新於 2026 年 11 月"
+      "zh-Hant": "2026 年 11 月更新",
+      "zh-Hans": "2026 年 11 月更新"
     },
     "home.routesLabel": {
       "en": "Where to go",
-      "zh-Hant": "去哪裏看",
+      "zh-Hant": "去邊度睇",
       "zh-Hans": "去哪里看"
     },
     "home.workMore": {
@@ -118,15 +124,18 @@
     },
     "home.hireHeading": {
       "en": "One-off data work?",
-      "zh-Hant": "一次性的資料工作？"
+      "zh-Hant": "一次性嘅資料工作？",
+      "zh-Hans": "一次性的数据工作？"
     },
     "home.hireBody": {
       "en": "A spreadsheet to clean, a pile of PDFs to turn into rows, a folder you redo every month — or an MCP server, a scraper, an AI workflow. Fixed price and a written acceptance test before I start.",
-      "zh-Hant": "要整理的表格、要變成一行行資料的一批 PDF、每個月重做一次的目錄；再往外一點，是 MCP 伺服器、網站爬蟲、AI 工作流。開工前先有定價與寫清的驗收標準。"
+      "zh-Hant": "要整理嘅表格、要變成一行行資料嘅一批 PDF、每個月重做一次嘅目錄；再往外一點，係 MCP 伺服器、網站爬蟲、AI 工作流。開工前先有定價同寫清嘅驗收標準。",
+      "zh-Hans": "要整理的表格、要变成一行行数据的一批 PDF、每个月重做一次的目录；再往外一点，是 MCP 服务器、网站爬虫、AI 工作流。开工前先有定价和写清的验收标准。"
     },
     "home.hireCta": {
       "en": "Prices and how it works",
-      "zh-Hant": "價錢與流程"
+      "zh-Hant": "價錢同流程",
+      "zh-Hans": "价钱与流程"
     },
     "hire.doneLabel": {
       "en": "Done means",
@@ -206,8 +215,8 @@
     },
     "projects.lede": {
       "en": "The project hub — everything I have built that I can point at, one index, no duplication. Each entry has a URL, a repository, or an honest note that it only runs on my machine.",
-      "zh-Hant": "項目總匯——我指得出來的每一件作品，一份索引，不重複。每項都附網址、倉庫，或誠實註明只在我自己的機器上運行。",
-      "zh-Hans": "项目总汇——我指得出来的每一件作品，一份索引，不重复。每一项都附网址、仓库，或诚实注明只在我自己的机器上运行。"
+      "zh-Hant": "項目總匯——我講得出嘅每一件作品，一份索引，唔重複。每項都附網址、倉，或者老實講明只喺我自己部機度行。",
+      "zh-Hans": "项目汇总——我讲得出的每一件作品，一份索引，不重复。每一项都附网址、仓库，或者老实说明只在我自己的机器上跑。"
     },
     "projects.countLabel": {
       "en": "{n} projects",
@@ -215,7 +224,8 @@
     },
     "projects.privateNote": {
       "en": "Local-only work is listed without a public link.",
-      "zh-Hant": "只在本地運行的作品，不附公開連結。"
+      "zh-Hant": "只喺本地行嘅作品，唔附公開連結。",
+      "zh-Hans": "只在本地跑的作品，不附公开链接。"
     },
     "projects.featuredLabel": {
       "en": "featured",
@@ -223,8 +233,8 @@
     },
     "projects.hubNote": {
       "en": "The four on the home page are the flagship set. Everything else lives here, once.",
-      "zh-Hant": "首頁放的是四件旗艦。其餘全部只在這裏，出現一次。",
-      "zh-Hans": "首页放的是四件旗舰。其余全部只在这里，出现一次。"
+      "zh-Hant": "首頁放嘅係四件旗艦。其餘全部只喺呢度出現一次。",
+      "zh-Hans": "首页放的是四件旗舰。其余全部只在这里出现一次。"
     },
     "project.year": {
       "en": "Year",
@@ -312,7 +322,8 @@
     },
     "contacts.note": {
       "en": "Email, or find me here.",
-      "zh-Hant": "可以寫電郵，也可以在這些地方找到我。"
+      "zh-Hant": "可以寫電郵，亦可以喺呢啲地方搵到我。",
+      "zh-Hans": "可以写邮件，也可以在这些地方找到我。"
     },
     "contacts.email": {
       "en": "Email",

@@ -1,8 +1,8 @@
 {
   "eyebrow": {
-    "en": "One job at a time · Hong Kong, GMT+8",
-    "zh-Hant": "一次一單 · 香港 · GMT+8",
-    "zh-Hans": "一次只接一件 · 香港 · GMT+8"
+    "en": "Hong Kong, GMT+8",
+    "zh-Hant": "香港 · GMT+8",
+    "zh-Hans": "香港 · GMT+8"
   },
   "heading": {
     "en": "AI drafts it. I sign it off.",
@@ -17,9 +17,9 @@
   "stats": [
     {
       "value": {
-        "en": "2–5 days",
-        "zh-Hant": "2–5 日",
-        "zh-Hans": "2–5 日"
+        "en": "3–15 days",
+        "zh-Hant": "3–15 日",
+        "zh-Hans": "3–15 日"
       },
       "label": {
         "en": "delivery",
@@ -29,9 +29,9 @@
     },
     {
       "value": {
-        "en": "HK$380–1,800",
-        "zh-Hant": "HK$380–1,800",
-        "zh-Hans": "HK$380–1,800"
+        "en": "HK$100–1,800",
+        "zh-Hant": "HK$100–1,800",
+        "zh-Hans": "HK$100–1,800"
       },
       "label": {
         "en": "fixed price, per job",
@@ -41,26 +41,14 @@
     },
     {
       "value": {
-        "en": "1",
-        "zh-Hant": "1",
-        "zh-Hans": "1"
+        "en": "3",
+        "zh-Hant": "3",
+        "zh-Hans": "3"
       },
       "label": {
-        "en": "revision included",
-        "zh-Hant": "包括一次修改",
-        "zh-Hans": "包括一次修改"
-      }
-    },
-    {
-      "value": {
-        "en": "24 h",
-        "zh-Hant": "24 小時",
-        "zh-Hans": "24 小时"
-      },
-      "label": {
-        "en": "reply, 09:00–21:00",
-        "zh-Hant": "回覆，09:00–21:00",
-        "zh-Hans": "回复，09:00–21:00"
+        "en": "revisions included",
+        "zh-Hant": "包括三次修改",
+        "zh-Hans": "包括三次修改"
       }
     }
   ],
@@ -141,9 +129,9 @@
       },
       "price": "HK$480",
       "days": {
-        "en": "2 days",
-        "zh-Hant": "2 日",
-        "zh-Hans": "2 日"
+        "en": "3–5 days",
+        "zh-Hant": "3–5 days",
+        "zh-Hans": "3–5 days"
       },
       "done": {
         "en": "Row counts reconcile, key columns have no nulls, the chart total equals the cleaned total.",
@@ -181,9 +169,9 @@
       },
       "price": "HK$880",
       "days": {
-        "en": "2–3 days",
-        "zh-Hant": "2–3 日",
-        "zh-Hans": "2–3 日"
+        "en": "3–6 days",
+        "zh-Hant": "3–6 days",
+        "zh-Hans": "3–6 days"
       },
       "done": {
         "en": "100 files in, clean CSV and exception list out, no double counting on the second run.",
@@ -221,9 +209,9 @@
       },
       "price": "HK$380",
       "days": {
-        "en": "2 days",
-        "zh-Hant": "2 日",
-        "zh-Hans": "2 日"
+        "en": "3–5 days",
+        "zh-Hant": "3–5 days",
+        "zh-Hans": "3–5 days"
       },
       "done": {
         "en": "10 PDFs → 10 rows or documented exceptions, totals reconcile.",
@@ -313,9 +301,9 @@
       },
       "price": "HK$880",
       "days": {
-        "en": "2–3 days",
-        "zh-Hant": "2–3 日",
-        "zh-Hans": "2–3 日"
+        "en": "3–6 days",
+        "zh-Hant": "3–6 days",
+        "zh-Hans": "3–6 days"
       },
       "done": {
         "en": "1,000 pages in, CSV or JSON out, every skipped page has a reason, the second run is identical.",
@@ -478,9 +466,9 @@
         "zh-Hans": "你先送一个样本"
       },
       "body": {
-        "en": "One file or one folder, not the whole archive. I reply within 24 h with the price and what done will mean, or say it is the wrong job for me.",
-        "zh-Hant": "一個檔案或一個目錄，不是整個檔案庫。我在 24 小時內回你價錢，同「完成」的意思；如果這單不是我的工作，我也會說。",
-        "zh-Hans": "一份文件或一个目录，不是整个文件库。我在 24 小时内回你价钱，以及“完成”的意思；如果这件工作不适合我，我也会说。"
+        "en": "One file or one folder, not the whole archive. You get the price and what done will mean, or I say it is the wrong job for me.",
+        "zh-Hant": "一個檔案或一個目錄，唔係整個檔案庫。你會收到價錢同「做幾多先算完成」；如果呢單唔係我嘅工作，我都會照講。",
+        "zh-Hans": "一份文件或一个目录，不是整个文件库。你会收到价钱，以及“怎样才算完成”；如果这件工作不适合我，我也会直说。"
       }
     },
     {
@@ -621,9 +609,9 @@
         "zh-Hans": "修改"
       },
       "value": {
-        "en": "One revision inside the agreed scope. New requirements are a separate quote.",
-        "zh-Hant": "議定範圍內一次修改。新要求是另一份報價。",
-        "zh-Hans": "议定范围内一次修改。新要求是另一份报价。"
+        "en": "Three revisions inside the agreed scope. New requirements are a separate quote.",
+        "zh-Hant": "議定範圍內三次修改。新要求係另一份報價。",
+        "zh-Hans": "议定范围内三次修改。新要求是另一份报价。"
       }
     },
     {

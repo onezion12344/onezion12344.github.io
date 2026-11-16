@@ -15,7 +15,8 @@
     ],
     "summary": {
       "en": "The site and content system for a DSE tutoring team — bilingual copy, class photography, teacher and course pages, an edit path a non-developer can run, and the DSE Paper 3 Part A production system behind its course products.",
-      "zh-Hant": "DSE 補習團隊的網站與內容系統——雙語文案、課堂相片、導師與課程頁、非技術同事也操作得來的編輯流程，以及課程產品背後的 DSE Paper 3 Part A 生產系統。"
+      "zh-Hant": "DSE 補習團隊嘅網站同內容系統——雙語文案、課堂相片、導師同課程頁、非技術同事都操作得嚟嘅編輯流程，仲有課程產品背後嘅 DSE Paper 3 Part A 生產系統。",
+      "zh-Hans": "DSE 补习团队的网站与内容系统——双语文案、课堂照片、导师与课程页、非技术同事也操作得来的编辑流程，还有课程产品背后的 DSE Paper 3 Part A 生产系统。"
     },
     "what": {
       "en": "A public site for a Hong Kong DSE tutoring team: who teaches, what each class covers, and how to get in touch. Behind it sits a content system the team updates itself.",
@@ -69,7 +70,8 @@
     ],
     "summary": {
       "en": "A menu-bar app that keeps a Mac awake with the lid closed, so a long build or a deploy does not die when you walk away.",
-      "zh-Hant": "選單列小工具：合上蓋仍讓 Mac 保持清醒，長時間編譯或部署不會因為你離開而中斷。"
+      "zh-Hant": "選單列小工具：合埋蓋都令 Mac 保持清醒，長時間編譯或者部署唔會因為你行開咗就斷。",
+      "zh-Hans": "菜单栏小工具：合上盖仍让 Mac 保持清醒，长时间编译或者部署不会因为你走开就断。"
     },
     "what": {
       "en": "A macOS menu-bar app with a timer, a forever mode, a memory panel and quiet cleanup. It holds the machine awake with the lid shut.",
@@ -117,7 +119,8 @@
     ],
     "summary": {
       "en": "A verification plugin for AI agents: fact, logic and tool-use checks that run outside the model, through hooks the agent cannot skip.",
-      "zh-Hant": "AI Agent 的驗證外掛：事實、邏輯與工具使用的核查在模型之外進行，透過 Agent 跳不過的 hook 執行。"
+      "zh-Hant": "AI Agent 嘅驗證外掛：事實、邏輯同工具使用嘅核查喺模型外面做，透過 Agent 跳唔過嘅 hook 執行。",
+      "zh-Hans": "AI Agent 的验证插件：事实、逻辑与工具使用的核查在模型外面做，通过 Agent 跳不过的 hook 执行。"
     },
     "what": {
       "en": "A plugin that puts a fixed sequence of checks around an agent's answer — a dedup gate, pre-answer checks, and post-answer audit stages drawing on SIFT, IFCN, CoVe, FIRE and FABLE.",
@@ -162,7 +165,8 @@
     "links": [],
     "summary": {
       "en": "A private control plane for personal agents — input, memory, execution, communication, outreach and evolving — running locally, never publicly. 669 contract tests green.",
-      "zh-Hant": "個人 Agent 的私有控制面——輸入、記憶、執行、通訊、對外接觸與演化——只在本地運行，不對外公開。669 個契約測試全綠。"
+      "zh-Hant": "個人 Agent 嘅私有控制面——輸入、記憶、執行、通訊、對外接觸同演化——只喺本地行，唔對外公開。669 個契約測試全綠。",
+      "zh-Hans": "个人 Agent 的私有控制面——输入、记忆、执行、通信、对外接触与演化——只在本地跑，不对外公开。669 个契约测试全绿。"
     },
     "what": {
       "en": "Six layers behind one local API: activity input, a memory layer with a propose → inbox → drain path, a task, run and approval state machine, communication channels, outreach scans, and a set of deterministic detectors. The product repository holds no personal data.",
@@ -207,7 +211,8 @@
     ],
     "summary": {
       "en": "Narrated, slide-faithful lectures for an algorithms course: every element appears at the moment the narration explains it, and stays on screen.",
-      "zh-Hant": "演算法課程的旁白講課，與課件逐格對齊：每個元素都在旁白講到它的那一刻出現，然後留在畫面上。"
+      "zh-Hant": "演算法課程嘅旁白講課，同課件逐格對齊：每個元素都喺旁白講到佢嗰一刻出現，然後留喺畫面度。",
+      "zh-Hans": "算法课程的旁白讲课，与课件逐格对齐：每个元素都在旁白讲到它的那一刻出现，然后留在画面上。"
     },
     "what": {
       "en": "Eleven narrated lectures for COMP2119 Introduction to Algorithms, built as animated slides that keep pace with the voice, with click-through tools for recursion trees, sorting and graph traversal.",
@@ -252,7 +257,8 @@
     ],
     "summary": {
       "en": "A speaking practice room for HKDSE English Paper 4: a pre-recorded examiner, a live voice model as the other candidate, and a report that quotes what you actually said.",
-      "zh-Hant": "HKDSE 英文 Paper 4 的口試練習室：預錄考官、以即時語音模型扮演另一位考生，以及引用你原話的報告。"
+      "zh-Hant": "HKDSE 英文 Paper 4 嘅口試練習室：預錄考官、用即時語音模型扮另一位考生，仲有一份引用你原話嘅報告。",
+      "zh-Hans": "HKDSE 英文 Paper 4 的口试练习室：预录考官、用实时语音模型扮演另一位考生，还有一份引用你原话的报告。"
     },
     "what": {
       "en": "A live voice room for Paper 4 group discussion practice. The examiner's turns are pre-recorded so the rules do not drift; the other candidate is generated live.",
@@ -294,7 +300,8 @@
     "links": [],
     "summary": {
       "en": "An installable PWA course engine for Shanghainese, where a lesson only ships from sourced material and the engine refuses to invent answers.",
-      "zh-Hant": "可安裝的上海話課程 PWA：課程只會從有出處的材料出貨，引擎拒絕自行編答案。"
+      "zh-Hant": "可安裝嘅上海話課程 PWA：課程只會由有出處嘅材料出貨，引擎唔會自己編答案。",
+      "zh-Hans": "可安装的上海话课程 PWA：课程只会从有出处的材料出货，引擎不会自己编答案。"
     },
     "what": {
       "en": "A Duolingo-shaped course engine for a dialect with almost no course material, with a content pipeline that flags what it cannot verify.",
@@ -340,7 +347,8 @@
     "links": [],
     "summary": {
       "en": "One loopback endpoint that speaks both the Anthropic and OpenAI protocols and routes by model prefix, so one CLI can use several vendors. 13.7k lines, 16 test modules.",
-      "zh-Hant": "一個本機迴環端點，同時講 Anthropic 與 OpenAI 兩種協定，並按模型前綴路由，令一個 CLI 可以用多間廠商的模型。13.7k 行，16 個測試模組。"
+      "zh-Hant": "一個本機迴環端點，同時講 Anthropic 同 OpenAI 兩種協定，並按模型前綴路由，令一個 CLI 可以用到幾間廠商嘅模型。13.7k 行，16 個測試模組。",
+      "zh-Hans": "一个本机回环端点，同时讲 Anthropic 与 OpenAI 两种协议，并按模型前缀路由，让一个 CLI 可以用到几家厂商的模型。13.7k 行，16 个测试模块。"
     },
     "what": {
       "en": "A local gateway that accepts requests in either protocol, routes them by model prefix, and keeps streaming and tool calls working across vendors.",
@@ -379,8 +387,8 @@
     "links": [],
     "summary": {
       "en": "Every message between agents, the staff layer and outside clients passes one policy point — with per-route limits, a capability gate and a record of who was told what. 119 test cases across 16 files.",
-      "zh-Hant": "Agent、幕僚層與外部客戶之間的每一條訊息都經過同一個策略點：逐路由上限、能力閘門，以及誰被告知了什麼的記錄。16 個檔案共 119 個測試案例。",
-      "zh-Hans": "Agent、幕僚层与外部客户之间的每一条消息都经过同一个策略点：逐路由上限、能力闸门，以及谁被告知了什么的记录。16 个文件共 119 个测试用例。"
+      "zh-Hant": "Agent、幕僚層同外部客戶之間每一條訊息都經同一個策略點：逐路由上限、能力閘門，仲有邊個被告知咗咩嘅記錄。16 個檔案共 119 個測試案例。",
+      "zh-Hans": "Agent、幕僚层与外部客户之间每一条消息都经过同一个策略点：逐路由上限、能力闸门，还有谁被告知了什么的记录。16 个文件共 119 个测试用例。"
     },
     "what": {
       "en": "A broker inside a private agent platform. It routes internal, staff-level and external conversations, owns delivery and retries, and hands outside client work to a separate freelancing broker over MCP rather than doing it itself.",
@@ -421,7 +429,8 @@
     "links": [],
     "summary": {
       "en": "WeChat Pay and Alipay exports into SQLite — de-duplicated, categorised, with monthly reports built from real statements.",
-      "zh-Hant": "把微信支付與支付寶的匯出檔匯入 SQLite——去重、分類，並用真實帳單生成每月報告。"
+      "zh-Hant": "將微信支付同支付寶嘅匯出檔匯入 SQLite——去重、分類，再用真實帳單生成每月報告。",
+      "zh-Hans": "把微信支付与支付宝的导出文件导入 SQLite——去重、分类，再用真实账单生成每月报告。"
     },
     "what": {
       "en": "An importer that reads both apps' export formats into one local database, then produces categorised monthly reports.",
@@ -460,7 +469,8 @@
     ],
     "summary": {
       "en": "A KOReader sync plugin: OAuth2 device-code authentication, the Microsoft Graph API, and bidirectional sync.",
-      "zh-Hant": "KOReader 同步外掛：OAuth2 裝置碼認證、Microsoft Graph API，以及雙向同步。"
+      "zh-Hant": "KOReader 同步外掛：OAuth2 裝置碼認證、Microsoft Graph API，同雙向同步。",
+      "zh-Hans": "KOReader 同步插件：OAuth2 设备码认证、Microsoft Graph API，与双向同步。"
     },
     "what": {
       "en": "A Lua plugin that adds OneDrive as a sync target inside KOReader, signed in with the OAuth2 device-code flow.",
@@ -501,7 +511,8 @@
     ],
     "summary": {
       "en": "A CBT-based game for getting through a breakup: thirty days, ten minutes a day, bilingual.",
-      "zh-Hant": "以認知行為治療為基礎的療癒遊戲：三十天、每天十分鐘、雙語。"
+      "zh-Hant": "以認知行為治療為本嘅療癒遊戲：三十日、每日十分鐘、雙語。",
+      "zh-Hans": "以认知行为治疗为本的疗愈游戏：三十天、每天十分钟、双语。"
     },
     "what": {
       "en": "An interactive daily programme built on cognitive behavioural therapy, written in English and Chinese.",
@@ -545,7 +556,8 @@
     ],
     "summary": {
       "en": "Fact-checked research pages on psychology, relationships and everyday curiosity — written for people outside the field.",
-      "zh-Hant": "關於心理學、親密關係與日常好奇心的查證研究頁——寫給不在這個領域的人。"
+      "zh-Hant": "關於心理學、親密關係同日常好奇心嘅查證研究頁——寫畀唔喺呢個領域嘅人睇。",
+      "zh-Hans": "关于心理学、亲密关系与日常好奇心的查证研究页——写给不在这个领域的人看。"
     },
     "what": {
       "en": "A set of long-form pages that take one question each — attachment, conflict styles, self-love versus approval — and follow it through the research rather than the discourse.",
