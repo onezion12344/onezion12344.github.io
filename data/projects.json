@@ -67,6 +67,7 @@
     "featured": true,
     "status": "live",
     "visibility": "public",
+    "cv": true,
     "title": { "en": "MacClosedAwake", "zh-Hant": "MacClosedAwake" },
     "role": { "en": "Design, build, release", "zh-Hant": "設計、開發、發佈" },
     "tags": ["Swift", "macOS", "Menu bar"],
@@ -117,6 +118,7 @@
     "featured": true,
     "status": "live",
     "visibility": "public",
+    "cv": true,
     "title": { "en": "Double-Check", "zh-Hant": "Double-Check" },
     "role": { "en": "Author", "zh-Hant": "作者" },
     "tags": ["Agents", "Verification", "Python"],
@@ -166,6 +168,7 @@
     "featured": true,
     "status": "local",
     "visibility": "private-local",
+    "cv": true,
     "title": { "en": "Personal OS", "zh-Hant": "Personal OS" },
     "role": { "en": "Author", "zh-Hant": "作者" },
     "tags": ["Agents", "TypeScript", "Local-first"],
@@ -338,6 +341,7 @@
     "featured": false,
     "status": "local",
     "visibility": "private-local",
+    "cv": true,
     "title": { "en": "Model Gateway", "zh-Hant": "模型閘道" },
     "role": { "en": "Author", "zh-Hant": "作者" },
     "tags": ["Protocols", "Routing", "Local"],
@@ -365,6 +369,49 @@
     ],
     "evidence": [
       { "text": { "en": "13.7k lines · 16 test modules", "zh-Hant": "13.7k 行 · 16 個測試模組" }, "source": "portfolio, measured 2026-10-31" }
+    ],
+    "media": null
+  },
+  {
+    "id": "comms-broker",
+    "slug": "comms-broker",
+    "group": "flagship",
+    "rank": 5,"year": 2026,
+    "featured": false,
+    "cv": true,
+    "status": "local",
+    "visibility": "private-local",
+    "title": { "en": "Comms Broker", "zh-Hant": "Comms Broker" },
+    "role": { "en": "Design, build, test", "zh-Hant": "設計、開發、測試" },
+    "tags": ["MCP", "TypeScript", "Event bus", "Policy"],
+    "links": [],
+    "summary": {
+      "en": "Every message between agents, the staff layer and outside clients passes one policy point — with per-route limits, a capability gate and a record of who was told what.",
+      "zh-Hant": "Agent、幕僚層與外部客戶之間的每一條訊息都經過同一個策略點：逐路由上限、能力閘門，以及誰被告知了什麼的記錄。",
+      "zh-Hans": "Agent、幕僚层与外部客户之间的每一条消息都经过同一个策略点：逐路由上限、能力闸门，以及谁被告知了什么的记录。"
+    },
+    "what": {
+      "en": "A broker inside a private agent platform. It routes internal, staff-level and external conversations, owns delivery and retries, and hands outside client work to a separate freelancing broker over MCP rather than doing it itself.",
+      "zh-Hant": "私有 agent 平台內的中繼。它負責內部、幕僚層與對外的對話路由，掌管投遞與重試，並把外部客戶的工作經 MCP 交給另一個自由工作中繼，而不是自己做。",
+      "zh-Hans": "私有 agent 平台内的中继。它负责内部、幕僚层与对外的对话路由，掌管投递与重试，并把外部客户的工作经 MCP 交给另一个自由工作中继，而不是自己做。"
+    },
+    "why": {
+      "en": "Agents that all talk to each other directly fan out. Routine coordination eats the context that judgement needs, and nothing records who was told what. One broker makes both countable.",
+      "zh-Hant": "所有 agent 互相直連就會扇出。例行協調吃掉判斷所需的上下文，而且沒有人記錄誰被告知了什麼。一個中繼讓兩者都變得可數。",
+      "zh-Hans": "所有 agent 互相直连就会扇出。例行协调吃掉判断所需的上下文，而且没有人记录谁被告知了什么。一个中继让两者都变得可数。"
+    },
+    "challenge": {
+      "en": "Making silence visible. A dropped message looks exactly like a message nobody sent, so the broker has to report an unreachable channel instead of assuming delivery.",
+      "zh-Hant": "讓沉默變得可見。掉了的訊息與沒人發過的訊息長得一模一樣，所以中繼必須回報連不上的通道，而不是假設已送達。",
+      "zh-Hans": "让沉默变得可见。掉了的消息与没人发过的消息长得一模一样，所以中继必须回报连不上的通道，而不是假设已送达。"
+    },
+    "highlights": [
+      { "en": "Routes internal, staff-level and external flows, with a documented default route per channel.", "zh-Hant": "為內部、幕僚層與對外流程分流，每個通道都有寫明的預設路由。", "zh-Hans": "为内部、幕僚层与对外流程分流，每个通道都有写明的默认路由。" },
+      { "en": "Delegates outside-client drafts to a separate freelancing broker over MCP.", "zh-Hant": "經 MCP 把外部客戶的草稿交給另一個自由工作中繼。", "zh-Hans": "经 MCP 把外部客户的草稿交给另一个自由工作中继。" },
+      { "en": "119 test cases across 16 files, including the acknowledgement and capability-gate contracts.", "zh-Hant": "16 個檔案共 119 個測試案例，包括回執與能力閘門的契約。", "zh-Hans": "16 个文件共 119 个测试案例，包括回执与能力闸门的契约。" }
+    ],
+    "evidence": [
+      { "text": { "en": "119 test cases across 16 comms test files", "zh-Hant": "16 個 comms 測試檔案共 119 個測試案例", "zh-Hans": "16 个 comms 测试文件共 119 个测试案例" }, "source": "tests/comms-*.test.ts, counted 2026-11-16" }
     ],
     "media": null
   },

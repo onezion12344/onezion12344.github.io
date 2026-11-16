@@ -371,6 +371,11 @@
     "projects.group.personal": {
       "en": "Personal projects",
       "zh-Hant": "個人項目"
+    },
+    "cv.selectedWork": {
+      "en": "Selected work",
+      "zh-Hant": "部分作品",
+      "zh-Hans": "部分作品"
     }
   }
 }

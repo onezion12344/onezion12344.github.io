@@ -78,6 +78,47 @@
     },
     {
       "org": {
+        "en": "Independent",
+        "zh-Hant": "\u81ea\u7531\u5de5\u4f5c",
+        "zh-Hans": "\u81ea\u7531\u5de5\u4f5c"
+      },
+      "title": {
+        "en": "Automation and data work",
+        "zh-Hant": "\u81ea\u52d5\u5316\u8207\u8cc7\u6599\u5de5\u4f5c",
+        "zh-Hans": "\u81ea\u52a8\u5316\u4e0e\u6570\u636e\u5de5\u4f5c"
+      },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "\u9999\u6e2f",
+        "zh-Hans": "\u9999\u6e2f"
+      },
+      "start": "2026-10",
+      "end": "present",
+      "summary": {
+        "en": "Fixed-scope automation and data work, taken on my own from October 2026. The delivery kit came first; the intake that finds the work came second.",
+        "zh-Hant": "\u81ea 2026 \u5e74 10 \u6708\u8d77\u81ea\u5df1\u63a5\u7684\u56fa\u5b9a\u7bc4\u570d\u81ea\u52d5\u5316\u8207\u8cc7\u6599\u5de5\u4f5c\u3002\u5148\u505a\u4ea4\u4ed8\u5de5\u5177\uff0c\u518d\u505a\u627e\u5de5\u4f5c\u7684\u90a3\u4e00\u7aef\u3002",
+        "zh-Hans": "\u81ea 2026 \u5e74 10 \u6708\u8d77\u81ea\u5df1\u63a5\u7684\u56fa\u5b9a\u8303\u56f4\u81ea\u52a8\u5316\u4e0e\u6570\u636e\u5de5\u4f5c\u3002\u5148\u505a\u4ea4\u4ed8\u5de5\u5177\uff0c\u518d\u505a\u627e\u5de5\u4f5c\u7684\u90a3\u4e00\u7aef\u3002"
+      },
+      "highlights": [
+        {
+          "en": "Built the delivery kit for Excel and CSV reconciliation: 24 self-checks, 20,000 rows reconciled in 0.48 s, GBK and UTF-8 both handled.",
+          "zh-Hant": "\u70ba Excel \u8207 CSV \u5c0d\u5e33\u505a\u4e86\u4ea4\u4ed8\u5de5\u5177\uff1a24 \u9805\u81ea\u6aa2\uff0c\u5169\u842c\u884c 0.48 \u79d2\u5b8c\u6210\uff0cGBK \u8207 UTF-8 \u90fd\u8655\u7406\u3002",
+          "zh-Hans": "\u4e3a Excel \u4e0e CSV \u5bf9\u8d26\u505a\u4e86\u4ea4\u4ed8\u5de5\u5177\uff1a24 \u9879\u81ea\u68c0\uff0c\u4e24\u4e07\u884c 0.48 \u79d2\u5b8c\u6210\uff0cGBK \u4e0e UTF-8 \u90fd\u5904\u7406\u3002"
+        },
+        {
+          "en": "Built the intake: a broker over ten freelance platforms, plus a daily loop that ranks new listings and drafts a scope before I read them.",
+          "zh-Hant": "\u505a\u4e86\u63a5\u55ae\u90a3\u4e00\u7aef\uff1a\u8986\u84cb\u5341\u500b\u81ea\u7531\u5de5\u4f5c\u5e73\u53f0\u7684\u4e2d\u7e7c\uff0c\u52a0\u4e0a\u6bcf\u65e5\u8ff4\u5708\uff0c\u5148\u66ff\u6211\u6392\u5e8f\u65b0\u59d4\u8a17\u4e26\u8349\u64ec\u7bc4\u570d\u3002",
+          "zh-Hans": "\u505a\u4e86\u63a5\u5355\u90a3\u4e00\u7aef\uff1a\u8986\u76d6\u5341\u4e2a\u81ea\u7531\u5de5\u4f5c\u5e73\u53f0\u7684\u4e2d\u7ee7\uff0c\u52a0\u4e0a\u6bcf\u65e5\u5faa\u73af\uff0c\u5148\u66ff\u6211\u6392\u5e8f\u65b0\u59d4\u6258\u5e76\u8349\u62df\u8303\u56f4\u3002"
+        },
+        {
+          "en": "Priced per job, so the scope is agreed before the work starts.",
+          "zh-Hant": "\u6309\u55ae\u5b9a\u50f9\uff0c\u7bc4\u570d\u5728\u958b\u5de5\u524d\u5c31\u8b1b\u5b9a\u3002",
+          "zh-Hans": "\u6309\u5355\u5b9a\u4ef7\uff0c\u8303\u56f4\u5728\u5f00\u5de5\u524d\u5c31\u8bb2\u5b9a\u3002"
+        }
+      ]
+    },
+    {
+      "org": {
         "en": "AdventureX 2026",
         "zh-Hant": "AdventureX 2026"
       },
@@ -123,7 +164,7 @@
         "en": "Hong Kong",
         "zh-Hant": "香港"
       },
-      "start": "TODO(owner)",
+      "start": "2026-06",
       "end": "present",
       "summary": {
         "en": "The public site and content system for a DSE tutoring team, built so the team publishes classes and updates without waiting on a developer, plus the listening-material pipeline behind its course products.",

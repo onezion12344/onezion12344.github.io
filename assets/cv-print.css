@@ -8,7 +8,7 @@
 
 @page {
   size: A4;
-  margin: 18mm 16mm;
+  margin: 15mm 16mm;
 }
 
 :root {
@@ -32,14 +32,14 @@ body {
 }
 
 body {
-  font: 10.5pt/1.45 var(--ui);
+  font: 10pt/1.33 var(--ui);
   -webkit-font-smoothing: antialiased;
 }
 
 .sheet {
   max-width: 178mm;
   margin: 0 auto;
-  padding: 12mm 0 18mm;
+  padding: 6mm 0 10mm;
 }
 
 .print-bar {
@@ -69,7 +69,43 @@ body {
 .print-bar a:hover { border-color: var(--ink); color: var(--ink); }
 .print-bar .spacer { flex: 1; }
 
-header.cv-head { margin-bottom: 18px; }
+/* Paper cannot be clicked, so the codes sit in the header where they cost no
+   vertical space, and no URL is ever spelled out. 16mm keeps each module at
+   ~0.41mm, the floor for a phone camera on a printed sheet. */
+header.cv-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8mm;
+  margin-bottom: 10px;
+}
+
+.cv-head-main { min-width: 0; }
+
+.qr-row {
+  display: flex;
+  gap: 3mm;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 0 0 auto;
+}
+
+.qr-row li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5mm;
+  font: 6.5pt var(--mono);
+  color: var(--ink-muted);
+}
+
+.qr-row img {
+  width: 16mm;
+  height: 16mm;
+  display: block;
+  image-rendering: pixelated;
+}
 
 h1 {
   font: 400 24pt/1.1 var(--serif);
@@ -101,14 +137,14 @@ h2 {
   text-transform: uppercase;
   color: var(--ink);
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 4px;
-  margin: 18px 0 8px;
+  padding-bottom: 3px;
+  margin: 13px 0 6px;
 }
 
 .entry {
   page-break-inside: avoid;
   break-inside: avoid;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
 }
 
 .entry h3 {
@@ -127,13 +163,13 @@ h2 {
 .programme { margin: 0 0 4px; }
 
 ul {
-  margin: 4px 0 0;
+  margin: 3px 0 0;
   padding-left: 14px;
 }
 
-li { margin-bottom: 2px; }
+li { margin-bottom: 1px; }
 
-.skills p { margin: 0 0 4px; }
+.skills p { margin: 0 0 2px; }
 .skills b { font-weight: 600; }
 
 .plain { list-style: none; padding: 0; margin: 0; }

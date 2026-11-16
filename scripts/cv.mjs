@@ -20,6 +20,13 @@ const { profile, resume, projects, strings } = loadData();
 
 const isTodo = (v) => v === "TODO(owner)";
 
+// Which builds get a line on the CV is a per-project flag, not "everything
+// featured": the homepage shows four, and the CV wants the ones that carry a
+// demonstrable number. Ordered by the same rank the project index uses.
+const cvProjects = projects
+  .filter((p) => p.cv)
+  .sort((a, b) => (a.rank ?? 99) - (b.rank ?? 99));
+
 // ------------------------------------------------------------------ private
 //
 // `--private-email <addr>` renders a personal copy that carries a real address
@@ -50,6 +57,19 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const STYLE_TAG = PRIVATE_EMAIL
   ? `<style>\n${fs.readFileSync(path.join(ROOT, "assets", "cv-print.css"), "utf8")}</style>`
   : `<link rel="stylesheet" href="/assets/cv-print.css">`;
+
+// A printed sheet cannot carry a clickable link, so the footer carries the
+// codes instead and no URL is ever spelled out. They are inlined as data URIs
+// so the private copy stays a single portable file.
+function qr(name) {
+  const file = path.join(ROOT, "assets", "qr", `${name}.png`);
+  if (!fs.existsSync(file)) {
+    throw new BuildError(
+      `assets/qr/${name}.png is missing — run: swift scripts/tools/qr.swift <url> assets/qr/${name}.png`,
+    );
+  }
+  return `data:image/png;base64,${fs.readFileSync(file).toString("base64")}`;
+}
 
 function dateRange(lang, { start, end }) {
   const from = isTodo(start) ? "" : start;
@@ -117,6 +137,13 @@ function markdown(lang) {
       push(loc(a.summary, lang), "");
     }
   }
+
+  push(`## ${t(strings, "cv.selectedWork", lang)}`, "");
+  for (const p of cvProjects) {
+    const first = p.links?.[0];
+    push(`- **${loc(p.title, lang)}** — ${loc(p.summary, lang)}${first ? ` <${first.url}>` : ""}`);
+  }
+  push("");
 
   push(`## ${t(strings, "cv.skills", lang)}`, "");
   for (const s of resume.skills) {
@@ -239,6 +266,18 @@ function printHtml(lang) {
       }>${l.code}</a>`,
   ).join("");
 
+  const qrTiles = [
+    { key: "cv", label: t(strings, "nav.cv", lang) },
+    ...profile.links.map((l) => ({ key: l.id, label: loc(l.label, lang) })),
+  ]
+    .map(
+      (tile) => `<li>
+      <img src="${qr(tile.key)}" width="360" height="360" alt="QR code: ${esc(tile.label)}">
+      <span>${esc(tile.label)}</span>
+    </li>`,
+    )
+    .join("");
+
   // The site's nav bar points at routes that do not exist next to a local file.
   const printBar = PRIVATE_EMAIL
     ? ""
@@ -267,9 +306,12 @@ ${STYLE_TAG}
 ${printBar}
 
   <header class="cv-head">
-    <h1>${esc(loc(profile.name, lang))}</h1>
-    <p class="headline">${esc(loc(profile.headline, lang))}</p>
-    <p class="contact-line">${esc(loc(profile.location, lang))} · ${contacts}</p>
+    <div class="cv-head-main">
+      <h1>${esc(loc(profile.name, lang))}</h1>
+      <p class="headline">${esc(loc(profile.headline, lang))}</p>
+      <p class="contact-line">${esc(loc(profile.location, lang))} · ${contacts}</p>
+    </div>
+    <ul class="qr-row">${qrTiles}</ul>
   </header>
 
   <p class="summary">${esc(loc(profile.bio[0], lang))}</p>
@@ -279,6 +321,20 @@ ${printBar}
 
   <h2>${esc(t(strings, "cv.experience", lang))}</h2>
   ${experience}
+
+  <h2>${esc(t(strings, "cv.selectedWork", lang))}</h2>
+  <ul class="work">
+    ${cvProjects
+      .map((p) => {
+        const first = p.links?.[0];
+        return `<li><b>${esc(loc(p.title, lang))}</b> — ${esc(loc(p.summary, lang))}${
+          first
+            ? ` (<a href="${esc(first.url)}" rel="noopener">${esc(loc(first.label, lang))}</a>)`
+            : ""
+        }</li>`;
+      })
+      .join("\n    ")}
+  </ul>
 
   ${
     resume.awards.length
