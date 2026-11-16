@@ -669,9 +669,9 @@
         "zh-Hans": "合法使用"
       },
       "value": {
-        "en": "Scraping and replay work is limited to public pages and accounts you own. No access-control bypass, no DRM, no personal data.",
-        "zh-Hant": "抓取與重放只做公開頁面，以及你自己的帳號。不繞過權限、不做 DRM、不收集個人資料。",
-        "zh-Hans": "抓取与重放只做公开页面，以及你自己的帐号。不绕过权限、不做 DRM、不收集个人信息。"
+        "en": "Scraping and replay work is limited to public pages and accounts you own. No access-control bypass, no DRM, no personal data. The boundary is legal, not fussy: under s.64 of the Personal Data (Privacy) Ordinance, disclosing personal data taken from a data user without consent, intending to gain, carries a HK$1,000,000 fine and five years.",
+        "zh-Hant": "抓取同重放，只做公開頁面，同埋你自己嘅帳號。唔繞過權限，唔拆 DRM，唔掂個人資料。呢條界線係法律，唔係我挑剔：《個人資料（私隱）條例》第 64 條寫明，未經資料使用者同意而披露佢嘅個人資料、意圖獲利，罰款一百萬，監禁五年。",
+        "zh-Hans": "抓取和重放，只做公开页面，以及你自己的账号。不绕过权限，不拆 DRM，不碰个人数据。这条界线是法律，不是我挑剔：《个人资料（私隐）条例》第 64 条写明，未经资料使用者同意而披露其个人数据、意图获利，罚款一百万，监禁五年。"
       }
     },
     {
