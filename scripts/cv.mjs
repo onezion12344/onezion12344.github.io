@@ -8,7 +8,9 @@
  */
 
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { BuildError, LANGS, esc, fileFor, loc, t } from "./lib/render.mjs";
 import { DIST, loadData } from "./lib/load-data.mjs";
@@ -16,11 +18,38 @@ import { checkLinks } from "./lib/verify.mjs";
 
 const { profile, resume, projects, strings } = loadData();
 
-if (!fs.existsSync(DIST)) {
+const isTodo = (v) => v === "TODO(owner)";
+
+// ------------------------------------------------------------------ private
+//
+// `--private-email <addr>` renders a personal copy that carries a real address
+// and writes it OUTSIDE dist/, so it can never be published by a deploy.
+// The public sheet deliberately has no plaintext email on it.
+
+const flag = (name) => {
+  const i = process.argv.indexOf(name);
+  return i > 0 ? process.argv[i + 1] : null;
+};
+
+const PRIVATE_EMAIL = flag("--private-email");
+const OUT = PRIVATE_EMAIL
+  ? path.resolve(flag("--out") || path.join(os.homedir(), "Documents", "CV"))
+  : DIST;
+
+if (!PRIVATE_EMAIL && !fs.existsSync(DIST)) {
   throw new BuildError("dist/ does not exist. Run `node scripts/build.mjs` first.");
 }
+if (PRIVATE_EMAIL && !/^[^@\s]+@[^@\s]+$/.test(PRIVATE_EMAIL)) {
+  throw new BuildError(`--private-email is not an address: ${PRIVATE_EMAIL}`);
+}
 
-const isTodo = (v) => v === "TODO(owner)";
+// A private sheet is opened straight off the disk, where "/assets/..." resolves
+// to the filesystem root and the stylesheet silently 404s. Inline it so the file
+// is self-contained and prints the same anywhere.
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const STYLE_TAG = PRIVATE_EMAIL
+  ? `<style>\n${fs.readFileSync(path.join(ROOT, "assets", "cv-print.css"), "utf8")}</style>`
+  : `<link rel="stylesheet" href="/assets/cv-print.css">`;
 
 function dateRange(lang, { start, end }) {
   const from = isTodo(start) ? "" : start;
@@ -34,7 +63,10 @@ function dateRange(lang, { start, end }) {
 }
 
 function contactLine(lang) {
-  return profile.links.map((l) => `${loc(l.label, lang)}: ${l.url}`).join(" · ");
+  const parts = [];
+  if (PRIVATE_EMAIL) parts.push(`Email: ${PRIVATE_EMAIL}`);
+  for (const l of profile.links) parts.push(`${loc(l.label, lang)}: ${l.url}`);
+  return parts.join(" · ");
 }
 
 // ------------------------------------------------------------------ markdown
@@ -191,8 +223,13 @@ function printHtml(lang) {
         .join("")}</ul>`
     : "";
 
-  const contacts = profile.links
-    .map((l) => `<a href="${esc(l.url)}" rel="noopener">${esc(loc(l.label, lang))}</a>`)
+  const contacts = [
+    PRIVATE_EMAIL ? `<a href="mailto:${esc(PRIVATE_EMAIL)}">${esc(PRIVATE_EMAIL)}</a>` : "",
+    ...profile.links.map(
+      (l) => `<a href="${esc(l.url)}" rel="noopener">${esc(loc(l.label, lang))}</a>`,
+    ),
+  ]
+    .filter(Boolean)
     .join(" · ");
 
   const langLinks = LANGS.map(
@@ -202,6 +239,19 @@ function printHtml(lang) {
       }>${l.code}</a>`,
   ).join("");
 
+  // The site's nav bar points at routes that do not exist next to a local file.
+  const printBar = PRIVATE_EMAIL
+    ? ""
+    : `
+  <div class="print-bar">
+    <a href="/${meta.dir ? meta.dir + "/" : ""}cv/">← ${esc(t(strings, "nav.cv", lang))}</a>
+    <span class="spacer"></span>
+    <span>${langLinks}</span>
+    <button type="button" onclick="window.print()">${esc(
+      t(strings, "cv.printButton", lang),
+    )}</button>
+  </div>`;
+
   return `<!doctype html>
 <html lang="${meta.htmlLang}" dir="ltr">
 <head>
@@ -210,18 +260,11 @@ function printHtml(lang) {
 <title>${esc(headline)}</title>
 <meta name="description" content="${esc(loc(profile.tagline, lang))}">
 <meta name="robots" content="noindex">
-<link rel="stylesheet" href="/assets/cv-print.css">
+${STYLE_TAG}
 </head>
 <body>
 <div class="sheet">
-  <div class="print-bar">
-    <a href="/${meta.dir ? meta.dir + "/" : ""}cv/">← ${esc(t(strings, "nav.cv", lang))}</a>
-    <span class="spacer"></span>
-    <span>${langLinks}</span>
-    <button type="button" onclick="window.print()">${esc(
-      t(strings, "cv.printButton", lang),
-    )}</button>
-  </div>
+${printBar}
 
   <header class="cv-head">
     <h1>${esc(loc(profile.name, lang))}</h1>
@@ -263,11 +306,21 @@ function printHtml(lang) {
 
 // -------------------------------------------------------------------- write
 
-fs.mkdirSync(path.join(DIST, "cv"), { recursive: true });
+const OUT_CV = PRIVATE_EMAIL ? OUT : path.join(DIST, "cv");
+fs.mkdirSync(OUT_CV, { recursive: true });
 
 for (const { code } of LANGS) {
-  fs.writeFileSync(path.join(DIST, "cv", `${code}.md`), markdown(code));
-  fs.writeFileSync(path.join(DIST, "cv", `${code}.html`), printHtml(code));
+  fs.writeFileSync(path.join(OUT_CV, `${code}.md`), markdown(code));
+  fs.writeFileSync(path.join(OUT_CV, `${code}.html`), printHtml(code));
+}
+
+if (PRIVATE_EMAIL) {
+  // A personal copy lives outside the build tree on purpose: nothing in dist/
+  // may carry a plaintext address, and `--out` is not reachable from a deploy.
+  console.log(
+    `Wrote ${LANGS.length * 2} private CV files to ${OUT_CV} (email: ${PRIVATE_EMAIL})`,
+  );
+  process.exit(0);
 }
 
 // The CV documents complete the link graph, so the full internal check runs here.
