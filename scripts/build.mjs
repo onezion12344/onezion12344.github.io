@@ -216,7 +216,14 @@ function renderHome(lang) {
             <p class="tagline">${esc(loc(profile.tagline, lang))}</p>
           </div>
         </div>
-        <p class="lede">${esc(loc(profile.bio[0], lang))} ${esc(loc(profile.bio[1], lang))}</p>
+        <div class="hero-intro">
+          <p class="lede">${esc(loc(profile.bio[0], lang))}</p>
+          <ul class="lede-points" role="list">
+            ${profile.bioPoints
+              .map((point) => `<li>${esc(loc(point, lang))}</li>`)
+              .join("\n            ")}
+          </ul>
+        </div>
         <nav class="home-routes" aria-label="${esc(t(strings, "home.routesLabel", lang))}">
           ${routes
             .map(
@@ -277,7 +284,10 @@ function renderCv(lang) {
 
   const education = resume.education
     .map((e) => {
-      const gpa = isTodo(e.gpa) ? "" : `<p class="entry-note">${esc(t(strings, "cv.gpa", lang))}: ${esc(e.gpa)}</p>`;
+      const gpa =
+        !e.gpa || isTodo(e.gpa)
+          ? ""
+          : `<p class="entry-note">${esc(t(strings, "cv.gpa", lang))}: ${esc(e.gpa)}</p>`;
       const programmes = (e.programmes ?? []).map((p) => esc(loc(p, lang))).join("<br>");
       const highlights = e.highlights?.length
         ? `<ul>${e.highlights.map((h) => `<li>${esc(loc(h, lang))}</li>`).join("")}</ul>`
@@ -473,10 +483,14 @@ function renderProject(project, lang) {
   const next = projects[idx + 1];
   const links = project.links.length
     ? `<p class="proj-links">${project.links
-        .map(
-          (l) =>
-            `<a class="btn" href="${esc(l.url)}" rel="noopener">${esc(loc(l.label, lang))} ↗</a>`,
-        )
+        .map((l) => {
+          // The ↗ arrow means "this leaves the site" — so it only appears on
+          // links that actually do.
+          const external = /^https?:/i.test(l.url);
+          return `<a class="btn" href="${esc(l.url)}"${
+            external ? ' rel="noopener"' : ""
+          }>${esc(loc(l.label, lang))}${external ? " ↗" : ""}</a>`;
+        })
         .join("")}</p>`
     : "";
 
@@ -591,6 +605,20 @@ function renderHire(lang) {
     .map((s) => `<div><dt>${esc(loc(s.label, lang))}</dt><dd>${esc(loc(s.value, lang))}</dd></div>`)
     .join("\n          ");
 
+  // Both promises get the same visual weight, side by side, before anything else:
+  // the standard you check against, and what happens when the file misses it.
+  const guarantee = `
+        <div class="guarantee" role="list">
+          <div class="guarantee-cell" role="listitem">
+            <p class="guarantee-label">${esc(loc(hire.guarantee.standardLabel, lang))}</p>
+            <p class="guarantee-body">${esc(loc(hire.guarantee.standard, lang))}</p>
+          </div>
+          <div class="guarantee-cell" role="listitem">
+            <p class="guarantee-label">${esc(loc(hire.guarantee.promiseLabel, lang))}</p>
+            <p class="guarantee-body">${esc(loc(hire.guarantee.promise, lang))}</p>
+          </div>
+        </div>`;
+
   const jump = hire.jump
     .map((j) => `<a href="#${esc(j.id)}">${esc(loc(j.label, lang))}</a>`)
     .join("");
@@ -652,6 +680,7 @@ function renderHire(lang) {
         <dl class="hire-stats">
           ${stats}
         </dl>
+        ${guarantee}
         <nav class="jump" aria-label="${esc(t(strings, "nav.hire", lang))}">${jump}</nav>
       </div>
     </section>
@@ -692,6 +721,30 @@ function renderHire(lang) {
       </div>
     </section>
 
+
+    <section class="section" id="proof">
+      <div class="wrap-wide">
+        ${sectionHeading(loc(hire.proofHeading, lang))}
+        <p class="section-note">${esc(loc(hire.proofNote, lang))}</p>
+        <div class="proof-grid">
+        ${proof}
+        </div>
+        <p class="more"><a class="btn" href="${esc(
+          urlFor(lang, "projects/"),
+        )}">${esc(loc(hire.projectsMore, lang))} →</a></p>
+      </div>
+    </section>
+
+    <section class="section" id="terms">
+      <div class="wrap">
+        ${sectionHeading(loc(hire.termsHeading, lang))}
+        <p class="section-note">${esc(loc(hire.termsNote, lang))}</p>
+        <dl class="terms">
+          ${terms}
+        </dl>
+      </div>
+    </section>
+
     <section class="section" id="brief">
       <div class="wrap">
         ${sectionHeading(loc(hire.briefHeading, lang))}
@@ -707,29 +760,6 @@ function renderHire(lang) {
             )}">${esc(loc(hire.copyLabel, lang))}</button>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="terms">
-      <div class="wrap">
-        ${sectionHeading(loc(hire.termsHeading, lang))}
-        <p class="section-note">${esc(loc(hire.termsNote, lang))}</p>
-        <dl class="terms">
-          ${terms}
-        </dl>
-      </div>
-    </section>
-
-    <section class="section" id="proof">
-      <div class="wrap-wide">
-        ${sectionHeading(loc(hire.proofHeading, lang))}
-        <p class="section-note">${esc(loc(hire.proofNote, lang))}</p>
-        <div class="proof-grid">
-        ${proof}
-        </div>
-        <p class="more"><a class="btn" href="${esc(
-          urlFor(lang, "projects/"),
-        )}">${esc(loc(hire.projectsMore, lang))} →</a></p>
       </div>
     </section>
 
@@ -821,7 +851,6 @@ function copyLegacy() {
     "商务部试点企业-钢琴-卖车-研究报告.html",
     "projects/coding-vibe/index.html",
     "projects/coding-vibe/DOCS.md",
-    "projects/casual-research/index.html",
     "projects/casual-research/attachment-and-desire.html",
     "projects/casual-research/attraction-and-conflict.html",
     "projects/casual-research/conflict-styles.html",
@@ -892,7 +921,6 @@ const LEGACY_NOINDEX = [
   "hku-leave-of-absence-max-registration-report.html",
   "moc-pilot-enterprises-piano-cars-report.html",
   "商务部试点企业-钢琴-卖车-研究报告.html",
-  "projects/casual-research/index.html",
   "projects/casual-research/attachment-and-desire.html",
   "projects/casual-research/attraction-and-conflict.html",
   "projects/casual-research/conflict-styles.html",

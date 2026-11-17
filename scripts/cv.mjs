@@ -101,7 +101,7 @@ function markdown(lang) {
   push(`${loc(profile.headline, lang)} · ${loc(profile.location, lang)}`, "");
   push(contactLine(lang), "");
   push(`## ${t(strings, "cv.summary", lang)}`, "");
-  push(loc(profile.bio[0], lang), "");
+  push(loc(profile.cvSummary, lang), "");
 
   push(`## ${t(strings, "cv.education", lang)}`, "");
   for (const e of resume.education) {
@@ -316,6 +316,7 @@ function printHtml(lang) {
 <title>${esc(headline)}</title>
 <meta name="description" content="${esc(loc(profile.tagline, lang))}">
 <meta name="robots" content="noindex">
+<link rel="icon" href="/assets/onezion-avatar.png" type="image/png">
 ${STYLE_TAG}
 </head>
 <body>
@@ -331,7 +332,7 @@ ${printBar}
     <ul class="qr-row">${qrTiles}</ul>
   </header>
 
-  <p class="summary">${esc(loc(profile.bio[0], lang))}</p>
+  <p class="summary">${esc(loc(profile.cvSummary, lang))}</p>
 
   <h2>${esc(t(strings, "cv.education", lang))}</h2>
   ${education}

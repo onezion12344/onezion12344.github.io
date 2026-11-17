@@ -4,12 +4,13 @@
     "zh-Hant": "Harry OneZion"
   },
   "headline": {
-    "en": "AI & Data Science, HKU",
-    "zh-Hant": "港大 · 人工智能與數據科學"
+    "en": "BA & BEng (AI & Data Science) · HKU",
+    "zh-Hant": "港大 · 文學士及工學學士（AI 及數據科學）",
+    "zh-Hans": "港大 · 文学士及工学学士（AI 与数据科学）"
   },
   "tagline": {
-    "en": "I build small, complete tools — and write down what makes them true.",
-    "zh-Hant": "我做嘅工具都細但完整，亦會寫清楚佢為咩成立。",
+    "en": "I build small, complete tools — and write down why they hold up.",
+    "zh-Hant": "我做嘅工具都細但完整，仲會寫清楚佢為咩成立。",
     "zh-Hans": "我做的工具都小而完整，也会写清楚它为什么成立。"
   },
   "location": {
@@ -24,21 +25,33 @@
   },
   "bio": [
     {
-      "en": "I'm a second-year student at HKU, reading AI & Data Science alongside AI and Humanities. Most of what I build starts at that seam: engineering that has to hold up in front of people, and questions about people that only engineering can answer at scale.",
-      "zh-Hant": "我係港大二年級學生，主修人工智能與數據科學，同時讀人工智能與人文。我大部分作品都由呢條接縫開始：一邊係要喺人前站得穩嘅工程，另一邊係關於人、只有工程先答得到嘅問題。",
-      "zh-Hans": "我是港大二年级学生，主修人工智能与数据科学，同时修读人工智能与人文。我大部分作品都从这条接缝开始：一边是要在人前站得住的工程，另一边是关于人、只有工程才回答得了的问题。"
-    },
-    {
-      "en": "I ship small, complete things rather than demos: a polished site with design styles customized to a HKDSE education company, a menu-bar app that keeps a Mac awake with the lid closed, a communication abstraction proxy MCP that agents go through to manage all platforms and draft messages, with a UI for human approval. Every one of them has a URL or a repository.",
-      "zh-Hant": "我交嘅係細而完整嘅嘢，唔係示範：一個為香港 DSE 教育公司度身設計、有自己一套設計語言嘅網站；一個合埋蓋都令 Mac 保持清醒嘅選單列工具；一個通訊抽象代理 MCP——所有平台都經佢管理、經佢起草訊息，再由介面攞人手批准。每一件都有一條網址或者一個倉。",
-      "zh-Hans": "我交的是小而完整的东西，不是演示：一个为香港 DSE 教育公司量身设计、有自己一套设计语言的网站；一个合上盖仍让 Mac 保持清醒的菜单栏工具；一个通信抽象代理 MCP——所有平台都经它管理、经它起草消息，再通过界面取得人工批准。每一件都有一个网址或者一个仓库。"
-    },
-    {
-      "en": "The method repeats. Question the frame before solving inside it, decompose until every piece can be verified, and never call something finished without evidence I can point at.",
-      "zh-Hant": "方法每次都一樣。先質疑框架，再喺框架入面解題；分解到每一塊都驗證得到；冇指得出嘅證據，就唔講完成。",
-      "zh-Hans": "方法每次都一样。先质疑框架，再在框架里面解题；分解到每一块都验证得了；没有拿得出的证据，就不说完成。"
+      "en": "I'm a second-year student at HKU, reading a five-year double degree — AI and Data Science on one side, AI and Humanities on the other. Most of what I build sits between the two.",
+      "zh-Hant": "我係港大 year two 嘅學生仔，而家讀緊一個五年制雙學位——一邊係 AI 同數據科學，另一邊係 AI 同人文。我大部分作品，都係喺兩邊中間做出嚟嘅。",
+      "zh-Hans": "我是港大二年级的学生，现在读的是五年制双学位——一边是 AI 与数据科学，另一边是 AI 与人文。我大多数作品，都落在两边之间。"
     }
   ],
+  "bioPoints": [
+    {
+      "en": "Ask whether the frame is right before asking how to build inside it. A fast answer to the wrong question is still wrong.",
+      "zh-Hant": "先問個框架啱唔啱，再問點做。框架錯咗，做幾快都係錯。",
+      "zh-Hans": "先问框架对不对，再问怎么做。框架错了，做得再快也是错。"
+    },
+    {
+      "en": "Break it down until every piece can be checked. That is what finished means.",
+      "zh-Hant": "拆到每一嚿都驗證得到，先算拆完。",
+      "zh-Hans": "拆到每一块都能验证，才算是拆完。"
+    },
+    {
+      "en": "No evidence I can point at, no claim that it is done.",
+      "zh-Hant": "冇指得出嘅證據，就唔會話做好咗。",
+      "zh-Hans": "没有指得出来的证据，就不会说做好了。"
+    }
+  ],
+  "cvSummary": {
+    "en": "Second-year student at HKU reading a five-year double degree: AI and Data Science, and AI and Humanities. Most of what I build sits between the two — engineering that has to hold up in front of people, answering questions about people — questions only engineering can answer at scale.",
+    "zh-Hant": "香港大學二年級學生，修讀五年制雙學位：AI 及數據科學，以及 AI 及人文。作品多位於兩者之間：既要有站得住人前的工程，也要回答只有工程才答得到、關於人的問題。",
+    "zh-Hans": "香港大学二年级学生，修读五年制双学位：AI 与数据科学，以及 AI 与人文。作品多介于两者之间：既要有站得住人前的工程，也要回答只有工程才回答得了的、关于人的问题。"
+  },
   "now": [
     {
       "date": "2026-11",
@@ -69,8 +82,9 @@
         "zh-Hant": "港大 · 二年級"
       },
       "body": {
-        "en": "AI & Data Science with AI and Humanities. Coursework stays off this site; the projects here are self-run.",
-        "zh-Hant": "人工智能與數據科學，配人工智能與人文。課業不放在這個網站；這裏的項目都是自己做的。"
+        "en": "AI and Data Science, plus AI and Humanities. Coursework stays off this site; the projects here are self-run.",
+        "zh-Hant": "AI 同數據科學，加埋 AI 同人文。Coursework 唔會放上呢個網站；呢度啲項目都係自己做嘅。",
+        "zh-Hans": "AI 与数据科学，加上 AI 与人文。课业不会放到这个网站上；这里的项目都是我自己做的。"
       }
     }
   ],
@@ -107,7 +121,8 @@
     {
       "group": {
         "en": "AI & agents",
-        "zh-Hant": "人工智能與 Agent"
+        "zh-Hant": "AI 同 Agent",
+        "zh-Hans": "AI 与 Agent"
       },
       "items": [
         "LLM engineering",

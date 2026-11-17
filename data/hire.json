@@ -10,9 +10,9 @@
     "zh-Hans": "AI 写第一稿，我签收。"
   },
   "lede": {
-    "en": "You could paste this into a chat window and get something back in ten seconds. The ten seconds are not the expensive part — the hour afterwards is: working out which rows were guessed, which numbers came from nowhere, and who answers when it is wrong. I take that hour. We agree “done means this” in one sentence, I run the tools, check the output row by row, and sign the file: a clean spreadsheet, a folder that runs itself, an MCP server, a scraper.",
-    "zh-Hant": "你可以把這件事丟進聊天視窗，十秒就有東西回來。貴的從來不是那十秒，而是之後那一小時：搞清楚哪幾行是它猜的、哪個數字不知從何而來，以及出錯時找誰。那一小時由我來做。我和你用一句話講定「做幾多先算完成」，然後我跑工具、逐行核對，最後在文件上簽名：一個乾淨的表格、一個會自己跑的資料夾、一個 MCP 伺服器、一個抓取腳本。",
-    "zh-Hans": "你可以把这件事丢进聊天窗口，十秒就有东西回来。贵的从来不是那十秒，而是之后那一小时：弄清哪几行是它猜的、哪个数字不知从何而来，以及出错时找谁。那一小时由我来做。我和你用一句话讲定“怎样才算完成”，然后我跑工具、逐行核对，最后在文件上签名：一个干净的表格、一个会自己跑的文件夹、一个 MCP 服务器、一个抓取脚本。"
+    "en": "You could paste this into a chat window and get something back in ten seconds. The ten seconds are not the expensive part — the hour afterwards is: working out which rows were guessed, which numbers came from nowhere, and who answers when it is wrong. I take that hour — I check the output row by row, and when it is wrong, the responsibility is mine, not the model's.",
+    "zh-Hant": "你可以將件嘢掟入聊天視窗，十秒就有嘢返嚟。貴嘅從來唔係嗰十秒，係之後嗰個鐘：搞清楚邊幾行係佢估嘅、邊個數字唔知從邊度嚟，同埋出錯時搵邊個。嗰個鐘由我嚟做——逐行核對；出咗錯，係我嘅責任，唔係個模型嘅。",
+    "zh-Hans": "你可以把这件事丢进聊天窗口，十秒就有东西回来。贵的从来不是那十秒，而是之后那一小时：弄清哪几行是它猜的、哪个数字不知从何而来，以及出错时找谁。那一小时由我来做——逐行核对；出了错，责任在我，不在模型。"
   },
   "stats": [
     {
@@ -36,7 +36,7 @@
       "label": {
         "en": "fixed price, per job",
         "zh-Hant": "定價，每單",
-        "zh-Hans": "定价，每项工作"
+        "zh-Hans": "定价，每单"
       }
     },
     {
@@ -50,8 +50,42 @@
         "zh-Hant": "包括三次修改",
         "zh-Hans": "包括三次修改"
       }
+    },
+    {
+      "value": {
+        "en": "14 days",
+        "zh-Hant": "14 日",
+        "zh-Hans": "14 天"
+      },
+      "label": {
+        "en": "free redo, or refund",
+        "zh-Hant": "免費重做，或退款",
+        "zh-Hans": "免费重做，或退款"
+      }
     }
   ],
+  "guarantee": {
+    "standardLabel": {
+      "en": "The standard",
+      "zh-Hant": "標準",
+      "zh-Hans": "标准"
+    },
+    "standard": {
+      "en": "“Done means this” — one sentence, written down before I start. You hold the sentence and check against it.",
+      "zh-Hant": "「做幾多先算完成」——開工前寫低呢一句；你攞住呢句嚟驗收。",
+      "zh-Hans": "“怎样才算完成”——开工前写下来；你拿着这句话验收。"
+    },
+    "promiseLabel": {
+      "en": "The guarantee",
+      "zh-Hant": "保證",
+      "zh-Hans": "保证"
+    },
+    "promise": {
+      "en": "If the delivered file does not match that sentence, tell me within 14 days: I redo it free, or refund that job's fee.",
+      "zh-Hant": "交付後 14 日內唔符合嗰句——我免費重做；重做唔到，退返嗰單嘅錢。",
+      "zh-Hans": "交付后 14 天内不符合那一句——我免费重做；重做不了，退回那一单的钱。"
+    }
+  },
   "jump": [
     {
       "id": "offers",
@@ -70,11 +104,11 @@
       }
     },
     {
-      "id": "brief",
+      "id": "proof",
       "label": {
-        "en": "Brief",
-        "zh-Hant": "說明",
-        "zh-Hans": "说明"
+        "en": "Proof",
+        "zh-Hant": "作品",
+        "zh-Hans": "作品"
       }
     },
     {
@@ -86,11 +120,11 @@
       }
     },
     {
-      "id": "proof",
+      "id": "brief",
       "label": {
-        "en": "Proof",
-        "zh-Hant": "作品",
-        "zh-Hans": "作品"
+        "en": "Brief",
+        "zh-Hant": "說明",
+        "zh-Hans": "说明"
       }
     },
     {
@@ -118,7 +152,7 @@
   "offersNote": {
     "en": "intro price · first three orders of each job",
     "zh-Hant": "入門價 · 每種工作首三單",
-    "zh-Hans": "入门价 · 每种工作首三件"
+    "zh-Hans": "入门价 · 每种工作首三单"
   },
   "offers": [
     {
@@ -417,7 +451,7 @@
   "priceNote": {
     "en": "Intro price applies to the first three orders of each job; after that HK$600 / HK$1,080 / HK$480. Half of any entry-job fee is credited toward a bigger build if you upgrade within 30 days.",
     "zh-Hant": "入門價是每種工作首三單；之後是 HK$600 / HK$1,080 / HK$480。30 日內升級，入門工作的費用一半可以扣。",
-    "zh-Hans": "入门价是每种工作首三件；之后是 HK$600 / HK$1,080 / HK$480。30 日内升级，入门工作的费用可扣一半。"
+    "zh-Hans": "入门价是每种工作首三件；之后是 HK$600 / HK$1,080 / HK$480。30 天内升级，入门工作的费用可扣一半。"
   },
   "bigger": {
     "title": {
@@ -504,7 +538,7 @@
       "body": {
         "en": "Files, script and a README that says how to rerun it. Your data is deleted after handover; defects reported in 14 days are fixed free.",
         "zh-Hant": "檔案、程式，同一份說明怎樣再跑。交付後刪除你的資料；14 日內報的問題，免費修。",
-        "zh-Hans": "文件、程序，加一份说明怎样重复运行。交付后删除你的数据；14 日内报告的问题，免费修。"
+        "zh-Hans": "文件、程序，加一份说明怎样重复运行。交付后删除你的数据；14 天内报告的问题，免费修。"
       }
     }
   ],
@@ -844,7 +878,7 @@
       "a": {
         "en": "Sometimes that is the right call — a one-off favour for a one-off file. The difference is the wrapper: fixed scope in writing, a rerun-safe script, an exception log, and someone who answers about it two weeks later.",
         "zh-Hant": "有時這樣才對：一次性的檔案，一次性的工作。不同的地方在外面的那一層：寫清的範圍、可以再跑的程式、例外紀錄，同 14 日後仍然回答的人。",
-        "zh-Hans": "有时这样才对：一次性的文件，一次性的工作。分别在外面的那一层：写清的范围、可以重复运行的程序、例外记录，以及 14 日后仍然回答的人。"
+        "zh-Hans": "有时这样才对：一次性的文件，一次性的工作。分别在外面的那一层：写清的范围、可以重复运行的程序、例外记录，以及 14 天后仍然回答的人。"
       }
     },
     {

@@ -11,11 +11,11 @@
       "programmes": [
         {
           "en": "BEng, AI & Data Science",
-          "zh-Hant": "工學學士，人工智能與數據科學"
+          "zh-Hant": "工學學士，人工智能及數據科學"
         },
         {
           "en": "BA, AI and Humanities",
-          "zh-Hant": "文學士，人工智能與人文"
+          "zh-Hant": "文學士，人工智能及人文"
         }
       ],
       "summary": {
@@ -84,9 +84,9 @@
       "start": "2026-10",
       "end": "present",
       "summary": {
-        "en": "Fixed-scope automation and data work, taken on my own from October 2026. The delivery kit came first; the intake that finds the work came second.",
-        "zh-Hant": "\u81ea 2026 \u5e74 10 \u6708\u8d77\u81ea\u5df1\u63a5\u7684\u56fa\u5b9a\u7bc4\u570d\u81ea\u52d5\u5316\u8207\u8cc7\u6599\u5de5\u4f5c\u3002\u5148\u505a\u4ea4\u4ed8\u5de5\u5177\uff0c\u518d\u505a\u627e\u5de5\u4f5c\u7684\u90a3\u4e00\u7aef\u3002",
-        "zh-Hans": "\u81ea 2026 \u5e74 10 \u6708\u8d77\u81ea\u5df1\u63a5\u7684\u56fa\u5b9a\u8303\u56f4\u81ea\u52a8\u5316\u4e0e\u6570\u636e\u5de5\u4f5c\u3002\u5148\u505a\u4ea4\u4ed8\u5de5\u5177\uff0c\u518d\u505a\u627e\u5de5\u4f5c\u7684\u90a3\u4e00\u7aef\u3002"
+        "en": "Just starting out — fixed-scope automation and data work, taken on my own from October 2026. The delivery kit came first; the intake that finds the work came second.",
+        "zh-Hant": "只是剛剛起步：自 2026 年 10 月起自己接的固定範圍自動化與資料工作。先做交付工具，再做找工作那一端。",
+        "zh-Hans": "只是刚刚起步：自 2026 年 10 月起自己接的固定范围自动化与数据工作。先做交付工具，再做找工作那一端。"
       },
       "highlights": [
         {
@@ -154,6 +154,28 @@
         "en": "The public site and content system for a DSE tutoring team, live at wewrites.ai — built so the team publishes classes and updates without waiting on a developer, plus the DSE Paper 3 Part A production system behind its course products.",
         "zh-Hant": "DSE 補習團隊的對外網站與內容系統，已在 wewrites.ai 上線——讓團隊不用等開發者就能發佈課程與更新，同時負責課程產品背後的 DSE Paper 3 Part A 生產系統。"
       }
+    },
+    {
+      "org": {
+        "en": "NOVA: National AI Creativity Competition",
+        "zh-Hant": "NOVA: National AI Creativity Competition"
+      },
+      "title": {
+        "en": "Two-person entry — “Double-Check”",
+        "zh-Hant": "雙人參賽——《Double-Check》"
+      },
+      "location": {
+        "en": "Hong Kong",
+        "zh-Hant": "香港"
+      },
+      "start": "2026",
+      "end": "2026",
+      "summary": {
+        "en": "A fact-checking tool entered in the Social Impact track of HKUST and Tencent Research Institute's national AI creativity competition — demo live at factcheck.onezion.top.",
+        "zh-Hant": "為科大與騰訊研究院合辦的全國人工智能創意大賽「社會影響」組所做的查證工具——示範站 factcheck.onezion.top 仍在線。",
+        "zh-Hans": "为科大与腾讯研究院合办的全国人工智能创意大赛“社会影响”组所做的查证工具——示范站 factcheck.onezion.top 仍在线。"
+      },
+      "highlights": []
     },
     {
       "org": {
@@ -231,51 +253,6 @@
         "zh-Hant": "以生成式 AI 作為動態遊戲主持的互動視覺小說：讀取使用者的 YouTube 觀看紀錄，用個人化故事呈現認知偏差與資訊繭房。"
       },
       "highlights": []
-    },
-    {
-      "org": {
-        "en": "NOVA: National AI Creativity Competition",
-        "zh-Hant": "NOVA: National AI Creativity Competition"
-      },
-      "title": {
-        "en": "Two-person entry — “Double-Check”",
-        "zh-Hant": "雙人參賽——《Double-Check》"
-      },
-      "location": {
-        "en": "Hong Kong",
-        "zh-Hant": "香港"
-      },
-      "start": "2026",
-      "end": "2026",
-      "summary": {
-        "en": "A fact-checking tool entered in the Social Impact track of HKUST and Tencent Research Institute's national AI creativity competition — demo live at factcheck.onezion.top.",
-        "zh-Hant": "為科大與騰訊研究院合辦的全國人工智能創意大賽「社會影響」組所做的查證工具——示範站 factcheck.onezion.top 仍在線。",
-        "zh-Hans": "为科大与腾讯研究院合办的全国人工智能创意大赛“社会影响”组所做的查证工具——示范站 factcheck.onezion.top 仍在线。"
-      },
-      "highlights": []
-    },
-    {
-      "org": {
-        "en": "HKCGI Corporate Governance Paper Competition 2026",
-        "zh-Hant": "HKCGI 2026 企業管治論文比賽",
-        "zh-Hans": "HKCGI 2026 公司治理论文比赛"
-      },
-      "title": {
-        "en": "Essay — “Reflection Is All We Left”",
-        "zh-Hant": "論文——《Reflection Is All We Left》"
-      },
-      "location": {
-        "en": "Hong Kong",
-        "zh-Hant": "香港"
-      },
-      "start": "2026",
-      "end": "2026",
-      "summary": {
-        "en": "An essay on whether AI is the make-or-break for corporate governance, entered in the HKCGI paper competition.",
-        "zh-Hant": "一篇討論「AI 是否企業管治成敗關鍵」的論文，參加 HKCGI 論文比賽。",
-        "zh-Hans": "一篇讨论“AI 是否公司治理成败关键”的论文，参加 HKCGI 论文比赛。"
-      },
-      "highlights": []
     }
   ],
   "awards": [],
@@ -283,7 +260,7 @@
     {
       "group": {
         "en": "AI & agents",
-        "zh-Hant": "人工智能與 Agent"
+        "zh-Hant": "AI 與 Agent"
       },
       "items": [
         "LLM engineering",
@@ -387,8 +364,9 @@
         "zh-Hant": "廣東話"
       },
       "level": {
-        "en": "Learning",
-        "zh-Hant": "學習中"
+        "en": "Conversational — daily use",
+        "zh-Hant": "會話水平——日常使用",
+        "zh-Hans": "会话水平——日常使用"
       }
     }
   ],

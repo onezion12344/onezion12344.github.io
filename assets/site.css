@@ -210,6 +210,32 @@ h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
   margin: 0 0 var(--sp-5);
 }
 
+/* A short lede, then the method as points rather than one dense paragraph. */
+.hero-intro { margin: 0 0 var(--sp-5); }
+.hero-intro .lede { margin-bottom: var(--sp-3); }
+
+.lede-points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 60ch;
+  display: grid;
+  gap: var(--sp-2);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.lede-points li { position: relative; padding-left: 1.4em; }
+
+.lede-points li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--text);
+  opacity: .45;
+}
+
 .section-note {
   font: 12px var(--mono);
   color: var(--muted);
@@ -628,6 +654,32 @@ h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
 
 .jump a:hover { color: var(--text); border-color: var(--line-strong); }
 
+/* The two promises, given equal weight before any price appears: what counts
+   as done, and what happens when the file misses it. Same border language as
+   .done, which carries the per-job version of the same idea. */
+.guarantee {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-3);
+  margin: 0 0 var(--sp-5);
+}
+
+.guarantee-cell {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: var(--sp-3) var(--sp-4);
+}
+
+.guarantee-label {
+  font: 11px var(--mono);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 var(--sp-2);
+}
+
+.guarantee-body { margin: 0; font-size: .9375rem; line-height: 1.55; max-width: 52ch; }
+
 .offers,
 .proof-grid {
   list-style: none;
@@ -810,7 +862,8 @@ h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
 @media (max-width: 860px) {
   .offers,
   .proof-grid,
-  .brief-grid { grid-template-columns: minmax(0, 1fr); }
+  .brief-grid,
+  .guarantee { grid-template-columns: minmax(0, 1fr); }
 }
 
 @media (max-width: 720px) {
@@ -820,9 +873,13 @@ h2 { font: 400 1.5rem/1.25 var(--serif); margin: 0 0 var(--sp-3); }
   .hero-top { flex-direction: column; gap: var(--sp-4); }
   .avatar { width: 96px; height: 96px; }
   .work-grid { grid-template-columns: minmax(0, 1fr); }
-  .row-link { grid-template-columns: 88px minmax(0, 1fr); }
-  .row-thumb { width: 88px; }
-  .row-side { grid-column: 2; }
+  /* The summary is a paragraph, not a caption. Held inside the text column it
+     collapses to ~230px, where one sentence of Chinese runs to eight lines, so
+     the row trades its grid for a float: the head sits beside the thumbnail and
+     the prose wraps underneath it at full width. */
+  .row-link { display: block; }
+  .row-thumb { float: left; width: 88px; margin: 0 var(--sp-3) var(--sp-2) 0; }
+  .row-side { display: block; clear: both; margin-top: 6px; }
   .now-item { grid-template-columns: 64px minmax(0, 1fr); }
   .section { padding-top: var(--sp-5); padding-bottom: 40px; }
   .hire-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }

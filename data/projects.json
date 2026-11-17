@@ -14,9 +14,9 @@
       { "label": { "en": "wewrites.ai", "zh-Hant": "wewrites.ai" }, "url": "https://wewrites.ai/" }
     ],
     "summary": {
-      "en": "The site and content system for a DSE tutoring team — bilingual copy, class photography, teacher and course pages, an edit path a non-developer can run, and the DSE Paper 3 Part A production system behind its course products.",
-      "zh-Hant": "DSE 補習團隊嘅網站同內容系統——雙語文案、課堂相片、導師同課程頁、非技術同事都操作得嚟嘅編輯流程，仲有課程產品背後嘅 DSE Paper 3 Part A 生產系統。",
-      "zh-Hans": "DSE 补习团队的网站与内容系统——双语文案、课堂照片、导师与课程页、非技术同事也操作得来的编辑流程，还有课程产品背后的 DSE Paper 3 Part A 生产系统。"
+      "en": "The website a DSE tutoring team shows to parents — who teaches, what each lesson covers, how to get in touch. The team writes and publishes all of it on its own, without waiting on a developer, and the practice papers behind its course products come out of a production system rather than being assembled by hand.",
+      "zh-Hant": "DSE 補習團隊畀家長睇嘅網站——邊個教、每堂講咩、點聯絡。入面所有內容都由團隊自己寫自己出，唔使等開發者；課程產品背後嗰批 DSE Paper 3 Part A 練習，係由一條生產線出，唔係人手砌。",
+      "zh-Hans": "DSE 补习团队给家长看的网站——谁教、每堂讲什么、怎么联系。里面的内容全由团队自己写自己发，不用等开发者；课程产品背后那批 DSE Paper 3 Part A 练习，由一条生产线产出，不是手工拼的。"
     },
     "what": {
       "en": "A public site for a Hong Kong DSE tutoring team: who teaches, what each class covers, and how to get in touch. Behind it sits a content system the team updates itself.",
@@ -69,9 +69,9 @@
       { "label": { "en": "Homebrew cask", "zh-Hant": "Homebrew cask" }, "url": "https://github.com/onezion12344/homebrew-mac-closed-awake" }
     ],
     "summary": {
-      "en": "A menu-bar app that keeps a Mac awake with the lid closed, so a long build or a deploy does not die when you walk away.",
-      "zh-Hant": "選單列小工具：合埋蓋都令 Mac 保持清醒，長時間編譯或者部署唔會因為你行開咗就斷。",
-      "zh-Hans": "菜单栏小工具：合上盖仍让 Mac 保持清醒，长时间编译或者部署不会因为你走开就断。"
+      "en": "A small menu-bar app that keeps a Mac awake after the lid closes, so a long build or a deploy does not die because you walked away. The whole app is one menu — a timer, a forever mode, a memory readout — and the hard part is the lid, the one state macOS treats as a reason to sleep.",
+      "zh-Hant": "一個選單列小工具：合埋蓋之後，Mac 照樣唔會瞓，長時間編譯或者部署都唔會因為你行開咗就斷。整個 app 就係一個選單——計時、永久模式、記憶體讀數——最麻煩嘅位正正係個蓋，因為合蓋係 macOS 唯一認定「應該瞓」嘅狀態。",
+      "zh-Hans": "一个小菜单栏工具：合盖之后，Mac 照样不睡，长时间编译或部署就不会因为你走开而断。整个 app 就是一个菜单——计时、永久模式、内存读数——最麻烦的地方恰恰是盖子，因为合盖是 macOS 唯一认定“该睡”的状态。"
     },
     "what": {
       "en": "A macOS menu-bar app with a timer, a forever mode, a memory panel and quiet cleanup. It holds the machine awake with the lid shut.",
@@ -118,9 +118,9 @@
       { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/double-check-agent" }
     ],
     "summary": {
-      "en": "A verification plugin for AI agents: fact, logic and tool-use checks that run outside the model, through hooks the agent cannot skip.",
-      "zh-Hant": "AI Agent 嘅驗證外掛：事實、邏輯同工具使用嘅核查喺模型外面做，透過 Agent 跳唔過嘅 hook 執行。",
-      "zh-Hans": "AI Agent 的验证插件：事实、逻辑与工具使用的核查在模型外面做，通过 Agent 跳不过的 hook 执行。"
+      "en": "A checker that wraps an AI agent: before an answer goes out, a fixed sequence of checks runs over it — facts, logic, and whether the tools were used honestly. The checks live outside the model, in hooks the agent has to pass through, so it cannot decide to skip them.",
+      "zh-Hant": "包喺 AI Agent 外面嘅核查器：答案出街之前，會行一串固定步驟去查——查事實、查邏輯、查工具有冇老實用。核查喺模型外面做，住喺 Agent 一定要經過嘅 hook 度，所以佢想跳都跳唔過。",
+      "zh-Hans": "包在 AI Agent 外面的核查器：回答发出去之前，会按一串固定步骤去查——查事实、查逻辑、查工具有没有老实用。核查在模型外面做，就住在 Agent 一定要经过的 hook 里，所以它想跳过也跳不过去。"
     },
     "what": {
       "en": "A plugin that puts a fixed sequence of checks around an agent's answer — a dedup gate, pre-answer checks, and post-answer audit stages drawing on SIFT, IFCN, CoVe, FIRE and FABLE.",
@@ -164,9 +164,9 @@
     "tags": ["Agents", "TypeScript", "Local-first"],
     "links": [],
     "summary": {
-      "en": "A private control plane for personal agents — input, memory, execution, communication, outreach and evolving — running locally, never publicly. 669 contract tests green.",
-      "zh-Hant": "個人 Agent 嘅私有控制面——輸入、記憶、執行、通訊、對外接觸同演化——只喺本地行，唔對外公開。669 個契約測試全綠。",
-      "zh-Hans": "个人 Agent 的私有控制面——输入、记忆、执行、通信、对外接触与演化——只在本地跑，不对外公开。669 个契约测试全绿。"
+      "en": "A private home for personal AI agents: they remember, act, and get audited, all on one machine and never exposed to the public internet. Six layers sit behind one local API, and 669 contract tests hold the edges between them.",
+      "zh-Hant": "個人 AI Agent 住嘅地方：記嘢、做事、畀人審計，全部喺一部機度行，唔會擺上網。六層夾埋喺同一個本地 API 後面；層同層之間嘅邊界，由 669 個契約測試釘住。",
+      "zh-Hans": "个人 AI Agent 住的地方：记事、做事、被审计，全在一台机器上跑，不会放到网上。六层都收在同一个本地 API 后面；层与层之间的边界，由 669 个契约测试钉住。"
     },
     "what": {
       "en": "Six layers behind one local API: activity input, a memory layer with a propose → inbox → drain path, a task, run and approval state machine, communication channels, outreach scans, and a set of deterministic detectors. The product repository holds no personal data.",
@@ -210,9 +210,9 @@
       { "label": { "en": "Live lectures", "zh-Hant": "線上講課" }, "url": "https://onezion12344.github.io/comp2119-lectures/" }
     ],
     "summary": {
-      "en": "Narrated, slide-faithful lectures for an algorithms course: every element appears at the moment the narration explains it, and stays on screen.",
-      "zh-Hant": "演算法課程嘅旁白講課，同課件逐格對齊：每個元素都喺旁白講到佢嗰一刻出現，然後留喺畫面度。",
-      "zh-Hans": "算法课程的旁白讲课，与课件逐格对齐：每个元素都在旁白讲到它的那一刻出现，然后留在画面上。"
+      "en": "An algorithms course that works like a real lecture: the slide never gets ahead of the voice, and every element appears at the moment it is explained. The animation runs on the real course deck, and the recursion trees, sorting and graph traversal are things you can step through yourself.",
+      "zh-Hant": "一個睇得明嘅演算法課程：課件唔會快過把聲，每個元素都喺旁白講到佢嗰刻先出現。動畫係喺真實課件上面排時間軸做出嚟；遞迴樹、排序同圖走訪，全部可以自己一步步行。",
+      "zh-Hans": "一个看得懂的算法课程：课件不会比声音快，每个元素都在旁白讲到它的那一刻才出现。动画是在真实课件上排时间轴做出来的；递归树、排序与图遍历，全都可以自己一步步走。"
     },
     "what": {
       "en": "Eleven narrated lectures for COMP2119 Introduction to Algorithms, built as animated slides that keep pace with the voice, with click-through tools for recursion trees, sorting and graph traversal.",
@@ -256,9 +256,9 @@
       { "label": { "en": "p4.onezion.top (access code)", "zh-Hant": "p4.onezion.top（存取碼）" }, "url": "https://p4.onezion.top/" }
     ],
     "summary": {
-      "en": "A speaking practice room for HKDSE English Paper 4: a pre-recorded examiner, a live voice model as the other candidate, and a report that quotes what you actually said.",
-      "zh-Hant": "HKDSE 英文 Paper 4 嘅口試練習室：預錄考官、用即時語音模型扮另一位考生，仲有一份引用你原話嘅報告。",
-      "zh-Hans": "HKDSE 英文 Paper 4 的口试练习室：预录考官、用实时语音模型扮演另一位考生，还有一份引用你原话的报告。"
+      "en": "A practice room for the HKDSE English Paper 4 group discussion: an examiner, another candidate, and a report afterwards that quotes your own sentences. The examiner is pre-recorded so the rules never drift; only the other candidate is generated live.",
+      "zh-Hant": "HKDSE 英文 Paper 4 小組討論嘅練習房：有考官、有另一位考生，做完仲有一份引用你原話嘅報告。考官啲對白係預先錄好嘅，所以規則唔會走樣；即時生成嘅只有另一位考生。",
+      "zh-Hans": "HKDSE 英文 Paper 4 小组讨论的练习房间：有考官、有另一位考生，做完还有一份引用你原话的报告。考官的话是预先录好的，所以规则不会走样；实时生成的只有另一位考生。"
     },
     "what": {
       "en": "A live voice room for Paper 4 group discussion practice. The examiner's turns are pre-recorded so the rules do not drift; the other candidate is generated live.",
@@ -299,9 +299,9 @@
     "tags": ["PWA", "Content pipeline", "Offline"],
     "links": [],
     "summary": {
-      "en": "An installable PWA course engine for Shanghainese, where a lesson only ships from sourced material and the engine refuses to invent answers.",
-      "zh-Hant": "可安裝嘅上海話課程 PWA：課程只會由有出處嘅材料出貨，引擎唔會自己編答案。",
-      "zh-Hans": "可安装的上海话课程 PWA：课程只会从有出处的材料出货，引擎不会自己编答案。"
+      "en": "A course app for Shanghainese — a language with almost no teaching material to borrow from. The engine ships only lessons that trace back to a source, and fails the build rather than guessing a reading.",
+      "zh-Hant": "上海話課程 app——呢種話幾乎冇教材可以借。引擎只會出有出處嘅課；讀音查唔到，佢寧願砌唔成，都唔會自己作一個。",
+      "zh-Hans": "上海话课程 app——这种话几乎没有可以借鉴的教材。引擎只会出有出处的课；读音查不到，它宁可构建失败，也不会自己编一个。"
     },
     "what": {
       "en": "A Duolingo-shaped course engine for a dialect with almost no course material, with a content pipeline that flags what it cannot verify.",
@@ -346,9 +346,9 @@
     "tags": ["Protocols", "Routing", "Local"],
     "links": [],
     "summary": {
-      "en": "One loopback endpoint that speaks both the Anthropic and OpenAI protocols and routes by model prefix, so one CLI can use several vendors. 13.7k lines, 16 test modules.",
-      "zh-Hant": "一個本機迴環端點，同時講 Anthropic 同 OpenAI 兩種協定，並按模型前綴路由，令一個 CLI 可以用到幾間廠商嘅模型。13.7k 行，16 個測試模組。",
-      "zh-Hans": "一个本机回环端点，同时讲 Anthropic 与 OpenAI 两种协议，并按模型前缀路由，让一个 CLI 可以用到几家厂商的模型。13.7k 行，16 个测试模块。"
+      "en": "A local switchboard so one coding tool can talk to several AI vendors without being changed. It speaks both the Anthropic and OpenAI formats on the same port, routes by model prefix, and keeps streaming and tool calls working across vendors.",
+      "zh-Hant": "一個本機總機，令同一個工具可以同幾間 AI 廠商講嘢，個工具本身都唔使改。佢喺同一個 port 度同時應付到 Anthropic 同 OpenAI 兩種格式，按模型前綴分流；串流同工具呼叫跨廠商都照通。",
+      "zh-Hans": "一个本机总机，让同一个工具可以和几家 AI 厂商对话，而工具本身不用改。它在同一个端口上同时支持 Anthropic 与 OpenAI 两种格式，按模型前缀分流；流式输出与工具调用跨厂商照样通。"
     },
     "what": {
       "en": "A local gateway that accepts requests in either protocol, routes them by model prefix, and keeps streaming and tool calls working across vendors.",
@@ -386,9 +386,9 @@
     "tags": ["MCP", "TypeScript", "Event bus", "Policy"],
     "links": [],
     "summary": {
-      "en": "Every message between agents, the staff layer and outside clients passes one policy point — with per-route limits, a capability gate and a record of who was told what. 119 test cases across 16 files.",
-      "zh-Hant": "Agent、幕僚層同外部客戶之間每一條訊息都經同一個策略點：逐路由上限、能力閘門，仲有邊個被告知咗咩嘅記錄。16 個檔案共 119 個測試案例。",
-      "zh-Hans": "Agent、幕僚层与外部客户之间每一条消息都经过同一个策略点：逐路由上限、能力闸门，还有谁被告知了什么的记录。16 个文件共 119 个测试用例。"
+      "en": "One junction that every message has to pass through — agent to agent, staff layer to outside client. It enforces the per-route limits, refuses work it cannot do instead of degrading quietly, and keeps a record of who was told what.",
+      "zh-Hant": "所有訊息都要行嘅一個路口——agent 同 agent 之間、幕僚層同外面客戶之間，全部經呢度。每條路由嘅上限都喺呢度管住；做唔到就拒絕，唔會靜靜雞降級；邊個畀人通知過咩，都有記錄。",
+      "zh-Hans": "所有消息都要走的一个路口——agent 与 agent 之间、幕僚层与外部客户之间，全部经过这里。每条路由的上限在这里执行；做不到就拒绝，不会悄悄降级；谁收到过什么，也有记录。"
     },
     "what": {
       "en": "A broker inside a private agent platform. It routes internal, staff-level and external conversations, owns delivery and retries, and hands outside client work to a separate freelancing broker over MCP rather than doing it itself.",
@@ -398,20 +398,20 @@
     "why": {
       "en": "Agents that all talk to each other directly fan out. Routine coordination eats the context that judgement needs, and nothing records who was told what. One broker makes both countable.",
       "zh-Hant": "所有 agent 互相直連就會扇出。例行協調吃掉判斷所需的上下文，而且沒有人記錄誰被告知了什麼。一個中繼讓兩者都變得可數。",
-      "zh-Hans": "所有 agent 互相直连就会扇出。例行协调吃掉判断所需的上下文，而且没有人记录谁被告知了什么。一个中继让两者都变得可数。"
+      "zh-Hans": "所有 agent 互相直连，连接数就会爆炸。例行协调吃掉判断所需的上下文，而且没有人记录谁收到过什么。一个中继让这两件事都数得清。"
     },
     "challenge": {
       "en": "Making silence visible. A dropped message looks exactly like a message nobody sent, so the broker has to report an unreachable channel instead of assuming delivery.",
       "zh-Hant": "讓沉默變得可見。掉了的訊息與沒人發過的訊息長得一模一樣，所以中繼必須回報連不上的通道，而不是假設已送達。",
-      "zh-Hans": "让沉默变得可见。掉了的消息与没人发过的消息长得一模一样，所以中继必须回报连不上的通道，而不是假设已送达。"
+      "zh-Hans": "让沉默变得可见。掉了的消息与没人发过的消息长得一模一样，所以中继必须报告通道连不上，而不是假设已送达。"
     },
     "highlights": [
-      { "en": "Routes internal, staff-level and external flows, with a documented default route per channel.", "zh-Hant": "為內部、幕僚層與對外流程分流，每個通道都有寫明的預設路由。", "zh-Hans": "为内部、幕僚层与对外流程分流，每个通道都有写明的默认路由。" },
+      { "en": "Routes internal, staff-level and external flows, with a documented default route per channel.", "zh-Hant": "為內部、幕僚層與對外流程分流，每個通道都有寫明的預設路由。", "zh-Hans": "为内部、幕僚层与对外流程分流，每个通道都写明了默认路由。" },
       { "en": "Delegates outside-client drafts to a separate freelancing broker over MCP.", "zh-Hant": "經 MCP 把外部客戶的草稿交給另一個自由工作中繼。", "zh-Hans": "经 MCP 把外部客户的草稿交给另一个自由工作中继。" },
-      { "en": "119 test cases across 16 files, including the acknowledgement and capability-gate contracts.", "zh-Hant": "16 個檔案共 119 個測試案例，包括回執與能力閘門的契約。", "zh-Hans": "16 个文件共 119 个测试案例，包括回执与能力闸门的契约。" }
+      { "en": "119 test cases across 16 files, including the acknowledgement and capability-gate contracts.", "zh-Hant": "16 個檔案共 119 個測試案例，包括回執與能力閘門的契約。", "zh-Hans": "16 个文件共 119 个测试用例，包括回执与能力闸门的契约。" }
     ],
     "evidence": [
-      { "text": { "en": "119 test cases across 16 comms test files", "zh-Hant": "16 個 comms 測試檔案共 119 個測試案例", "zh-Hans": "16 个 comms 测试文件共 119 个测试案例" }, "source": "tests/comms-*.test.ts, counted 2026-11-16" }
+      { "text": { "en": "119 test cases across 16 comms test files", "zh-Hant": "16 個 comms 測試檔案共 119 個測試案例", "zh-Hans": "16 个 comms 测试文件共 119 个测试用例" }, "source": "tests/comms-*.test.ts, counted 2026-11-16" }
     ],
     "media": null
   },
@@ -428,9 +428,9 @@
     "tags": ["SQLite", "Data", "pytest"],
     "links": [],
     "summary": {
-      "en": "WeChat Pay and Alipay exports into SQLite — de-duplicated, categorised, with monthly reports built from real statements.",
-      "zh-Hant": "將微信支付同支付寶嘅匯出檔匯入 SQLite——去重、分類，再用真實帳單生成每月報告。",
-      "zh-Hans": "把微信支付与支付宝的导出文件导入 SQLite——去重、分类，再用真实账单生成每月报告。"
+      "en": "WeChat Pay and Alipay statements end up in one local database, so where the money went is something you can answer instead of guessing. Rows from two different export formats land in one schema and are de-duplicated on transaction identity, and the monthly reports are built from the real statements.",
+      "zh-Hant": "微信支付同支付寶嘅帳單，變成一個本地資料庫——錢去咗邊，答得出，唔使估。兩種唔同嘅匯出格式入同一個結構，按交易身份去重，月報直接用真實帳單出。",
+      "zh-Hans": "微信支付与支付宝的账单，变成一个本地数据库——钱去了哪，答得出来，不用猜。两种不同的导出格式进同一套表结构，按交易唯一标识去重，月报直接用真实账单生成。"
     },
     "what": {
       "en": "An importer that reads both apps' export formats into one local database, then produces categorised monthly reports.",
@@ -468,9 +468,9 @@
       { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/koreader-onedrive-plugin" }
     ],
     "summary": {
-      "en": "A KOReader sync plugin: OAuth2 device-code authentication, the Microsoft Graph API, and bidirectional sync.",
-      "zh-Hant": "KOReader 同步外掛：OAuth2 裝置碼認證、Microsoft Graph API，同雙向同步。",
-      "zh-Hans": "KOReader 同步插件：OAuth2 设备码认证、Microsoft Graph API，与双向同步。"
+      "en": "A Lua plugin that lets a KOReader e-reader keep its reading position and notes in OneDrive, so the book follows you between devices. It lives inside KOReader: OAuth2 device-code sign-in so no browser is needed on the device, Microsoft Graph for transport, two-way sync on top.",
+      "zh-Hant": "令 KOReader 閱讀器嘅閱讀位置同筆記存去 OneDrive，本書就跟住你換機。佢係 KOReader 入面嘅 Lua 外掛：用 OAuth2 裝置碼登入，部機唔使開瀏覽器；用 Microsoft Graph 搬資料；上面再疊雙向同步。",
+      "zh-Hans": "把 KOReader 阅读器的阅读进度和笔记存到 OneDrive，这本书就跟着你换设备。它是 KOReader 里面的 Lua 插件：用 OAuth2 设备码登录，设备上不用开浏览器；用 Microsoft Graph 搬数据；上面再叠双向同步。"
     },
     "what": {
       "en": "A Lua plugin that adds OneDrive as a sync target inside KOReader, signed in with the OAuth2 device-code flow.",
@@ -510,9 +510,9 @@
       { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/let-go-journey" }
     ],
     "summary": {
-      "en": "A CBT-based game for getting through a breakup: thirty days, ten minutes a day, bilingual.",
-      "zh-Hant": "以認知行為治療為本嘅療癒遊戲：三十日、每日十分鐘、雙語。",
-      "zh-Hans": "以认知行为治疗为本的疗愈游戏：三十天、每天十分钟、双语。"
+      "en": "Thirty days of ten-minute exercises for getting through a breakup. The structure comes from cognitive behavioural therapy, not a mood diary — one defined exercise a day — and the whole thing runs in Chinese and English.",
+      "zh-Hant": "三十日、每日十分鐘，陪你行過一段分手。個結構係認知行為治療嘅結構，唔係心情日記——每日一項指定練習——而且中英雙語都有。",
+      "zh-Hans": "三十天、每天十分钟，陪你走过分手这一段。结构是认知行为治疗的结构，不是心情日记——每天一项指定练习——而且中英双语都有。"
     },
     "what": {
       "en": "An interactive daily programme built on cognitive behavioural therapy, written in English and Chinese.",
@@ -552,12 +552,16 @@
     "role": { "en": "Author", "zh-Hant": "作者" },
     "tags": ["Research", "Writing", "Psychology"],
     "links": [
+      { "label": { "en": "自愛 vs 社會肯定", "zh-Hant": "自愛 vs 社會肯定", "zh-Hans": "自爱 vs 社会肯定" }, "url": "/projects/casual-research/self-love-vs-approval.html" },
+      { "label": { "en": "依附、慢熱與慾望的矛盾", "zh-Hant": "依附、慢熱與慾望的矛盾", "zh-Hans": "依恋、慢热与欲望的矛盾" }, "url": "/projects/casual-research/attachment-and-desire.html" },
+      { "label": { "en": "認真討論 vs 壓抑", "zh-Hant": "認真討論 vs 壓抑", "zh-Hans": "认真讨论 vs 压抑" }, "url": "/projects/casual-research/conflict-styles.html" },
+      { "label": { "en": "喜歡 vs 矛盾感知", "zh-Hant": "喜歡 vs 矛盾感知", "zh-Hans": "喜欢 vs 矛盾感知" }, "url": "/projects/casual-research/attraction-and-conflict.html" },
       { "label": { "en": "Source", "zh-Hant": "原始碼" }, "url": "https://github.com/onezion12344/casual-research" }
     ],
     "summary": {
-      "en": "Fact-checked research pages on psychology, relationships and everyday curiosity — written for people outside the field.",
-      "zh-Hant": "關於心理學、親密關係同日常好奇心嘅查證研究頁——寫畀唔喺呢個領域嘅人睇。",
-      "zh-Hans": "关于心理学、亲密关系与日常好奇心的查证研究页——写给不在这个领域的人看。"
+      "en": "Long-form pages on psychology, relationships and ordinary curiosity, written for people who do not work in the field. Each page takes one question and follows the research rather than the popular version, and ends with the references it used.",
+      "zh-Hant": "關於心理學、親密關係同日常好奇心嘅長文，寫畀唔喺呢行嘅人睇。每頁只答一條問題，順住研究行而唔係順住流行講法，最後列出佢用過嘅參考資料。",
+      "zh-Hans": "关于心理学、亲密关系与日常好奇心的长文，写给不在这一行的人看。每页只回答一个问题，顺着研究走而不是顺着流行说法，最后列出它用过的参考资料。"
     },
     "what": {
       "en": "A set of long-form pages that take one question each — attachment, conflict styles, self-love versus approval — and follow it through the research rather than the discourse.",
